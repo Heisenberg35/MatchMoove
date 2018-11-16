@@ -1,0 +1,100 @@
+package com.societe.project.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.societe.project.database.DBItem;
+
+@Entity
+@Table(name="adresse")
+public class Adresse extends DBItem {
+	
+	@Column(name="numero")
+	private int numero;
+	
+	@Column(name="rue")
+	private String rue;
+	
+	@Column(name="cp")
+	private int cp;
+	
+	@Column(name="ville")
+	private String ville;
+	
+	@Column(name="domicile")
+	private Boolean domicile;
+	
+	@ManyToOne()
+	private Profil profil;
+	
+	/***********************************************
+	 * GETTEUR ET SETTEUR
+	 ***********************************************/
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public String getRue() {
+		return rue;
+	}
+
+	public void setRue(String rue) {
+		this.rue = rue;
+	}
+
+	public int getCp() {
+		return cp;
+	}
+
+	public void setCp(int cp) {
+		this.cp = cp;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	public Boolean getDomicile() {
+		return domicile;
+	}
+
+	public void setDomicile(Boolean domicile) {
+		this.domicile = domicile;
+	}
+
+	public Profil getProfil() {
+		return profil;
+	}
+
+	public void setProfil(Profil profil) {
+		this.profil = profil;
+	}
+
+	/***********************************************
+	 * CONSTRUCTEURS
+	 ***********************************************/
+	public Adresse() {
+		super();
+	}
+
+	public Adresse(int numero, String rue, int cp, String ville, Boolean domicile, Profil profil) {
+		this();
+		this.numero = numero;
+		this.rue = rue;
+		this.cp = cp;
+		this.ville = ville;
+		this.domicile = domicile;
+		this.profil = profil;
+	}
+	
+}
