@@ -28,6 +28,9 @@ public class Profil extends DBItem {
 	
 	@OneToOne(mappedBy="profil")
 	private Compte compte;
+	
+	@OneToMany(mappedBy="profil")
+	private List<Car> cars;
 
 	/***********************************************
 	 * GETTEUR ET SETTEUR
@@ -72,21 +75,31 @@ public class Profil extends DBItem {
 		this.compte = compte;
 	}
 
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
+	}
+
 	/***********************************************
 	 * CONSTRUCTEURS
 	 ***********************************************/
 	public Profil() {
 		super();
 		this.roles = new ArrayList<Role>();
+		this.cars = new ArrayList<Car>();
 	}
 
-	public Profil(String firstname, String lastname, int phoneNumber, List<Role> roles, Compte compte) {
+	public Profil(String firstname, String lastname, int phoneNumber, List<Role> roles, Compte compte, List<Car> cars) {
 		this();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.phoneNumber = phoneNumber;
 		this.roles = roles;
 		this.compte = compte;
+		this.cars = cars;
 	}
 	
 }
