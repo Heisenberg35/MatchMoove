@@ -23,7 +23,9 @@ public class CompteService extends BaseService<Compte> {
 
 	@Override
 	protected List<Compte> setItemsByCriterias(Compte item, List<Compte> result) {
-		// TODO Auto-generated method stub
+		if (!item.getEmail().equals("")) {
+			result = this.compteRepository.findByEmail(item.getEmail());
+		}
 		return null;
 	}
 

@@ -23,7 +23,13 @@ public class ProfilService extends BaseService<Profil> {
 
 	@Override
 	protected List<Profil> setItemsByCriterias(Profil item, List<Profil> result) {
-		// TODO Auto-generated method stub
+		if (!item.getFirstname().equals("") && !item.getLastname().equals("")) {
+			result = this.profilRepository.findByFirstnameAndLastname(item.getFirstname(), item.getLastname());
+		} else if (!item.getFirstname().equals("")) {
+			result = this.profilRepository.findByFirstname(item.getFirstname());
+		} else if (!item.getLastname().equals("")) {
+			result = this.profilRepository.findByLastname(item.getLastname());
+		}
 		return null;
 	}
 
