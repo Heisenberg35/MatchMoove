@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.societe.project.controllers.base.BaseController;
 import com.societe.project.models.Role;
+import com.societe.project.services.ProfilService;
 import com.societe.project.services.RoleService;
 import com.societe.project.services.base.BaseService;
 
@@ -37,10 +38,13 @@ public class RoleController extends BaseController<Role> {
 	protected String getBasePageName() {
 		return BASE_PAGE_NAME;
 	}
+	
+	@Autowired
+	ProfilService serviceProfil;
 
 	@Override
 	protected void setOtherAttributes(Model model) {
-		// TODO Auto-generated method stub
+		model.addAttribute("profils", serviceProfil.findAll());
 		
 	}
 
