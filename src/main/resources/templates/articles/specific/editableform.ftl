@@ -16,9 +16,9 @@
     <input type="date" name="date" value="<#if item?? && item.getDate()??>${item.getDate()}</#if>">
     
     <#if comptes??>
-    <select name="compte">
+    <select email="compte">
         <#list comptes as c>
-            <option value=${c.getId()}>${r.getEmail()}</option>
+            <option value=${c.getId()}>${c.getEmail()}</option>
         </#list>
     </select>
     </#if>

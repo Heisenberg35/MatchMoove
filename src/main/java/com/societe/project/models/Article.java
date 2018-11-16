@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.societe.project.database.DBItem;
 
 @Entity
@@ -20,6 +22,7 @@ public class Article extends DBItem {
 	private String description;
 	
 	@Column(name="date")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
 	
 	@ManyToOne()
