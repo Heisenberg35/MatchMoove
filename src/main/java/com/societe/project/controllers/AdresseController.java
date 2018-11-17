@@ -41,7 +41,7 @@ public class AdresseController extends BaseController<Adresse> {
 	
 	@Override
 	protected void setOtherAttributes(Model model) {
-		model.addAttribute("comptes", profilService.findAll());
+		model.addAttribute("profils", profilService.findAll());
 		
 	}
 

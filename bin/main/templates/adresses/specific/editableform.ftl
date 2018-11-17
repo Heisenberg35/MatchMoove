@@ -24,7 +24,7 @@
     <#if profils??>
     <select firstname="profil">
         <#list profils as p>
-            <option value=${c.getId()}>${c.getFirstname()}</option>
+            <option value=${p.getId()}>${p.getFirstname()}</option>
         </#list>
     </select>
     </#if>
