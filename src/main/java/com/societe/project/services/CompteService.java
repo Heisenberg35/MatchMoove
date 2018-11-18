@@ -26,7 +26,7 @@ public class CompteService extends BaseService<Compte> {
 		if (!item.getEmail().equals("")) {
 			result = this.compteRepository.findByEmail(item.getEmail());
 		}
-		return null;
+		return result;
 	}
 
 }

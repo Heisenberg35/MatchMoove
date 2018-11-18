@@ -36,17 +36,17 @@ public class ProfilController extends BaseController<Profil> {
 		return BASE_PAGE_NAME;
 	}
 
-	@Autowired
-	private CompteService compteService;
+//	@Autowired
+//	private CompteService compteService;
 	
 	@Override
 	protected void setOtherAttributes(Model model) {
-		model.addAttribute("comptes", compteService.findAll());
+//		model.addAttribute("comptes", compteService.findAll());
 	}
 
 	@Override
 	protected void setupOtherFields(Profil item) {
-		item.setCompte(compteService.find(item.getCompte().getId()).get());
+//		item.setCompte(compteService.find(item.getCompte().getId()).get());
 	}
 	
 	

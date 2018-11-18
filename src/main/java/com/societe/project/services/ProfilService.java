@@ -30,7 +30,7 @@ public class ProfilService extends BaseService<Profil> {
 		} else if (!item.getLastname().equals("")) {
 			result = this.profilRepository.findByLastname(item.getLastname());
 		}
-		return null;
+		return result;
 	}
 
 }

@@ -1,22 +1,22 @@
 <div>
 	<div>${i.getId()}</div>
         <#if i.getMarque()??>
-        	<div>${i.getMarque()}</div>
+        	<div>Marque : ${i.getMarque()}</div>
         <#else>
         	<div>NULL</div>
         </#if>
         <#if i.getModele()??>
-        	<div>${i.getModele()}</div>
+        	<div>Modele : ${i.getModele()}</div>
         <#else>
         	<div>NULL</div>
         </#if>
         <#if i.getNombreDePlace()??>
-        	<div>${i.getNombreDePlace()}</div>
+        	<div>Nombre de places : ${i.getNombreDePlace()}</div>
         <#else>
         	<div>NULL</div>
         </#if>
         <#if i.getImmatriculation()??>
-        	<div>${i.getImmatriculation()}</div>
+        	<div>Plaque d'immatriculation : ${i.getImmatriculation()}</div>
         <#else>
         	<div>NULL</div>
         </#if>

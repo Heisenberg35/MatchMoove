@@ -23,8 +23,10 @@ public class CarService extends BaseService<Car> {
 
 	@Override
 	protected List<Car> setItemsByCriterias(Car item, List<Car> result) {
-		// TODO Auto-generated method stub
-		return null;
+		if (!item.getMarque().equals("")) {
+			result = this.carRepository.findByMarque(item.getMarque());
+		}
+		return result;
 	}
 
 }

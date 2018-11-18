@@ -23,8 +23,10 @@ public class AdresseService extends BaseService<Adresse> {
 
 	@Override
 	protected List<Adresse> setItemsByCriterias(Adresse item, List<Adresse> result) {
-		// TODO Auto-generated method stub
-		return null;
+		if (!item.getRue().equals("")) {
+			result = this.adresseRepository.findByRue(item.getRue());
+		}
+		return result;
 	}
 
 }
