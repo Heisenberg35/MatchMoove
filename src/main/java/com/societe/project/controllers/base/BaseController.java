@@ -105,7 +105,7 @@ public abstract class BaseController<T extends DBItem> {
 	
 	@RequestMapping(value= {"/edit"}, method=RequestMethod.POST)
 	public String editSave(@ModelAttribute T item) {
-		this.setupOtherFields(item);
+		//this.setupOtherFields(item);
 		this.getBaseService().save(item);
 		return "redirect:"+this.getBaseURL()+"/index";
 	}
