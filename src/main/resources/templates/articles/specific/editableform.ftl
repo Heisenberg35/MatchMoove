@@ -14,11 +14,12 @@
     <input type="text" name="description" value="<#if item?? && item.getDescription()??>${item.getDescription()}</#if>" required>
     <div>Date</div>
     <input type="date" name="date" value="<#if item?? && item.getDate()??>${item.getDate()}</#if>" required>
-    <div>Choisir le compte</div>
+    
     <#if comptes??>
+    <div>Choisir le compte</div>
     <select name="compte" required>
         <#list comptes as c>
-            <option value=${c.getId()}>${c.getEmail()}</option>
+            <option value="<#if item?? && item.getCompte()??>${item.getCompte().getId()}<#else>${c.getId()}></#if>"><#if item?? && item.getCompte()??>${item.getCompte().getEmail()}<#else>${c.getEmail()}</#if></option>
         </#list>
     </select>
     </#if>

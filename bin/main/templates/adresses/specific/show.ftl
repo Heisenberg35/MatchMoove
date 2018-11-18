@@ -1,22 +1,27 @@
 <div>
 	<div>${i.getId()}</div>
         <#if i.getNumero()??>
-        	<div>${i.getNumero()}</div>
+        	<div>Numero : ${i.getNumero()}</div>
         <#else>
         	<div>NULL</div>
         </#if>
         <#if i.getRue()??>
-        	<div>${i.getRue()}</div>
+        	<div>Adresse : ${i.getRue()}</div>
         <#else>
         	<div>NULL</div>
         </#if>
         <#if i.getCp()??>
-        	<div>${i.getCp()}</div>
+        	<div>Code postal : ${i.getCp()}</div>
         <#else>
         	<div>NULL</div>
         </#if>
         <#if i.getVille()??>
-        	<div>${i.getVille()}</div>
+        	<div>Ville : ${i.getVille()}</div>
+        <#else>
+        	<div>NULL</div>
+        </#if>
+        <#if i.getProfil()??>
+        	<div>Profil : ${i.getProfil().getFirstname()} ${i.getProfil().getLastname()}</div>
         <#else>
         	<div>NULL</div>
         </#if>

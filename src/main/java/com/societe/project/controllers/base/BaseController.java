@@ -99,12 +99,13 @@ public abstract class BaseController<T extends DBItem> {
 		model.addAttribute(BASE_ATTRIBUT,this.getBaseService().find(id).get());
 		model.addAttribute("pageName",this.getBasePageName()+" edit");
 		model.addAttribute("detailPath",this.getBaseURL());
+		this.setOtherAttributes(model);
 		return this.getBaseURL()+"/edit";
 	}
 	
 	@RequestMapping(value= {"/edit"}, method=RequestMethod.POST)
 	public String editSave(@ModelAttribute T item) {
-		//this.setupOtherFields(item);
+		this.setupOtherFields(item);
 		this.getBaseService().save(item);
 		return "redirect:"+this.getBaseURL()+"/index";
 	}

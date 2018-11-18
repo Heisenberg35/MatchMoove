@@ -1,17 +1,22 @@
 <div>
 	<div>${i.getId()}</div>
         <#if i.getTitle()??>
-        	<div>${i.getTitle()}</div>
+        	<div>Titre : ${i.getTitle()}</div>
         <#else>
         	<div>NULL</div>
         </#if>
         <#if i.getDescription()??>
-        	<div>${i.getDescription()}</div>
+        	<div>Description : ${i.getDescription()}</div>
         <#else>
         	<div>NULL</div>
         </#if>
         <#if i.getDate()??>
-        	<div>${i.getDate()}</div>
+        	<div>Date : ${i.getDate()}</div>
+        <#else>
+        	<div>NULL</div>
+        </#if>
+        <#if i.getCompte()??>
+        	<div>Compte : ${i.getCompte().getEmail()}</div>
         <#else>
         	<div>NULL</div>
         </#if>
