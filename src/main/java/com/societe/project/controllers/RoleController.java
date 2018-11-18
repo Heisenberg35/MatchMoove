@@ -12,8 +12,6 @@ import com.societe.project.services.ProfilService;
 import com.societe.project.services.RoleService;
 import com.societe.project.services.base.BaseService;
 
-
-
 @Controller
 @RequestMapping(RoleController.BASE_URL)
 public class RoleController extends BaseController<Role> {
@@ -40,18 +38,17 @@ public class RoleController extends BaseController<Role> {
 	}
 	
 	@Autowired
-	ProfilService serviceProfil;
+	ProfilService profilService;
 
 	@Override
 	protected void setOtherAttributes(Model model) {
-		model.addAttribute("profils", serviceProfil.findAll());
+		model.addAttribute("profils", profilService.findAll());
 		
 	}
 
 	@Override
 	protected void setupOtherFields(Role item) {
-		// TODO Auto-generated method stub
-		
+		item.setProfil(profilService.find(item.getProfil().getId()).get());
 	}
 
 }

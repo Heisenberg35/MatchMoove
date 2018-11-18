@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.societe.project.controllers.base.BaseController;
 import com.societe.project.models.Compte;
 import com.societe.project.services.CompteService;
+import com.societe.project.services.ProfilService;
 import com.societe.project.services.RoleService;
 import com.societe.project.services.base.BaseService;
 
@@ -39,15 +40,19 @@ public class CompteController extends BaseController<Compte> {
 	@Autowired
 	private RoleService roleService;
 	
+	@Autowired
+	private ProfilService profilService;
+	
 	@Override
 	protected void setOtherAttributes(Model model) {
 		model.addAttribute("roles", roleService.findAll());
-		
+		model.addAttribute("profils", profilService.findAll());
 	}
 
 	@Override
 	protected void setupOtherFields(Compte item) {
 		item.setRole(roleService.find(item.getRole().getId()).get());
+		item.setProfil(profilService.find(item.getRole().getId()).get());
 	}
 	
 	

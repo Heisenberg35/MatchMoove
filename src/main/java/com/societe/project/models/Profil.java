@@ -1,5 +1,6 @@
 package com.societe.project.models;
 
+import java.lang.ref.PhantomReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class Profil extends DBItem {
 	private String lastname;
 	
 	@Column(name="phoneNumber")
-	private int phoneNumber;
+	private String phoneNumber;
 	
 	@OneToMany(mappedBy="profil")
 	private List<Adresse> adresses;
@@ -54,11 +55,11 @@ public class Profil extends DBItem {
 		this.lastname = lastname;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -104,7 +105,7 @@ public class Profil extends DBItem {
 		this.cars = new ArrayList<Car>();
 	}
 
-	public Profil(String firstname, String lastname, int phoneNumber, List<Adresse> adresses , List<Role> roles, Compte compte, List<Car> cars) {
+	public Profil(String firstname, String lastname, String phoneNumber, List<Adresse> adresses , List<Role> roles, Compte compte, List<Car> cars) {
 		this();
 		this.firstname = firstname;
 		this.lastname = lastname;
