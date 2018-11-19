@@ -26,13 +26,14 @@ repositories {
 
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web')
-	
+	implementation 'com.google.firebase:firebase-admin:6.5.0'
 	// View
 	compile('org.springframework.boot:spring-boot-starter-freemarker')
 	
 	// Database
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	runtimeOnly('mysql:mysql-connector-java')
-
+	//runtimeOnly('mysql:mysql-connector-java')
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.43'
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
+
 }

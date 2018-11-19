@@ -1,9 +1,9 @@
 package com.societe.project.models;
 
-import java.lang.ref.PhantomReference;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -36,6 +36,12 @@ public class Profil extends DBItem {
 	@OneToMany(mappedBy="profil")
 	private List<Car> cars;
 
+    @OneToMany(targetEntity=PT.class,mappedBy="profil" ,cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PT> pts;
+    
+    @OneToMany(targetEntity=Bagage.class,mappedBy="profil" ,cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Bagage> bagages;
+    
 	/***********************************************
 	 * GETTEUR ET SETTEUR
 	 ***********************************************/
@@ -94,7 +100,23 @@ public class Profil extends DBItem {
 	public void setAdresses(List<Adresse> adresses) {
 		this.adresses = adresses;
 	}
+	
+    public List<PT> getPT() {
+	        return pts;
+    }
+    
+    public void setPT(List<PT> pts) {
+        this.pts = pts;
+    }
+	public void setBagage(List<Bagage> bagages) {
+	        this.bagages = bagages;
+    }
+	
+	public List<Bagage> getBagage() {
+        return bagages;
+    }
 
+    
 	/***********************************************
 	 * CONSTRUCTEURS
 	 ***********************************************/
@@ -103,9 +125,12 @@ public class Profil extends DBItem {
 		this.adresses = new ArrayList<Adresse>();
 		this.roles = new ArrayList<Role>();
 		this.cars = new ArrayList<Car>();
+		this.pts = new ArrayList<PT>();
+		this.bagages = new ArrayList<Bagage>();
+		
 	}
 
-	public Profil(String firstname, String lastname, String phoneNumber, List<Adresse> adresses , List<Role> roles, Compte compte, List<Car> cars) {
+	public Profil(String firstname, String lastname, String phoneNumber, List<Adresse> adresses , List<Role> roles, Compte compte, List<Car> cars, List<PT>pts,  List<Bagage>bagages) {
 		this();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -114,6 +139,8 @@ public class Profil extends DBItem {
 		this.roles = roles;
 		this.compte = compte;
 		this.cars = cars;
+		this.pts = pts;
+		this.bagages = bagages;
 	}
 	
 }

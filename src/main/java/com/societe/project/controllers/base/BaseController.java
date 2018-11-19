@@ -74,9 +74,9 @@ public abstract class BaseController<T extends DBItem> {
 	
 	@RequestMapping(value= {"/find"}, method=RequestMethod.POST)
 	public String findCriteriaSearch(Model model, @ModelAttribute T item) {
-		List<T> roles = this.getBaseService().findWithCriteria(item);
-		if (roles.size() > 0) {
-			model.addAttribute(BASE_ATTRIBUT_LIST,roles);
+		List<T> items = this.getBaseService().findWithCriteria(item);
+		if (items.size() > 0) {
+			model.addAttribute(BASE_ATTRIBUT_LIST,items);
 		}else {
 			model.addAttribute("notFound","No match");
 		}

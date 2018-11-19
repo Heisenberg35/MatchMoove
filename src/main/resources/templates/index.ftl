@@ -7,7 +7,6 @@
  <link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
  
-
 	<title>MatchMoove</title>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -126,3 +125,4 @@
 </body>
 	
 </html>
+
