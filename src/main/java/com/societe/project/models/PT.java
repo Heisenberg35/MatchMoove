@@ -23,25 +23,25 @@ private Profil profil;
 private Trajet trajet;
 
 @Column
-private int nbrePlace;
+private Integer nbrePlace;
 
 @Column
-private int volumeMax;
+private Integer volumeMax;
 
 /***********************************************
  * GETTEUR ET SETTEUR
  ***********************************************/
 
-public int getNbrePlace() {
+public Integer getNbrePlace() {
 	return nbrePlace;
 }
-public void setNbrePlace(int nbrePlace) {
+public void setNbrePlace(Integer nbrePlace) {
 	this.nbrePlace = nbrePlace;
 }
-public int getVolumeMax() {
+public Integer getVolumeMax() {
 	return volumeMax;
 }
-public void setVolumeMax(int volumeMax) {
+public void setVolumeMax(Integer volumeMax) {
 	this.volumeMax = volumeMax;
 }
 public Trajet getTrajet() {
@@ -63,7 +63,7 @@ public void setprofil(Profil profil) {
  * CONSTRUCTEURS
  ***********************************************/
 
-public PT(int nbrePlace, int volumeMax, Profil profile, Trajet trajet) {
+public PT(Integer nbrePlace, Integer volumeMax, Profil profile, Trajet trajet) {
 	super();
 	this.nbrePlace = nbrePlace;
 	this.volumeMax = volumeMax;

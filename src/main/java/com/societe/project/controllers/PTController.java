@@ -23,7 +23,9 @@ public class PTController extends BaseController<PT> {
 	
 	@Autowired
 	private PTService ptService;
+	@Autowired
 	private TrajetService trajetService;
+	@Autowired
 	private ProfilService profilService;
 
 	@Override
