@@ -82,9 +82,12 @@ h1
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> d5d2b1e63695970c6b394ed947ab5a0ea54eb378
+=======
+>>>>>>> lama
 
 h3
 {
@@ -95,9 +98,12 @@ h3
 	top: 220px;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> d5d2b1e63695970c6b394ed947ab5a0ea54eb378
 =======
 >>>>>>> d5d2b1e63695970c6b394ed947ab5a0ea54eb378
+=======
+>>>>>>> lama
 h1, h2
 {
 	padding-top: 250px;
@@ -160,4 +166,9 @@ section
 .actubloc p:nth-child(2) {
     font-weight: 700;
 	font-size: 25px;
+}
+
+footer {
+	height: 300px;
+	image-background: url(footer.png);
 }
