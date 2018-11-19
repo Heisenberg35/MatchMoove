@@ -29,6 +29,8 @@ public abstract class BaseController<T extends DBItem> {
 		model.addAttribute(BASE_ATTRIBUT_LIST,this.getBaseService().findAll());
 		model.addAttribute("pageName",this.getBasePageName()+" index");
 		model.addAttribute("detailPath",this.getBaseURL());
+		System.out.println("COUCOU");
+		System.out.println(model.toString());
 		return this.getBaseURL()+"/index";
 	}
 	

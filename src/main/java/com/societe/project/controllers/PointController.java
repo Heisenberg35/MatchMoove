@@ -20,7 +20,7 @@ import com.societe.project.services.base.BaseService;
 public class PointController extends BaseController<Point> {
 	
 	public static final String BASE_URL = "/points";
-	private static final String BASE_PAGE_NAME = "points";
+	private static final String BASE_PAGE_NAME = "Points";
 	
 	@Autowired
 	private PointService pointService;
@@ -46,7 +46,7 @@ public class PointController extends BaseController<Point> {
 
 	@Override
 	protected void setOtherAttributes(Model model) {
-		model.addAttribute("trajets",trajetService.findAll());
+		model.addAttribute("trajets", trajetService.findAll());
 		
 		
 	}

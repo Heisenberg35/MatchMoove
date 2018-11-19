@@ -80,6 +80,18 @@ h1
 	color: black;
 	font-size: 60px;
 }
+<<<<<<< HEAD
+=======
+
+h3
+{
+	color: white;
+	font-size: 60px;
+	text-align: center;
+	position: relative;
+	top: 220px;
+}
+>>>>>>> d5d2b1e63695970c6b394ed947ab5a0ea54eb378
 h1, h2
 {
 	padding-top: 250px;
