@@ -7,7 +7,6 @@
  <link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
  
-
 	<title>MatchMoove</title>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,26 +34,23 @@
 					<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-					<li><a href="/adresses" class="list-group-item" title="Adresses">Adresses</a></li>
-					<li><a href="/articles" class="list-group-item" title="Articles">Articles</a></li>
-					<li><a href="/cars" class="list-group-item" title="cars">Cars</a></li>
-					<li><a href="/comptes" class="list-group-item" title="comptes">Comptes</a></li>
-					<li><a href="/profils" class="list-group-item" title="profils">Profils</a></li>
 					<li><a href="/roles" class="list-group-item" title="roles">Roles</a></li>
-					<li><a href="/bagages" class="list-group-item" title="bagages">Bagages</a></li>
+					<li><a href="/profils" class="list-group-item" title="profils">Profils</a></li>
+					<li><a href="/comptes" class="list-group-item" title="comptes">Comptes</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="/adresses" class="list-group-item" title="Adresses">Adresses</a></li>
+					<li><a href="/cars" class="list-group-item" title="cars">Cars</a></li>
 					<li><a href="/trajets" class="list-group-item" title="trajets">Trajets</a></li>
-					<li><a href="/point" class="list-group-item" title="Point">Point</a></li>
-					<li><a href="/pt" class="list-group-item" title="pt">PT</a></li>
-					<li><a href="/point" class="list-group-item" title="Point">Point</a></li>
-					<li><a href="/message" class="list-group-item" title="message">Messages</a></li>
-					
-					
-					
-					
+					<li><a href="/bagages" class="list-group-item" title="bagages">Bagages</a></li>
+					<li><a href="/points" class="list-group-item" title="Point">Point</a></li>
+					<li><a href="/pts" class="list-group-item" title="pt">PT</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="/articles" class="list-group-item" title="Articles">Articles</a></li>
+					<li><a href="/message" class="list-group-item" title="message">Messages</a></li>	
 				</ul>
 			</div>
 			
-			        	<h1>Decouvrez les derniers trajets</h1>
+			        	<h3>Decouvrez les derniers trajets</h3>
         </header>
 
 	<section id="Trajets">
@@ -126,3 +122,4 @@
 </body>
 	
 </html>
+
