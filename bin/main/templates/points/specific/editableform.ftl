@@ -8,7 +8,13 @@
     <div>NA</div>
     </#if>
 </#if>
-    <div>Name</div>
-    <input type="text" name="name" value="<#if item?? && item.getName()??>${item.getName()}</#if>">
+    <div>longitude</div>
+    <input type="text" name="longitude" value="<#if item?? && item.getLongitude()??>${item.getLongitude()}</#if>">
+    
+    <div>altitude</div>
+    <input type="text" name="altitude" value="<#if item?? && item.getAltitude()??>${item.getAltitude()}</#if>">
+   
+    <div>trajet</div>
+    <input type="text" name="trajet" value="<#if item?? && item.getTrajet()??>${item.getTrajet()}</#if>">
     <div><input type="submit" value="Save"></div>
 </form> 

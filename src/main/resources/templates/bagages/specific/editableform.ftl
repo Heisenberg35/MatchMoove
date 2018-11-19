@@ -8,7 +8,26 @@
     <div>NA</div>
     </#if>
 </#if>
-    <div>Name</div>
-    <input type="text" name="name" value="<#if item?? && item.getName()??>${item.getName()}</#if>">
+    <div>volume</div>
+    <input type="text" name="volume" value="<#if item?? && item.getVolume()??>${item.getVolume()}</#if>">
+    
+    <<div>Choisir le trajet</div>
+    <#if trajets??>
+    <select name="trajet" required>
+        <#list trajets as p>
+            <option value=${p.getId()}>${p.getId() }</option>
+        </#list>
+    </select>
+    </#if>
+    
+    <div>Choisir le profil</div>
+    <#if profils??>
+    <select name="profil" required>
+        <#list profils as p>
+            <option value=${p.getId()}>${p.getFirstname() + " " + p.getLastname()}</option>
+        </#list>
+    </select>
+    </#if>
     <div><input type="submit" value="Save"></div>
+    
 </form> 

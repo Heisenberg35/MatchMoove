@@ -1,7 +1,21 @@
 <div>
+        <div>id</div>
         <div>${i.getId()}</div>
-        <#if i.getName()??>
-        <div>${i.getName()}</div>
+         <div>volume</div>
+        <#if i.getVolume()??>
+        <div>${i.getVolume()}</div>
+        <#else>
+        <div>NULL</div>
+        </#if>
+        <div>trajet</div>
+        <#if i.getTrajet()??>
+        <div>${i.getTrajet()}</div>
+        <#else>
+        <div>NULL</div>
+        </#if>
+        <div>profile</div>
+        <#if i.getProfil()??>
+        <div>${i.getProfil().getFirstname()+ " " + i.getProfil().getLastname()}</div>
         <#else>
         <div>NULL</div>
         </#if>

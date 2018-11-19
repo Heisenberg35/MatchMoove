@@ -34,7 +34,9 @@ public class TrajetController extends BaseController<Trajet> {
 	protected String getBasePageName() {
 		return BASE_PAGE_NAME;
 	}
-
+ 
+	
+	
 	@Override
 	protected void setupOtherFields(Trajet item) {
 		// TODO Auto-generated method stub

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.societe.project.DTO.BaseDeleteCriteriaDTO;
 import com.societe.project.database.DBItem;
+import com.societe.project.dtos.base.BaseDeleteCriteriaDTO;
 import com.societe.project.services.base.BaseService;
 
 
@@ -74,9 +74,9 @@ public abstract class BaseController<T extends DBItem> {
 	
 	@RequestMapping(value= {"/find"}, method=RequestMethod.POST)
 	public String findCriteriaSearch(Model model, @ModelAttribute T item) {
-		List<T> roles = this.getBaseService().findWithCriteria(item);
-		if (roles.size() > 0) {
-			model.addAttribute(BASE_ATTRIBUT_LIST,roles);
+		List<T> items = this.getBaseService().findWithCriteria(item);
+		if (items.size() > 0) {
+			model.addAttribute(BASE_ATTRIBUT_LIST,items);
 		}else {
 			model.addAttribute("notFound","No match");
 		}
