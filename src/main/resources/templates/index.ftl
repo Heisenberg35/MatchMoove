@@ -44,7 +44,6 @@
 					<li role="separator" class="divider"></li>
 					<li><a href="/articles" class="list-group-item" title="Articles">Articles</a></li>
 					<li><a href="/message" class="list-group-item" title="message">Messages</a></li>	
-
 				</ul>
 			</div>
 			
