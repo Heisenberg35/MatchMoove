@@ -12,13 +12,13 @@ import com.societe.project.database.DBItem;
 public class Adresse extends DBItem {
 	
 	@Column(name="numero")
-	private int numero;
+	private Integer numero;
 	
 	@Column(name="rue")
 	private String rue;
 	
 	@Column(name="cp")
-	private int cp;
+	private Integer cp;
 	
 	@Column(name="ville")
 	private String ville;
@@ -32,11 +32,11 @@ public class Adresse extends DBItem {
 	/***********************************************
 	 * GETTEUR ET SETTEUR
 	 ***********************************************/
-	public int getNumero() {
+	public Integer getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 
@@ -48,11 +48,11 @@ public class Adresse extends DBItem {
 		this.rue = rue;
 	}
 
-	public int getCp() {
+	public Integer getCp() {
 		return cp;
 	}
 
-	public void setCp(int cp) {
+	public void setCp(Integer cp) {
 		this.cp = cp;
 	}
 
@@ -87,7 +87,7 @@ public class Adresse extends DBItem {
 		super();
 	}
 
-	public Adresse(int numero, String rue, int cp, String ville, Boolean domicile, Profil profil) {
+	public Adresse(Integer numero, String rue, Integer cp, String ville, Boolean domicile, Profil profil) {
 		this();
 		this.numero = numero;
 		this.rue = rue;

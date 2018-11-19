@@ -11,5 +11,7 @@ import com.societe.project.models.Car;
 public interface CarRepository extends BaseCRUDRepository<Car> {
 
 	List<Car> findByMarque(String marque);
+	List<Car> findByModele(String modele);
+	List<Car> findByImmatriculation(String immatriculation);
 
 }

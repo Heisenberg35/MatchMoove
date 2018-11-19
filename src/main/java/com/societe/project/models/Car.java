@@ -18,7 +18,7 @@ public class Car extends DBItem {
 	private String modele;
 	
 	@Column(name="nombreDePlace")
-	private int nombreDePlace;
+	private Integer nombreDePlace;
 	
 	@Column(name="immatriculation")
 	private String immatriculation;
@@ -45,11 +45,11 @@ public class Car extends DBItem {
 		this.modele = modele;
 	}
 
-	public int getNombreDePlace() {
+	public Integer getNombreDePlace() {
 		return nombreDePlace;
 	}
 
-	public void setNombreDePlace(int nombreDePlace) {
+	public void setNombreDePlace(Integer nombreDePlace) {
 		this.nombreDePlace = nombreDePlace;
 	}
 
@@ -76,7 +76,7 @@ public class Car extends DBItem {
 		super();
 	}
 
-	public Car(String marque, String modele, int nombreDePlace, String immatriculation, Profil profil) {
+	public Car(String marque, String modele, Integer nombreDePlace, String immatriculation, Profil profil) {
 		this();
 		this.marque = marque;
 		this.modele = modele;

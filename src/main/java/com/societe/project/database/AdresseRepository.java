@@ -11,6 +11,6 @@ import com.societe.project.models.Adresse;
 public interface AdresseRepository extends BaseCRUDRepository<Adresse> {
 
 	List<Adresse> findByRue(String rue);
-
-
+	List<Adresse> findByVille(String ville);
+	
 }

@@ -1,7 +1,4 @@
 <form class="text-center border border-light" action="${detailPath}/edit" method="POST">
-	<hgroup>
-      <h2>Formulaire</h2>
-    </hgroup>
 <#if item??>
     <div>Id</div>
     <#if item.getId()??>

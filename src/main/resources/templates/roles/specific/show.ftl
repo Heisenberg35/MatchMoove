@@ -1,7 +1,7 @@
 <div>
         <div>${i.getId()}</div>
         <#if i.getName()??>
-        <div>${i.getName()}</div>
+        <div>Nom du role : ${i.getName()}</div>
         <#else>
         <div>NULL</div>
         </#if>

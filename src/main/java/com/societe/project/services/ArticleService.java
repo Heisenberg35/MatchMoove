@@ -27,10 +27,8 @@ public class ArticleService extends BaseService<Article> {
 			result = this.articleRepository.findByTitle(item.getTitle());
 		} else if (!item.getDescription().equals("")) {
 			result = this.articleRepository.findByDescription(item.getDescription());
-		} else if (!item.getDate().equals("")) {
-			result = this.articleRepository.findByDate(item.getDate());
 		}
-		return null;
+		return result;
 	}
 
 }

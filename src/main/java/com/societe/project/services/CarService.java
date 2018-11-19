@@ -25,6 +25,10 @@ public class CarService extends BaseService<Car> {
 	protected List<Car> setItemsByCriterias(Car item, List<Car> result) {
 		if (!item.getMarque().equals("")) {
 			result = this.carRepository.findByMarque(item.getMarque());
+		}else if (!item.getModele().equals("")) {
+			result = this.carRepository.findByModele(item.getModele());
+		}else if (!item.getImmatriculation().equals("")) {
+			result = this.carRepository.findByImmatriculation(item.getImmatriculation());
 		}
 		return result;
 	}

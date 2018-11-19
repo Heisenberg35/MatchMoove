@@ -23,10 +23,11 @@ public class AdresseService extends BaseService<Adresse> {
 
 	@Override
 	protected List<Adresse> setItemsByCriterias(Adresse item, List<Adresse> result) {
-		if (!item.getRue().equals("")) {
+		if (!item.getVille().equals("")) {
+			result = this.adresseRepository.findByVille(item.getVille());
+		} else if (!item.getRue().equals("")) {
 			result = this.adresseRepository.findByRue(item.getRue());
 		}
 		return result;
 	}
-
 }
