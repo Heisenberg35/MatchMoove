@@ -25,4 +25,4 @@
     </select>
     </#if>
     <div><input type="submit" value="Save"></div>
-</form> 
+</form>

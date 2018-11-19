@@ -1,17 +1,17 @@
 <div>
 	<div>${i.getId()}</div>
         <#if i.getFirstname()??>
-        	<div>${i.getFirstname()}</div>
+        	<div>Nom : ${i.getFirstname()}</div>
         <#else>
         	<div>NULL</div>
         </#if>
         <#if i.getLastname()??>
-        	<div>${i.getLastname()}</div>
+        	<div>Prenom : ${i.getLastname()}</div>
         <#else>
         	<div>NULL</div>
         </#if>
         <#if i.getPhoneNumber()??>
-        	<div>${i.getPhoneNumber()}</div>
+        	<div>Telephone : ${i.getPhoneNumber()}</div>
         <#else>
         	<div>NULL</div>
         </#if>
