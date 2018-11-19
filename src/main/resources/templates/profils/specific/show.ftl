@@ -15,6 +15,7 @@
         <#else>
         	<div>NULL</div>
         </#if>
+        <div>--------------------------------------------</div>
         <#if i.getAdresses()??>
         	<div>--------------------------------------------</div>
         	<#list i.getAdresses() as a>
@@ -26,6 +27,17 @@
 				<#if a.getDomicile() == true><div>DOMICILE</div></#if>
 				<div>--------------------------------------------</div>
         	</#list>
+        </#if>
+        <#if i.getCars()??>
+        	<div>--------------------------------------------</div>
+        	<#list i.getCars() as c>
+        		<div>VOITURE</div>
+        		<div>Marque : ${c.getMarque()}</div>
+        		<div>Modele : ${c.getModele()}</div>
+        		<div>Nombre de places : ${c.getNombreDePlace()}</div>
+        		<div>Numero d'immatriculation : ${c.getImmatriculation()}</div>
+        		<div>--------------------------------------------</div>
+        	</#list>	
         </#if>
         <div>
             <a href="${detailPath}/edit/${i.getId()}">Show</a>
