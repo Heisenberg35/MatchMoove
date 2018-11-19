@@ -1,5 +1,5 @@
 <div>
-        <div>${i.getId()}</div>
+        
         <#if i.getLongitude()??>
         <div>${i.getLongitude()}</div>
         <#else>
@@ -11,7 +11,7 @@
         <div>NULL</div>
         </#if>
         <#if i.getTrajet()??>
-        <div>${i.getTrajet()}</div>
+        <div><a href="/trajets/edit/${i.getTrajet().getId()}"> traget:${i.getTrajet().getNom()} </a></div>
         <#else>
         <div>NULL</div>
         </#if>

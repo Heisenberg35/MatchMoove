@@ -12,19 +12,32 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.test.annotation.Timed;
+
 import com.societe.project.database.DBItem;
 
 @Entity
 @Table(name="trajet")
 public class Trajet extends DBItem {
 
+	@Column(name="nom")
+	private String nom;
+
 	@Column(name="perimetre")
 	private Double perimetre;
 	
 	@Column(name="dateDepart")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateDepart;
 	
-    @OneToMany(targetEntity=Point.class,mappedBy="trajet")
+	@Column
+	@DateTimeFormat(pattern = "hh:mm:ss")
+	private Date heureDepart;
+	
+    
+
+	@OneToMany(targetEntity=Point.class,mappedBy="trajet")
 	private List<Point> points;
     
     @OneToMany(targetEntity=PT.class,mappedBy = "trajet")
@@ -36,6 +49,13 @@ public class Trajet extends DBItem {
     /***********************************************
 	 * GETTEUR ET SETTEUR
 	 ***********************************************/
+    public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
     public List<Point> getPoint() {
         return points;
     }
@@ -67,6 +87,14 @@ public class Trajet extends DBItem {
 		this.dateDepart = dateDepart;
 	}
 
+	public Date getHeureDepart() {
+		return heureDepart;
+	}
+
+	public void setHeureDepart(Date heureDepart) {
+		this.heureDepart = heureDepart;
+	}
+	
 	public void setPerimetre(Double perimetre) {
 		this.perimetre = perimetre;
 	}
@@ -80,10 +108,12 @@ public class Trajet extends DBItem {
 	 * CONSTRUCTEURS
 	 ***********************************************/
 	
-	public Trajet(Double perimetre, Date dateDepart,List<PT>pts,List<Bagage>bagages) {
+	public Trajet(String nom,Double perimetre, Date dateDepart,Date heureDepart,List<PT>pts,List<Bagage>bagages) {
 		super();
+		this.nom = nom;
 		this.perimetre = perimetre;
 		this.dateDepart = dateDepart;
+		this.heureDepart = heureDepart;
 		this.pts = pts;
 		this.bagages = bagages;
 	}

@@ -8,13 +8,25 @@
     <div>NA</div>
     </#if>
 </#if>
+    <div>nom</div>
+    <input type="text" name="nom" value="<#if item?? && item.getNom()??>${item.getNom()}</#if>">
+    
     <div>perimetre</div>
     <input type="text" name="perimetre" value="<#if item?? && item.getPerimetre()??>${item.getPerimetre()}</#if>">
     
     <div>dateDepart</div>
-    <input type="text" name="dateDepart" value="<#if item?? && item.getDateDepart()??>${item.getDateDepart()}</#if>">
+    <input type="date" name="dateDepart" value="<#if item?? && item.getDateDepart()??>${item.getDateDepart()}</#if>">
     
-   
     
+    <select name="h" required>
+            <option value="01">00</option>
+            <option value="01">01</option>
+    </select> 
+    h 
+   <select name="m" required>
+            <option value="01">00</option>
+            <option value="01">05</option>
+    </select>
+    <input type="hidden" name="heureDepart" value="">
     <div><input type="submit" value="Save"></div>
 </form> 

@@ -24,6 +24,7 @@ public class PointController extends BaseController<Point> {
 	
 	@Autowired
 	private PointService pointService;
+	@Autowired
 	private TrajetService trajetService;
 
 

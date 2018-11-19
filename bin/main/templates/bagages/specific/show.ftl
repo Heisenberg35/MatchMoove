@@ -9,7 +9,7 @@
         </#if>
         <div>trajet</div>
         <#if i.getTrajet()??>
-        <div>${i.getTrajet()}</div>
+        <div>${i.getTrajet().getNom()}</div>
         <#else>
         <div>NULL</div>
         </#if>

@@ -42,8 +42,8 @@
 					<li><a href="/roles" class="list-group-item" title="roles">Roles</a></li>
 					<li><a href="/bagages" class="list-group-item" title="bagages">Bagages</a></li>
 					<li><a href="/trajets" class="list-group-item" title="trajets">Trajets</a></li>
-					<li><a href="/point" class="list-group-item" title="Point">Point</a></li>
-					<li><a href="/pt" class="list-group-item" title="pt">PT</a></li>
+					<li><a href="/points" class="list-group-item" title="Point">Point</a></li>
+					<li><a href="/pts" class="list-group-item" title="pt">PT</a></li>
 					<li><a href="/point" class="list-group-item" title="Point">Point</a></li>
 					<li><a href="/message" class="list-group-item" title="message">Messages</a></li>
 					
