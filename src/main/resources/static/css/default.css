@@ -152,3 +152,8 @@ section
     font-weight: 700;
 	font-size: 25px;
 }
+
+footer {
+	height: 300px;
+	image-background: url(footer.png);
+}
