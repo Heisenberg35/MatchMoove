@@ -23,17 +23,17 @@ private Profil profil;
 private Trajet trajet;
 
 @Column
-private int volume;
+private Integer volume;
 
 /***********************************************
  * GETTEUR ET SETTEUR
  ***********************************************/
 
-public int getVolume() {
+public Integer getVolume() {
 	return volume;
 }
 
-public void setVolume(int volume) {
+public void setVolume(Integer volume) {
 	this.volume = volume;
 }
 
@@ -56,7 +56,7 @@ public void setProfil(Profil profil) {
  * CONSTRUCTEURS
  ***********************************************/
 
-public Bagage(int volume, Profil profile, Trajet trajet) {
+public Bagage(Integer volume, Profil profile, Trajet trajet) {
 	super();
 	this.volume = volume;
 	this.profil = profile;

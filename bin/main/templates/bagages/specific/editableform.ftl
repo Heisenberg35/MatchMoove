@@ -11,11 +11,11 @@
     <div>volume</div>
     <input type="text" name="volume" value="<#if item?? && item.getVolume()??>${item.getVolume()}</#if>">
     
-    <<div>Choisir le trajet</div>
+    <div>Choisir le trajet</div>
     <#if trajets??>
     <select name="trajet" required>
         <#list trajets as p>
-            <option value=${p.getId()}>${p.getId() }</option>
+            <option value=${p.getId()}>${p.getNom() }</option>
         </#list>
     </select>
     </#if>

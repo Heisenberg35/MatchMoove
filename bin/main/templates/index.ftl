@@ -31,6 +31,33 @@
 			
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+					<li><a href="/roles" class="list-group-item" title="roles">Roles</a></li>
+					<li><a href="/profils" class="list-group-item" title="profils">Profils</a></li>
+					<li><a href="/comptes" class="list-group-item" title="comptes">Comptes</a></li>
+					<li role="separator" class="divider"></li>
+>>>>>>> lama
+					<li><a href="/adresses" class="list-group-item" title="Adresses">Adresses</a></li>
+					<li><a href="/cars" class="list-group-item" title="cars">Cars</a></li>
+					<li><a href="/trajets" class="list-group-item" title="trajets">Trajets</a></li>
+					<li><a href="/bagages" class="list-group-item" title="bagages">Bagages</a></li>
+					<li><a href="/points" class="list-group-item" title="Point">Point</a></li>
+					<li><a href="/pts" class="list-group-item" title="pt">PT</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="/articles" class="list-group-item" title="Articles">Articles</a></li>
+					<li><a href="/message" class="list-group-item" title="message">Messages</a></li>	
+
+				</ul>
+			</div>
+			
+<<<<<<< HEAD
+			        	<h1>Decouvrez les derniers trajets</h1>
+=======
+=======
+>>>>>>> d5d2b1e63695970c6b394ed947ab5a0ea54eb378
 					<li><a href="/roles" class="list-group-item" title="roles">Roles</a></li>
 					<li><a href="/profils" class="list-group-item" title="profils">Profils</a></li>
 					<li><a href="/comptes" class="list-group-item" title="comptes">Comptes</a></li>
@@ -47,7 +74,18 @@
 				</ul>
 			</div>
 			
+<<<<<<< HEAD
 			        	<h3>Decouvrez les derniers trajets !</h3>
+=======
+			        	<h3>Decouvrez les derniers trajets</h3>
+<<<<<<< HEAD
+>>>>>>> d5d2b1e63695970c6b394ed947ab5a0ea54eb378
+=======
+>>>>>>> d5d2b1e63695970c6b394ed947ab5a0ea54eb378
+=======
+			        	<h3>Decouvrez les derniers trajets !</h3>
+>>>>>>> lama
+>>>>>>> master
         </header>
 
 	<section id="Trajets">

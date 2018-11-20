@@ -6,11 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.societe.project.controllers.base.BaseController;
-import com.societe.project.models.PT;
 import com.societe.project.models.Point;
-import com.societe.project.services.PTService;
 import com.societe.project.services.PointService;
-import com.societe.project.services.ProfilService;
 import com.societe.project.services.TrajetService;
 import com.societe.project.services.base.BaseService;
 
