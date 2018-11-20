@@ -4,15 +4,12 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
- <link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
- 
 	<title>MatchMoove</title>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
-	
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700" rel="stylesheet">
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -31,7 +28,7 @@
 			<div class="dropdown">
 				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 					ADMIN
-					<span class="caret"></span>
+			
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 					<li><a href="/roles" class="list-group-item" title="roles">Roles</a></li>
@@ -50,7 +47,7 @@
 				</ul>
 			</div>
 			
-			        	<h3>Decouvrez les derniers trajets</h3>
+			        	<h3>Decouvrez les derniers trajets !</h3>
         </header>
 
 	<section id="Trajets">
@@ -113,12 +110,17 @@
                         <div class="actubloc">
 	
                             <a href="#"><img src="images/article3.jpg"  ></a>
-							<p><a href="#">Aide à la conversion </a></p>
+							<p><a href="#">Aide a la conversion </a></p>
 							<p>Et olim licet otiosae sint tribus pacataeque centuriae...</p>
                         </div>
 			</div>
 	
 	</section>
+	<footer>
+		<div id="liens">
+			<a href="#">Liens</a>
+		</div>
+	</footer>
 </body>
 	
 </html>

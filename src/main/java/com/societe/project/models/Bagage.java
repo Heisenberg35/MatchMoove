@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import com.societe.project.database.DBItem;
 @Entity
 @Table(name="Bagage")
-public class Bagage extends DBItem implements Serializable{
+public class Bagage extends DBItem /*implements Serializable*/{
 	
 @ManyToOne
 @JoinColumn(name = "profil_id",referencedColumnName="id")
