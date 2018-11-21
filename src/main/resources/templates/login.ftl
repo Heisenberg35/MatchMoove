@@ -1,18 +1,18 @@
-<head>
+<#import "/spring.ftl" as spring/>
+
 		<title>Login</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+	<link rel="stylesheet" type="text/css" href="<@spring.url '/css/bootstrap.css'/>"/>
 	<link rel="stylesheet" type="text/css" href="<@spring.url '/css/login.css'/>"/>
 		
-	</head>
 	<body>
-		<a href=""><img src="css/images/Matchmoovecouleurs.png" alt="logo matchmoove" class="logo"></a>
+		<a href=""><img src="images/Matchmoovecouleurs.png" alt="logo matchmoove" class="logo"></a>
 		<div id="container">
           
             
-			<img src="css/images/lock%20(1)%20(1).png" id="lock">
+			<img src="images/lock%20(1)%20(1).png" id="lock">
             <form method="POST">
                 
                 <label><b>Adresse mail</b></label>

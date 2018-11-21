@@ -6,7 +6,7 @@
 
 body 
 {
-	background-image: url(images/IMAGE%20APP.jpg);
+	background-image: url(../images/IMAGE%20APP.jpg);
 	background-size: cover;
 }
 
@@ -69,7 +69,6 @@ input[type=submit]:hover
 #lock
 {
 	position: relative;
-	
 	left : 50%;
 	top: 30px;
 	background-color: white;
