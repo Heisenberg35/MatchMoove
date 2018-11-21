@@ -95,13 +95,15 @@ h1, h2
 	text-align: center;
 }
 
-#menu ul {
+#menu ul 
+{
  margin:0;
  padding:0;
  list-style-type:none;
  text-align:center;
  }
-#menu li {
+#menu li 
+{
  float:left;
  margin:auto;
  padding:0;
@@ -148,12 +150,10 @@ section
 	border: solid grey 1px;
 }
 
-.actubloc p:nth-child(2) {
+.actubloc p:nth-child(2) 
+{
     font-weight: 700;
 	font-size: 25px;
 }
 
-footer {
-	height: 300px;
-	image-background: url(footer.png);
-}
+

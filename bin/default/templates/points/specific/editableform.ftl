@@ -13,8 +13,14 @@
     
     <div>altitude</div>
     <input type="text" name="altitude" value="<#if item?? && item.getAltitude()??>${item.getAltitude()}</#if>">
-   
-    <div>trajet</div>
-    <input type="text" name="trajet" value="<#if item?? && item.getTrajet()??>${item.getTrajet()}</#if>">
+    
+    <div>Choisir le trajet</div>
+    <#if trajets??>
+    <select name="trajet" required>
+        <#list trajets as p>
+            <option value=${p.getId()}>${p.getNom() }</option>
+        </#list>
+    </select>
+    </#if>
     <div><input type="submit" value="Save"></div>
 </form> 

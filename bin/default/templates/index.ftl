@@ -116,9 +116,14 @@
 			</div>
 	
 	</section>
+	
 	<footer>
 		<div id="liens">
-			<a href="#">Liens</a>
+			<a href="#"><p>Liens 1<p></a>
+			<a href="#"><p>Liens 2<p></a>
+			<a href="#"><p>Liens 3<p></a>
+			<a href="#"><p>Liens 4<p></a>
+			<a href="#"><p>Liens 5<p></a>
 		</div>
 	</footer>
 </body>
