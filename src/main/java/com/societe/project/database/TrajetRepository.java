@@ -13,4 +13,5 @@ public interface TrajetRepository extends BaseCRUDRepository<Trajet> {
 	List<Trajet> findByDateDepart(Date date);
 	//List<Trajet> findByPoint(List<Point> Perimetre);
 	List<Trajet> findByPerimetreAndDateDepart(Double perimetre, Date dateDepart);
+	
 }

@@ -19,14 +19,13 @@ public class TrajetService extends BaseService<Trajet> {
 
 	@Override
 	protected List<Trajet> setItemsByCriterias(Trajet item, List<Trajet> result) {
-		if (!item.getPerimetre().isNaN() && !item.getDateDepart().equals(null)) {
+		if (!item.getPerimetre().equals(null) && !item.getDateDepart().equals(null)) {
 			result = this.trajetRepository.findByPerimetreAndDateDepart(item.getPerimetre(), item.getDateDepart());
-		}else if (!item.getPerimetre().isNaN()) {
+		}else if (!item.getPerimetre().equals(null)) {
 			result = this.trajetRepository.findByPerimetre(item.getPerimetre());
 		} else if (!item.getDateDepart().equals(null)) {
 			result = this.trajetRepository.findByDateDepart(item.getDateDepart());
 		}
-		
 		
 		
 		

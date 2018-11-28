@@ -25,8 +25,10 @@ public class BagageService extends BaseService<Bagage> {
 
 	@Override
 	protected List<Bagage> setItemsByCriterias(Bagage item, List<Bagage> result) {
-		// TODO Auto-generated method stub
-		return null;
+		if (!item.getVolume().equals("")) {
+			result = this.bagageRepository.findByVolume(item.getVolume());
+		} 
+		return result;
 	}
 
 	

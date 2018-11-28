@@ -7,7 +7,7 @@
     <#else>
     <div>NA</div>
     </#if>
-</#if>
+</#if>  
     <div>nom</div>
     <input type="text" name="nom" value="<#if item?? && item.getNom()??>${item.getNom()}</#if>">
     
@@ -15,18 +15,34 @@
     <input type="text" name="perimetre" value="<#if item?? && item.getPerimetre()??>${item.getPerimetre()}</#if>">
     
     <div>dateDepart</div>
-    <input type="date" name="dateDepart" value="<#if item?? && item.getDateDepart()??>${item.getDateDepart()}</#if>">
+    <input type="date"  name="dateDepart" placeholder="date" value=<#if item?? && item.getDateDepart()??>"${item.getDateDepart()}"<#else>""</#if>>
     
     
-    <select name="h" required>
-            <option value="01">00</option>
-            <option value="01">01</option>
-    </select> 
-    h 
-   <select name="m" required>
-            <option value="01">00</option>
-            <option value="01">05</option>
-    </select>
-    <input type="hidden" name="heureDepart" value="">
+   <div>heureDepart</div>
+
+   <select name="heureDepart" required>
+   <option selected value="<#if item?? && item.getHeureDepart()??>${item.getHeureDepart()}">${item.getHeureDepart()}</#if></option>
+   <#list 0..23 as i>
+   
+     <#if i < 10 >
+   	   <option value="0${i}">0${i}</option>
+   	 <#else>
+   	   <option value="${i}">${i}</option>
+   	 </#if>
+   </#list>
+   </select> 
+   
+   <select name="minuteDepart" required>
+   <option selected value="<#if item?? && item.getMinuteDepart()??>${item.getMinuteDepart()}">${item.getMinuteDepart()}</#if></option>
+   <#list 0..11 as i>
+     <#assign c = i*5>
+   	 <#if c < 10 >
+   	   <option value="0${c}">0${c}</option>
+   	 <#else>
+   	   <option value="${c}">${c}</option>
+   	 </#if>
+   </#list>
+   </select>   
+  
     <div><input type="submit" value="Save"></div>
 </form> 

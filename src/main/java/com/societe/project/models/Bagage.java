@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import com.societe.project.database.DBItem;
 @Entity
 @Table(name="Bagage")
-public class Bagage extends DBItem /*implements Serializable*/{
+public class Bagage extends DBItem {
 	
 @ManyToOne
 @JoinColumn(name = "profil_id",referencedColumnName="id")
@@ -23,17 +23,17 @@ private Profil profil;
 private Trajet trajet;
 
 @Column
-private Integer volume;
+private Double volume;
 
 /***********************************************
  * GETTEUR ET SETTEUR
  ***********************************************/
 
-public Integer getVolume() {
+public Double getVolume() {
 	return volume;
 }
 
-public void setVolume(Integer volume) {
+public void setVolume(Double volume) {
 	this.volume = volume;
 }
 
@@ -56,7 +56,7 @@ public void setProfil(Profil profil) {
  * CONSTRUCTEURS
  ***********************************************/
 
-public Bagage(Integer volume, Profil profile, Trajet trajet) {
+public Bagage(Double volume, Profil profile, Trajet trajet) {
 	super();
 	this.volume = volume;
 	this.profil = profile;
