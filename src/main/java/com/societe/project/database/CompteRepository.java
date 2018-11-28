@@ -10,6 +10,7 @@ import com.societe.project.models.Compte;
 @Repository
 public interface CompteRepository extends BaseCRUDRepository<Compte> {
 
-	List<Compte> findByEmail(String email);
+	Compte findByEmail(String email);
+	
 
 }
