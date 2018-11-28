@@ -23,6 +23,7 @@
                         <li><a href="#">Rechercher un trajet</a></li>
                         <li><a href="#">Messagerie</a></li>
                         <li><a href="#">BLOG</a></li>
+                        <li><a href="/logout">Deconnection</a></li>
                     </ul>
 				</nav>
 			
