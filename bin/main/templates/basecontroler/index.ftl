@@ -1,9 +1,12 @@
 <#import "/spring.ftl" as spring/>
 <#include "../utils/bootstrap.ftl"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
+
+
 <h1>${pageName}</h1>
 
 
-<h2><a href="/">Retour Accueil</a></h2>
+<h2><a href="/home">Retour Accueil</a></h2>
 
 <div><a href="${detailPath}/edit/">Create New</a></div>
 <div><a href="${detailPath}/find/">Find by criteria</a></div>
@@ -15,4 +18,3 @@
 	</#list>
 </#if>
 </div>
-

@@ -3,6 +3,7 @@ package com.societe.project.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.societe.project.database.CompteRepository;
@@ -16,6 +17,9 @@ public class CompteService extends BaseService<Compte> {
 	@Autowired
 	private CompteRepository compteRepository;
 	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 	@Override
 	protected BaseCRUDRepository<Compte> getCRUDRepository() {
 		return compteRepository;
@@ -28,5 +32,12 @@ public class CompteService extends BaseService<Compte> {
 		}
 		return result;
 	}
+
+	@Override
+	public void save(Compte item) {
+		item.setPassword(bCryptPasswordEncoder.encode(item.getPassword()));
+		super.save(item);
+	}
+	
 
 }

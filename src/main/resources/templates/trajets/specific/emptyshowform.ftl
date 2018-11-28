@@ -1,3 +1,4 @@
+<div class="text-center border border-light">
 <div>nom</div>
 <input type="text" name="nom" value="">
 <div>perimetre</div>
@@ -31,4 +32,4 @@
    
     
    
-   
+ </div>

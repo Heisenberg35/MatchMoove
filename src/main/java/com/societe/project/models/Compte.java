@@ -9,17 +9,29 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.societe.project.database.DBItem;
 
 @Entity
 @Table(name="compte")
 public class Compte extends DBItem {
 
-	@Column(name="email")
+	@Column(name = "email", unique = true)
+	@Email(message = "*Please provide a valid Email")
+	@NotEmpty(message = "*Please provide an email")
 	private String email;
 	
-	@Column(name="password")
+	@Column(name = "password")
+	@Length(min = 5, message = "*Your password must have at least 5 characters")
+	@NotEmpty(message = "*Please provide your password")
 	private String password;
+	
+	@Column(name = "active")
+	private int active;
 	
 	@ManyToOne()
 	private Role role;
@@ -47,6 +59,14 @@ public class Compte extends DBItem {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public int getActive() {
+		return active;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
 	}
 
 	public Role getRole() {
@@ -81,6 +101,32 @@ public class Compte extends DBItem {
 		this.articles = new ArrayList<Article>();
 	}
 	
+	public Compte(String email, String password, Role role) {
+		this();
+		this.email = email;
+		this.password = password;
+		this.role = role;
+	}
+	
+	public Compte(
+			@Email(message = "*Please provide a valid Email") @NotEmpty(message = "*Please provide an email") String email,
+			@Length(min = 5, message = "*Your password must have at least 5 characters") @NotEmpty(message = "*Please provide your password") String password,
+			int active, Role role) {
+		this();
+		this.email = email;
+		this.password = password;
+		this.active = active;
+		this.role = role;
+	}
+
+	public Compte(String email, String password, Role role, Profil profil) {
+		this();
+		this.email = email;
+		this.password = password;
+		this.role = role;
+		this.profil = profil;
+	}
+	
 	public Compte(String email, String password, Role role, List<Article> articles, Profil profil) {
 		this();
 		this.email = email;
@@ -89,5 +135,4 @@ public class Compte extends DBItem {
 		this.articles = articles;
 		this.profil = profil;
 	}
-	
 }

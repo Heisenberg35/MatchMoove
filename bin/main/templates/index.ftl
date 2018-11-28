@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <#import "/spring.ftl" as spring/>
 
 <link rel="stylesheet" type="text/css" href="<@spring.url '/css/bootstrap.css'/>"/>
@@ -130,3 +131,6 @@
 	
 </html>
 
+=======
+<h1>page default</h1>
+>>>>>>> 996e02c4fdac9b0e78739d536b202baa61ed231b

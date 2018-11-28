@@ -129,6 +129,13 @@ public class Profil extends DBItem {
 		this.bagages = new ArrayList<Bagage>();
 		
 	}
+	
+	public Profil(String firstname, String lastname, String phoneNumber) {
+		this();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.phoneNumber = phoneNumber;
+	}
 
 	public Profil(String firstname, String lastname, String phoneNumber, List<Adresse> adresses , List<Role> roles, Compte compte, List<Car> cars, List<PT>pts,  List<Bagage>bagages) {
 		this();
