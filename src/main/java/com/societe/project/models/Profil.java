@@ -25,7 +25,7 @@ public class Profil extends DBItem {
 	private String phoneNumber;
 	
 	@OneToMany(mappedBy="profil")
-	private List<Adresse> adresses;
+	private List<Adresse> adresses = new ArrayList<Adresse>();
 	
 	@OneToMany(mappedBy="profil")
 	private List<Role> roles;
@@ -97,8 +97,8 @@ public class Profil extends DBItem {
 		return adresses;
 	}
 
-	public void setAdresses(List<Adresse> adresses) {
-		this.adresses = adresses;
+	public void setAdresses(Adresse adresse) {
+		this.adresses.add(adresse);
 	}
 	
     public List<PT> getPT() {
@@ -122,12 +122,19 @@ public class Profil extends DBItem {
 	 ***********************************************/
 	public Profil() {
 		super();
-		this.adresses = new ArrayList<Adresse>();
+//		this.adresses = new ArrayList<Adresse>();
 		this.roles = new ArrayList<Role>();
 		this.cars = new ArrayList<Car>();
 		this.pts = new ArrayList<PT>();
 		this.bagages = new ArrayList<Bagage>();
 		
+	}
+	
+	public Profil(String firstname, String lastname, String phoneNumber) {
+		this();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.phoneNumber = phoneNumber;
 	}
 
 	public Profil(String firstname, String lastname, String phoneNumber, List<Adresse> adresses , List<Role> roles, Compte compte, List<Car> cars, List<PT>pts,  List<Bagage>bagages) {
@@ -141,6 +148,13 @@ public class Profil extends DBItem {
 		this.cars = cars;
 		this.pts = pts;
 		this.bagages = bagages;
+	}
+
+	@Override
+	public String toString() {
+		return "Profil [firstname=" + firstname + ", lastname=" + lastname + ", phoneNumber=" + phoneNumber
+				+ ", adresses=" + adresses + ", roles=" + roles + ", compte=" + compte + ", cars=" + cars + ", pts="
+				+ pts + ", bagages=" + bagages + "]";
 	}
 	
 }

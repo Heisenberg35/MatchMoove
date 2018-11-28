@@ -21,7 +21,7 @@ public class Article extends DBItem {
 	@Column(name="description")
 	private String description;
 	
-	@Column(name="date")
+	@Column(name="date_post")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
 	
