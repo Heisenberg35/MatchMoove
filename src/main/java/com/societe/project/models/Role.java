@@ -59,6 +59,11 @@ public class Role extends DBItem {
 		this.comptes = new ArrayList<Compte>();
 	}
 	
+	public Role(String name) {
+		this();
+		this.name = name;
+	}
+	
 	public Role(String name, List<Compte> comptes, Profil profil) {
 		this();
 		this.name = name;

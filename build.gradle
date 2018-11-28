@@ -32,6 +32,10 @@ dependencies {
 	
 	// Database
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	
+	// Security
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.1.0.RELEASE'
+	
 	//runtimeOnly('mysql:mysql-connector-java')
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.43'
 	testImplementation('org.springframework.boot:spring-boot-starter-test')

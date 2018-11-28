@@ -1,5 +1,36 @@
 <div>
-	<div>${i.getId()}</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>Telephone</th>
+				<th>Adresses</th>
+				<th>Actions</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+		<#if items??>
+			<#list items as elt>
+			<tr>
+				<td><#if elt.getFirstname()??>${elt.getFirstname()}<#else>NULL</#if></td>
+				<td><#if elt.getLastname()??>${elt.getLastname()}<#else>NULL</#if></td>
+				<td><#if elt.getPhoneNumber()??>${elt.getPhoneNumber()}<#else>NULL</#if></td>
+				<td><#if elt.getAdresses()??>
+					<#list elt.getAdresses() as a>
+						<#if a.getDomicile() == true><div>DOMICILE</div></#if>${a.getNumero()} ${a.getRue()} ${a.getCp()} ${a.getVille()}</#list></#if></td>
+				<td><a href="${detailPath}/edit/${elt.getId()}">Show</a></td>
+			</#list>
+		</#if>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+
+<!--<div>${i.getId()}</div>
         <#if i.getFirstname()??>
         	<div>Nom : ${i.getFirstname()}</div>
         <#else>
@@ -43,4 +74,4 @@
             <a href="${detailPath}/edit/${i.getId()}">Show</a>
             <a href="${detailPath}/delete/${i.getId()}">Delete</a>
         </div>
-</div>
+</div>-->
