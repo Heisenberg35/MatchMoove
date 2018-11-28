@@ -25,19 +25,25 @@ public class CompteService extends BaseService<Compte> {
 		return compteRepository;
 	}
 
-	@Override
-	protected List<Compte> setItemsByCriterias(Compte item, List<Compte> result) {
-		if (!item.getEmail().equals("")) {
-			result = this.compteRepository.findByEmail(item.getEmail());
-		}
-		return result;
-	}
+//	@Override
+//	protected List<Compte> setItemsByCriterias(Compte item, List<Compte> result) {
+//		if (!item.getEmail().equals("")) {
+//			result = this.compteRepository.findByEmail(item.getEmail());
+//		}
+//		return result;
+//	}
 
 	@Override
 	public void save(Compte item) {
 		item.setPassword(bCryptPasswordEncoder.encode(item.getPassword()));
 		super.save(item);
 	}
+
+@Override
+protected List<Compte> setItemsByCriterias(Compte item, List<Compte> result) {
+	// TODO Auto-generated method stub
+	return null;
+}
 	
 
 }
