@@ -12,7 +12,13 @@
     <input type="email" name="email" value="<#if item?? && item.getEmail()??>${item.getEmail()}</#if>" required>
     <div>Mot de passe</div>
     <input type="password" name="password" value="<#if item?? && item.getPassword()??>${item.getPassword()}</#if>" required>
-    <div>Choisir le profil</div>
+    <div>Etat du compte</div>
+    <input type="radio" id="actived" name="active" value=1 checked/>
+  	<label for="active">Compte activé</label>
+  	<input type="radio" id="travail" name="active" value=0/>
+  	<label for="active">Compte désactivé</label>
+    
+    <div>Associer un profil</div>
     <#if profils??>
     <select name="profil" required>
         <#list profils as p>
@@ -20,7 +26,8 @@
         </#list>
     </select>
     </#if>
-    <div>Choisir le role</div>
+    
+    <div>Associer un role</div>
     <#if roles??>
     <select name="role" required>
         <#list roles as r>
@@ -28,6 +35,6 @@
         </#list>
     </select>
     </#if>
-
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div><input type="submit" value="Save"></div>
 </form> 
