@@ -14,7 +14,7 @@
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="60">
 		<header>
-				<div id="logo"><img src="images/matchmooveBLANCS.png"></div>
+				<div id="logo"><img src="images/matchmooveBLANCS.png"></div><a href="/logout">Deconnection</a>
                 <nav>
                     <ul>
                     	<li><a href="/profils">Profils</a></li>
@@ -23,7 +23,6 @@
                         <li><a href="/adresses">Adresses</a></li>
                         <li><a href="/cars">Vehicules</a></li>
                         <li><a href="/trajets">Trajets</a></li>
-                      
                         <li><a href="/bagages">Bagages</a></li>
                         <li><a href="/points">Coordonnees</a></li>
 						<li><a href="/pts">PT</a></li>

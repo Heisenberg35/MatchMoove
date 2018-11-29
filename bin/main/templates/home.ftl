@@ -13,8 +13,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700" rel="stylesheet">
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="60">
-<header>
-				<div id="logo"><img src="images/matchmooveBLANCS.png"></div>
+		<header>
+				<div id="logo"><img src="images/matchmooveBLANCS.png"></div><a href="/logout">Deconnection</a>
                 <nav>
                     <ul>
                     	<#if roles??>
@@ -30,24 +30,8 @@
                         <li><a href="#">Rechercher un trajet</a></li>
                         <li><a href="#">Messagerie</a></li>
                         <li><a href="#">BLOG</a></li>
-			     <li><a href="/logout">Deconnection</a></li>
                     </ul>
 				</nav>	
-			
-			<div class="dropdown">
-				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-					ADMIN
-				</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-					<li><a href="/adresses" class="list-group-item" title="Adresses">Adresses</a></li>
-					<li><a href="/articles" class="list-group-item" title="Articles">Articles</a></li>
-					<li><a href="/cars" class="list-group-item" title="cars">Cars</a></li>
-					<li><a href="/comptes" class="list-group-item" title="comptes">Comptes</a></li>
-					<li><a href="/profils" class="list-group-item" titlz="profils">Profils</a></li>
-					<li><a href="/roles" class="list-group-item" title="roles">Roles</a></li>
-					
-				</ul>
-			</div>
 		</header>
 <h2>Decouvrez les derniers trajets</h2>
 
