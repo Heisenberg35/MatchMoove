@@ -28,5 +28,6 @@
             <option value="01">05</option>
     </select>
     <input type="hidden" name="heureDepart" value="">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div><input type="submit" value="Save"></div>
 </form> 

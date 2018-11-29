@@ -1,6 +1,7 @@
 package com.societe.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.societe.project.services.CompteService;
 import com.societe.project.services.base.BaseService;
 
 @Controller
+@Secured("ROLE_ADMIN")
 @RequestMapping(ArticleController.BASE_URL)
 public class ArticleController extends BaseController<Article> {
 
