@@ -7,6 +7,7 @@
 
 
 <h2><a href="/home">Retour Accueil</a></h2>
+<h2><a href="/logout">Deconnection</a></h2>
 
 <div><a href="${detailPath}/edit/">Create New</a></div>
 <div><a href="${detailPath}/find/">Find by criteria</a></div>

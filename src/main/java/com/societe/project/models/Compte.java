@@ -111,12 +111,11 @@ public class Compte extends DBItem {
 	public Compte(
 			@Email(message = "*Please provide a valid Email") @NotEmpty(message = "*Please provide an email") String email,
 			@Length(min = 5, message = "*Your password must have at least 5 characters") @NotEmpty(message = "*Please provide your password") String password,
-			int active, Role role) {
+			int active) {
 		this();
 		this.email = email;
 		this.password = password;
 		this.active = active;
-		this.role = role;
 	}
 
 	public Compte(String email, String password, Role role, Profil profil) {

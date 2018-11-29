@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.societe.project.security.controllers.LoginController;
 
@@ -16,6 +18,10 @@ import com.societe.project.security.controllers.LoginController;
 
 @Configuration
 @EnableAutoConfiguration
+@EnableGlobalMethodSecurity(
+		  prePostEnabled = true, 
+		  securedEnabled = true, 
+		  jsr250Enabled = true)
 public class SecurityConfigurations extends WebSecurityConfigurerAdapter{
 
 	@Autowired
@@ -53,6 +59,10 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter{
 					.usernameParameter("username")
 					.passwordParameter("password")
 					.permitAll()
+			.and()
+				.logout()
+					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+					.logoutSuccessUrl("/login")
 			.and()
 				.httpBasic();
 		super.configure(http);

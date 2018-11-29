@@ -26,7 +26,8 @@ public class MatchMooveApplication {
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return new CommandLineRunner() {
 			public void run(String... args) throws Exception {
-				service.createFirstAdmin();
+				service.createFirstAdminAndFirstUser("ROLE_ADMIN");
+				service.createFirstAdminAndFirstUser("ROLE_USER");
 			}
 		};
 	}
