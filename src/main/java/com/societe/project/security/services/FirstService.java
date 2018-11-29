@@ -24,7 +24,7 @@ public class FirstService {
 			
 			//Profil profil = new Profil("superadmin", "superadmin", "0122334455");
 				
-			Compte compte = new Compte("superadmin@gmail.com", "superadmin",1, role);
+			Compte compte = new Compte("superadmin@gmail.com", "l",1, role);
 			this.compteService.save(compte);
 		} catch (Exception e) {
 			// TODO: Pour le moment un try catch pour eviter de drop la database à chaque lancement de l'application A MODIFIER

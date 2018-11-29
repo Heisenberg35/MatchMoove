@@ -8,9 +8,12 @@ import com.societe.project.models.Trajet;
 
 @org.springframework.stereotype.Repository
 public interface TrajetRepository extends BaseCRUDRepository<Trajet> {
-
-	List<Trajet> findByPerimetre(Double Perimetre);
+	
+	List<Trajet> findByNom(String nom);
+	List<Trajet> findByPerimetre(Double perimetre);
 	List<Trajet> findByDateDepart(Date date);
-	//List<Trajet> findByPoint(List<Point> Perimetre);
-	List<Trajet> findByPerimetreAndDateDepart(Double perimetre, Date dateDepart);
+	List<Trajet> findByHeureDepartAndMinuteDepart(Integer heure,Integer minute);
+	
+	
+	//List<Trajet> findByPerimetreAndDateDepart(Double perimetre, Date dateDepart);
 }

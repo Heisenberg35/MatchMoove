@@ -2,9 +2,12 @@
 <#include "../utils/bootstrap.ftl"/>
 <h1>${pageName}</h1>
 
-<form action="${detailPath}/delete" method="POST">
+<form class="text-center border border-light" action="${detailPath}/delete" method="POST">
 <#include "..${detailPath}/specific/emptyshowform.ftl"/>
 <input type="submit" value="Search">
+ <input type="hidden"
+            name="${_csrf.parameterName}"
+            value="${_csrf.token}"/>
 </form> 
 
 <div>
@@ -16,6 +19,9 @@
     <#assign index++>
     </#list>
     <input type="submit" value="Delete">
+     <input type="hidden"
+            name="${_csrf.parameterName}"
+            value="${_csrf.token}"/>
 </form>
 </#if>
 <#if notFound??>
