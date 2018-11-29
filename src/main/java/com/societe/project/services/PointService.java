@@ -24,8 +24,10 @@ public class PointService extends BaseService<Point> {
 
 	@Override
 	protected List<Point> setItemsByCriterias(Point item, List<Point> result) {
-		// TODO Auto-generated method stub
-		return null;
+		 if (!item.getAltitude().equals(null)) {
+		result = this.pointRepository.findByLongitudeAndAltitude(item.getLongitude(), item.getAltitude());
+	}
+	return result;
 	}
 
 }

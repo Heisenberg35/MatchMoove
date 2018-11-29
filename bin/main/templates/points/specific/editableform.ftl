@@ -1,4 +1,4 @@
-<form action="${detailPath}/edit" method="POST">
+<form class="text-center border border-light" action="${detailPath}/edit" method="POST">
 <#if item??>
     <div>Id</div>
     <#if item.getId()??>
@@ -23,4 +23,7 @@
     </select>
     </#if>
     <div><input type="submit" value="Save"></div>
+     <input type="hidden"
+            name="${_csrf.parameterName}"
+            value="${_csrf.token}"/>
 </form> 

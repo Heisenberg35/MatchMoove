@@ -1,15 +1,17 @@
 package com.societe.project.models;
 
+
+
 import java.sql.Date;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import com.societe.project.database.DBItem;
 
 
@@ -25,26 +27,39 @@ public class Message extends DBItem {
 	
 	@Column(name="title")
 	private String title;
-	@Column(name="decription")
-	private String description;
+	
+	@Column(name="content")
+	private String content;
+	
+	
 	@Column(name="date")
 	private Date date;
 	
-	@OneToOne()
-	private Message message;
+	@OneToMany(targetEntity=Message.class)
+	private List<Message> messages;
 	
-	@ManyToOne(targetEntity=Trajet.class)
-	private List<Trajet> listTrajet= new ArrayList<Trajet>(); 
+	@ManyToOne
+	@JoinColumn(name = "trajet_id",referencedColumnName="id")
+	private Trajet trajet; 
 	
-	@ManyToOne(targetEntity=Profil.class)
-	private List<Profil> listProfil = new ArrayList<Profil>();
+	@ManyToOne
+	@JoinColumn(name = "profil_id",referencedColumnName="id")
+	private Profil profil;
 	
 	/*
 	*************************************************
 	*    @Contructeur
 	*************************************************
 	 */
-	
+	public Message(String content,Date date,Trajet trajet,Profil profil,List<Message> messages)
+	{
+		
+		this.content = content;
+		this.date = date;
+		this.trajet = trajet;
+		this.profil = profil;
+		this.messages = messages;
+				}
 	public Message() {
 		super();
 	}
@@ -54,20 +69,13 @@ public class Message extends DBItem {
 	*************************************************
 	 */
 
-	public String getObjet() {
-		return title;
+
+	public String getContent() {
+		return content;
 	}
 
-	public void setObjet(String title) {
-		this.title = title;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public Date getDate() {
@@ -78,28 +86,24 @@ public class Message extends DBItem {
 		this.date = date;
 	}
 
-	public Message getMessage() {
-		return message;
+	public List<Message> getMessage() {
+		return messages;
 	}
 
-	public void setMessage(Message message) {
-		this.message = message;
+	public void setMessage(List<Message> message) {
+		this.messages = message;
+	}
+	public Trajet getTrajet() {
+		return trajet;
+	}
+	public void setTrajet(Trajet trajet) {
+		this.trajet = trajet;
+	}
+	public Profil getProfil() {
+		return profil;
+	}
+	public void setProfil(Profil profil) {
+		this.profil = profil;
 	}
 	
-	public List<Trajet> getListTrajet() {
-		return listTrajet;
-	}
-
-	public void setListTrajet(Trajet trajet) {
-		this.listTrajet.add(trajet);
-	}
-	
-	
-	public List<Profil> getListProfil() {
-		return listProfil;
-	}
-
-	public void setListProfil(Profil profil) {
-		this.listProfil.add(profil);
-	}
 }

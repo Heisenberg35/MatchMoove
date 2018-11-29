@@ -2,9 +2,12 @@
 <#include "../utils/bootstrap.ftl"/>
 <h1>${pageName}</h1>
 
-<form action="${detailPath}/find" method="POST">
+<form class="text-center border border-light" action="${detailPath}/find" method="POST">
 <#include "..${detailPath}/specific/emptyshowform.ftl"/>
 <input type="submit" value="Search">
+ <input type="hidden"
+            name="${_csrf.parameterName}"
+            value="${_csrf.token}"/>
 </form> 
 
 <div>

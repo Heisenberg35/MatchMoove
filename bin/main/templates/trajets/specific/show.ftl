@@ -14,7 +14,19 @@
         <#else>
         <div>NULL</div>
         </#if>
-        
+        <#if i.getHeureDepart()??>
+
+        ${i.getHeureDepart()}:
+
+        <#else>
+        NULL
+        </#if>
+        <#if i.getMinuteDepart()??>
+        ${i.getMinuteDepart()}
+        <#else>
+        NULL
+        </#if>
+
         <div>
             <a href="${detailPath}/edit/${i.getId()}">Show</a>
             <a href="${detailPath}/delete/${i.getId()}">Delete</a>
