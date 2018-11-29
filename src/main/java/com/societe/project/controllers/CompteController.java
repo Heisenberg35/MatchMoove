@@ -1,6 +1,7 @@
 package com.societe.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import com.societe.project.services.RoleService;
 import com.societe.project.services.base.BaseService;
 
 @Controller
+@Secured("ROLE_ADMIN")
 @RequestMapping(CompteController.BASE_URL)
 public class CompteController extends BaseController<Compte> {
 
@@ -55,11 +57,4 @@ public class CompteController extends BaseController<Compte> {
 		item.setProfil(profilService.find(item.getProfil().getId()).get());
 	}
 
-//	public String editSaveUser(Compte item) {
-//		// TODO Auto-generated method stub
-//		return super.editSave(item);
-//	}
-	
-	
-	
 }
