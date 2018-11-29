@@ -1,27 +1,28 @@
-* 
-{
+* {
 	margin: 0;
 	padding: 0;
 	font-family: Lato, cursive;
  }
 
-/* HEADER */
+/* Header */
 
 header
 {
-	background: #666666 url(../images/vosmatchs.png);
-	background-position: center;
-	background-size: 100%;
-	height: 80vh;
-	display: flex;
-	flex-direction: column;
-	position: relative;
+	background-image: url(../images/vosmatchs.png);
+	background-position: 5% 37%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 60vh;
+	margin-bottom: 60px;
+
 }
 
 #logo img
 {
     width:30%; 
     height: auto;
+	position: relative;
+	left:20px;
 }
 
 #logo img:hover
@@ -30,20 +31,11 @@ header
     cursor: pointer;
 }
 
-nav 
-{
-	display: flex;
-	flex-direction: column;
-	
-}
-
 nav ul 
 {
-	text-align: right;
 	display: flex;
 	justify-content: space-around;
 }
-
 
 nav a
 {
@@ -51,79 +43,38 @@ nav a
 	color: #bddd1d;
 	font-weight: 700;
 	font-size: 2.2vw;
-	-webkit-text-stroke: 1px;
-	-webkit-text-stroke-color:black;
+	text-shadow:0 0 3px black;
 }
 
 nav a:hover
 {
-	color: #bddd1d;
+	color:#A1AD19;
 	text-decoration: none;
+	text-shadow:0 0 3px black;
 }
 
 nav li 
 {
 	display: inline-block;
-	
 }
 
 nav li:hover
 {
 	transform:scale(1.1,1.1);
     cursor: pointer;
-	
 }
 
-h1
+h2
 {
-	color: black;
-	font-size: 60px;
-}
-
-h3
-{
-	color: white;
-	font-size: 60px;
-	text-align: center;
-	position: relative;
-	top: 220px;
-}
-h1, h2
-{
-	padding-top: 250px;
+	color: #143045;
+	font-size: 30px;
+	text-shadow:0 0 3px black;
 	text-align: center;
 }
 
-#menu ul 
-{
- margin:0;
- padding:0;
- list-style-type:none;
- text-align:center;
- }
-#menu li 
-{
- float:left;
- margin:auto;
- padding:0;
- background-color:black;
- }
-#menu li a {
- display:block;
- width:100px;
- color:white;
- text-decoration:none;
- padding:5px;
- }
-#menu li a:hover {
- color:#FFD700;
- }
 
 /* Trajets */ 
-section
-{
-	padding-top: 100px;
-}
+
 .trajetbloc
 {
     width: 80%; 
@@ -133,6 +84,8 @@ section
     background: #f5f5fa; 
     border-radius: 10px;
     border: 2px solid #ccc;
+	margin-bottom: 60px;
+	margin-top: 10px;
 }
 
 .trajetbloc img
@@ -152,7 +105,53 @@ section
 .actubloc p:nth-child(2) 
 {
     font-weight: 700;
-	font-size: 25px;
+	font-size: 20px;
 }
 
+/* footer */
+#footer
+{
+
+	background-image: url(../images/foooter.jpg);
+	background-size: cover;
+	width: 100%;
+	height: 30vh;
+	color: white;
+	display: flex;
+	padding: 40px;
+	position: relative;
+}
+
+#footer img
+{
+	width: 200px;
+}
+
+#footer img:hover
+{
+	transform:scale(1.1,1.1);
+    cursor: pointer;
+}
+
+#footer ul
+{
+	list-style: none;
+	padding-top: 30px;
+	padding-left: 40px;
+	text-align: center;
+}
+
+#footer li:hover
+{
+	transform:scale(1.1,1.1);
+    cursor: pointer;
+	font-weight: 700;
+	
+}
+
+#footer ul:nth-child(2) 
+{
+    padding-left: 300px;
+	margin-top: -35px;
+}
 

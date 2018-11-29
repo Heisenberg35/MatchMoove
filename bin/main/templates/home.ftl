@@ -13,22 +13,34 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700" rel="stylesheet">
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="60">
-		<header>
+<header>
 				<div id="logo"><img src="images/matchmooveBLANCS.png"></div>
                 <nav>
                     <ul>
-                    	<li><a href="/admin">Administrateur</a></li>
                         <li><a href="#">Je match !</a></li>
                         <li><a href="#">Proposer un trajet</a></li>
                         <li><a href="#">Rechercher un trajet</a></li>
                         <li><a href="#">Messagerie</a></li>
                         <li><a href="#">BLOG</a></li>
-                        <li><a href="/logout">Deconnection</a></li>
                     </ul>
-				</nav>
+				</nav>	
 			
-			        	<h3>Decouvrez les derniers trajets !</h3>
-        </header>
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					ADMIN
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					<li><a href="/adresses" class="list-group-item" title="Adresses">Adresses</a></li>
+					<li><a href="/articles" class="list-group-item" title="Articles">Articles</a></li>
+					<li><a href="/cars" class="list-group-item" title="cars">Cars</a></li>
+					<li><a href="/comptes" class="list-group-item" title="comptes">Comptes</a></li>
+					<li><a href="/profils" class="list-group-item" titlz="profils">Profils</a></li>
+					<li><a href="/roles" class="list-group-item" title="roles">Roles</a></li>
+					
+				</ul>
+			</div>
+		</header>
+<h2>Decouvrez les derniers trajets</h2>
 
 	<section id="Trajets">
 		<div class="col-md-4 ">  
@@ -37,7 +49,7 @@
 							<p>IMIE RENNES</p>
                             <img src="images/PORTRAIT1.jpg" id="portait" class="img-circle">
 							<p>Lucile</p>
-							<p>Prix 8,50</p>
+							<p>Prix 8,50€</p>
                         </div>
 		</div>
 		<div class="col-md-4 ">  
@@ -46,7 +58,7 @@
 							<p>IMIE RENNES</p>
                             <img src="images/PORTRAIT1.jpg" id="portait" class="img-circle">
 							<p>Lucile</p>
-							<p>Prix 8,50</p>
+							<p>Prix 8,50€</p>
                         </div>
 		</div>
 			<div class="col-md-4 ">  
@@ -55,13 +67,13 @@
 							<p>IMIE RENNES</p>
                             <img src="images/PORTRAIT1.jpg" class="img-circle">
 							<p>Lucile</p>
-							<p>Prix 8,50</p>
+							<p>Prix 8,50€</p>
                         </div>
 		</div>
-	
 	</section>
-<h2>Nos actu !</h2>
+<h2>Nos actualites</h2>
 	<section id="Actu">
+	
 		<div class="col-md-3 ">  
                         <div class="actubloc">
 						
@@ -77,35 +89,40 @@
 							<p><a href="#">Notre appli fait parler d'elle </a></p>
 						<p>Et olim licet otiosae sint tribus pacataeque centuriae...</p>
                         </div>
-			</div>
-			<div class="col-md-3 ">  
+		</div>
+		<div class="col-md-3 ">  
                         <div class="actubloc">
 
                             <a href="#"><img src="images/article3.jpg"  ></a>
 							<p><a href="#">Hausse du prix du carburant... </a></p>
 							<p>Et olim licet otiosae sint tribus pacataeque centuriae...</p>
                         </div>
-			</div>
-			<div class="col-md-3">  
+		</div>
+		<div class="col-md-3">  
                         <div class="actubloc">
 	
                             <a href="#"><img src="images/article3.jpg"  ></a>
 							<p><a href="#">Aide a la conversion </a></p>
 							<p>Et olim licet otiosae sint tribus pacataeque centuriae...</p>
                         </div>
-			</div>
+		</div>
 	
 	</section>
+	<div id="footer">
+		<ul>
+			<li>Nous contacter</li>
+			<li>Nous rejoindre</li>
+			<li>Informations Legales</li>
+		</ul>
+		<ul>
+			<a href="/home"><img src="images/matchmooveBLANCS.png"></a>
+			<li>Immeuble IMIE</li>
+			<li>Rue Pierre de Maupertuis</li>
+			<li>35170 BRUZ</li>
+		</ul>
+	</div>
 	
-	<footer>
-		<div id="liens">
-			<a href="#"><p>Liens 1<p></a>
-			<a href="#"><p>Liens 2<p></a>
-			<a href="#"><p>Liens 3<p></a>
-			<a href="#"><p>Liens 4<p></a>
-			<a href="#"><p>Liens 5<p></a>
-		</div>
-	</footer>
+	
 </body>
 	
 </html>
