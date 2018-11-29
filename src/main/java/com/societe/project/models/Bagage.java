@@ -1,19 +1,24 @@
 package com.societe.project.models;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.societe.project.database.DBItem;
+
 @Entity
 @Table(name="Bagage")
 public class Bagage extends DBItem {
+<<<<<<< HEAD
 	
+=======
+
+@Column
+private Double volume;
+
+>>>>>>> lama
 @ManyToOne
 @JoinColumn(name = "profil_id",referencedColumnName="id")
 private Profil profil;
@@ -22,8 +27,12 @@ private Profil profil;
 @JoinColumn(name = "trajet_id",referencedColumnName="id")
 private Trajet trajet;
 
+<<<<<<< HEAD
 @Column
 private Double volume;
+=======
+
+>>>>>>> lama
 
 /***********************************************
  * GETTEUR ET SETTEUR

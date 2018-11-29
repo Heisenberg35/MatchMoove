@@ -15,7 +15,9 @@
         <div>NULL</div>
         </#if>
         <#if i.getHeureDepart()??>
-        <div>${i.getHeureDepart()} :
+
+        ${i.getHeureDepart()}:
+
         <#else>
         NULL
         </#if>
@@ -24,7 +26,7 @@
         <#else>
         NULL
         </#if>
-        </div>
+
         <div>
             <a href="${detailPath}/edit/${i.getId()}">Show</a>
             <a href="${detailPath}/delete/${i.getId()}">Delete</a>

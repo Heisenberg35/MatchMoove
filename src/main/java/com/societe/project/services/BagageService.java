@@ -25,7 +25,9 @@ public class BagageService extends BaseService<Bagage> {
 
 	@Override
 	protected List<Bagage> setItemsByCriterias(Bagage item, List<Bagage> result) {
-		if (!item.getVolume().equals("")) {
+
+		if (!item.getVolume().equals(null)) {
+
 			result = this.bagageRepository.findByVolume(item.getVolume());
 		} 
 		return result;

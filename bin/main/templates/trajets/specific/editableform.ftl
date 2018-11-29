@@ -1,11 +1,11 @@
+<<<<<<< HEAD
 <form  class="text-center border border-light" action="${detailPath}/edit" method="POST">
+=======
+<form class="text-center border border-light" action="${detailPath}/edit" method="POST">
+>>>>>>> lama
 <#if item??>
-    <div>Id</div>
     <#if item.getId()??>
-    <div>${item.getId()}</div>
     <input type="hidden" name="id" value="${item.getId()}">
-    <#else>
-    <div>NA</div>
     </#if>
 </#if>  
     <div>nom</div>
@@ -18,6 +18,7 @@
     <input type="date"  name="dateDepart" placeholder="date" value=<#if item?? && item.getDateDepart()??>"${item.getDateDepart()}"<#else>""</#if>>
     
     
+<<<<<<< HEAD
    <div>heureDepart</div>
 
    <select name="heureDepart" required>
@@ -44,5 +45,23 @@
    </#list>
    </select>   
   
+=======
+    <select name="heureDepart" required>
+            <#if item?? && item.getHeureDepart()??><option value="${item.getHeureDepart()}">${item.getHeureDepart()}</option></#if>
+    <#list 0..23 as i>
+            <option value="${i}">${i}</option>
+     </#list>      
+    </select> 
+   
+   <select name="minuteDepart" required>
+            <#if item?? && item.getMinuteDepart()??><option value="${item.getMinuteDepart()}">${item.getMinuteDepart()}</option></#if>
+    <#list 0..11 as i>
+            <option value="${i*5}">${i*5}</option>
+     </#list>      
+    </select> 
+>>>>>>> lama
     <div><input type="submit" value="Save"></div>
+     <input type="hidden"
+            name="${_csrf.parameterName}"
+            value="${_csrf.token}"/>
 </form> 

@@ -19,17 +19,24 @@ public class TrajetService extends BaseService<Trajet> {
 
 	@Override
 	protected List<Trajet> setItemsByCriterias(Trajet item, List<Trajet> result) {
-		if (!item.getPerimetre().equals(null) && !item.getDateDepart().equals(null)) {
-			result = this.trajetRepository.findByPerimetreAndDateDepart(item.getPerimetre(), item.getDateDepart());
-		}else if (!item.getPerimetre().equals(null)) {
+
+		if (!item.getNom().equals(null)) {
+			result = this.trajetRepository.findByNom(item.getNom());
+		}
+	      else if (!item.getPerimetre().equals(null)) {
+
 			result = this.trajetRepository.findByPerimetre(item.getPerimetre());
 		} else if (!item.getDateDepart().equals(null)) {
 			result = this.trajetRepository.findByDateDepart(item.getDateDepart());
+		}else if (!item.getHeureDepart().equals(null) && !item.getMinuteDepart().equals(null) ) {
+			result = this.trajetRepository.findByHeureDepartAndMinuteDepart(item.getHeureDepart(),item.getMinuteDepart());
 		}
 		
 		
 		
-		//To-Do : faire les conditions pour les autres criterias (point)
+
+		//To-Do : faire les conditions pour les autres criterias 
+
 		return result;
 	}
 

@@ -9,7 +9,8 @@ import com.societe.project.models.PT;
 @Repository
 public interface PTRepository extends BaseCRUDRepository<PT>{
 
-	List<PT> findByNbrePlaceAndVolumeMax(Integer nbrePlace, Double volumeMax);
+	//List<PT> findByNbrePlaceAndVolumeMax(Integer nbrePlace, Double volumeMax);
+
 	List<PT> findByNbrePlace(Integer nbrePlace);
 	List<PT> findByVolumeMax(Double volumeMax);
 }
