@@ -8,11 +8,12 @@
 	<link rel="stylesheet" type="text/css" href="<@spring.url '/css/login.css'/>"/>
 		
 	<body onload="document.f.username.focus();">
-		<h1></h1>
+		
 		<a href=""><img src="images/Matchmoovecouleurs.png" alt="logo matchmoove" class="logo"></a>
+		<#if Session.SPRING_SECURITY_LAST_EXCEPTION?? && Session.SPRING_SECURITY_LAST_EXCEPTION.message?has_content>
+		    <h1>L'email ou le mot de passe est incorrect</h1>
+		</#if>
 		<div id="container">
-          
-            
 			<img src="images/lock%20(1)%20(1).png" id="lock">
             <form action="/login" method="POST">
                 
@@ -30,9 +31,7 @@
 	</body>
 	
 </html>
-<#if Session.SPRING_SECURITY_LAST_EXCEPTION?? && Session.SPRING_SECURITY_LAST_EXCEPTION.message?has_content>
-    <h1>Bad credential</h1>
-</#if>
+
 
 
 <!--

@@ -16,7 +16,7 @@
 <header>
 				<div id="logo"><img src="images/matchmooveBLANCS.png"></div>
                 <nav>
-                    <ul>
+                    <ul>                	
                         <li><a href="#">Je match !</a></li>
                         <li><a href="#">Proposer un trajet</a></li>
                         <li><a href="#">Rechercher un trajet</a></li>

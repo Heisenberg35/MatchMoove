@@ -52,8 +52,13 @@ public class CompteController extends BaseController<Compte> {
 	@Override
 	protected void setupOtherFields(Compte item) {
 		item.setRole(roleService.find(item.getRole().getId()).get());
-		item.setProfil(profilService.find(item.getRole().getId()).get());
+		item.setProfil(profilService.find(item.getProfil().getId()).get());
 	}
+
+//	public String editSaveUser(Compte item) {
+//		// TODO Auto-generated method stub
+//		return super.editSave(item);
+//	}
 	
 	
 	
