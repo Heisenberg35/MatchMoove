@@ -9,7 +9,14 @@
 </#if>
     
     <div>content</div>
-    <input type="text" name="content" value="<#if item?? && item.getContent()??>${item.getContent()}</#if>" required>
+    <textarea 
+    rows="5" 
+    cols="60"  
+    name="content" 
+    value="<#if item?? && item.getContent()??>${item.getContent()}</#if>" 
+    required>
+    <#if item?? && item.getContent()??>${item.getContent()}</#if>
+    </textarea>
     <div>Date</div>
     <input type="date" name="date" value="<#if item?? && item.getDate()??>${item.getDate()}</#if>" required>
     

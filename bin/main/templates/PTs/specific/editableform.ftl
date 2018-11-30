@@ -35,12 +35,16 @@
    
     
     <div>nbrePlace</div>
-    <input type="text" name="nbrePlace" value="<#if item?? && item.getNbrePlace()??>${item.getNbrePlace()}</#if>">
+    <input type="number" min=0  style="width: 5em" name="nbrePlace" value="<#if item?? && item.getNbrePlace()??>${item.getNbrePlace()}</#if>" required>
     
     
     <div>volumeMax</div>
+<<<<<<< HEAD
+    <input type="number" min=0 step="0.01" style="width: 5em" name="volumeMax" value="<#if item?? && item.getVolumeMax()??>${item.getVolumeMax()}</#if>" required>
+=======
     <input type="text" name="volumeMax" value="<#if item?? && item.getVolumeMax()??>${item.getVolumeMax()}</#if>">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+>>>>>>> master
     <div><input type="submit" value="Save"></div>
      <input type="hidden"
             name="${_csrf.parameterName}"

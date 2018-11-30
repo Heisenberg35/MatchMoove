@@ -26,6 +26,10 @@ public class PTService extends BaseService<PT> {
 			result = this.ptRepository.findByNbrePlace(item.getNbrePlace());
 		}else if (!item.getVolumeMax().equals(null)) {
 			result = this.ptRepository.findByVolumeMax(item.getVolumeMax());
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 		}
 		return result;
 	}
