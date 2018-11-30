@@ -24,21 +24,20 @@ public class CompteService extends BaseService<Compte> {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
+	@Autowired
+	private CompteProfilDto dto;
+	
+	@Autowired
+	private RoleService roleService;
+	
+	@Autowired
+	private ProfilService profilService;
+	
 	@Override
 	protected BaseCRUDRepository<Compte> getCRUDRepository() {
 		return compteRepository;
 	}
-	
-	@Autowired
-	private CompteProfilDto dto;
-	
-	
-	@Autowired
-	private RoleService roleService;
-	@Autowired
-	private ProfilService profilService;
-	
-	
+
 	public CompteProfilDto getDto() {
 		return dto;
 	}
@@ -62,6 +61,7 @@ public class CompteService extends BaseService<Compte> {
 		super.save(item);
 	}
 
+
 @Override
 protected List<Compte> setItemsByCriterias(Compte item, List<Compte> result) {
 	// TODO Auto-generated method stub
@@ -71,7 +71,6 @@ protected List<Compte> setItemsByCriterias(Compte item, List<Compte> result) {
 public Compte findByEmail(String email) {
 	return compteRepository.findByEmail(email);
 }
-
 
 	public Compte finByEmailCompte(String email) {
 		
@@ -90,6 +89,7 @@ public Compte findByEmail(String email) {
 		
 		compte.setRole(role);
 		compte.setProfil(profil);
+		compte.setActive(1);
 		
 		compte.setActive(1);
 		

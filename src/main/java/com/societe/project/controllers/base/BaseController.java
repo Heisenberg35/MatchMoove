@@ -2,7 +2,8 @@ package com.societe.project.controllers.base;
 
 import java.util.List;
 
-import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import com.societe.project.dtos.base.BaseDeleteCriteriaDTO;
 import com.societe.project.services.base.BaseService;
 
 
+//@PreAuthorize ("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 public abstract class BaseController<T extends DBItem> {
 
 	private static final String BASE_ATTRIBUT_LIST = "items";
