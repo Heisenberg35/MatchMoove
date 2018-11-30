@@ -14,7 +14,7 @@
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="60">
 		<header>
-				<div id="logo"><img src="images/matchmooveBLANCS.png"></div><a href="/logout">Deconnection</a>
+				<div id="logo"><img src="images/matchmooveBLANCS.png"></div><a href="/logout"><img src="images/logout.png"></a>
                 <nav>
                     <ul>
                     	<li><a href="/profils">Profils</a></li>
@@ -32,8 +32,6 @@
 				</nav>	
         </header>
 
-<<<<<<< HEAD
-=======
 		<div id="footer">
 		<ul>
 			<li>Nous contacter</li>
@@ -47,7 +45,6 @@
 			<li>35170 BRUZ</li>
 		</ul>
 	</div>
->>>>>>> master
 </body>
 	
 </html>
