@@ -64,6 +64,10 @@ nav li:hover
     cursor: pointer;
 }
 
+nav img
+{
+	width: 40px;
+}
 h2
 {
 	color: #143045;
