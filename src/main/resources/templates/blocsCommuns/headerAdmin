@@ -1,7 +1,3 @@
-<#import "/spring.ftl" as spring/>
-<#include "../blocsCommuns/head.ftl"/>	
-<link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
-	<title>MatchMoove</title>
 		<header>
 				<div id="logo"><img src="images/matchmooveBLANCS.png"></div><a href="/logout"><img src="images/logout.png"></a>
                 <nav>
@@ -20,5 +16,3 @@
                     </ul>
 				</nav>	
         </header>
-<#include "../blocsCommuns/footer.ftl"/>	
-	

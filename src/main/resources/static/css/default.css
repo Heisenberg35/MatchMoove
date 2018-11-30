@@ -8,13 +8,12 @@
 
 header
 {
-	background-image: url(../images/vosmatchs.png);
+	background-image: url(vosmatchs.png);
 	background-position: 5% 37%;
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 60vh;
 	margin-bottom: 60px;
-
 }
 
 #logo img
@@ -34,16 +33,17 @@ header
 nav ul 
 {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-around;	
 }
+
 
 nav a
 {
-	display: inline-block;
 	color: #bddd1d;
 	font-weight: 700;
 	font-size: 2.2vw;
 	text-shadow:0 0 3px black;
+	text-decoration: none;
 }
 
 nav a:hover
@@ -77,34 +77,53 @@ h2
 	text-align: center;
 }
 
-
 /* Trajets */ 
-
+#Trajets
+{
+	display: flex;
+	
+}
 .trajetbloc
 {
-    width: 80%; 
-    margin: 0 auto; 
+    width: 70%; 
+    margin: 10px; 
     text-align: center; 
     padding: 30px; 
     background: #f5f5fa; 
     border-radius: 10px;
-    border: 2px solid #ccc;
-	margin-bottom: 60px;
-	margin-top: 10px;
+    border: 1px solid #143045;
+	margin-bottom: 80px;
+	margin-top: 20px;
 }
 
 .trajetbloc img
 {
 	height: 70px;
 	width: 70px;
+    border-radius: 50%;
+	
 }
 
 /* Actu */
+#Actu
+{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 80px;
+}
+
 .actubloc img
 {
 	height: 200px;
 	width: auto;
-	border: solid grey 1px;
+	margin: 10px;
+	border: solid  #143045 1px;
+}
+
+.actubloc a
+{
+	text-decoration: none;
+	color: #143045;
 }
 
 .actubloc p:nth-child(2) 
@@ -113,30 +132,26 @@ h2
 	font-size: 20px;
 }
 
+.actubloc p:nth-child(2):hover
+{
+    font-weight: 700;
+	font-size: 20px;
+	transform:scale(1.1,1.1);
+    cursor: pointer;
+}
+
 /* footer */
 #footer
 {
 
-	background-image: url(../images/foooter.jpg);
+	background-image: url(foooter.jpg);
 	background-size: cover;
 	width: 100%;
-	height: 30vh;
+	height: 20vh;
 	color: white;
 	display: flex;
 	padding: 40px;
 	position: relative;
-
-}
-
-#footer img
-{
-	width: 200px;
-}
-
-#footer img:hover
-{
-	transform:scale(1.1,1.1);
-    cursor: pointer;
 }
 
 #footer img
@@ -162,8 +177,7 @@ h2
 {
 	transform:scale(1.1,1.1);
     cursor: pointer;
-	font-weight: 700;
-	
+	font-weight: 700;	
 }
 
 #footer ul:nth-child(2) 
@@ -172,3 +186,20 @@ h2
 	margin-top: -35px;
 }
 
+/* Responsive design */
+@media only screen and (max-width: 950px) {
+   #Trajets {
+       flex-wrap: wrap;
+	   justify-content: center;  
+    }
+	
+	
+	#Actu {
+		flex-wrap: wrap;
+		justify-content: center;	
+	}
+	
+	.trajetbloc {
+		width: 100px;
+	}
+}
