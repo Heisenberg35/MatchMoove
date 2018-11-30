@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import com.societe.project.database.DBItem;
 @Entity
 @Table(name="PT")
-public class PT extends DBItem implements Serializable{
+public class PT extends DBItem {
 	
 @ManyToOne
 @JoinColumn(name = "profil_id",referencedColumnName="id")
@@ -26,7 +26,7 @@ private Trajet trajet;
 private Integer nbrePlace;
 
 @Column
-private Integer volumeMax;
+private Double volumeMax;
 
 /***********************************************
  * GETTEUR ET SETTEUR
@@ -38,10 +38,10 @@ public Integer getNbrePlace() {
 public void setNbrePlace(Integer nbrePlace) {
 	this.nbrePlace = nbrePlace;
 }
-public Integer getVolumeMax() {
+public Double getVolumeMax() {
 	return volumeMax;
 }
-public void setVolumeMax(Integer volumeMax) {
+public void setVolumeMax(Double volumeMax) {
 	this.volumeMax = volumeMax;
 }
 public Trajet getTrajet() {
@@ -63,7 +63,7 @@ public void setprofil(Profil profil) {
  * CONSTRUCTEURS
  ***********************************************/
 
-public PT(Integer nbrePlace, Integer volumeMax, Profil profile, Trajet trajet) {
+public PT(Integer nbrePlace, Double volumeMax, Profil profile, Trajet trajet) {
 	super();
 	this.nbrePlace = nbrePlace;
 	this.volumeMax = volumeMax;

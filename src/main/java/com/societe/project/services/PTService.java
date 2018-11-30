@@ -22,8 +22,12 @@ public class PTService extends BaseService<PT> {
 
 	@Override
 	protected List<PT> setItemsByCriterias(PT item, List<PT> result) {
-		// TODO Auto-generated method stub
-		return null;
+		if (!item.getNbrePlace().equals(null)) {
+			result = this.ptRepository.findByNbrePlace(item.getNbrePlace());
+		}else if (!item.getVolumeMax().equals(null)) {
+			result = this.ptRepository.findByVolumeMax(item.getVolumeMax());
+		}
+		return result;
 	}
 
 }

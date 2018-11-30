@@ -14,7 +14,7 @@
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="60">
 		<header>
-				<div id="logo"><img src="images/matchmooveBLANCS.png"></div>
+				<div id="logo"><img src="images/matchmooveBLANCS.png"></div><a href="/logout">Deconnection</a>
                 <nav>
                     <ul>
                     	<li><a href="/profils">Profils</a></li>
@@ -27,11 +27,27 @@
                         <li><a href="/points">Coordonnees</a></li>
 						<li><a href="/pts">PT</a></li>
 						<li><a href="/articles">Articles</a></li>
-						<li><a href="/message">Messages</a></li>
+						<li><a href="/messages">Messages</a></li>
                     </ul>
 				</nav>	
         </header>
 
+<<<<<<< HEAD
+=======
+		<div id="footer">
+		<ul>
+			<li>Nous contacter</li>
+			<li>Nous rejoindre</li>
+			<li>Informations Legales</li>
+		</ul>
+		<ul>
+			<a href="/home"><img src="images/matchmooveBLANCS.png"></a>
+			<li>Immeuble IMIE</li>
+			<li>Rue Pierre de Maupertuis</li>
+			<li>35170 BRUZ</li>
+		</ul>
+	</div>
+>>>>>>> master
 </body>
 	
 </html>

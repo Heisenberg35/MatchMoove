@@ -10,9 +10,9 @@ import com.societe.project.database.DBItem;
 @Table(name="Point")
 public class Point extends DBItem {
 @Column
- private Integer longitude ;
+ private Double longitude ;
 @Column
-private Integer altitude ;
+private Double altitude ;
 
 @ManyToOne
 private Trajet trajet ;
@@ -21,16 +21,16 @@ private Trajet trajet ;
  * GETTEUR ET SETTEUR
  ***********************************************/
 
-public Integer getLongitude() {
+public Double getLongitude() {
 	return longitude;
 }
-public void setLongitude(Integer longitude) {
+public void setLongitude(Double longitude) {
 	this.longitude = longitude;
 }
-public Integer getAltitude() {
+public Double getAltitude() {
 	return altitude;
 }
-public void setAltitude(Integer altitude) {
+public void setAltitude(Double altitude) {
 	this.altitude = altitude;
 }
 public Trajet getTrajet()
@@ -45,7 +45,7 @@ public void setTrajet(Trajet trajet) {
  * CONSTRUCTEURS
  ***********************************************/
 
-public Point(Integer longitude, Integer altitude,Trajet trajet) {
+public Point(Double longitude, Double altitude,Trajet trajet) {
 	super();
 	this.longitude = longitude;
 	this.altitude = altitude;

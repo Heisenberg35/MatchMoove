@@ -62,8 +62,17 @@ nav li:hover
 {
 	transform:scale(1.1,1.1);
     cursor: pointer;
+<<<<<<< HEAD
 }
 
+=======
+}
+
+nav img
+{
+	width: 40px;
+}
+>>>>>>> master
 h2
 {
 	color: #143045;
@@ -120,6 +129,7 @@ h2
 	display: flex;
 	padding: 40px;
 	position: relative;
+<<<<<<< HEAD
 }
 
 #footer img
@@ -133,6 +143,21 @@ h2
     cursor: pointer;
 }
 
+=======
+}
+
+#footer img
+{
+	width: 200px;
+}
+
+#footer img:hover
+{
+	transform:scale(1.1,1.1);
+    cursor: pointer;
+}
+
+>>>>>>> master
 #footer ul
 {
 	list-style: none;
@@ -148,10 +173,18 @@ h2
 	font-weight: 700;
 	
 }
+<<<<<<< HEAD
 
 #footer ul:nth-child(2) 
 {
     padding-left: 300px;
 	margin-top: -35px;
 }
+=======
+>>>>>>> master
 
+#footer ul:nth-child(2) 
+{
+    padding-left: 300px;
+	margin-top: -35px;
+}

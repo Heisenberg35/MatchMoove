@@ -1,19 +1,22 @@
 package com.societe.project.models;
 
 
+
+
+import java.sql.Date;
+
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.test.annotation.Timed;
 
 import com.societe.project.database.DBItem;
 
@@ -28,14 +31,16 @@ public class Trajet extends DBItem {
 	private Double perimetre;
 	
 	@Column(name="dateDepart")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateDepart;
 	
-	@Column
-	@DateTimeFormat(pattern = "hh:mm:ss")
-	private Date heureDepart;
+
+	@Column(name="heureDepart")
+	private Integer heureDepart;
 	
-    
+	@Column(name="minuteDepart")
+	private Integer minuteDepart;
+	
+	
 
 	@OneToMany(targetEntity=Point.class,mappedBy="trajet")
 	private List<Point> points;
@@ -46,7 +51,12 @@ public class Trajet extends DBItem {
     @OneToMany(targetEntity=Bagage.class,mappedBy = "trajet")
     private List<Bagage> bagages;
 
-    /***********************************************
+    @OneToMany(targetEntity=Message.class,mappedBy="trajet")
+	private List<Message> messages;
+    
+    
+
+	/***********************************************
 	 * GETTEUR ET SETTEUR
 	 ***********************************************/
     public String getNom() {
@@ -78,8 +88,10 @@ public class Trajet extends DBItem {
     public void setBagage(List<Bagage> bagages) {
         this.bagages = bagages;
     }
-
+    
+    
 	public Date getDateDepart() {
+	//	DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
 		return dateDepart;
 	}
 
@@ -87,41 +99,59 @@ public class Trajet extends DBItem {
 		this.dateDepart = dateDepart;
 	}
 
-	public Date getHeureDepart() {
+	public Integer getHeureDepart() {
 		return heureDepart;
 	}
 
-	public void setHeureDepart(Date heureDepart) {
+	public void setHeureDepart(Integer heureDepart) {
 		this.heureDepart = heureDepart;
 	}
-	
+
+	public Integer getMinuteDepart() {
+		return minuteDepart;
+	}
+
+	public void setMinuteDepart(Integer minuteDepart) {
+		this.minuteDepart = minuteDepart;
+	}
 	public void setPerimetre(Double perimetre) {
 		this.perimetre = perimetre;
 	}
-
 
 	public Double getPerimetre() {
 		return perimetre;
 	}
     
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
 	/***********************************************
 	 * CONSTRUCTEURS
 	 ***********************************************/
 	
-	public Trajet(String nom,Double perimetre, Date dateDepart,Date heureDepart,List<PT>pts,List<Bagage>bagages) {
+
+	public Trajet(String nom,Double perimetre, Date dateDepart,Integer heureDepart,Integer minuteDepart,List<PT>pts,List<Bagage>bagages,List<Message>messages) {
+
 		super();
 		this.nom = nom;
 		this.perimetre = perimetre;
 		this.dateDepart = dateDepart;
 		this.heureDepart = heureDepart;
+		this.minuteDepart = minuteDepart;
 		this.pts = pts;
 		this.bagages = bagages;
+		this.messages = messages;
 	}
 
 	public Trajet() {
 	super();
 	this.bagages = new ArrayList<Bagage>();
 	this.pts = new ArrayList<PT>();
+	this.messages = new ArrayList<Message>();
 	
 	}
 	

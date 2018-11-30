@@ -17,29 +17,34 @@
 				<div id="logo"><img src="images/matchmooveBLANCS.png"></div>
                 <nav>
                     <ul>
-                                    	
+
+                    	<#if roles??>
+    						<#list roles as r>
+            					<#if r=="ROLE_ADMIN">
+            						<li><a href="/admin">Administrateur</a></li>
+            					</#if>
+        					</#list>
+   						</#if>
+
+
                         <li><a href="#">Je match !</a></li>
                         <li><a href="#">Proposer un trajet</a></li>
                         <li><a href="#">Rechercher un trajet</a></li>
                         <li><a href="#">Messagerie</a></li>
                         <li><a href="#">BLOG</a></li>
+						<li><a href="/logout"><img src="images/logout.png"></a></li>
+                    </ul>
+				</nav>	
+
+			     		
                     </ul>
 				</nav>	
 			
-			<div class="dropdown">
-				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-					ADMIN
-				</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-					<li><a href="/adresses" class="list-group-item" title="Adresses">Adresses</a></li>
-					<li><a href="/articles" class="list-group-item" title="Articles">Articles</a></li>
-					<li><a href="/cars" class="list-group-item" title="cars">Cars</a></li>
-					<li><a href="/comptes" class="list-group-item" title="comptes">Comptes</a></li>
-					<li><a href="/profils" class="list-group-item" titlz="profils">Profils</a></li>
-					<li><a href="/roles" class="list-group-item" title="roles">Roles</a></li>
-					
-				</ul>
-			</div>
+
+                    </ul>
+				</nav>	
+
+
 		</header>
 <h2>Decouvrez les derniers trajets</h2>
 
@@ -127,4 +132,3 @@
 </body>
 	
 </html>
-

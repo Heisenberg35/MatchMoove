@@ -1,6 +1,4 @@
 <div>
-        <div>id</div>
-        <div>${i.getId()}</div>
          <div>volume</div>
         <#if i.getVolume()??>
         <div>${i.getVolume()}</div>
@@ -19,8 +17,10 @@
         <#else>
         <div>NULL</div>
         </#if>
+        
         <div>
             <a href="${detailPath}/edit/${i.getId()}">Show</a>
             <a href="${detailPath}/delete/${i.getId()}">Delete</a>
         </div>
     </div>
+  
