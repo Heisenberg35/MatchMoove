@@ -13,20 +13,32 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700" rel="stylesheet">
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="60">
-<header>
-				<div id="logo"><img src="images/matchmooveBLANCS.png"></div>
+		<header>
+				<div id="logo"><img src="images/matchmooveBLANCS.png"></div><a href="/logout">Deconnection</a>
                 <nav>
                     <ul>
-                        <li><a href="/admin">Administrateur</a></li>            	
+                    	<#if roles??>
+    						<#list roles as r>
+            					<#if r=="ROLE_ADMIN">
+            						<li><a href="/admin">Administrateur</a></li>
+            					</#if>
+        					</#list>
+   						</#if>
+
                         <li><a href="#">Je match !</a></li>
                         <li><a href="#">Proposer un trajet</a></li>
                         <li><a href="#">Rechercher un trajet</a></li>
                         <li><a href="#">Messagerie</a></li>
                         <li><a href="#">BLOG</a></li>
+<<<<<<< HEAD
 			     <li><a href="/logout"><img src="images/logout.png"></a></li>
                     </ul>
 				</nav>	
 			
+=======
+                    </ul>
+				</nav>	
+>>>>>>> 264f4f3b35f4df371eb23d056e778535332c9298
 		</header>
 <h2>Decouvrez les derniers trajets</h2>
 

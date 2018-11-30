@@ -40,6 +40,7 @@
     
     <div>volumeMax</div>
     <input type="text" name="volumeMax" value="<#if item?? && item.getVolumeMax()??>${item.getVolumeMax()}</#if>">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div><input type="submit" value="Save"></div>
      <input type="hidden"
             name="${_csrf.parameterName}"
