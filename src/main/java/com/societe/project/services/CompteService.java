@@ -62,27 +62,16 @@ public class CompteService extends BaseService<Compte> {
 		super.save(item);
 	}
 
-<<<<<<< HEAD
 @Override
 protected List<Compte> setItemsByCriterias(Compte item, List<Compte> result) {
 	// TODO Auto-generated method stub
 	return null;
 }
 
-public Compte  findByEmail(String email) {
+public Compte findByEmail(String email) {
 	return compteRepository.findByEmail(email);
 }
-=======
-	@Override
-	protected List<Compte> setItemsByCriterias(Compte item, List<Compte> result) {
-		// TODO Auto-generated method stub
-		return null;
-	}
->>>>>>> master
-	
-	public Compte findByEmail(String email) {
-		return this.compteRepository.findByEmail(email);
-	}
+
 
 	public Compte finByEmailCompte(String email) {
 		
@@ -101,6 +90,8 @@ public Compte  findByEmail(String email) {
 		
 		compte.setRole(role);
 		compte.setProfil(profil);
+		
+		compte.setActive(1);
 		
 		this.save(compte);
 		profil.setCompte(compte);

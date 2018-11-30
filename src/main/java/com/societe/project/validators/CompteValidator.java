@@ -48,12 +48,14 @@ public class CompteValidator  {
 				response = true;
 				errors.put("Email","Email exist");
 				System.out.println("error validator email");
+				
+				
 			}
-			
+			/*
 			if(!compte.getEmail().matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)") ){
 				response = true;
 				errors.put("Email","Error de format");
-			}
+			}*/
 			
 			if(this.isValidatePassword(compte)) {
 				System.out.println("error validator pass");

@@ -65,6 +65,8 @@ public class AppFormController {
 	public String createCompteValidate(@ModelAttribute Compte compte,Model model) {
 		System.out.println("Post de create user");
 
+		compte.afficheCompte();
+		
 		boolean isvalid =false;
 		
 		if(!compteValidator.validateCompteAndPassWord(compte)) {
