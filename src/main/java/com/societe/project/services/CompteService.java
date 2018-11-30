@@ -44,6 +44,10 @@ protected List<Compte> setItemsByCriterias(Compte item, List<Compte> result) {
 	// TODO Auto-generated method stub
 	return null;
 }
+
+public Compte  findByEmail(String email) {
+	return compteRepository.findByEmail(email);
+}
 	
 
 }

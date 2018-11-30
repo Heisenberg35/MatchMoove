@@ -9,7 +9,7 @@
     </#if>
 </#if>
     <div>volume</div>
-    <input type="text" name="volume" value="<#if item?? && item.getVolume()??>${item.getVolume()}</#if>">
+    <input type="number" min=0 step="0.01" style="width: 5em" name="volume" value="<#if item?? && item.getVolume()??>${item.getVolume()}</#if>" required>
     
     <div>Choisir le trajet</div>
     <#if trajets??>

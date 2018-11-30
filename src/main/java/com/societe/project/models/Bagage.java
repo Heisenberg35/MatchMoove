@@ -11,14 +11,11 @@ import com.societe.project.database.DBItem;
 @Entity
 @Table(name="Bagage")
 public class Bagage extends DBItem {
-<<<<<<< HEAD
-	
-=======
+
 
 @Column
 private Double volume;
 
->>>>>>> lama
 @ManyToOne
 @JoinColumn(name = "profil_id",referencedColumnName="id")
 private Profil profil;
@@ -27,12 +24,8 @@ private Profil profil;
 @JoinColumn(name = "trajet_id",referencedColumnName="id")
 private Trajet trajet;
 
-<<<<<<< HEAD
-@Column
-private Double volume;
-=======
 
->>>>>>> lama
+
 
 /***********************************************
  * GETTEUR ET SETTEUR

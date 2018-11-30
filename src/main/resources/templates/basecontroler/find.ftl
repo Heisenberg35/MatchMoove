@@ -4,7 +4,7 @@
 
 <form class="text-center border border-light" action="${detailPath}/find" method="POST">
 <#include "..${detailPath}/specific/emptyshowform.ftl"/>
-<input type="submit" value="Search">
+<br><input type="submit" value="Search">
  <input type="hidden"
             name="${_csrf.parameterName}"
             value="${_csrf.token}"/>

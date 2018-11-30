@@ -20,30 +20,15 @@ public class FirstService {
 	@Autowired
 	private CompteService compteService;
 	
-<<<<<<< HEAD
+
 	@Autowired
 	private CompteRepository compteRepository;
 	
 	@Autowired
 	private ProfilService profilService;
-=======
-	public void createFirstAdmin() {
-		try {
-			Role role = new Role("ROLE_ADMIN");
-			this.roleService.save(role);
-			
-			//Profil profil = new Profil("superadmin", "superadmin", "0122334455");
-				
-			Compte compte = new Compte("superadmin@gmail.com", "l",1, role);
-			this.compteService.save(compte);
-		} catch (Exception e) {
-			// TODO: Pour le moment un try catch pour eviter de drop la database à chaque lancement de l'application A MODIFIER
-			
-		}
-		
-			
-		}
->>>>>>> lama
+
+	
+
 	
 	public void createFirstAdminAndFirstUser(String initRole) {
         if(!isExistAdminOrUser("admin@gmail.com")) {

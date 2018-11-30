@@ -1,4 +1,4 @@
 <div>longitude</div>
-<input type="text" name="longitude" value="">
+<input type="number" min=0 step="0.01" style="width: 5em" name="longitude" value="" required>
 <div>altitude</div>
-<input type="text" name="altitude" value="">
+<input type="number" min=0 step="0.01" style="width: 5em" name="altitude" value="" required>
