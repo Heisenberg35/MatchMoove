@@ -24,21 +24,20 @@ public class CompteService extends BaseService<Compte> {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
+	@Autowired
+	private CompteProfilDto dto;
+	
+	@Autowired
+	private RoleService roleService;
+	
+	@Autowired
+	private ProfilService profilService;
+	
 	@Override
 	protected BaseCRUDRepository<Compte> getCRUDRepository() {
 		return compteRepository;
 	}
-	
-	@Autowired
-	private CompteProfilDto dto;
-	
-	
-	@Autowired
-	private RoleService roleService;
-	@Autowired
-	private ProfilService profilService;
-	
-	
+
 	public CompteProfilDto getDto() {
 		return dto;
 	}
