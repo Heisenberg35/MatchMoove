@@ -14,6 +14,7 @@ import com.societe.project.models.Role;
 import com.societe.project.services.CompteService;
 import com.societe.project.services.RoleService;
 import com.societe.project.validators.CompteValidator;
+import com.societe.project.validators.Profvalidator;
 
 
 @Controller
@@ -44,8 +45,8 @@ public class AppFormController {
 	@Autowired
 	private CompteValidator compteValidator;
 	
-	//@Autowired
-	//private ProfilValidator profilValidator;
+	@Autowired
+	private Profvalidator profilValidator;
 	
 	/*
 	*************************************************
@@ -111,13 +112,18 @@ public class AppFormController {
 		//reste la verification name and lastName
 		
 			profil.afficheProfil();
-		
-	    	  //isvalid =true;
-		      model.addAttribute("detailPath",VUE_CREATE_PROFIL );
-	    	  compteService.getDto().createProfit(profil);
-	    	  compteService.initElementTable(role);
-	      
 			
+			if(!profilValidator.validateProfil(profil)) {
+				
+				compteService.getDto().createProfit(profil);
+				compteService.initElementTable(role);
+				isvalid = true;
+			}else {
+				System.out.println("error profil");
+				model.addAttribute("form", profilValidator.getErrors());
+				model.addAttribute("detailPath",VUE_CREATE_PROFIL );
+			}
+		      
 		return (isvalid) ? "redirect:"+VUE_CREATE_COMPTE : VUES+VUE_CREATE_PROFIL;
 	}
 	
