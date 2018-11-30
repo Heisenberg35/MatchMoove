@@ -1,12 +1,13 @@
 <#import "/spring.ftl" as spring/>
 
 
-<link rel="stylesheet" type="text/css" href="<@spring.url '/css/formCreateCompte.css'/>"/>
+
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/errorFormCompte.css'/>"/>
 
 <h1> vue create user</h1>
 
 
-    <form class="text-center border border-light" action="${detailPath}" method="POST">
+    <form id="resultForm" class="text-center border border-light" action="${detailPath}" method="POST">
 
    <!--////////////////////////////////////////////////////-->
    <!--             Gestion id hiden                        -->
@@ -29,10 +30,12 @@
     <div class="form-group compte">
         
         <div>Adresse E-mail</div>
-        <input type="email" name="email" value="<#if item?? && item.getEmail()??>${item.getEmail()}</#if>" required>
+        <span class="errors"></span>
+        <input class="form-control" type="email" name="email" value="<#if item?? && item.getEmail()??>${item.getEmail()}</#if>" required>
    
         <div>Mot de passe</div>
-        <input type="password" name="password" value="<#if item?? && item.getPassword()??>${item.getPassword()}</#if>" required>
+        <span class="errors"> </span>
+        <input class="form-control" type="password" name="password" value="<#if item?? && item.getPassword()??>${item.getPassword()}</#if>" required>
 
     </div>
 
@@ -65,4 +68,6 @@
      
 </form> 
 
+
+<script type="text/javascript" src="<@spring.url  '/js/formCompte.js'/>"></script>
  
