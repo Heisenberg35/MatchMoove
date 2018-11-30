@@ -64,6 +64,16 @@
             value="${_csrf.token}"/>
          <input type="submit" value="Save"></div>
     </div>
+    
+     <div class="error">
+    	<#if form??>
+	    	<#list form?keys as key> 
+	   			<p>	${key}  = ${form[key]} </p>
+	   				  
+			</#list> 	
+    	</#if>
+    	
+    </div>
 
 
 </form> 
