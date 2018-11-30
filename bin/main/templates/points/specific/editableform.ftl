@@ -9,10 +9,10 @@
     </#if>
 </#if>
     <div>longitude</div>
-    <input type="text" name="longitude" value="<#if item?? && item.getLongitude()??>${item.getLongitude()}</#if>">
+    <input type="number" style="width: 5em" name="longitude" value="<#if item?? && item.getLongitude()??>${item.getLongitude()}</#if>" required>
     
     <div>altitude</div>
-    <input type="text" name="altitude" value="<#if item?? && item.getAltitude()??>${item.getAltitude()}</#if>">
+    <input type="number" style="width: 5em" name="altitude" value="<#if item?? && item.getAltitude()??>${item.getAltitude()}</#if>" required>
     
     <div>Choisir le trajet</div>
     <#if trajets??>

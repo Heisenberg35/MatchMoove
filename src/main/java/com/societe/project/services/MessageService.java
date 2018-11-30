@@ -28,6 +28,7 @@ public class MessageService extends BaseService<Message>{
 		}else if(!item.getDate().equals(null)) {
 			result = this.messageRepository.findByDate(item.getDate());
 		}
+		else return null;
 		return result;
 	}
 	
