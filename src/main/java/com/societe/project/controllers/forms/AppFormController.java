@@ -1,0 +1,126 @@
+package com.societe.project.controllers.forms;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+
+import com.societe.project.models.Compte;
+import com.societe.project.models.Profil;
+import com.societe.project.models.Role;
+import com.societe.project.services.CompteService;
+import com.societe.project.services.RoleService;
+import com.societe.project.validators.CompteValidator;
+
+
+@Controller
+public class AppFormController {
+	
+	/*
+	*************************************************
+	*    @Constante
+	*************************************************
+	*/
+
+	private static final String VUES 	           = "forms";
+	
+	private static final String VUE_CREATE_COMPTE  = "/createcompte";
+	private static final String VUE_CREATE_PROFIL  = "/createprofil";
+
+	
+	/*
+	*************************************************
+	*    @private
+	*************************************************
+	*/
+	
+	@Autowired
+	private RoleService roleService;
+	@Autowired
+	private CompteService compteService;
+	@Autowired
+	private CompteValidator compteValidator;
+	
+	//@Autowired
+	//private ProfilValidator profilValidator;
+	
+	/*
+	*************************************************
+	*    @Mapping createCompte get && Post
+	*************************************************
+	*/	
+	
+	@RequestMapping(value= {AppFormController.VUE_CREATE_COMPTE}, method=RequestMethod.GET)
+	public String createCompte(Model model) {
+		model.addAttribute("detailPath",VUE_CREATE_COMPTE );
+		System.out.println("get de create user");
+		return VUES+VUE_CREATE_COMPTE;
+	}
+	
+	@RequestMapping(value= {AppFormController.VUE_CREATE_COMPTE}, method=RequestMethod.POST)
+	public String createCompteValidate(@ModelAttribute Compte compte,Model model) {
+		System.out.println("Post de create user");
+
+		boolean isvalid =false;
+		
+		if(!compteValidator.validateCompteAndPassWord(compte)) {
+			System.out.println("compte not exist");
+			
+			isvalid =true;
+			compteService.getDto().createCompte(compte);
+			compteService.getDto().getCreateCompte().afficheCompte();
+		}else {
+			System.out.println("error compte");
+			System.out.println(compteValidator.getErrors().get("password"));
+			
+			model.addAttribute("detailPath",VUE_CREATE_COMPTE );
+			//model.addAttribute("isExistMail",true);
+			model.addAttribute("form",compteValidator.getErrors());
+		}
+		
+		return (isvalid)? "redirect:"+VUE_CREATE_PROFIL : VUES+VUE_CREATE_COMPTE;
+	}
+	
+	
+	/*
+	*************************************************
+	*    @Mapping createProfil get && Post
+	*************************************************
+	*/	
+	
+	@RequestMapping(value= {AppFormController.VUE_CREATE_PROFIL}, method=RequestMethod.GET)
+	public String createProfil(Model model) {
+		model.addAttribute("detailPath",VUE_CREATE_PROFIL );
+		model.addAttribute("roles", roleService.findAll());
+		
+		System.out.println("get de create user");
+		
+		return VUES+VUE_CREATE_PROFIL;
+	}
+	
+	@RequestMapping(value= {AppFormController.VUE_CREATE_PROFIL}, method=RequestMethod.POST)
+	public String createProfilValidate(Model model,@ModelAttribute Profil profil,@ModelAttribute Role role) {
+		System.out.println("Post de create user");
+		
+		boolean isvalid =false;
+		System.out.println(role.getName());
+		
+		//reste la verification name and lastName
+		
+			profil.afficheProfil();
+		
+	    	  //isvalid =true;
+		      model.addAttribute("detailPath",VUE_CREATE_PROFIL );
+	    	  compteService.getDto().createProfit(profil);
+	    	  compteService.initElementTable(role);
+	      
+			
+		return (isvalid) ? "redirect:"+VUE_CREATE_COMPTE : VUES+VUE_CREATE_PROFIL;
+	}
+	
+	
+	
+}

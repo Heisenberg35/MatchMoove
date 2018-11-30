@@ -32,5 +32,10 @@ public class ProfilService extends BaseService<Profil> {
 		}
 		return result;
 	}
+	
+	public void saveProfil(Profil profil) {
+		//utilise les methode de crudRepository
+		profilRepository.save(profil);
+	}
 
 }

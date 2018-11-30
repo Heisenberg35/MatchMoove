@@ -157,4 +157,12 @@ public class Profil extends DBItem {
 				+ pts + ", bagages=" + bagages + "]";
 	}
 	
+	
+	
+	public void afficheProfil() {
+		System.out.println("Profil : ");
+		System.out.println("name :  "+firstname);
+		System.out.println("prenom :  "+lastname);	
+	}
+	
 }

@@ -14,7 +14,7 @@
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="60">
 		<header>
-				<div id="logo"><img src="images/matchmooveBLANCS.png"></div><a href="/logout">Deconnection</a>
+				<div id="logo"><img src="images/matchmooveBLANCS.png"></div>
                 <nav>
                     <ul>
                     	<#if roles??>
@@ -30,15 +30,14 @@
                         <li><a href="#">Rechercher un trajet</a></li>
                         <li><a href="#">Messagerie</a></li>
                         <li><a href="#">BLOG</a></li>
-<<<<<<< HEAD
-			     <li><a href="/logout"><img src="images/logout.png"></a></li>
+			     		<li><a href="/logout"><img src="images/logout.png"></a></li>
                     </ul>
 				</nav>	
 			
-=======
+
                     </ul>
 				</nav>	
->>>>>>> 264f4f3b35f4df371eb23d056e778535332c9298
+
 		</header>
 <h2>Decouvrez les derniers trajets</h2>
 

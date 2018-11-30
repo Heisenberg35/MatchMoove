@@ -1,38 +1,85 @@
 package com.societe.project.validators;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
-import org.springframework.validation.Validator;
 
 import com.societe.project.models.Compte;
 import com.societe.project.services.CompteService;
 
 @Component
-public class CompteValidator implements Validator {
+public class CompteValidator  {
 
-	@Autowired
-	private CompteService compteService;
-	
-	@Override
-	public boolean supports(Class<?> clazz) {
-		return Compte.class.equals(clazz);
-	}
-	
-	@Override
-	public void validate(Object objet, Errors errors) {
-		Compte compte = (Compte) objet;
+	  @Autowired
+	  private CompteService compteService;
+	  
+	  private Map<String,String> errors = new HashMap<String,String>();
+
+	  /*
+		*************************************************
+		*    @Gettter Setter
+		*************************************************
+		*/
+	  
+	  	public Map<String, String> getErrors() {
+			return errors;
+		}
+		public void setErrors(Map<String, String> errors) {
+			this.errors = errors;
+		}
+	  
+	  /*
+		*************************************************
+		*    @method Traitement d'un Compte
+		*************************************************
+		*/
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "notEmpty");
-			if (compteService.findByEmail(compte.getEmail()) != null) {
-			errors.rejectValue("email", "Duplicate.userForm.email");
+		public boolean validateCompteAndPassWord(Compte compte) {
+			
+			boolean response = false;
+			
+			errors.clear();
+			
+			Compte c = compteService.finByEmailCompte(compte.getEmail());
+			
+			if(c != null) {
+				response = true;
+				errors.put("Email","Email exist");
+				System.out.println("error validator email");
+			}
+			if(this.isValidatePassword(compte)) {
+				System.out.println("error validator pass");
+			    errors.put("password","Size.compteForm.password");
+			    response = true;
+			}
+			
+			return response;
 		}
 		
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
-	       	if (compte.getPassword().length() < 8 || compte.getPassword().length() > 32) {
-	            errors.rejectValue("password", "Size.userForm.password");
+		public boolean isValidatePassword(Compte compte) {
+			boolean response = false;
+			if (compte.getPassword().length() < 8 || compte.getPassword().length() > 32) {
+	            response = true;
 	        }
-	}
+			return response;
+		}
+		
+		public boolean isValidateEmail(Compte compte) {
+			return(!isExistCompte(compte.getEmail())) ? true : false;
+		}
+		
+		public boolean isExistCompte(String mail) {
+			
+			Compte compte = compteService.finByEmailCompte(mail);
+			boolean response = false;
+
+			if(compte != null) {
+				response = true;
+				errors.put("Email","Email exist");
+			}
+			return response ;
+		}
 
 }

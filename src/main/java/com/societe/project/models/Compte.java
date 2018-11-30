@@ -134,4 +134,19 @@ public class Compte extends DBItem {
 		this.articles = articles;
 		this.profil = profil;
 	}
+	
+	
+	 /*
+	*************************************************
+	*    @Methods
+	*************************************************
+	*/ 
+	
+	public void afficheCompte() {
+		System.out.println("Compte : ");
+		System.out.println("email : "+email);
+		System.out.println("pass : "+password);
+		
+	}
 }
+
