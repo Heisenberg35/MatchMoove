@@ -31,8 +31,15 @@
      </#list>      
     </select> 
 
+<<<<<<< HEAD
+=======
+   <select name="m" required>
+            <option value="01">00</option>
+            <option value="01">05</option>
+    </select>
+    <input type="hidden" name="heureDepart" value="">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+>>>>>>> master
     <div><input type="submit" value="Save"></div>
-     <input type="hidden"
-            name="${_csrf.parameterName}"
-            value="${_csrf.token}"/>
+
 </form> 

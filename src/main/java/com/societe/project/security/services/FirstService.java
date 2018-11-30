@@ -20,15 +20,21 @@ public class FirstService {
 	@Autowired
 	private CompteService compteService;
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 	@Autowired
 	private CompteRepository compteRepository;
 	
 	@Autowired
 	private ProfilService profilService;
+<<<<<<< HEAD
 
 	
 
+=======
+>>>>>>> master
 	
 	public void createFirstAdminAndFirstUser(String initRole) {
         if(!isExistAdminOrUser("admin@gmail.com")) {

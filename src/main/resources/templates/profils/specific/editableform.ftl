@@ -14,5 +14,6 @@
     <input type="text" name="lastname" value="<#if item?? && item.getLastname()??>${item.getLastname()}</#if>" required>
     <div>Telephone</div>
     <input type="tel" name="phoneNumber" value="<#if item?? && item.getPhoneNumber()??>${item.getPhoneNumber()}</#if>" required>
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div><input type="submit" value="Save"></div>
 </form> 

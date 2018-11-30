@@ -16,6 +16,8 @@ public class Bagage extends DBItem {
 @Column
 private Double volume;
 
+
+
 @ManyToOne
 @JoinColumn(name = "profil_id",referencedColumnName="id")
 private Profil profil;
@@ -23,7 +25,6 @@ private Profil profil;
 @ManyToOne
 @JoinColumn(name = "trajet_id",referencedColumnName="id")
 private Trajet trajet;
-
 
 
 

@@ -28,10 +28,8 @@
         </#list>
     </select>
     </#if>
-    <input type="hidden"
-            name="${_csrf.parameterName}"
-            value="${_csrf.token}"/>
-            
+    
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div><input type="submit" value="Save"></div>
     
 </form> 

@@ -39,7 +39,9 @@
     
     
     <div>volumeMax</div>
+
     <input type="number" min=0 step="0.01" style="width: 5em" name="volumeMax" value="<#if item?? && item.getVolumeMax()??>${item.getVolumeMax()}</#if>" required>
+
     <div><input type="submit" value="Save"></div>
      <input type="hidden"
             name="${_csrf.parameterName}"
