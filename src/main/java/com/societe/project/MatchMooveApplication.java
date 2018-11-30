@@ -17,6 +17,7 @@ public class MatchMooveApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MatchMooveApplication.class, args);
+		System.out.println("test");
 	}
 
 	@Autowired
