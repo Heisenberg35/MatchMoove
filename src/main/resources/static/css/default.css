@@ -17,6 +17,14 @@ header
 
 }
 
+#userlogger{
+	text-align: center;
+	text-transform: capitalize;
+	color: #bddd1d;
+    font-weight: 700;
+    font-size: 3.2vw;
+}
+
 #logo img
 {
     width:30%; 

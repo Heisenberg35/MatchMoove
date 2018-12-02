@@ -15,6 +15,13 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="60">
 		<header>
 				<div id="logo"><img src="images/matchmooveBLANCS.png"></div>
+				<div>
+					<p id="userlogger">
+						<#if profil??>
+							Bonjour ${profil.getLastname() + " " + profil.getFirstname()}
+						</#if>
+					</p>
+				</div>
                 <nav>
                     <ul>
                     	<#if roles??>

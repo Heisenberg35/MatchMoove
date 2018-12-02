@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.societe.project.models.Profil;
 import com.societe.project.services.RecuperationInfoLogin;
 
 @Controller
@@ -21,16 +22,10 @@ public class HomeController {
 	
 	@RequestMapping(value = {"/home"})
 	public String showPage(Model model) {
-		//Ici je récupère la liste des roles de l'utilisateur connecté afin de passer dans la vue les différents roles
-//		ArrayList<String> roles = new ArrayList<>();
-//		SecurityContext securityContext = SecurityContextHolder.getContext();
-//		Collection<? extends GrantedAuthority> role = securityContext.getAuthentication().getAuthorities();
-//		for (GrantedAuthority grantedAuthority : role) {
-//			roles.add(grantedAuthority.getAuthority());
-//		}
-		
 		ArrayList<String> roles = recuperationInfoLogin.recuperationRole();
+		Profil profil = recuperationInfoLogin.recuperationProfil();
 		model.addAttribute("roles", roles);
+		model.addAttribute("profil", profil);
 		return "/home";
 	}
 }
