@@ -1,6 +1,7 @@
 package com.societe.project.database;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -13,5 +14,5 @@ public interface ProfilRepository extends BaseCRUDRepository<Profil> {
 	List<Profil> findByFirstnameAndLastname(String firstname, String lastname);
 	List<Profil> findByFirstname(String firstname);
 	List<Profil> findByLastname(String lastname);
-
+	Optional<Profil> findById(Integer id);
 }

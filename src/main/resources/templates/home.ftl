@@ -29,9 +29,12 @@
             					<#if r=="ROLE_ADMIN">
             						<li><a href="/admin">Administrateur</a></li>
             					</#if>
+            					<#if r=="ROLE_USER">
+            						<li><a href="/user/edit/${profil.getId()}">Mon compte</a></li>
+            					</#if>
         					</#list>
    						</#if>
-
+						
                         <li><a href="#">Je match !</a></li>
                         <li><a href="#">Proposer un trajet</a></li>
                         <li><a href="#">Rechercher un trajet</a></li>

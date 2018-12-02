@@ -1,6 +1,7 @@
 package com.societe.project.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,5 +38,9 @@ public class ProfilService extends BaseService<Profil> {
 		//utilise les methode de crudRepository
 		profilRepository.save(profil);
 	}
-
+	
+	public Optional<Profil> findById(Integer id) {
+		Optional<Profil> profil = profilRepository.findById(id);
+		return profil;
+	}
 }
