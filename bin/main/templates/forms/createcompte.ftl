@@ -66,9 +66,15 @@
      
 </form> 
 
+
 <span class="errors"></span>
 <span class="errors"></span>
 
 
 <script type="text/javascript" src="<@spring.url  '/js/formCompte.js'/>"></script>
+
+<span class="errors"> </span>
+<span class="errors"> </span>
+<!--<script type="text/javascript" src="<@spring.url  '/js/formCompte.js'/>"></script>-->
+
  
