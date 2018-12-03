@@ -111,7 +111,10 @@ h2
 	justify-content: center;
 	margin-bottom: 80px;
 }
-
+.actubloc
+{
+	width: 400px;
+}
 .actubloc img
 {
 	height: 200px;

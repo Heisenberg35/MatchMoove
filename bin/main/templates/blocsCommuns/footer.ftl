@@ -1,5 +1,4 @@
 <link rel="stylesheet" type="text/css" href="<@spring.url 'default.css'/>"/>
-
 <div id="footer">
 		<ul>
 			<li>Nous contacter</li>

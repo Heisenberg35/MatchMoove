@@ -1,7 +1,7 @@
 <#import "/spring.ftl" as spring/>
 <#include "blocsCommuns/head.ftl"/>	
 <#include "blocsCommuns/headerUser.ftl"/>	
-
+<title>Home</title>
 <h2>Decouvrez les derniers trajets</h2>
 
 	<section id="Trajets"> 

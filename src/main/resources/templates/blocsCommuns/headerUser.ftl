@@ -1,8 +1,7 @@
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/default.css'/>"/>
-<link rel="stylesheet" type="text/css" href="<@spring.url '../css/bootstrap.css'/>"/>
 
 <header>
-	<div id="logo"><a href="/home><img src="images/matchmooveBLANCS.png"></a></div>
+	<a href="/home"><div id="logo"><img src="images/matchmooveBLANCS.png"></div></a>
 		<nav>
  			<ul>
             	<#if roles??>
