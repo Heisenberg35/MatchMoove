@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.societe.project.controllers.base.BaseController;
 import com.societe.project.models.Profil;
-import com.societe.project.services.CompteService;
 import com.societe.project.services.ProfilService;
 import com.societe.project.services.base.BaseService;
 

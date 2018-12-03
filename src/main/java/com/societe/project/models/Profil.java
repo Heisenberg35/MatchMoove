@@ -46,7 +46,7 @@ public class Profil extends DBItem {
 	 * GETTEUR ET SETTEUR
 	 ***********************************************/
 	public String getFirstname() {
-		return firstname;
+		return firstname.toUpperCase();
 	}
 
 	public void setFirstname(String firstname) {
