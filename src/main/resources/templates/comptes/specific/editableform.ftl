@@ -14,9 +14,9 @@
     <input type="password" name="password" value="<#if item?? && item.getPassword()??>${item.getPassword()}</#if>" required>
     <div>Etat du compte</div>
     <input type="radio" id="actived" name="active" value=1 checked/>
-  	<label for="active">Compte activé</label>
+  	<label for="active">Activation</label>
   	<input type="radio" id="travail" name="active" value=0/>
-  	<label for="active">Compte désactivé</label>
+  	<label for="active">Desactivation</label>
     
     <div>Associer un profil</div>
     <#if profils??>

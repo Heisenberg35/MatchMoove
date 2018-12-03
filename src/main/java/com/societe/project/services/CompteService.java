@@ -88,6 +88,7 @@ public class CompteService extends BaseService<Compte> {
 		
 		compte.setRole(role);
 		compte.setProfil(profil);
+		compte.setActive(1);
 		
 		this.save(compte);
 		profil.setCompte(compte);

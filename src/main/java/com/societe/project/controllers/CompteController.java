@@ -14,8 +14,8 @@ import com.societe.project.services.RoleService;
 import com.societe.project.services.base.BaseService;
 
 @Controller
-@Secured("ROLE_ADMIN")
 @RequestMapping(CompteController.BASE_URL)
+@Secured("ROLE_ADMIN")
 public class CompteController extends BaseController<Compte> {
 
 	public static final String BASE_URL = "/comptes";

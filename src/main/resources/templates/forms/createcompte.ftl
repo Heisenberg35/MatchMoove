@@ -30,11 +30,9 @@
     <div class="form-group compte">
         
         <div>Adresse E-mail</div>
-        <span class="errors"></span>
         <input class="form-control" type="email" name="email" value="<#if item?? && item.getEmail()??>${item.getEmail()}</#if>" required>
    
         <div>Mot de passe</div>
-        <span class="errors"> </span>
         <input class="form-control" type="password" name="password" value="<#if item?? && item.getPassword()??>${item.getPassword()}</#if>" required>
 
     </div>
@@ -67,7 +65,7 @@
     </div>
      
 </form> 
-
-
-<script type="text/javascript" src="<@spring.url  '/js/formCompte.js'/>"></script>
+<span class="errors"> </span>
+<span class="errors"> </span>
+<!--<script type="text/javascript" src="<@spring.url  '/js/formCompte.js'/>"></script>-->
  
