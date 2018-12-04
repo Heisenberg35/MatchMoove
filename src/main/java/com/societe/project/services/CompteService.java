@@ -91,8 +91,6 @@ public Compte findByEmail(String email) {
 		compte.setProfil(profil);
 		compte.setActive(1);
 		
-		compte.setActive(1);
-		
 		this.save(compte);
 		profil.setCompte(compte);
 		

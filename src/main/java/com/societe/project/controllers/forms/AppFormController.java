@@ -110,6 +110,7 @@ public class AppFormController {
 		
 		boolean isvalid =false;
 		System.out.println(role.getName());
+		System.out.println("---------------------------------------"+role.getId());
 		
 		//reste la verification name and lastName
 		
