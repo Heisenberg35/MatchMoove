@@ -1,5 +1,5 @@
 <div>
-	<div>${i.getId()}</div>
+	
         <#if i.getTitle()??>
         	<div>Titre : ${i.getTitle()}</div>
         <#else>
@@ -11,12 +11,7 @@
         	<div>NULL</div>
         </#if>
         <#if i.getDate()??>
-        	<div>Date : ${i.getDate()}</div>
-        <#else>
-        	<div>NULL</div>
-        </#if>
-        <#if i.getCompte()??>
-        	<div>Compte : ${i.getCompte().getEmail()}</div>
+        	<div>Date : ${i.getDate()?string["yyyy-MM-dd"]}</div>
         <#else>
         	<div>NULL</div>
         </#if>

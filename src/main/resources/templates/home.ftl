@@ -70,26 +70,21 @@
 			<p>Prix 8,50€</p>
         </div>
 	</section>
-	
+<#if lastArticles??>
 <h2>Nos actualites</h2>
+ 
+ 
 	
 	<section id="Actu"> 
+	<#list lastArticles as i>	
     	<div class="actubloc">
-        	<a href="#"><img src="images/article3.jpg"></a>
-			<p><a href="#">Ecologie : Utiliser MatchMoove! </a></p>
-			<p>Et olim licet otiosae sint tribus pacataeque centuriae...</p>
+			<p><a href="displayArticle/${i.getId()}"><#if i.getTitle()??> ${i.getTitle()} </#if> </a></p>
+			<p><#if i.getDescription()??> ${i.getDescription()} </#if></p>
        	</div>
-        <div class="actubloc">
-         	<a href="#"><img src="images/article3.jpg"  ></a>
-			<p><a href="#">Notre appli fait parler d'elle </a></p>
-			<p>Et olim licet otiosae sint tribus pacataeque centuriae...</p>
-        </div> 
-        <div class="actubloc">
-        	<a href="#"><img src="images/article3.jpg"  ></a>
-			<p><a href="#">Hausse du prix du carburant... </a></p>
-			<p>Et olim licet otiosae sint tribus pacataeque centuriae...</p>
-         </div>
+        
+    </#list>
 	</section>
-	
+ 
+</#if>	
 <#include "blocsCommuns/footer.ftl"/>	
 
