@@ -28,9 +28,12 @@ public class AppFormController {
 
 	private static final String VUES 	           = "forms";
 	
-	private static final String VUE_CREATE_COMPTE  = "/createcompte";
-	private static final String VUE_CREATE_PROFIL  = "/createprofil";
-
+	private static final String URL_CREATE_COMPTE  = "/admin/createcompte";
+	private static final String URL_CREATE_PROFIL  = "/admin/createprofil";
+	
+	
+	private static final String VUE_CREATE_COMPTE = VUES + "/createcompte";
+	private static final String VUE_CREATE_PROFIL = VUES + "/createprofil";
 	
 	/*
 	*************************************************
@@ -54,11 +57,11 @@ public class AppFormController {
 	*************************************************
 	*/	
 	
-	@RequestMapping(value= {AppFormController.VUE_CREATE_COMPTE}, method=RequestMethod.GET)
+	@RequestMapping(value= {AppFormController.URL_CREATE_COMPTE}, method=RequestMethod.GET)
 	public String createCompte(Model model) {
 		model.addAttribute("detailPath",VUE_CREATE_COMPTE );
 		System.out.println("get de create user");
-		return VUES+VUE_CREATE_COMPTE;
+		return VUE_CREATE_COMPTE;
 	}
 	
 	@RequestMapping(value= {AppFormController.VUE_CREATE_COMPTE}, method=RequestMethod.POST)
@@ -92,17 +95,17 @@ public class AppFormController {
 	*************************************************
 	*/	
 	
-	@RequestMapping(value= {AppFormController.VUE_CREATE_PROFIL}, method=RequestMethod.GET)
+	@RequestMapping(value= {AppFormController.URL_CREATE_PROFIL}, method=RequestMethod.GET)
 	public String createProfil(Model model) {
-		model.addAttribute("detailPath",VUE_CREATE_PROFIL );
+		model.addAttribute("detailPath",URL_CREATE_PROFIL );
 		model.addAttribute("roles", roleService.findAll());
 		
 		System.out.println("get de create user");
 		
-		return VUES+VUE_CREATE_PROFIL;
+		return VUE_CREATE_PROFIL;
 	}
 	
-	@RequestMapping(value= {AppFormController.VUE_CREATE_PROFIL}, method=RequestMethod.POST)
+	@RequestMapping(value= {AppFormController.URL_CREATE_PROFIL}, method=RequestMethod.POST)
 	public String createProfilValidate(Model model,@ModelAttribute Profil profil,@ModelAttribute Role role) {
 		System.out.println("Post de create user");
 		
@@ -124,7 +127,7 @@ public class AppFormController {
 				model.addAttribute("detailPath",VUE_CREATE_PROFIL );
 			}
 		      
-		return (isvalid) ? "redirect:"+VUE_CREATE_COMPTE : VUES+VUE_CREATE_PROFIL;
+		return (isvalid) ? "redirect:"+URL_CREATE_COMPTE : VUE_CREATE_PROFIL;
 	}
 	
 	
