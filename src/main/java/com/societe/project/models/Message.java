@@ -2,8 +2,9 @@ package com.societe.project.models;
 
 
 
-import java.sql.Date;
 
+
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,8 +26,6 @@ public class Message extends DBItem {
 	*************************************************
 	 */
 	
-	@Column(name="title")
-	private String title;
 	
 	@Column(name="content")
 	private String content;
@@ -60,9 +59,19 @@ public class Message extends DBItem {
 		this.profil = profil;
 		this.messages = messages;
 				}
+	public Message(String content)
+	{
+		
+		this.content = content;
+	
+		
+				}
+	
 	public Message() {
 		super();
 	}
+	
+	
 	/*
 	*************************************************
 	*    @Getter setter

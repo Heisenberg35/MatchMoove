@@ -18,7 +18,7 @@
     <#if item?? && item.getContent()??>${item.getContent()}</#if>
     </textarea>
     <div>Date</div>
-    <input type="date" name="date" value="<#if item?? && item.getDate()??>${item.getDate()}</#if>" required>
+    <input type="date" name="date" value="<#if item?? && item.getDate()??>${item.getDate()?string["yyyy-MM-dd"]}</#if>" required>
     
     <#if profils??>
     <div>Choisir le profil</div>
