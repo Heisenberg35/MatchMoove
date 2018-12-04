@@ -50,7 +50,7 @@ public class RoleController extends BaseController<Role> {
 
 	@Override
 	protected void setupOtherFields(Role item) {
-		item.setProfil(profilService.find(item.getProfil().getId()).get());
+		//item.setProfil(profilService.find(item.getProfil().getId()).get());
 	}
 
 }
