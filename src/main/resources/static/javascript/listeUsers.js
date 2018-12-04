@@ -191,7 +191,7 @@ function changeActionForm(){
 //		console.log(recup_path);
 //		
 //		$('#f-client').attr('action',recup_path);
-		console.log($('#f-client').attr('action','/edit'));
+		console.log($('#f-client').attr('action','/admin/edit'));
 	}
 	
 	changeActionForm();

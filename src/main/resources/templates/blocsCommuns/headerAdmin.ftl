@@ -3,10 +3,10 @@
 				<a href="/home"><div id="logo"><img src="/images/matchmooveBLANCS.png"></div></a>
                 <nav>
                     <ul>
-                    	<li><a href="/profils">Profils</a></li>
-                    	<li><a href="/roles">Roles</a></li>
-                        <li><a href="/comptes">Comptes</a></li>
-                        <li><a href="/adresses">Adresses</a></li>
+                    	
+                        <li><a href="/admin/comptes">Create compte</a></li>
+                     	<li><a href="/admin/comptes">Gestion Compte</a></li>
+                     	
                         <li><a href="/cars">Vehicules</a></li>
                         <li><a href="/trajets">Trajets</a></li>
                         <li><a href="/bagages">Bagages</a></li>
