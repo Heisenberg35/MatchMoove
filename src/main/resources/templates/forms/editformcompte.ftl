@@ -1,6 +1,7 @@
 
-	
-	
+
+<link rel="stylesheet" type="text/css" href="<@spring.url '../css/bootstrap.min.css'/>"/>			
+<link rel="stylesheet" type="text/css" href="<@spring.url '../css/formCreateUser.css'/>"/>	
  <!-- formulaire de creation client -->
         <div class="l-container l-client">
 
@@ -33,19 +34,19 @@
                          <!--form group -->
                          <!--form group -->
                             <div class="form-group">
-                                <label class="label label-nom" for="nom">Nom :</label>
+                                <label class="label label-nom" for="nom">firstname :</label>
                                  <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input id="nom" name="nom" placeholder="First Name" class="form-control" type="text" required>
+                                    <input id="firstname" name="firstname" placeholder="First Name" class="form-control" type="text" required>
                                  </div>
                             </div>
                         <!-- end form group -->
                         <!--form group -->
                             <div class="form-group">
-                                <label class="label label-nom" for="prenom">Prenom :</label>
+                                <label class="label label-nom" for="lastname">Prenom :</label>
                                  <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input id="prenom" name="prenom" placeholder="Last Name" class="form-control" type="text" required>
+                                    <input id="lastname" name="lastname" placeholder="Last Name" class="form-control" type="text" required>
                                  </div>
                             </div>
                         <!-- end form group -->

@@ -1,80 +1,9 @@
 <#import "/spring.ftl" as spring/>
 
-
-
-<link rel="stylesheet" type="text/css" href="<@spring.url '/css/errorFormCompte.css'/>"/>
-
-<h1> vue create user</h1>
-
-
-    <form id="resultForm" class="text-center border border-light" action="${detailPath}" method="POST">
-
-   <!--////////////////////////////////////////////////////-->
-   <!--             Gestion id hiden                        -->
-   <!--////////////////////////////////////////////////////-->
-
-    <#if item??>
-            <div>Id</div>
-            <#if item.getId()??>
-            <div>${item.getId()}</div>
-            <input type="hidden" name="id" value="${item.getId()}">
-            <#else>
-            <div>NA</div>
-        </#if>
-    </#if>
-
-   <!--////////////////////////////////////////////////////-->
-   <!--             group email , login                  -->
-   <!--////////////////////////////////////////////////////-->
-    
-    <div class="form-group compte">
-        
-        <div>Adresse E-mail</div>
-        <input type="email" name="email" value="<#if item?? && item.getEmail()??>${item.getEmail()}</#if>" required>
-   
-        <div>Mot de passe</div>
-        <input type="password" name="password" value="<#if item?? && item.getPassword()??>${item.getPassword()}</#if>" required>
-
-    </div>
-
-    <!--////////////////////////////////////////////////////-->
-   <!--     group validate     importan csrf sinon function pas -->
-   <!--////////////////////////////////////////////////////-->
-
-    <div class="group-form formvalidate">
-     
-     <input type="hidden"
-            name="${_csrf.parameterName}"
-            value="${_csrf.token}"/>
-         <input type="submit" value="Save"></div>
-    </div>
-    
-    <div class="error">
-    	<#if isExistMail??>
-	    	<#if isExistMail == true>
-	    		<p> l'adresse mail existe </p>
-	    	</#if>
-    	</#if>
-    	<#if form??>
-	    	<#list form?keys as key> 
-	   			<p>	${key}  = ${form[key]} </p>
-	   				  
-			</#list> 	
-    	</#if>
-    	
-    </div>
-     
-</form> 
-
-
-<span class="errors"></span>
-<span class="errors"></span>
-
-
-<script type="text/javascript" src="<@spring.url  '/js/formCompte.js'/>"></script>
-
-<span class="errors"> </span>
-<span class="errors"> </span>
-<!--<script type="text/javascript" src="<@spring.url  '/js/formCompte.js'/>"></script>-->
-
- 
+<#include "../blocsCommuns/head.ftl"/>	
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
+<#include "../blocsCommuns/headerAdmin.ftl"/>	
+<div class="br">
+<#include "/forms/editformcompte.ftl"/> 
+<#include "../blocsCommuns/footer.ftl"/>	
+	

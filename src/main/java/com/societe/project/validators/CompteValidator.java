@@ -89,5 +89,9 @@ public class CompteValidator  {
 			}
 			return response ;
 		}
+		
+		public boolean isComparePass(String pass,String confirm) {		
+			return (pass.equals(confirm)) ? true : false;
+		}
 
 }
