@@ -86,14 +86,6 @@ nav img
 	width: 40px;
 }
 
-h2
-{
-	color: #143045;
-	font-size: 30px;
-	text-shadow:0 0 3px black;
-	text-align: center;
-}
-
 h1
 {
 	color: white;
@@ -102,6 +94,20 @@ h1
 	text-align: center;
 	padding-top: 75px;
 }
+
+h2
+{
+	color: #143045;
+	font-size: 30px;
+	text-shadow:0 0 3px black;
+	text-align: center;
+}
+
+h3
+{
+	font-size: 23px;
+}
+
 
 /* Trajets */ 
 #Trajets
@@ -135,7 +141,7 @@ h1
 {
 	display: flex;
 	justify-content: center;
-	margin-bottom: 80px;
+	margin: 80px;
 }
 .actubloc
 {
@@ -155,18 +161,10 @@ h1
 	color: #143045;
 }
 
-.actubloc p:nth-child(2) 
+.actubloc a:hover 
 {
-    font-weight: 700;
-	font-size: 20px;
-}
-
-.actubloc p:nth-child(2):hover
-{
-    font-weight: 700;
-	font-size: 20px;
-	transform:scale(1.1,1.1);
-    cursor: pointer;
+    text-decoration: none;
+    color: #A1AD19;
 }
 
 /* footer */
@@ -214,13 +212,64 @@ h1
 }
 
 /* Base Controller EDIT */
-.form
-{
-	flex-direction: column;
+.formArticle
+{ 
+    flex-direction: column;
     display: flex;
+    flex-wrap: wrap;
+    width: 250px;
+    height: 300px;
+    border: 1px solid black;
+    justify-content: space-around;
     align-items: center;
+    margin: 5px;
 }
 
+.form
+{ 
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    height: 300px;
+    border: 1px solid black;
+    justify-content: space-around;
+}
+
+article
+{
+	display: flex;
+    justify-content: space-between;
+}
+
+#flex
+{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+/* Bouton */
+
+a[title]   
+{
+	height: 35px;
+    width: 100px;
+    font-size: 13px;
+    color: white;
+    background-color: #143045;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 30px;
+    line-height: 36px;
+    display: block;
+    margin-bottom: 3px;
+}
+
+a[title]:hover
+{
+    transform:scale(1.03,1.03);
+}
 
 /* Responsive design */
 @media only screen and (max-width:950px) {

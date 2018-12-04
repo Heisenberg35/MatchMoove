@@ -11,7 +11,15 @@
              </ul>
 		</nav>	
 		<h1>${pageName}</h1>
-		<div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+		<div id="flex">
 <#if items??>
 	<#list items as i>
 		<#include "..${detailPath}/specific/show.ftl"/>
@@ -19,6 +27,62 @@
 </#if>
 </div>
 </header>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <#include "../blocsCommuns/footer.ftl"/>	
 
 
