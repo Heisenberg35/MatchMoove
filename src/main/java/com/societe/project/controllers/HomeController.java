@@ -1,5 +1,6 @@
 package com.societe.project.controllers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.societe.project.firebase.FirebaseNotificationObserver;
+import com.societe.project.firebase.FirebaseOpenHelper;
 import com.societe.project.services.ArticleService;
 import com.societe.project.services.RecuperationInfoLogin;
 
@@ -40,10 +43,19 @@ public class HomeController {
 		return "/home";
 	}
 	
+	
 	@RequestMapping(value = {"/displayArticle/{id}"},method=RequestMethod.GET)
 	public String displayArticle(Model model, @PathVariable Integer id) {
 		model.addAttribute("article",articleService.find(id).get());
 		return "/displayArticle";
+		
+	}
+	
+	@RequestMapping(value = {"/messagerie"},method=RequestMethod.GET)
+	public String messagerie(Model model) throws IOException {
+		model.addAttribute("message", FirebaseNotificationObserver.getInstance().getNotification().getContent());
+	
+		return "/messagerie";
 		
 	}
 	

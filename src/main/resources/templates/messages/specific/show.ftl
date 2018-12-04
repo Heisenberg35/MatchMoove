@@ -6,7 +6,7 @@
         	<div>NULL</div>
         </#if>
         <#if i.getDate()??>
-        	<div>Date : ${i.getDate()}</div>
+        	<div>Date : ${i.getDate()?string["yyyy-MM-dd"]}</div>
         <#else>
         	<div>NULL</div>
         </#if>

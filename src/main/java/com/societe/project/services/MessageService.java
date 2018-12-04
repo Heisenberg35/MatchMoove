@@ -23,12 +23,12 @@ public class MessageService extends BaseService<Message>{
 	@Override
 	protected List<Message> setItemsByCriterias(Message item, List<Message> result) {
 		
-		if (!item.getContent().equals(null)) {
+		if (!item.getContent().trim().equals("")) {
 			result = this.messageRepository.findByContent(item.getContent());
 		}else if(!item.getDate().equals(null)) {
 			result = this.messageRepository.findByDate(item.getDate());
 		}
-		else return null;
+	
 		return result;
 	}
 	
