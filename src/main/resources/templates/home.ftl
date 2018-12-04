@@ -36,7 +36,7 @@
 	<section id="Actu"> 
 	<#list lastArticles as i>	
     	<div class="actubloc">
-			<p><a href="displayArticle/${i.getId()}"><#if i.getTitle()??> ${i.getTitle()} </#if> </a></p>
+			<h3><a href="displayArticle/${i.getId()}"><#if i.getTitle()??> ${i.getTitle()} </#if> </a></h3>
 			<p><#if i.getDescription()??> ${i.getDescription()} </#if></p>
        	</div>
         

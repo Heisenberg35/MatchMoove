@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.societe.project.models.Compte;
+import com.societe.project.services.AdresseService;
 import com.societe.project.services.CompteService;
+import com.societe.project.services.ProfilService;
 
 @Controller
 public class UserController {
@@ -22,6 +24,10 @@ public class UserController {
 	
 	@Autowired
 	CompteService compteService;
+	@Autowired
+	ProfilService profilService;
+	@Autowired
+	AdresseService adresseProfil;
 
 	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.GET)
 	public String gestionCompte(Model model) {
@@ -31,17 +37,12 @@ public class UserController {
 		Compte compte = compteService.finByEmailCompte(email);
 
 		model.addAttribute("compte", compte);
-		System.out.println("Page de gestion du compte");
-		System.out.println(compte.getEmail());
-		System.out.println(compte.getProfil().getFirstname());
-		System.out.println(compte.getProfil().getCars().size());
 		return VUE_GESTION_COMPTE;
 	}
 	
 	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.POST)
-	public String modificationCompte(Model model) {
-
-		System.out.println("Modification effectuée");
+	public String modificationCompte(@ModelAttribute Compte compte,Model model) {
+		profilService.save(compte.getProfil());
 
 		return "redirect:" + URL_GESTION_COMPTE;
 	}
