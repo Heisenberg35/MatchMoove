@@ -3,6 +3,10 @@
 	padding: 0;
 	font-family: Lato, cursive;
  }
+ 
+ .br{
+ 	clear :both;
+ }
 
 /* Header */
 

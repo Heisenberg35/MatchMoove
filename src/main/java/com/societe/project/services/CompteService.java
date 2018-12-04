@@ -77,24 +77,17 @@ public Compte findByEmail(String email) {
 		return compteRepository.findByEmail(email);
 	}
 	
-	public void initElementTable(Role role) {
+	public void initElementTable(Compte comptes) {
 		
 		Compte compte = dto.getCreateCompte();
 		Profil profil = dto.getCreateProfil();
 
 		profilService.save(profil);
-		role.setProfil(profil);
-		
-		roleService.save(role);
-		
-		compte.setRole(role);
 		compte.setProfil(profil);
+	
 		compte.setActive(1);
 		
-		this.save(compte);
-		profil.setCompte(compte);
-		
-		profilService.save(profil);	
+		this.save(compte);	
 	}
 
 

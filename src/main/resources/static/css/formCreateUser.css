@@ -1,43 +1,41 @@
-/*----------------------------------------------------
- .	formCreateUser
-------------------------------------------------------*/
+
+/**********************************************\
+		form
+\**********************************************/
 
 .l-client{
-	height: 540px;	
+	height: 100%;
 }
 .form{
-
 }
 .title-form{
 	width: 670px;
 	height: 60px;
-	background-color: #686b6e;
+	background-color: #16799b;
 
 }
 .title-form>h2{
-	margin-left: -45%;
+	margin-left: 5%;
 	color : white;
 	font-size: 24px;
 	line-height: 60px;
 }
 .form-creat{
 	width: 795px;
-	height: 450px;
+	height: 475px;
 
 	background-color: #efeded;
 	border: 1px solid #b7b7b7;
 	border-left: 19px solid #878686;
 }
-
 /**********************************************\
 		client form
 \**********************************************/
 
-
 /*ecriture des 2 class du a bootstrap*/
 .legend.legend-client{
 	color: #878686;
-	margin-left: 5px;
+	margin-left: 20px;
 	margin-top: 8px;
 }
 .form-group{
@@ -63,7 +61,7 @@
 	height: 35px;
 }
 
-input[type=checkbox]{
+.input[type=checkbox]{
 	margin-top:9px;	
 }
 
@@ -72,9 +70,7 @@ input[type=checkbox]{
 /**********************************************\
 		btn
 \**********************************************/
-.form-btn{
-	margin-left:25px;
-}
+
 .btn{
 	float: right;
 	margin-right: 30px;
@@ -89,13 +85,6 @@ input[type=checkbox]{
 .l-command{
 	display: none;
 }
-/**********************************************\
-		form option
-\*********************************************/
-
-.form-group{
-	color:black;
+.l-client{
+	
 }
-
-
-

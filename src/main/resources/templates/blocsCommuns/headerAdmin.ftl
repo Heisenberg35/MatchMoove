@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/default.css'/>"/>
 <header>
-				<a href="/home"><div id="logo"><img src="images/matchmooveBLANCS.png"></div></a>
+				<a href="/home"><div id="logo"><img src="/images/matchmooveBLANCS.png"></div></a>
                 <nav>
                     <ul>
                     	<li><a href="/profils">Profils</a></li>
@@ -14,7 +14,7 @@
 						<li><a href="/pts">PT</a></li>
 						<li><a href="/articles">Articles</a></li>
 						<li><a href="/messages">Messages</a></li>
-						<a href="/logout"><img src="images/logout.png"></a>
+						<a href="/logout"><img src="/images/logout.png"></a>
                     </ul>
 				</nav>	
 </header>

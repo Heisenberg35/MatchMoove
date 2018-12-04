@@ -25,6 +25,7 @@ public class CompteProfilDto {
     public void createCompte (Compte c) {
     	compte.setEmail(c.getEmail());
     	compte.setPassword(c.getPassword());
+    	compte.setRole(c.getRole());
     } 
     
     public Compte getCreateCompte() {

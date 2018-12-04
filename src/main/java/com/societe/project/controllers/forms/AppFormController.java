@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.societe.project.controllers.application.AdminController;
 import com.societe.project.models.Compte;
 import com.societe.project.models.Profil;
-import com.societe.project.models.Role;
 import com.societe.project.services.CompteService;
 import com.societe.project.services.RoleService;
 import com.societe.project.validators.CompteValidator;
@@ -73,35 +72,37 @@ public class AppFormController {
 	}
 	
 	@RequestMapping(value= {AppFormController.URL_CREATE_COMPTE}, method=RequestMethod.POST)
-	public String createCompteValidateM(@ModelAttribute Compte compte,@RequestParam String confirm, Model model) {
+	public String createCompteValidateM(@ModelAttribute Compte compte,@ModelAttribute Profil profil,@RequestParam String confirm, Model model) {
 		
 		System.out.println("Post de create user");
 		System.out.println(confirm);
 		System.out.println("------------------"+compte.getRole().getName());
 		System.out.println("------------------"+compte.getRole().getId());
+		compte.afficheCompte();
+		profil.afficheProfil();
 
 		boolean isvalid =false;
 		
-		if(!compteValidator.validateCompteAndPassWord(compte) && !profilValidator.validateProfil(compte.getProfil()) && compteValidator.isComparePass(compte.getPassword(),confirm)) {
+		//if(!compteValidator.validateCompteAndPassWord(compte) && !profilValidator.validateProfil(profil) && compteValidator.isComparePass(compte.getPassword(),confirm)) {
 			
 			System.out.println("compte not exist");
 			
 			isvalid =true;
 			
 			compteService.getDto().createCompte(compte);
-			compteService.getDto().createProfit(compte.getProfil());
+			compteService.getDto().createProfit(profil);
 			compteService.getDto().getCreateCompte().afficheCompte();
 			compteService.getDto().getCreateProfil().afficheProfil();	
-			compteService.initElementTable(compte.getRole());
+			compteService.initElementTable(compte);
 			
-		}else {
-			System.out.println("error compte");
-			System.out.println(compteValidator.getErrors().get("password"));
-			model.addAttribute("detailPath",VUE_CREATE_COMPTE );
-			model.addAttribute("roles", roleService.findAll());
+		//}else {
+			//System.out.println("error compte");
+			//System.out.println(compteValidator.getErrors().get("password"));
+			//model.addAttribute("detailPath",VUE_CREATE_COMPTE );
+			//model.addAttribute("roles", roleService.findAll());
 			//model.addAttribute("isExistMail",true);
-			model.addAttribute("form",compteValidator.getErrors());
-		}
+			//model.addAttribute("form",compteValidator.getErrors());
+		//}
 		return (isvalid)? "redirect:"+AdminController.BASE_URL: VUE_CREATE_COMPTE;
 	}
 	
