@@ -33,6 +33,7 @@ public class AppFormController {
 	private static final String URL_CREATE_COMPTE  = "/admin/createcompte";
 	
 	private static final String URL_LISTUSER_COMPTE  = "/admin/listuser";
+	private static final String URL_UPDATE_COMPTE  = "/admin/edit";
 	
 	private static final String VUE_CREATE_COMPTE    = VUES + "/createcompte";
 	private static final String VUE_LISTUSER_COMPTE  = VUES + "/listeuser";
@@ -146,4 +147,9 @@ public class AppFormController {
 		return VUE_LISTUSER_COMPTE;
 	}
 	
+	@RequestMapping(value= {AppFormController.URL_UPDATE_COMPTE }, method=RequestMethod.POST)
+	public String updateCopteUser(Model model) {
+	
+		return VUE_CREATE_COMPTE;
+	}
 }
