@@ -19,7 +19,7 @@
                     </#if>
                 </#if>
 
-            <div class="form form-client">
+            <div class="forms form-client">
                 <div class="title-form"><h2>Creation Nouveau Compte :</h2></div>
                 
                 <div class="form-creat" id="form-client">
