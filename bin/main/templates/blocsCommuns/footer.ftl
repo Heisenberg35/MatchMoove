@@ -6,7 +6,7 @@
 			<li>Informations Legales</li>
 		</ul>
 		<ul>
-			<a href="/home"><img src="images/matchmooveBLANCS.png"></a>
+			<a href="/home"><img src="/images/matchmooveBLANCS.png"></a>
 			<li>Immeuble IMIE</li>
 			<li>Rue Pierre de Maupertuis</li>
 			<li>35170 BRUZ</li>
