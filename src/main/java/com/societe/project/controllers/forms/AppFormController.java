@@ -150,6 +150,6 @@ public class AppFormController {
 	@RequestMapping(value= {AppFormController.URL_UPDATE_COMPTE }, method=RequestMethod.POST)
 	public String updateCopteUser(Model model) {
 	
-		return VUE_CREATE_COMPTE;
+		return "redirect:"+AdminController.BASE_URL;
 	}
 }
