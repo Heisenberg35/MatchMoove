@@ -47,6 +47,5 @@
 			<p>Et olim licet otiosae sint tribus pacataeque centuriae...</p>
          </div>
 	</section>
-	
-<#include "blocsCommuns/footer.ftl"/>	
 
+<#include "blocsCommuns/footer.ftl"/>
