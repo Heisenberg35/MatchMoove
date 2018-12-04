@@ -34,7 +34,16 @@ public class UserController {
 		System.out.println("Page de gestion du compte");
 		System.out.println(compte.getEmail());
 		System.out.println(compte.getProfil().getFirstname());
-		System.out.println(compte.getProfil().getAdresses());
+		System.out.println(compte.getProfil().getCars().size());
 		return VUE_GESTION_COMPTE;
 	}
+	
+	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.POST)
+	public String modificationCompte(Model model) {
+
+		System.out.println("Modification effectuée");
+
+		return "redirect:" + URL_GESTION_COMPTE;
+	}
+	
 }
