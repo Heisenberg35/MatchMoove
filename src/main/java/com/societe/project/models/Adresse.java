@@ -96,5 +96,11 @@ public class Adresse extends DBItem {
 		this.domicile = domicile;
 		this.profil = profil;
 	}
+
+	public void affAdress() {
+		System.out.println(ville);
+		System.out.println(cp);
+		
+	}
 	
 }
