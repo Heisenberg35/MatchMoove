@@ -41,11 +41,13 @@ public class ArticleController extends BaseController<Article> {
 	
 	@Override
 	protected void setOtherAttributes(Model model) {
-		model.addAttribute("comptes", compteService.findAll());
+		//model.addAttribute("comptes", compteService.findAll());
+	 	
 	}
 	
 	@Override
 	protected void setupOtherFields(Article item) {
 		item.setCompte(compteService.find(item.getCompte().getId()).get());
 	}
+	
 }

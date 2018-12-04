@@ -3,7 +3,7 @@
 		<ul>
 			<li>Nous contacter</li>
 			<li>Nous rejoindre</li>
-			<li>Informations Legales</li>
+			<li><a href="/cgu/cgu">Informations Legales</a></li>
 		</ul>
 		<ul>
 			<a href="/home"><img src="/images/matchmooveBLANCS.png"></a>
@@ -13,7 +13,7 @@
 		</ul>
 		<ul>
 			<li>Suivez-nous !</li>
-			<li>Nos actu</li>
+			<li><a href="/articles/index">Nos actu</li>
 			<li>A propos</li>
 		</ul>
 </div>

@@ -9,13 +9,18 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.societe.project.services.ArticleService;
 import com.societe.project.services.RecuperationInfoLogin;
 
 @Controller
 public class HomeController {
-
+    @Autowired
+    ArticleService articleService;
+    
 	@Autowired
 	RecuperationInfoLogin recuperationInfoLogin;
 	
@@ -31,7 +36,16 @@ public class HomeController {
 		
 		ArrayList<String> roles = recuperationInfoLogin.recuperationRole();
 		model.addAttribute("roles", roles);
+		model.addAttribute("lastArticles",articleService.findLatestArticles());
 		return "/home";
 	}
+	
+	@RequestMapping(value = {"/displayArticle/{id}"},method=RequestMethod.GET)
+	public String displayArticle(Model model, @PathVariable Integer id) {
+		model.addAttribute("article",articleService.find(id).get());
+		return "/displayArticle";
+		
+	}
+	
 }
 

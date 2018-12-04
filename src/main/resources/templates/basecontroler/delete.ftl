@@ -1,8 +1,12 @@
 <#import "/spring.ftl" as spring/>
-<#include "../utils/bootstrap.ftl"/>
-<h1>${pageName}</h1>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
 
-<form class="text-center border border-light" action="${detailPath}/delete" method="POST">
+<header id="headerAdmin">
+	<a href="/home"><div id="logo"><img src="../../images/matchmooveBLANCS.png"></div></a>
+	<h1>${pageName}</h1>
+</header>
+
+<form class="form" action="${detailPath}/delete" method="POST">
 <#include "..${detailPath}/specific/emptyshowform.ftl"/>
 <input type="submit" value="Search">
  <input type="hidden"
@@ -28,5 +32,19 @@
     ${notFound}
 </#if>
 </div>
-
-<div><a href="${detailPath}/index">Back</a></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<#include "../blocsCommuns/footer.ftl"/>

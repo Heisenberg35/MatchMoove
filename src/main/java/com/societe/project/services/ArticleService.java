@@ -25,10 +25,17 @@ public class ArticleService extends BaseService<Article> {
 	protected List<Article> setItemsByCriterias(Article item, List<Article> result) {
 		if (!item.getTitle().equals("")) {
 			result = this.articleRepository.findByTitle(item.getTitle());
-		} else if (!item.getDescription().equals("")) {
+		} else if (!item.getDescription().trim().equals("")) {
 			result = this.articleRepository.findByDescription(item.getDescription());
+		} else if (!item.getDate().equals(null)) {
+			result = this.articleRepository.findByDate(item.getDate());
 		}
 		return result;
 	}
-
+  
+	public List<Article>findLatestArticles()
+	{
+		return this.articleRepository.findAllByOrderByDateDesc();
+		
+	}
 }

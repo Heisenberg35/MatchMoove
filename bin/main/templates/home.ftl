@@ -1,4 +1,5 @@
 <#import "/spring.ftl" as spring/>
+
 <#include "blocsCommuns/head.ftl"/>	
 <#include "blocsCommuns/headerUser.ftl"/>	
 <title>Home</title>
@@ -28,24 +29,20 @@
         </div>
 	</section>
 	
-<h2>Nos actualites</h2>
 	
+<#if lastArticles??>
+<h2>Nos actualites</h2>
+
 	<section id="Actu"> 
+	<#list lastArticles as i>	
     	<div class="actubloc">
-        	<a href="#"><img src="images/article3.jpg"></a>
-			<p><a href="#">Ecologie : Utiliser MatchMoove! </a></p>
-			<p>Et olim licet otiosae sint tribus pacataeque centuriae...</p>
+			<h3><a href="displayArticle/${i.getId()}"><#if i.getTitle()??> ${i.getTitle()} </#if> </a></h3>
+			<p><#if i.getDescription()??> ${i.getDescription()} </#if></p>
        	</div>
-        <div class="actubloc">
-         	<a href="#"><img src="images/article3.jpg"  ></a>
-			<p><a href="#">Notre appli fait parler d'elle </a></p>
-			<p>Et olim licet otiosae sint tribus pacataeque centuriae...</p>
-        </div> 
-        <div class="actubloc">
-        	<a href="#"><img src="images/article3.jpg"  ></a>
-			<p><a href="#">Hausse du prix du carburant... </a></p>
-			<p>Et olim licet otiosae sint tribus pacataeque centuriae...</p>
-         </div>
+        
+    </#list>
 	</section>
+ 
+	</#if>		
 
 <#include "blocsCommuns/footer.ftl"/>
