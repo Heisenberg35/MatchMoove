@@ -1,5 +1,6 @@
 
-	
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/formCreateUser.css'/>"/>
+		
 	
  <!-- formulaire de creation client -->
         <div class="l-container l-client">

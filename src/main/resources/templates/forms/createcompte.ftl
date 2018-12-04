@@ -2,6 +2,31 @@
 
 
 
+<#import "/spring.ftl" as spring/>
+
+
+
+ 	<#include "/blocsCommuns/header.ftl"/>
+
+	<#include "/css/formCretateUser.css"/> 		
+	
+	<#include "/form/editformcompte.ftl"/> 
+
+    <#include "/blocsCommuns/footer.ftl"/>
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
 <link rel="stylesheet" type="text/css" href="<@spring.url '/css/errorFormCompte.css'/>"/>
 
 <h1> vue create user</h1>
