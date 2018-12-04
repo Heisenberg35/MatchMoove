@@ -4,8 +4,8 @@
                 <nav>
                     <ul>
                     	
-                        <li><a href="/admin/comptes">Create compte</a></li>
-                     	<li><a href="/admin/comptes">Gestion Compte</a></li>
+                        <li><a href="/admin/createcompte">Create compte</a></li>
+                     	<li><a href="/admin/listeuser">Gestion Compte</a></li>
                      	
                         <li><a href="/cars">Vehicules</a></li>
                         <li><a href="/trajets">Trajets</a></li>
