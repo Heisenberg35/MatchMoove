@@ -1,0 +1,47 @@
+/*----------------------------------------------------
+ .	Footer
+------------------------------------------------------*/
+#footer{
+
+	background-image: url(../img/foooter.jpg);
+	background-size: cover;
+	width: 100%;
+	height: 30vh;
+	color: white;
+	display: flex;
+	padding: 40px;
+	position: relative;
+}
+
+#footer img
+{
+	width: 200px;
+}
+
+#footer img:hover
+{
+	transform:scale(1.1,1.1);
+    cursor: pointer;
+}
+
+#footer ul
+{
+	list-style: none;
+	padding-top: 30px;
+	padding-left: 40px;
+	text-align: center;
+}
+
+#footer li:hover
+{
+	transform:scale(1.1,1.1);
+    cursor: pointer;
+	font-weight: 700;
+	
+}
+
+#footer ul:nth-child(2) 
+{
+    padding-left: 300px;
+	margin-top: -35px;
+}

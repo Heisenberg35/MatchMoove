@@ -1,10 +1,18 @@
 <#import "/spring.ftl" as spring/>
-<#include "../utils/bootstrap.ftl"/>
-<h1>${pageName}</h1>
-<div class="text-center border border-light">
-<#include "..${detailPath}/specific/editableform.ftl"/>
-<#if item?? && item.getId()??>
-	<div><a href="${detailPath}/delete/${item.getId()}">Delete</a></div>
-</#if>
-</div>
-<div><a href="${detailPath}/index">Back</a></div>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
+
+
+<header id="headerAdmin">
+	<a href="/home"><div id="logo"><img src="../../images/matchmooveBLANCS.png"></div></a>
+	<h1>${pageName}</h1>
+</header>	
+	
+	<div class="form">
+	<#include "..${detailPath}/specific/editableform.ftl"/>
+	<#if item?? && item.getId()??>
+		<div><a href="${detailPath}/delete/${item.getId()}">Delete</a></div>
+	</#if>
+	</div>
+	
+	
+<#include "../blocsCommuns/footer.ftl"/>	

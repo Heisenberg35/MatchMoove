@@ -84,7 +84,10 @@
         
     </#list>
 	</section>
+<<<<<<< HEAD
  
 </#if>	
 <#include "blocsCommuns/footer.ftl"/>	
 
+
+<#include "blocsCommuns/footer.ftl"/>

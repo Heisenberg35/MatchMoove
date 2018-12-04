@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -27,7 +28,7 @@ public class Profil extends DBItem {
 	@OneToMany(mappedBy="profil")
 	private List<Adresse> adresses = new ArrayList<Adresse>();
 	
-	@OneToMany(mappedBy="profil")
+	@ManyToMany(targetEntity=Role.class)
 	private List<Role> roles;
 	
 	@OneToOne(mappedBy="profil")

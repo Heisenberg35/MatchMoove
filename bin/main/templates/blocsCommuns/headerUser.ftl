@@ -11,6 +11,7 @@
             		</#if>
         			</#list>
    				</#if>
+   				<li><a href="/user/gestioncompte">Mon compte</a></li>
                 <li><a href="#">Je match !</a></li>
                 <li><a href="#">Proposer un trajet</a></li>
                 <li><a href="#">Rechercher un trajet</a></li>

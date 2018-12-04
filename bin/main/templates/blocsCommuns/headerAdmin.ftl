@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/default.css'/>"/>
-<header>
+<header id="headerAdmin">
 				<a href="/home"><div id="logo"><img src="images/matchmooveBLANCS.png"></div></a>
                 <nav>
                     <ul>

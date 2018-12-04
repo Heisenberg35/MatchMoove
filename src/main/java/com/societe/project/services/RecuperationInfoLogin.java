@@ -12,8 +12,11 @@ import org.springframework.stereotype.Service;
 public class RecuperationInfoLogin {
 
 	public ArrayList<String> recuperationRole() {
+		
 		ArrayList<String> roles = new ArrayList<>();
+		
 		SecurityContext securityContext = SecurityContextHolder.getContext();
+		
 		Collection<? extends GrantedAuthority> role = securityContext.getAuthentication().getAuthorities();
 		for (GrantedAuthority grantedAuthority : role) {
 			roles.add(grantedAuthority.getAuthority());

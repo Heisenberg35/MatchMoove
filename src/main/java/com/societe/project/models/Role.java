@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,8 +22,8 @@ public class Role extends DBItem {
 	@OneToMany(targetEntity=Compte.class,mappedBy="role")
 	private List<Compte> comptes;
 	
-	@ManyToOne()
-	private Profil profil;
+	@ManyToMany(targetEntity=Profil.class)
+	private List<Profil> profils;
 	
 	/***********************************************
 	 * GETTEUR ET SETTEUR
@@ -42,13 +43,12 @@ public class Role extends DBItem {
 	public void setComptes(List<Compte> comptes) {
 		this.comptes = comptes;
 	}
-
-	public Profil getProfil() {
-		return profil;
+	public List<Profil> getProfil() {
+		return profils;
 	}
 
 	public void setProfil(Profil profil) {
-		this.profil = profil;
+		this.profils.add(profil);
 	}
 
 	/***********************************************
@@ -57,6 +57,7 @@ public class Role extends DBItem {
 	public Role() {
 		super();
 		this.comptes = new ArrayList<Compte>();
+		this.profils = new ArrayList<Profil>();
 	}
 	
 	public Role(String name) {
@@ -68,7 +69,7 @@ public class Role extends DBItem {
 		this();
 		this.name = name;
 		this.comptes = comptes;
-		this.profil = profil;
+		this.profils.add(profil) ;
 	}
 
 }
