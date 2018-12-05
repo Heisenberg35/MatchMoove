@@ -1,27 +1,27 @@
 package com.societe.project.firebase;
 
 import java.io.IOException;
-
-
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
 
 import com.google.protobuf.TextFormat.ParseException;
+import com.societe.project.firebase.models.FirebaseMessage;
 import com.societe.project.models.Message;
 
 public class FirebaseNotificationObserver {
-	
+	//rebaseMessage firebaseMessage;
 	Message message;
 	public static Date parseDate(String date) throws java.text.ParseException, ParseException {
 	     return (Date) new SimpleDateFormat("yyyy-MM-dd").parse(date);
 	  }
 	
 	private FirebaseNotificationObserver() throws IOException, java.text.ParseException {
-		//DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		
-		Date myDate = parseDate("2014-02-14");
-		this.message = new Message("coucou",myDate);
+	//irebaseMessage = new FirebaseMessage();
+		Date myDate = parseDate("1999-01-01");
+		this.message = new Message("",myDate);
 		firebaseNotificationsObserver(this.message);
 	}
 
