@@ -154,11 +154,17 @@
 }
 .user-delete:hover{
 	background-color: #eb6464;
+
 }
+
 .user-modified:hover{
 	background-color: #3980a58c;
 }
 
+.user-modified a:hover,.user-delete a:hover{
+	text-decoration: none;
+	color: white;
+}
 
 /**********************************************\
 	

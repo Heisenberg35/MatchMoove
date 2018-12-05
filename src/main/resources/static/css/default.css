@@ -5,10 +5,10 @@
 	font-family: Lato, cursive;
  }
 
-.br{
+.br
+{
  	clear :both;
  }
-
 
 /* Header */
 
@@ -107,7 +107,6 @@ h3
 	font-size: 23px;
 }
 
-
 /* Trajets */ 
 #Trajets
 {
@@ -139,12 +138,24 @@ h3
 #Actu
 {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	margin: 80px;
+}
+
+#Actu a
+{
+	align-self: flex-end;
 }
 .actubloc
 {
-	width: 400px;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 250px;
+    height: 300;
+    border: 0.1px solid #e3e3e3;
+    margin: 5px;
 }
 .actubloc img
 {
@@ -163,7 +174,6 @@ h3
 .actubloc a:hover 
 {
     text-decoration: none;
-    color: #A1AD19;
 }
 
 /* footer */
@@ -248,7 +258,7 @@ article
 }
 /* Bouton */
 
-a[title]   
+a[title], input[type=button], input[type=submit], input[type=reset]   
 {
 	height: 35px;
     width: 100px;
@@ -263,11 +273,32 @@ a[title]
     line-height: 36px;
     display: block;
     margin-bottom: 3px;
+    border: none;
 }
 
-a[title]:hover
+a[title]:hover, input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover   
 {
     transform:scale(1.03,1.03);
+}
+/* Infos User */
+#infosUser
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.blocInfo
+{
+	border: 0.1px solid black;
+	margin: 10px;
+	padding: 10px;
+	background-color: #f1f6fa;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 500px;
 }
 
 /* Responsive design */

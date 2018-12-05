@@ -39,6 +39,7 @@
     	<div class="actubloc">
 			<h3><a href="displayArticle/${i.getId()}"><#if i.getTitle()??> ${i.getTitle()} </#if> </a></h3>
 			<p><#if i.getDescription()??> ${i.getDescription()} </#if></p>
+       		<a href="/articles" title="blog">Lire l'article</a>
        	</div>
         
     </#list>
