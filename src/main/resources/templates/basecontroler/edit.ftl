@@ -1,6 +1,6 @@
 <#import "/spring.ftl" as spring/>
 <link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
-
+<link rel="stylesheet" type="text/css" href="<@spring.url '/../css/header.css'/>"/>
 
 <header id="headerAdmin">
 	<a href="/home"><div id="logo"><img src="../../images/matchmooveBLANCS.png"></div></a>

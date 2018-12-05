@@ -1,12 +1,4 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 	<div class="formArticle">
 			<h3>
 		        <#if i.getTitle()??>

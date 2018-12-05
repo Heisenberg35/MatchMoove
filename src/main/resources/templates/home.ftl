@@ -2,6 +2,7 @@
 
 <#include "blocsCommuns/head.ftl"/>	
 <#include "blocsCommuns/headerUser.ftl"/>	
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/trajetsActu.css'/>"/>
 <title>Home</title>
 
 <h2>Decouvrez les derniers trajets</h2>
@@ -37,7 +38,7 @@
 	<section id="Actu"> 
 	<#list lastArticles as i>	
     	<div class="actubloc">
-			<h3><a href="displayArticle/${i.getId()}"><#if i.getTitle()??> ${i.getTitle()} </#if> </a></h3>
+			<a style="color: black; text-align:center" href="displayArticle/${i.getId()}"><#if i.getTitle()??> ${i.getTitle()} </#if> </a>
 			<p><#if i.getDescription()??> ${i.getDescription()} </#if></p>
        		<a href="/articles" title="blog">Lire l'article</a>
        	</div>

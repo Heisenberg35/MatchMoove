@@ -38,8 +38,7 @@
 			     		</li>
                     </ul>          
 				</nav>	
-				
-		</header>	          
+				         
 	            
 	              
 	                
