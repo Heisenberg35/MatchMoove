@@ -24,15 +24,16 @@
     
     <p>Adresse : </p>
     <#if compte.getProfil().getAdresses()?has_content >
+    <#assign index = 0>
     	<#list compte.getProfil().getAdresses() as adresse>
     		<label><b>Numero</b></label>
-			<input type="text" placeholder="numero" name="profil.adresse.numero" value="<#if adresse.getNumero()??>${adresse.getNumero()}</#if>" required>
+			<input type="number" placeholder="numero" name="profil.adresses[${index}].numero" value="<#if adresse.getNumero()??>${adresse.getNumero()}</#if>" required>
 			<label><b>Rue</b></label>
-			<input type="text" placeholder="rue" name="profil.adresse.rue" value="<#if adresse.getRue()??>${adresse.getRue()}</#if>" required>
+			<input type="text" placeholder="rue" name="profil.adresses[${index}].rue" value="<#if adresse.getRue()??>${adresse.getRue()}</#if>" required>
 			<label><b>Code postal</b></label>
-			<input type="text" placeholder="code postal" name="profil.adresse.cp" value="<#if adresse.getCp()??>${adresse.getCp()}</#if>" required>
+			<input type="number" placeholder="code postal" name="profil.adresses[${index}].cp" value="<#if adresse.getCp()??>${adresse.getCp()}</#if>" required>
 			<label><b>Ville</b></label>
-			<input type="text" placeholder="ville" name="profil.adresse.ville" value="<#if adresse.getVille()??>${adresse.getVille()}</#if>" required>
+			<input type="text" placeholder="ville" name="profil.adresses[${index}].ville" value="<#if adresse.getVille()??>${adresse.getVille()}</#if>" required>
 			<!--TODO COMMENT RECUPERER DOMICILE OU TRAVAIL
 			<label>Type d'adresse</label>
     		<input type="radio" id="domicile" name="domicile" value="true" checked/>
@@ -40,22 +41,25 @@
 		  	<input type="radio" id="travail" name="domicile" value="false"/>
 		  	<label for="travail">Travail</label>
   			-->
-  			<input type="hidden" name="profil.adresse.id" value="${adresse.getId()}">
+  			<input type="hidden" name="profil.adresses[${index}].id" value="${adresse.getId()}">
+  			<input type="hidden" name="profil.adresses[${index}].profil.id" value="${compte.getProfil().getId()}">
+  			<#assign index++>
         </#list>
     <#else>
     	<label><b>Numero</b></label>
-			<input type="text" placeholder="numero" name="profil.adresse.numero" required>
+			<input type="number" placeholder="numero" name="profil.adresses[0].numero" required>
 			<label><b>Rue</b></label>
-			<input type="text" placeholder="rue" name="profil.adresse.rue" required>
+			<input type="text" placeholder="rue" name="profil.adresses[0].rue" required>
 			<label><b>Code postal</b></label>
-			<input type="number" placeholder="code postal" name="profil.adresse.cp" required>
+			<input type="number" placeholder="code postal" name="profil.adresses[0].cp" required>
 			<label><b>Ville</b></label>
-			<input type="text" placeholder="ville" name="profil.adresse.ville" required>
+			<input type="text" placeholder="ville" name="profil.adresses[0].ville" required>
 			<label>Type d'adresse</label>
-    		<input type="radio" id="domicile" name="profil.adresse.domicile" value="true">
+    		<input type="radio" id="domicile" name="profil.adresses[0].domicile" value="true">
   			<label for="domicile">Domicile</label>
-  			<input type="radio" id="travail" name="profil.adresse.domicile" value="false"/>
+  			<input type="radio" id="travail" name="profil.adresses[0].domicile" value="false"/>
   			<label for="travail">Travail</label>
+  			<input type="hidden" name="profil.adresses[0].profil.id" value="${compte.getProfil().getId()}">
     </#if>   
     
     <p>Voiture : </p>

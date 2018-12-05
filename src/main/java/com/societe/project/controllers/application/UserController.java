@@ -1,5 +1,7 @@
 package com.societe.project.controllers.application;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.societe.project.models.Adresse;
 import com.societe.project.models.Compte;
 import com.societe.project.services.AdresseService;
 import com.societe.project.services.CompteService;
@@ -27,7 +30,7 @@ public class UserController {
 	@Autowired
 	ProfilService profilService;
 	@Autowired
-	AdresseService adresseProfil;
+	AdresseService adresseService;
 
 	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.GET)
 	public String gestionCompte(Model model) {
@@ -43,6 +46,24 @@ public class UserController {
 	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.POST)
 	public String modificationCompte(@ModelAttribute Compte compte,Model model) {
 		profilService.save(compte.getProfil());
+		
+		List<Adresse> adresses = compte.getProfil().getAdresses();
+
+		for (Adresse adresse : adresses) {
+			adresseService.save(adresse);
+		}
+
+		return "redirect:" + URL_GESTION_COMPTE;
+	}
+	@RequestMapping(value={UserController.URL_GESTION_COMPTE + "/{id}"}, method=RequestMethod.POST)
+	public String modificationAdresse(@ModelAttribute Compte compte,Model model) {
+		profilService.save(compte.getProfil());
+		
+		List<Adresse> adresses = compte.getProfil().getAdresses();
+
+		for (Adresse adresse : adresses) {
+			adresseService.save(adresse);
+		}
 
 		return "redirect:" + URL_GESTION_COMPTE;
 	}
