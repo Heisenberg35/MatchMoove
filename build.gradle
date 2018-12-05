@@ -224,3 +224,8 @@ task copyDeps(type: Copy) {
   into 'libs'
 }
 
+//Pour la JAVADOC
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+}
