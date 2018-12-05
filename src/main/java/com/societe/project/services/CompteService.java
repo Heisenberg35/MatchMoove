@@ -12,7 +12,7 @@ import com.societe.project.database.base.BaseCRUDRepository;
 import com.societe.project.dto.CompteProfilDto;
 import com.societe.project.models.Compte;
 import com.societe.project.models.Profil;
-import com.societe.project.models.Role;
+
 import com.societe.project.services.base.BaseService;
 
 @Service
@@ -28,10 +28,10 @@ public class CompteService extends BaseService<Compte> {
 	private CompteProfilDto dto;
 	
 	@Autowired
-	private RoleService roleService;
+	private ProfilService profilService;
 	
 	@Autowired
-	private ProfilService profilService;
+	private RoleService roleService;
 	
 	@Override
 	protected BaseCRUDRepository<Compte> getCRUDRepository() {
@@ -61,23 +61,23 @@ public class CompteService extends BaseService<Compte> {
 		super.save(item);
 	}
 
-
-@Override
-protected List<Compte> setItemsByCriterias(Compte item, List<Compte> result) {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-public Compte findByEmail(String email) {
-	return compteRepository.findByEmail(email);
-}
+	
+	@Override
+	protected List<Compte> setItemsByCriterias(Compte item, List<Compte> result) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public Compte findByEmail(String email) {
+		return compteRepository.findByEmail(email);
+	}
 
 	public Compte finByEmailCompte(String email) {
 		
 		return compteRepository.findByEmail(email);
 	}
 	
-	public void initElementTable(Compte comptes) {
+	public void initElementTable() {
 		
 		Compte compte = dto.getCreateCompte();
 		Profil profil = dto.getCreateProfil();
@@ -89,6 +89,53 @@ public Compte findByEmail(String email) {
 		
 		this.save(compte);	
 	}
+	
+	public void uptdateCompte(Compte compte,Profil profil) {
+		
+		compte.afficheCompte();
+		profil.afficheProfil();
+		
+		
+		//update element
+		//lie ensemble 
+		Compte c = compteRepository.findById(compte.getId()).get();
+		profil.setId(c.getProfil().getId());
+
+		profil.setPhoneNumber(c.getProfil().getPhoneNumber());
+		
+//		if(c.getRole() != compte.getRole()) {
+//			compte.setId(roleService.finByNameRole(compte.getRole().getName()));
+//		}
+		//prof
+		c.setProfil(profil);
+		//uptadate compte 
+		profilService.save(profil);
+		
+		//profilService.save(c.getProfil());
+		//c.getProfil().setId(profil.getId());
+		compte.setProfil(profil);
+		
+		if(compte.getPassword()!=null) {
+			this.save(compte);
+		}else {
+			compte.setPassword(c.getPassword());
+		}
+		
+		compte.setActive(1);
+		compteRepository.save(compte);
+	
+	}
+	
+	public void disableCompte(Compte compte,int id) {
+		
+		Compte c = compteRepository.findById(id).get();
+		c.setActive(0);
+		compteRepository.save(c);
+	}
+	
+	
+	
+	
 
 
 }
