@@ -4,7 +4,8 @@ package com.societe.project.models;
 
 
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.societe.project.database.DBItem;
 
 
@@ -32,6 +36,7 @@ public class Message extends DBItem {
 	
 	
 	@Column(name="date")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
 	
 	@OneToMany(targetEntity=Message.class)
@@ -59,11 +64,11 @@ public class Message extends DBItem {
 		this.profil = profil;
 		this.messages = messages;
 				}
-	public Message(String content)
+	public Message(String content,Date date)
 	{
 		
 		this.content = content;
-	
+	    this.date = date;
 		
 				}
 	
@@ -95,11 +100,11 @@ public class Message extends DBItem {
 		this.date = date;
 	}
 
-	public List<Message> getMessage() {
+	public List<Message> getMessages() {
 		return messages;
 	}
 
-	public void setMessage(List<Message> message) {
+	public void setMessages(List<Message> message) {
 		this.messages = message;
 	}
 	public Trajet getTrajet() {

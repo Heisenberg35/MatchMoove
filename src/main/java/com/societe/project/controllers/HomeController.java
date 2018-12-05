@@ -1,6 +1,7 @@
 package com.societe.project.controllers;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -51,13 +52,7 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping(value = {"/messagerie"},method=RequestMethod.GET)
-	public String messagerie(Model model) throws IOException {
-		model.addAttribute("message", FirebaseNotificationObserver.getInstance().getNotification().getContent());
 	
-		return "/messagerie";
-		
-	}
 	
 }
 

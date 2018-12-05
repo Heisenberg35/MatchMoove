@@ -14,7 +14,7 @@
                 <li><a href="#">Je match !</a></li>
                 <li><a href="#">Proposer un trajet</a></li>
                 <li><a href="#">Rechercher un trajet</a></li>
-                <li><a href="#">Messagerie</a></li>
+                <li><a href="/messagerie">Messagerie</a></li>
                 <li><a href="#">BLOG</a></li>
 			    <li><a href="/logout"><img src="images/logout.png"></a></li>
              </ul>

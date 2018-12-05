@@ -44,8 +44,8 @@ public class MessageController extends BaseController<Message> {
 
 	@Override
 	protected void setOtherAttributes(Model model) {
-		model.addAttribute("trajets",trajetService.findAll());
-		model.addAttribute("profils",profilService.findAll());
+		//model.addAttribute("trajets",trajetService.findAll());
+	    //	model.addAttribute("profils",profilService.findAll());
 		
 	}
 	
