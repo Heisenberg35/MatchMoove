@@ -16,13 +16,8 @@
         			</#list>
    				</#if>
               
-<<<<<<< HEAD
-                <li><a href="#">Proposer un trajet</a></li>
-              	<li><a href="/user/researchtrajet">Rechercher un trajet</a></li>
-=======
                 <li><a href="#">Proposer</a></li>
               	<li><a href="/user/researchtrajet">Rechercher</a></li>
->>>>>>> master
                 
                 <li><a href="/articles">BLOG</a></li>
                 <li><a href="/messagerie">Messagerie</a></li>
