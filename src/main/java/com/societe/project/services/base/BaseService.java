@@ -7,7 +7,7 @@ import java.util.Optional;
 
 import com.societe.project.database.DBItem;
 import com.societe.project.database.base.BaseCRUDRepository;
-import com.societe.project.models.Point;
+
 
 public abstract class BaseService<T extends DBItem> {
 

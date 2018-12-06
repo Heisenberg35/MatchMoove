@@ -1,10 +1,5 @@
 package com.societe.project.models;
 
-
-
-
-
-
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +13,6 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.societe.project.database.DBItem;
-
 
 @Entity
 @Table(name="message")
@@ -64,13 +58,19 @@ public class Message extends DBItem {
 		this.profil = profil;
 		this.messages = messages;
 				}
-	public Message(String content,Date date)
+	public Message(String content,Date date,Profil profil)
 	{
 		
 		this.content = content;
 	    this.date = date;
-		
-				}
+	    this.profil = profil;
+	}
+	
+	public Message(String content)
+	{
+		this.content = content;
+	    this.date = new Date();
+	}
 	
 	public Message() {
 		super();

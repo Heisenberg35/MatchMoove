@@ -37,7 +37,7 @@
                                 <label class="label label-nom" for="nom">firstname :</label>
                                  <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input id="firstname" name="firstname" placeholder="First Name" class="form-control" type="text" required>
+                                    <input id="firstname" name="firstname" placeholder="First Name" value="" class="form-control" type="text" required>
                                  </div>
                             </div>
                         <!-- end form group -->
@@ -97,7 +97,7 @@
                          <#if update??>
 	                         <!-- end form group -->
 	                         <div class="form-group">
-	                        	<input class="form-check-input" type="checkbox" value="" id="ignorePass">
+	                        	<input class="form-check-input" name="ignore" type="checkbox" value="" id="ignorePass">
 	  							<label class="label label-nom" for="ignoreepass">
 	    						 Ignore pass :
 	  							</label>

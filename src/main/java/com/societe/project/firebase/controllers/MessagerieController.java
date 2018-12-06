@@ -15,35 +15,37 @@ import com.societe.project.firebase.FirebaseNotificationObserver;
 import com.societe.project.firebase.FirebaseOpenHelper;
 import com.societe.project.models.Message;
 import com.societe.project.services.ProfilService;
+import com.societe.project.services.RecuperationInfoLogin;
 
 @Controller
 @RequestMapping("/messagerie")
 public class MessagerieController {
 	@Autowired
-	ProfilService profilService;
+	RecuperationInfoLogin recuperationInfoLogin;
 	
-	@RequestMapping(value = {"","/"},method=RequestMethod.GET)
+	/*@RequestMapping(value = {"","/"},method=RequestMethod.GET)
 	public String messagerie(Model model) throws IOException, ParseException  {
-		model.addAttribute("message", FirebaseNotificationObserver.getInstance().getNotification());
-	   // model.addAttribute("user",profilService.find(id).get().getFirstname());
+		//model.addAttribute("message", FirebaseNotificationObserver.getInstance().getNotification());
+	     //model.addAttribute("user",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		return "/messagerie";
 		
-	}
+	}*/
 	
-/*	@RequestMapping(value= {"","/"}, method=RequestMethod.POST)
-	public String editSave(@ModelAttribute Message message) {
-		try {
+	@RequestMapping(value= {"","/"})
+	public String Index(Model model) {
+		 try {
 			FirebaseOpenHelper
 			                .getInstance()
 			                .getDatabase()
-			                .getReference("/message")
-			                .setValueAsync(message);
+			                .getReference("/conversation/message")
+			                .setValueAsync(new Message("Conversation initialisé"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		FirebaseNotificationObserver
-		return "redirect:/";
+	
+		model.addAttribute("user",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
+		return "/messagerie";
 	}
-	*/
+	
 }

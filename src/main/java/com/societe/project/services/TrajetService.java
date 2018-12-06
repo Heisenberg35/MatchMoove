@@ -16,6 +16,11 @@ public class TrajetService extends BaseService<Trajet> {
 	
 	@Autowired
 	private TrajetRepository trajetRepository;
+	
+	@Override
+	protected BaseCRUDRepository<Trajet> getCRUDRepository() {
+		return trajetRepository;
+	}
 
 	@Override
 	protected List<Trajet> setItemsByCriterias(Trajet item, List<Trajet> result) {
@@ -32,16 +37,13 @@ public class TrajetService extends BaseService<Trajet> {
 			result = this.trajetRepository.findByHeureDepartAndMinuteDepart(item.getHeureDepart(),item.getMinuteDepart());
 		}
 		
-		
-		
-
 		//To-Do : faire les conditions pour les autres criterias 
 
 		return result;
 	}
+	
+	
+	
 
-	@Override
-	protected BaseCRUDRepository<Trajet> getCRUDRepository() {
-		return trajetRepository;
-	}
+	
 }
