@@ -8,7 +8,7 @@
            				<#if roles??>
     						<#list roles as r>
             					<#if r=="ROLE_ADMIN">
-            						<li><a href="#">Administrateur</a></li>
+            						<li><a href="/admin/">Administrateur</a></li>
             					</#if>
         					</#list>
    						</#if>

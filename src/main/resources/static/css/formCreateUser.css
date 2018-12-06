@@ -5,8 +5,12 @@
 
 .l-client{
 	height: 100%;
+	display: flex;
+
 }
-.form{
+.forms{
+	margin : auto;
+	margin-top: 60px;
 }
 .title-form{
 	width: 670px;
@@ -84,7 +88,4 @@
 
 .l-command{
 	display: none;
-}
-.l-client{
-	
 }

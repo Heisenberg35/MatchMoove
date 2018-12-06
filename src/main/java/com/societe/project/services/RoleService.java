@@ -28,5 +28,7 @@ public class RoleService extends BaseService<Role> {
 	protected BaseCRUDRepository<Role> getCRUDRepository() {
 		return roleRepository;
 	}
+	
+	
 
 }

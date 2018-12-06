@@ -11,4 +11,5 @@ import com.societe.project.models.Role;
 public interface RoleRepository extends BaseCRUDRepository<Role> {
 
 	List<Role> findByName(String name);
+	
 }
