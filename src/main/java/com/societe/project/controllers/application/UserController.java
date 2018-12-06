@@ -22,6 +22,10 @@ public class UserController {
 	private static final String VUES 	            = "user";
 	private static final String VUE_GESTION_COMPTE  = VUES + "/gestioncompte";
 	
+	
+	private static final String URL_TRAJET_USER  = "/user/trajet";
+	
+	
 	@Autowired
 	CompteService compteService;
 	@Autowired
@@ -46,5 +50,8 @@ public class UserController {
 
 		return "redirect:" + URL_GESTION_COMPTE;
 	}
+	
+	
+	
 	
 }

@@ -106,13 +106,11 @@ public class CompteService extends BaseService<Compte> {
 //		if(c.getRole() != compte.getRole()) {
 //			compte.setId(roleService.finByNameRole(compte.getRole().getName()));
 //		}
-		//prof
+		//profil
 		c.setProfil(profil);
 		//uptadate compte 
 		profilService.save(profil);
-		
-		//profilService.save(c.getProfil());
-		//c.getProfil().setId(profil.getId());
+	
 		compte.setProfil(profil);
 		
 		if(compte.getPassword()!=null) {
