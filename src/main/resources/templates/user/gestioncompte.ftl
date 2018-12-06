@@ -1,14 +1,12 @@
 <#import "/spring.ftl" as spring/>
-<#include "../blocsCommuns/head.ftl"/>		
+<#include "../blocsCommuns/head.ftl"/>	
+<#include "../blocsCommuns/headerUser.ftl"/>	
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/default.css'/>"/>
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/header.css'/>"/>
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/infosUser.css'/>"/>
-
 <title>User Gestion Compte</title>
-<header id="headerAdmin">
-	<a href="/home"><div id="logo"><img src="../images/matchmooveBLANCS.png"></div></a>
-			<h1>Bonjour ${compte.getProfil().getFirstname()} ${compte.getProfil().getLastname()}</h1>
-</header>
+			<h2>Bonjour ${compte.getProfil().getFirstname()} ${compte.getProfil().getLastname()}</h2>
+
 
 
 
@@ -114,7 +112,7 @@
 			</div>
 			
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-	    <div><input type="submit" value="Mettre à jour mon profil"></div>			
+	    <div><input type="submit" value="Mettre a jour mon profil"></div>			
 	</form>
 	</section>		
             

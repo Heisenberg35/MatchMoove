@@ -6,11 +6,8 @@
 	
                 <nav>
                     <ul>
-
-                    	
                         <li><a href="/admin/createcompte">Create compte</a></li>
                      	<li><a href="/admin/listuser">Gestion Compte</a></li>
-          
                         <li><a href="/cars">Vehicules</a></li>
                         <li><a href="/trajets">Trajets</a></li>
                         <li><a href="/bagages">Bagages</a></li>

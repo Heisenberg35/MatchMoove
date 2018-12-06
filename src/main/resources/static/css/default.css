@@ -21,10 +21,10 @@
 h1
 {
 	color: white;
-	font-size: 50px;
-	text-shadow:0 0 4px black;
+	font-size: 70px;
+	text-shadow:0 0 10px black;
 	text-align: center;
-	padding-top: 75px;
+	padding-top: 210px;
 }
 
 h2
@@ -39,6 +39,13 @@ h3
 {
 	font-size: 23px;
 }
+
+h3:hover
+{
+	color: #bddd1d;
+}
+
+
 
 #flex
 {
