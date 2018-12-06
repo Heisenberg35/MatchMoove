@@ -23,8 +23,8 @@ public class UserController {
 	private static final String VUE_GESTION_COMPTE  = VUES + "/gestioncompte";
 	
 	
-	private static final String URL_TRAJET_USER  = "/user/trajet";
-	
+	private static final String URL_TRAJET_USER  = "/user/researchtrajet";
+	private static final String VUE_MATCH_TRAJET_COMPTE   = "/trajets/matchTrajet";
 	
 	@Autowired
 	CompteService compteService;
@@ -52,6 +52,19 @@ public class UserController {
 	}
 	
 	
-	
+	@RequestMapping(value= {UserController.URL_TRAJET_USER},method=RequestMethod.GET)
+	public String matchTrajet() {
+		System.out.println("matchTrajet");
+		
+		//recuperation de la list des trajets
+		
+		return VUE_MATCH_TRAJET_COMPTE ;
+	}
+	@RequestMapping(value= {UserController.URL_TRAJET_USER},method=RequestMethod.POST)
+	public String matchTrajetSave() {
+		System.out.println("POST save matchTrajet");
+		
+		return VUE_MATCH_TRAJET_COMPTE ;
+	}
 	
 }
