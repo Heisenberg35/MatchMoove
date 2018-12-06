@@ -39,7 +39,7 @@
                             <#if item.getProfil().getAdresses()?has_content>
                   
 	                           <#list item.getProfil().getAdresses()  as adress>
-	                        		<#if adress.isDomicile() == true >
+	                        		<#if adress.getDomicile() == true >
 	                           		<div class="user user-adress "> Adresse : ${adress.getVille()}</div>
 	                           		<div class="user user-adress "> Postal :  ${adress.getCp()} </div>
 	                           		<#else>

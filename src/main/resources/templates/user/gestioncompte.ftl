@@ -10,9 +10,10 @@
 			<h1>Bonjour ${compte.getProfil().getFirstname()} ${compte.getProfil().getLastname()}</h1>
 </header>
 
-<form action="/user/gestioncompte" method="POST">
+
 
 	<section id="infosUser">
+	<form action="/user/gestioncompte" method="POST">
 			<div class="blocInfo">
 				<h2>Profil</h2>
 				
@@ -62,7 +63,7 @@
     		</#list>
     		<#else>
     			<label><b>Numero</b></label>
-    			<input type="text" placeholder="numero" name="profil.adresses[0].numero">
+    			<input type="text" placeholder="numero" name="profil.adresses[0].numero" required>
 				<label><b>Rue</b></label>
 				<input type="text" placeholder="rue" name="profil.adresses[0].rue" required>
 				<label><b>Code postal</b></label>
@@ -111,9 +112,10 @@
 			
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	    <div><input type="submit" value="Mettre à jour mon profil"></div>			
+	</form>
 	</section>		
             
-</form>
+
 
 
 <#include "../blocsCommuns/footer.ftl"/>	
