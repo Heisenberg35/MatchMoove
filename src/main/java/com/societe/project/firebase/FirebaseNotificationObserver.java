@@ -3,12 +3,14 @@ package com.societe.project.firebase;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.google.protobuf.TextFormat.ParseException;
 import com.societe.project.firebase.models.FirebaseMessage;
 import com.societe.project.models.Message;
+import com.societe.project.models.Profil;
 
 public class FirebaseNotificationObserver {
 	//rebaseMessage firebaseMessage;
@@ -18,11 +20,12 @@ public class FirebaseNotificationObserver {
 	  }
 	
 	private FirebaseNotificationObserver() throws IOException, java.text.ParseException {
-		
-	//irebaseMessage = new FirebaseMessage();
-		Date myDate = parseDate("1999-01-01");
-		this.message = new Message("",myDate);
-		firebaseNotificationsObserver(this.message);
+	//	Profil myprofil = new Profil("lama","Jabban", "0654441558");
+	//	Date myDate = parseDate("1999-01-01");
+	//	this.message = new Message("",myDate,myprofil);
+	//	ArrayList<Message>  conversatoin = new ArrayList<>();
+	//	conversatoin.add(this.message);
+	//	firebaseNotificationsObserver(conversatoin);
 	}
 
 	private static FirebaseNotificationObserver INSTANCE = null;

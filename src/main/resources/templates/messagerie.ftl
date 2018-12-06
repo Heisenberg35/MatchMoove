@@ -32,12 +32,13 @@ if(mm<10) {
 today = dd + '/' +mm  + '/' + yyyy;
 
 function sayClicked() {
-var rootRef = firebase.database().ref('/message/');
-
+var rootRef = firebase.database().ref('conversation/message/');
+alert(rootRef);
   rootRef.once('value', function(snap){
              rootRef.set({
                       content: snap.val().content + '\n' + document.getElementById("t1").value.trim(),
-                      date: today
+                      date: today,
+                      user:"admin"
                       
   });
   });
@@ -48,7 +49,7 @@ var rootRef = firebase.database().ref('/message/');
         document.getElementById("t1").value = ""
     };
     
-    var messageRef = firebase.database().ref('/message/');
+    var messageRef = firebase.database().ref('conversation/message/');
     messageRef.on('value', function(snap) {
         console.log(JSON.stringify(snap.val()));
         updateMessage("t2", snap.val());
