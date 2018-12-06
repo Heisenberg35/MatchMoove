@@ -47,4 +47,5 @@ public class UserController {
 		return "redirect:" + URL_GESTION_COMPTE;
 	}
 	
+	
 }
