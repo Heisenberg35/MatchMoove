@@ -31,11 +31,11 @@
 			</div>
 			
 			<div class="blocInfo">
-				<h2>Adresses</h2>
+				<h2>Adresse</h2>
 			<#if compte.getProfil().getAdresses()?has_content >
     		<#list compte.getProfil().getAdresses() as adresse>
     		<p> </p/>
-				<p><label><b>Numeeeeeeeero</b></label>
+				<p><label><b>Numero</b></label>
 				<input type="text" placeholder="numero" name="profil.adresse.numero" value="<#if adresse.getNumero()??>${adresse.getNumero()}</#if>" required></p>
     			
 				<p><label><b>Rue</b></label>
