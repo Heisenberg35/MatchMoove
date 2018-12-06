@@ -66,6 +66,12 @@ public class Message extends DBItem {
 	    this.profil = profil;
 	}
 	
+	public Message(String content)
+	{
+		this.content = content;
+	    this.date = new Date();
+	}
+	
 	public Message() {
 		super();
 	}
