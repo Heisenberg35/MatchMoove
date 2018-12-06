@@ -1,6 +1,9 @@
 <#import "/spring.ftl" as spring/>
-<#include "../blocsCommuns/head.ftl"/>	
+<#include "../blocsCommuns/head.ftl"/>		
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/default.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '../css/header.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '../css/infosUser.css'/>"/>
+
 <title>User Gestion Compte</title>
 <header id="headerAdmin">
 	<a href="/home"><div id="logo"><img src="../images/matchmooveBLANCS.png"></div></a>

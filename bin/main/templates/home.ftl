@@ -3,6 +3,7 @@
 <#include "blocsCommuns/head.ftl"/>	
 <#include "blocsCommuns/headerUser.ftl"/>	
 <link rel="stylesheet" type="text/css" href="<@spring.url '/css/trajetsActu.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
 <title>Home</title>
 
 <h2>Decouvrez les derniers trajets</h2>
