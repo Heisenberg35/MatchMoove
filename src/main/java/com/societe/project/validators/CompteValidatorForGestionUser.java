@@ -38,13 +38,22 @@ public class CompteValidatorForGestionUser implements Validator {
             }
 		}
         
-//        if (!cars.isEmpty()) {
-//	        for (Car car : cars) {
-//	        	if (car.getMarque().length() < 2 || car.getMarque().length() > 38)  {
-//	                errors.rejectValue("profil.cars[0].marque", "La marque de la voiture ne doit pas être inférieur à 2 lettres et/ou ne doit pas être supérieur à 38 lettres");
-//	            }
-//			}
-//        }
+        if (cars.get(0).getMarque() != null) {
+	        for (Car car : cars) {
+	        	if (car.getMarque().length() < 2 || car.getMarque().length() > 38)  {
+	                errors.rejectValue("profil.cars[0].marque", "La marque de la voiture ne doit pas être inférieur à 2 lettres et/ou ne doit pas être supérieur à 38 lettres");
+	            }
+	        	if (car.getModele().length() < 2 || car.getModele().length() > 38)  {
+	                errors.rejectValue("profil.cars[0].modele", "Le modele de la voiture ne doit pas être inférieur à 2 lettres et/ou ne doit pas être supérieur à 38 lettres");
+	            }
+	        	if (car.getNombreDePlace() < 0 || car.getNombreDePlace() > 8)  {
+	                errors.rejectValue("profil.cars[0].nombreDePlace", "Le nombre de place de la voiture ne doit être inférieur ou égale à 0 et/ou ne doit pas être supérieur à 8 places");
+	            }
+	        	if (car.getImmatriculation().length() != 9)  {
+	                errors.rejectValue("profil.cars[0].immatriculation", "L'immatriculation de la voiture doit comporté 9 caractères");
+	            }
+			}
+        }
     }
 }
     

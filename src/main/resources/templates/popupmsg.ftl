@@ -1,9 +1,13 @@
 <#import "/spring.ftl" as spring/>
-<link rel="stylesheet" href="css/popupmsg.css" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/header.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/popupmsg.css'/>"/>
 <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-functions.js"></script>
+
 <script>
   // Initialize Firebase
   var config = {
@@ -27,40 +31,58 @@ if(mm<10) {
     mm = '0'+mm
 } 
 today = dd + '/' +mm  + '/' + yyyy;
+
+
 function sayClicked() {
-var rootRef = firebase.database().ref('/message/');
-  rootRef.once('value', function(snap){
-             rootRef.set({
-                      content: snap.val().content + '\n' + document.getElementById("t1").value.trim(),
-                      date: today
-                      
-  });
-  });
+
+var rootRef = firebase.database().ref('conversation/');
+  var newMessageRef = rootRef.push();
+      newMessageRef.set({
+      content:  '${user}'+":\n" + document.getElementById("t1").value.trim(),
+      date: today
+});
+
 }
+
  var updateMessage = function(element, value) {
-        document.getElementById(element).value = value.content;
-        document.getElementById("t1").value = ""
+        document.getElementById(element).value += value + '\n';
+        document.getElementById("t1").value = "";
     };
     
-    var messageRef = firebase.database().ref('/message/');
-    messageRef.on('value', function(snap) {
-        console.log(JSON.stringify(snap.val()));
-        updateMessage("t2", snap.val());
-    });
-function reset(){
-  document.getElementById("t1").value = ""
-}
+ var conversationRef = firebase.database().ref('conversation/');
+ 
+conversationRef.once('value', function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+	    var childKey = childSnapshot.key;
+	    var childData = childSnapshot.val().content;
+	    updateMessage("t2", childData);
+	});
+});
+    
+conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
+  updateMessage("t2", snapshot.val().content);
+});
+
+
+<<<<<<< HEAD
+
+
+</script>
+=======
+>>>>>>> master
+
+
 </script>
 
-
-<button class="open-button" onclick="openForm()"><img src="/images/message.png" class="popup"> 0 a lire</button>
+	
+	<button class="open-button" onclick="openForm()"><img src="/images/message.png" class="popup"> 0 a lire</button>
 <div class="chat-popup" id="myForm">
   <form action="" class="form-container">
     <h2>Retrouvez vos messages</h2>
 
     <label for="msg"><b>Messages</b></label>
     
-    <textarea id="t2" readonly rows = "5" cols = "60"  name="content" value=""><#if message?? >${message.getContent()} </#if>  </textarea>
+    <textarea id="t2" readonly rows = "5" cols = "60"  name="content" value=""> </textarea>
     
      <textarea id="t1" rows = "5" cols = "60"  name="content" placeholder="Taper votre message.." name="msg"> </textarea>
 
@@ -68,12 +90,12 @@ function reset(){
     
     <img onclick="closeForm()" src="/images/close.png" class="popup">
     
-    <input type="hidden"
-            name="${_csrf.parameterName}"
-            value="${_csrf.token}"/>
   </form>
 </div>
 
+      <input type="hidden"
+            name="${_csrf.parameterName}"
+            value="${_csrf.token}"/>
 <script>
 	function openForm() {
     	document.getElementById("myForm").style.display = "block";
