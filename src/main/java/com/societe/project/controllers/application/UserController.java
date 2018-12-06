@@ -52,7 +52,7 @@ public class UserController {
 	
 	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.POST)
 	public String modificationCompte(@ModelAttribute Compte compte, BindingResult bindingResult, Model model) {
-		System.out.println(compte);
+
 		compteValidatorForGestionUser.validate(compte, bindingResult);
 		
 		if (bindingResult.hasErrors()) {
@@ -69,10 +69,12 @@ public class UserController {
 			adresseService.save(adresse);
 		}
 		
-		for (Car car : cars) {
-			carService.save(car);
+		if (cars.get(0).getMarque() != null) {
+			for (Car car : cars) {
+				carService.save(car);
+			}
 		}
-
+	
 		return "redirect:/home";
 	}
 
