@@ -5,7 +5,7 @@
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-functions.js"></script>
-<input id=“freemarkervar” type=hidden value=“${user}”/>
+
 <script>
   // Initialize Firebase
   var config = {
@@ -29,48 +29,41 @@ if(mm<10) {
     mm = '0'+mm
 } 
 today = dd + '/' +mm  + '/' + yyyy;
+
+
 function sayClicked() {
-<<<<<<< HEAD
 
-  
-var rootRef = firebase.database().ref('conversation/message');
+var rootRef = firebase.database().ref('conversation/');
+  var newMessageRef = rootRef.push();
+      newMessageRef.set({
+      content:  '${user}'+":\n" + document.getElementById("t1").value.trim(),
+      date: today
+});
 
-=======
-var rootRef = firebase.database().ref('/message/');
->>>>>>> master
-  rootRef.once('value', function(snap){
-             rootRef.set({
-                      content: snap.val().content + '\n' + '${user}' + document.getElementById("t1").value.trim(),
-                      date: today
-                      
-  });
-  });
 }
-<<<<<<< HEAD
 
-
-
-
-=======
->>>>>>> master
  var updateMessage = function(element, value) {
-        document.getElementById(element).value = value.content;
-        document.getElementById("t1").value = ""
+        document.getElementById(element).value += value + '\n';
+        document.getElementById("t1").value = "";
     };
     
-    var messageRef = firebase.database().ref('conversation/message');
-    messageRef.on('value', function(snap) {
-        console.log(JSON.stringify(snap.val()));
-        updateMessage("t2", snap.val());
-    });
-<<<<<<< HEAD
+ var conversationRef = firebase.database().ref('conversation/');
+ 
+conversationRef.once('value', function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+	    var childKey = childSnapshot.key;
+	    var childData = childSnapshot.val().content;
+	    updateMessage("t2", childData);
+	});
+});
+    
+conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
+  updateMessage("t2", snapshot.val().content);
+});
 
 
-=======
-function reset(){
-  document.getElementById("t1").value = ""
-}
->>>>>>> master
+
+
 </script>
 
 

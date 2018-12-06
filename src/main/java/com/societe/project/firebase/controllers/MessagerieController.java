@@ -32,8 +32,8 @@ public class MessagerieController {
 	}*/
 	
 	@RequestMapping(value= {"","/"})
-	public String Index(Model model) {
-		 try {
+	 public String Index(Model model) {
+		/* try {
 			FirebaseOpenHelper
 			                .getInstance()
 			                .getDatabase()
@@ -43,7 +43,7 @@ public class MessagerieController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+	*/
 		model.addAttribute("user",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		return "/messagerie";
 	}
