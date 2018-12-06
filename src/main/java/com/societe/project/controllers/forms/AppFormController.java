@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,7 +34,9 @@ public class AppFormController {
 	private static final String URL_CREATE_COMPTE  = "/admin/createcompte";
 	
 	private static final String URL_LISTUSER_COMPTE  = "/admin/listuser";
-	private static final String URL_UPDATE_COMPTE  = "/admin/edit";
+	private static final String URL_UPDATE_COMPTE    = "/admin/edit";
+	
+	private static final String URL_DELETE_COMPTE   = "/admin/delete/{id}";
 	
 	private static final String VUE_CREATE_COMPTE    = VUES + "/createcompte";
 	private static final String VUE_LISTUSER_COMPTE  = VUES + "/listeuser";
@@ -96,7 +99,7 @@ public class AppFormController {
 			compteService.getDto().createProfit(profil);
 			compteService.getDto().getCreateCompte().afficheCompte();
 			compteService.getDto().getCreateProfil().afficheProfil();	
-			compteService.initElementTable(compte);
+			compteService.initElementTable();
 			
 		}else {
 			System.out.println("error compte");
@@ -121,7 +124,7 @@ public class AppFormController {
 		
 		System.out.println("Liste user");
 		
-		model.addAttribute("detailPath","");
+		model.addAttribute("detailPath","/admin");
 		model.addAttribute("roles", roleService.findAll());
 		
 		for (Profil p : profilService.findAll()) {
@@ -148,8 +151,26 @@ public class AppFormController {
 	}
 	
 	@RequestMapping(value= {AppFormController.URL_UPDATE_COMPTE }, method=RequestMethod.POST)
-	public String updateCopteUser(Model model) {
+	public String updateCopteUser(@ModelAttribute Compte compte,@ModelAttribute Profil profil) {
 	
+		System.out.println("update user");
+	    compte.afficheCompte();
+	    profil.afficheProfil();
+	    System.out.println(compte.getRole().getName());
+	    compte.getRole().getName();
+	    System.out.println(compte.getRole().getName());
+	  compteService.uptdateCompte(compte,profil);
+		return "redirect:"+AdminController.BASE_URL;
+	}
+	
+	@RequestMapping(value= {AppFormController.URL_DELETE_COMPTE }, method=RequestMethod.GET)
+	public String delete(@ModelAttribute Compte compte,@PathVariable int id) {
+	
+		System.out.println("delete user");
+		System.out.println(id);
+		
+		compteService.disableCompte(compte,id);
+		
 		return "redirect:"+AdminController.BASE_URL;
 	}
 }

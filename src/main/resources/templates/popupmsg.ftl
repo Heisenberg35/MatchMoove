@@ -1,5 +1,8 @@
 <#import "/spring.ftl" as spring/>
-<link rel="stylesheet" href="css/popupmsg.css" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/header.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/popupmsg.css'/>"/>
 <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-database.js"></script>
@@ -61,12 +64,18 @@ conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) 
 });
 
 
+<<<<<<< HEAD
+
+
+</script>
+=======
+>>>>>>> master
 
 
 </script>
 
-
-<button class="open-button" onclick="openForm()"><img src="/images/message.png" class="popup"> 0 a lire</button>
+	
+	<button class="open-button" onclick="openForm()"><img src="/images/message.png" class="popup"> 0 a lire</button>
 <div class="chat-popup" id="myForm">
   <form action="" class="form-container">
     <h2>Retrouvez vos messages</h2>
@@ -81,12 +90,12 @@ conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) 
     
     <img onclick="closeForm()" src="/images/close.png" class="popup">
     
-    <input type="hidden"
-            name="${_csrf.parameterName}"
-            value="${_csrf.token}"/>
   </form>
 </div>
 
+      <input type="hidden"
+            name="${_csrf.parameterName}"
+            value="${_csrf.token}"/>
 <script>
 	function openForm() {
     	document.getElementById("myForm").style.display = "block";
