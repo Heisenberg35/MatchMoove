@@ -1,6 +1,7 @@
 <#import "/spring.ftl" as spring/>
 
-<link rel="stylesheet" type="text/css" href="<@spring.url '../css/default.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/../css/header.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/../css/default.css'/>"/>
 <header id="headerAdmin">
 	<a href="/home"><div id="logo"><img src="../images/matchmooveBLANCS.png"></div></a>
 		<nav>
@@ -60,29 +61,7 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <#include "../blocsCommuns/footer.ftl"/>	
 
 

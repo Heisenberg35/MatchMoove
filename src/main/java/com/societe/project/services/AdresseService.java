@@ -30,4 +30,6 @@ public class AdresseService extends BaseService<Adresse> {
 		}
 		return result;
 	}
+	
+	
 }

@@ -1,5 +1,6 @@
 <#import "/spring.ftl" as spring/>
 <link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '/css/header.css'/>"/>
 <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-database.js"></script>
