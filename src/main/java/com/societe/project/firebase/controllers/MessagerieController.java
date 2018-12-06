@@ -33,17 +33,16 @@ public class MessagerieController {
 	
 	@RequestMapping(value= {"","/"})
 	public String Index(Model model) {
-		 try {
+		/* try {
 			FirebaseOpenHelper
 			                .getInstance()
 			                .getDatabase()
-			                .getReference("/conversation/message")
-			                .setValueAsync(new Message("Conversation initialisé"));
+			                .getReference("/conversation/").setValueAsync(new);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+	*/
 		model.addAttribute("user",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		return "/messagerie";
 	}
