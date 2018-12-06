@@ -8,6 +8,7 @@ import com.societe.project.models.Compte;
 import com.societe.project.models.Profil;
 import com.societe.project.models.Role;
 import com.societe.project.services.CompteService;
+import com.societe.project.services.PTService;
 import com.societe.project.services.ProfilService;
 import com.societe.project.services.RoleService;
 
@@ -26,12 +27,17 @@ public class FirstService {
 	@Autowired
 	private ProfilService profilService;
 	
+	@Autowired
+	private PTService ptService;
+	
 	public void createFirstAdminAndFirstUser(String initRole) {
         if(!isExistAdminOrUser("admin@gmail.com")) {
             initElementTable(initRole,"admin","admin","0122334455","admin@gmail.com","admin");
         }else if(!isExistAdminOrUser("user@gmail.com")) {
                 initElementTable(initRole,"user","user","0122334455","user@gmail.com","user");
+                ptService.insertTrajetDur();
         }
+      //recuperation de la list des trajets		
 	}
 	
 	public void initElementTable(String Role,String nom, String prenom, String phoneNumber, String mail,String pass) {

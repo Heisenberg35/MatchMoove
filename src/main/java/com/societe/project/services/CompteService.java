@@ -30,8 +30,7 @@ public class CompteService extends BaseService<Compte> {
 	@Autowired
 	private ProfilService profilService;
 	
-	@Autowired
-	private RoleService roleService;
+
 	
 	@Override
 	protected BaseCRUDRepository<Compte> getCRUDRepository() {

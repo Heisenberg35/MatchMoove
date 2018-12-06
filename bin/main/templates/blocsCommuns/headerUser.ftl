@@ -1,6 +1,8 @@
+<#import "/spring.ftl" as spring/>     
+
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/header.css'/>"/>
 <header>
-	<a href="/home"><div id="logo"><img src="images/matchmooveBLANCS.png"></div></a>
+	<a href="/home"><div id="logo"><img src="/images/matchmooveBLANCS.png"></div></a>
 		<nav>
  			<ul>
             	
@@ -12,17 +14,15 @@
             		</#if>
         			</#list>
    				</#if>
-                <li><a href="#">Je match !</a></li>
+              
                 <li><a href="#">Proposer un trajet</a></li>
-<<<<<<< HEAD
-                <li><a href="#">Rechercher un trajet</a></li>
+              	<li><a href="/user/researchtrajet">Rechercher un trajet</a></li>
+                
                 <li><a href="/articles">BLOG</a></li>
                 <li><a href="/messagerie">Messagerie</a></li>
-=======
-                <li><a href="/user/researchtrajet">Rechercher un trajet</a></li>
-                <li><a href="#">Messagerie</a></li>
+                
                 <li><a href="#">BLOG</a></li>
->>>>>>> jeremFunctionV2
+
 			    <li><a href="/logout"><img src="images/logout.png"></a></li>
              </ul>
 		</nav>

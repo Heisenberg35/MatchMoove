@@ -7,13 +7,29 @@ import org.springframework.stereotype.Service;
 
 import com.societe.project.database.PTRepository;
 import com.societe.project.database.base.BaseCRUDRepository;
+import com.societe.project.models.Compte;
 import com.societe.project.models.PT;
+import com.societe.project.models.Point;
+import com.societe.project.models.Trajet;
 import com.societe.project.services.base.BaseService;
 @Service
 public class PTService extends BaseService<PT> {
 
 	@Autowired
 	private PTRepository ptRepository;
+	
+	@Autowired
+	CompteService compteService;
+	@Autowired
+	ProfilService profilService;
+	@Autowired
+	AdresseService adresseService;
+	@Autowired
+	TrajetService trajetService;
+	@Autowired
+	PTService  ptService;
+	
+	
 	@Override
 	protected BaseCRUDRepository<PT> getCRUDRepository() {
 		
@@ -29,5 +45,38 @@ public class PTService extends BaseService<PT> {
 		}
 		return result;
 	}
-
+	
+	
+	
+	
+	public void insertTrajetDur() {
+		
+		//recuperation compte
+		Compte  user = compteService.finByEmailCompte("user@gmail.com");
+		
+		//creation des point
+		Point pointDepart = new Point();
+		pointDepart.setAltitude(48.383);
+		pointDepart.setLongitude(-4.500);
+		
+		
+		Point pointArrive = new Point();
+		pointArrive.setAltitude(48.513618);
+		pointArrive.setLongitude(-2.770696);
+		
+		
+		Trajet userTrajet = new Trajet();
+		userTrajet.setNom("TrajetUser");
+		userTrajet.setPerimetre(50.2);
+		
+		trajetService.save(userTrajet);
+		
+		PT pt = new PT();
+		pt.setNbrePlace(3);
+		pt.setTrajet(userTrajet);
+		pt.setprofil(user.getProfil());
+		
+		ptService.save(pt);
+		
+	}
 }

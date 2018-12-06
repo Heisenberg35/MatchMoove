@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.societe.project.models.Adresse;
 import com.societe.project.models.Car;
 import com.societe.project.models.Compte;
+import com.societe.project.models.PT;
+import com.societe.project.models.Trajet;
 import com.societe.project.services.AdresseService;
 import com.societe.project.services.CarService;
 import com.societe.project.services.CompteService;
+import com.societe.project.services.PTService;
 import com.societe.project.services.ProfilService;
 import com.societe.project.services.RecuperationInfoLogin;
+import com.societe.project.services.TrajetService;
 import com.societe.project.validators.CompteValidatorForGestionUser;
 
 @Controller
@@ -39,6 +43,13 @@ public class UserController {
 	AdresseService adresseService;
 	@Autowired
 	CarService carService;
+	
+	@Autowired
+	TrajetService trajetService;
+	@Autowired
+	PTService  ptService;
+	
+	
 	@Autowired
 	CompteValidatorForGestionUser compteValidatorForGestionUser;
 	@Autowired
@@ -81,13 +92,25 @@ public class UserController {
 	}
 
 	
+	/**
+	 * *********************************************************
+	 * 		reseach trajet
+	 * ***********************************************************
+	 */
 	
 	
 	@RequestMapping(value= {UserController.URL_TRAJET_USER},method=RequestMethod.GET)
-	public String matchTrajet() {
+	public String matchTrajet(Model model) {
 		System.out.println("matchTrajet");
 		
-		//recuperation de la list des trajets
+		
+		
+		List <PT> listPt = (List<PT>) ptService.findAll();
+		//model.addAttribute()
+		
+		for (PT pt : listPt) {
+			pt.affPT();
+		}
 		
 		return VUE_MATCH_TRAJET_COMPTE ;
 	}
@@ -97,5 +120,7 @@ public class UserController {
 		
 		return VUE_MATCH_TRAJET_COMPTE ;
 	}
+	
+	
 	
 }
