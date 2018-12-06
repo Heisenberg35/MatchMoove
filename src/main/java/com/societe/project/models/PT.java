@@ -77,9 +77,14 @@ private Double volumeMax;
 	 ***********************************************/
 	
 	public void affPT() {
-		System.out.println(nbrePlace);
+		System.out.println("nombre de place  : "+nbrePlace);
 		trajet.affTrajet();
 		profil.afficheProfil();
+		
+		for (Adresse adr : profil.getAdresses()) {
+			System.out.println(adr.getStringAdr());
+		}
+		
 	}
 }
 

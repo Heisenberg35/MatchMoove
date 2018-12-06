@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.societe.project.database.PTRepository;
 import com.societe.project.database.base.BaseCRUDRepository;
+import com.societe.project.models.Adresse;
 import com.societe.project.models.Compte;
 import com.societe.project.models.PT;
 import com.societe.project.models.Point;
@@ -54,6 +55,14 @@ public class PTService extends BaseService<PT> {
 		//recuperation compte
 		Compte  user = compteService.finByEmailCompte("user@gmail.com");
 		
+		Adresse domicile = new Adresse(3,"key",56000,"vannes",true,user.getProfil());
+		Adresse work = new Adresse(1,"Pierre de Maupertuis",35170,"rennes",false,user.getProfil());
+		
+		//save
+		adresseService.save(domicile);
+		adresseService.save(work);
+		
+		
 		//creation des point
 		Point pointDepart = new Point();
 		pointDepart.setAltitude(48.383);
@@ -77,6 +86,5 @@ public class PTService extends BaseService<PT> {
 		pt.setprofil(user.getProfil());
 		
 		ptService.save(pt);
-		
 	}
 }

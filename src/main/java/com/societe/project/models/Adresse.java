@@ -103,4 +103,8 @@ public class Adresse extends DBItem {
 		
 	}
 	
+	public String getStringAdr() {
+		return numero+" "+rue+" "+ville+" "+cp;
+	}
+	
 }
