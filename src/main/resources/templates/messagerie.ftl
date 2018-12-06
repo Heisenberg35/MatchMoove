@@ -32,10 +32,11 @@ if(mm<10) {
 today = dd + '/' +mm  + '/' + yyyy;
 
 function sayClicked() {
-var rootRef = firebase.database().ref('message');
+var rootRef = firebase.database().ref('/message/');
+
   rootRef.once('value', function(snap){
              rootRef.set({
-                      content: snap.val().content + '\n' + document.getElementById("t1").value,
+                      content: snap.val().content + '\n' + document.getElementById("t1").value.trim(),
                       date: today
                       
   });

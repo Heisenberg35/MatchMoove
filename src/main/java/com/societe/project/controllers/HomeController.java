@@ -18,12 +18,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.societe.project.firebase.FirebaseNotificationObserver;
 import com.societe.project.firebase.FirebaseOpenHelper;
 import com.societe.project.services.ArticleService;
+import com.societe.project.services.ProfilService;
 import com.societe.project.services.RecuperationInfoLogin;
 
 @Controller
 public class HomeController {
     @Autowired
     ArticleService articleService;
+    @Autowired
+    ProfilService profilService;
     
 	@Autowired
 	RecuperationInfoLogin recuperationInfoLogin;
@@ -40,6 +43,7 @@ public class HomeController {
 		
 		ArrayList<String> roles = recuperationInfoLogin.recuperationRole();
 		model.addAttribute("roles", roles);
+	
 		model.addAttribute("lastArticles",articleService.findLatestArticles());
 		return "/home";
 	}

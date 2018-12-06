@@ -35,7 +35,7 @@ public class ArticleService extends BaseService<Article> {
   
 	public List<Article>findLatestArticles()
 	{
-		return this.articleRepository.findAllByOrderByDateDesc();
+		return this.articleRepository.findTop3ByOrderByDateDesc();
 		
 	}
 }
