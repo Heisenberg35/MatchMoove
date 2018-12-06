@@ -8,7 +8,6 @@
 </header>
 
 <form action="/user/gestioncompte" method="POST">
-
 	<p>Compte : </p>
 	<label><b>Adresse mail</b></label>
 	<input type="text" placeholder="Adresse mail" name="email" value="<#if compte?? && compte.getEmail()??>${compte.getEmail()}</#if>" disabled>
@@ -31,59 +30,57 @@
 			<label><b>Rue</b></label>
 			<input type="text" placeholder="rue" name="profil.adresses[${index}].rue" value="<#if adresse.getRue()??>${adresse.getRue()}</#if>" required>
 			<label><b>Code postal</b></label>
-			<input type="number" placeholder="code postal" name="profil.adresses[${index}].cp" value="<#if adresse.getCp()??>${adresse.getCp()}</#if>" required>
+			<input type="text" placeholder="code postal" name="profil.adresses[${index}].cp" value="<#if adresse.getCp()??>${adresse.getCp()? string ["0"]}</#if>" required>
 			<label><b>Ville</b></label>
 			<input type="text" placeholder="ville" name="profil.adresses[${index}].ville" value="<#if adresse.getVille()??>${adresse.getVille()}</#if>" required>
-			<!--TODO COMMENT RECUPERER DOMICILE OU TRAVAIL
-			<label>Type d'adresse</label>
-    		<input type="radio" id="domicile" name="domicile" value="true" checked/>
-		  	<label for="domicile">Domicile</label>
-		  	<input type="radio" id="travail" name="domicile" value="false"/>
-		  	<label for="travail">Travail</label>
-  			-->
+			<#if index == 0>
+			<input type="hidden" name="profil.adresses[${index}].domicile" value="true">
+			<#else>
+			<input type="hidden" name="profil.adresses[${index}].domicile" value="false">
+			</#if>
   			<input type="hidden" name="profil.adresses[${index}].id" value="${adresse.getId()}">
   			<input type="hidden" name="profil.adresses[${index}].profil.id" value="${compte.getProfil().getId()}">
-  			<#assign index++>
+  	<#assign index++>
         </#list>
     <#else>
-    	<label><b>Numero</b></label>
-			<input type="number" placeholder="numero" name="profil.adresses[0].numero" required>
+    		<label><b>Numero</b></label>
+			<input type="number" placeholder="numero" name="profil.adresses[0].numero">
 			<label><b>Rue</b></label>
 			<input type="text" placeholder="rue" name="profil.adresses[0].rue" required>
 			<label><b>Code postal</b></label>
 			<input type="number" placeholder="code postal" name="profil.adresses[0].cp" required>
 			<label><b>Ville</b></label>
 			<input type="text" placeholder="ville" name="profil.adresses[0].ville" required>
-			<label>Type d'adresse</label>
-    		<input type="radio" id="domicile" name="profil.adresses[0].domicile" value="true">
-  			<label for="domicile">Domicile</label>
-  			<input type="radio" id="travail" name="profil.adresses[0].domicile" value="false"/>
-  			<label for="travail">Travail</label>
+  			<input type="hidden" name="profil.adresses[0].domicile" value="true">
   			<input type="hidden" name="profil.adresses[0].profil.id" value="${compte.getProfil().getId()}">
     </#if>   
     
     <p>Voiture : </p>
     <#if compte.getProfil().getCars()?has_content >
+    <#assign index = 0>
     	<#list compte.getProfil().getCars() as voiture>
     		<label><b>Marque</b></label>
-			<input type="text" placeholder="marque" name="profil.car.marque" value="<#if voiture.getMarque()??>${voiture.getMarque()}</#if>" required>
+			<input type="text" placeholder="marque" name="profil.cars[${index}].marque" value="<#if voiture.getMarque()??>${voiture.getMarque()}</#if>">
 			<label><b>Modele</b></label>
-			<input type="text" placeholder="modele" name="profil.car.modele" value="<#if voiture.getModele()??>${voiture.getModele()}</#if>" required>
+			<input type="text" placeholder="modele" name="profil.cars[${index}].modele" value="<#if voiture.getModele()??>${voiture.getModele()}</#if>">
 			<label><b>Nombre de places</b></label>
-			<input type="number" placeholder="nombre de place" name="profil.car.nombreDePlace" value="<#if voiture.getNombreDePlace()??>${voiture.getNombreDePlace()}</#if>" required>
+			<input type="number" placeholder="nombre de place" name="profil.cars[${index}].nombreDePlace" value="<#if voiture.getNombreDePlace()??>${voiture.getNombreDePlace()}</#if>">
 			<label><b>Plaque d'immatriculation</b></label>
-			<input type="text" placeholder="plaque d'immmatriculation" name="profil.car.immatriculation" value="<#if voiture.getImmatriculation()??>${voiture.getImmatriculation()}</#if>" required>
-        	<input type="hidden" name="profil.car.id" value="${voiture.getId()}">
+			<input type="text" placeholder="plaque d'immmatriculation" name="profil.cars[${index}].immatriculation" value="<#if voiture.getImmatriculation()??>${voiture.getImmatriculation()}</#if>">
+        	<input type="hidden" name="profil.cars[${index}].id" value="${voiture.getId()}">
+  			<input type="hidden" name="profil.cars[${index}].profil.id" value="${compte.getProfil().getId()}">
+    <#assign index++>
         </#list>
     <#else>
     	<label><b>Marque</b></label>
-		<input type="text" placeholder="marque" name="profil.car.marque" />
+		<input type="text" placeholder="marque" name="profil.cars[0].marque" />
 		<label><b>Modele</b></label>
-		<input type="text" placeholder="modele" name="profil.car.modele" />
+		<input type="text" placeholder="modele" name="profil.cars[0].modele" />
 		<label><b>Nombre de places</b></label>
-		<input type="number" placeholder="nombre de place" name="profil.car.nombreDePlace" />
+		<input type="number" placeholder="nombre de place" name="profil.cars[0].nombreDePlace" />
 		<label><b>Plaque d'immatriculation</b></label>
-		<input type="text" placeholder="plaque d'immmatriculation" name="profil.car.immatriculation" />
+		<input type="text" placeholder="plaque d'immmatriculation" name="profil.cars[0].immatriculation" />
+		<input type="hidden" name="profil.cars[0].profil.id" value="${compte.getProfil().getId()}">
     </#if>     
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
