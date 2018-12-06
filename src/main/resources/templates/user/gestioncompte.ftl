@@ -10,9 +10,10 @@
 			<h1>Bonjour ${compte.getProfil().getFirstname()} ${compte.getProfil().getLastname()}</h1>
 </header>
 
-<form action="/user/gestioncompte" method="POST">
+
 
 	<section id="infosUser">
+	<form action="/user/gestioncompte" method="POST">
 			<div class="blocInfo">
 				<h2>Profil</h2>
 				
@@ -32,13 +33,16 @@
 			</div>
 			
 			<div class="blocInfo">
+
 				<h2>Adresse Domicile</h2>
+
 			<#if compte.getProfil().getAdresses()?has_content >
 			<#assign index = 0>
     		<#list compte.getProfil().getAdresses() as adresse>
-    		<p> </p/>
+    		
 				<p><label><b>Numero</b></label>
 				<input type="text" placeholder="numero" name="profil.adresses[${index}].numero" value="<#if adresse.getNumero()??>${adresse.getNumero()}</#if>" required></p>
+
     			
 				<p><label><b>Rue</b></label>
 				<input type="text" placeholder="rue" name="profil.adresses[${index}].rue" value="<#if adresse.getRue()??>${adresse.getRue()}</#if>" required></p>
@@ -62,7 +66,7 @@
     		</#list>
     		<#else>
     			<label><b>Numero</b></label>
-    			<input type="text" placeholder="numero" name="profil.adresses[0].numero">
+    			<input type="text" placeholder="numero" name="profil.adresses[0].numero" required>
 				<label><b>Rue</b></label>
 				<input type="text" placeholder="rue" name="profil.adresses[0].rue" required>
 				<label><b>Code postal</b></label>
@@ -111,9 +115,10 @@
 			
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	    <div><input type="submit" value="Mettre à jour mon profil"></div>			
+	</form>
 	</section>		
             
-</form>
+
 
 
 <#include "../blocsCommuns/footer.ftl"/>	

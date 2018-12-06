@@ -46,12 +46,13 @@ public class UserController {
 		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
 
 		model.addAttribute("compte", compte);
+//		model.addAttribute("errors", bindingResult);
 		return VUE_GESTION_COMPTE;
 	}
 	
 	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.POST)
 	public String modificationCompte(@ModelAttribute Compte compte, BindingResult bindingResult, Model model) {
-
+		System.out.println(compte);
 		compteValidatorForGestionUser.validate(compte, bindingResult);
 		
 		if (bindingResult.hasErrors()) {
