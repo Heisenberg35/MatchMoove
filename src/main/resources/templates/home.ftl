@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
 <title>Home</title>
 
+
 <h2>Decouvrez les derniers trajets</h2>
 
 	<section id="Trajets"> 
@@ -48,5 +49,9 @@
 	</section>
  
 	</#if>		
+<<<<<<< HEAD
 <#include "popupmsg.ftl">	
+=======
+<#include "popupmsg.ftl"/>
+>>>>>>> lama
 <#include "blocsCommuns/footer.ftl"/>

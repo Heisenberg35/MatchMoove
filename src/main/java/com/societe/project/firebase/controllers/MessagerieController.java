@@ -37,7 +37,8 @@ public class MessagerieController {
 			e.printStackTrace();
 		}
 	*/
-		model.addAttribute("user",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
+		
+		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		return "/messagerie";
 	}
 	

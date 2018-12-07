@@ -15,6 +15,7 @@ import com.societe.project.models.Compte;
 import com.societe.project.models.Profil;
 import com.societe.project.services.CompteService;
 import com.societe.project.services.ProfilService;
+import com.societe.project.services.RecuperationInfoLogin;
 import com.societe.project.services.RoleService;
 import com.societe.project.validators.CompteValidator;
 import com.societe.project.validators.Profvalidator;
@@ -46,7 +47,8 @@ public class AppFormController {
 	*    @private
 	*************************************************
 	*/
-	
+	@Autowired
+	RecuperationInfoLogin recuperationInfoLogin;
 	@Autowired
 	private RoleService roleService;
 	@Autowired
@@ -72,6 +74,7 @@ public class AppFormController {
 		model.addAttribute("detailPath",URL_CREATE_COMPTE);
 		model.addAttribute("roles", roleService.findAll());
 		
+		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		System.out.println("get de create user");
 		
 		return VUE_CREATE_COMPTE;
