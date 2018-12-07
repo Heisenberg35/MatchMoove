@@ -43,24 +43,26 @@ public class UserController {
 	CompteValidatorForGestionUser compteValidatorForGestionUser;
 	@Autowired
 	RecuperationInfoLogin recuperationInfoLogin;
+	
 
 	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.GET)
 	public String gestionCompte(Model model) {
-		
 		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
 
 		model.addAttribute("compte", compte);
 //		model.addAttribute("errors", bindingResult);
+		
+		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		return VUE_GESTION_COMPTE;
 	}
 	
 	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.POST)
 	public String modificationCompte(@ModelAttribute Compte compte, BindingResult bindingResult, Model model) {
-		System.out.println(compte);
+
 		compteValidatorForGestionUser.validate(compte, bindingResult);
 		
 		if (bindingResult.hasErrors()) {
-			System.out.println(bindingResult);
+			model.addAttribute("errors", bindingResult);
 			return "redirect:" + URL_GESTION_COMPTE;
         }
 		
@@ -73,10 +75,12 @@ public class UserController {
 			adresseService.save(adresse);
 		}
 		
-		for (Car car : cars) {
-			carService.save(car);
+		if (cars.get(0).getMarque() != null) {
+			for (Car car : cars) {
+				carService.save(car);
+			}
 		}
-
+	
 		return "redirect:/home";
 	}
 

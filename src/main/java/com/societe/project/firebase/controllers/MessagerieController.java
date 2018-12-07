@@ -6,15 +6,8 @@ import java.text.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.societe.project.firebase.FirebaseNotificationObserver;
-import com.societe.project.firebase.FirebaseOpenHelper;
-import com.societe.project.models.Message;
-import com.societe.project.services.ProfilService;
 import com.societe.project.services.RecuperationInfoLogin;
 
 @Controller
@@ -33,18 +26,19 @@ public class MessagerieController {
 	
 	@RequestMapping(value= {"","/"})
 	public String Index(Model model) {
-		 try {
+
+		/* try {
 			FirebaseOpenHelper
 			                .getInstance()
 			                .getDatabase()
-			                .getReference("/conversation/message")
-			                .setValueAsync(new Message("Conversation initialisé"));
+			                .getReference("/conversation/").setValueAsync(new);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-		model.addAttribute("user",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
+	*/
+		
+		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		return "/messagerie";
 	}
 	

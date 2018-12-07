@@ -21,6 +21,9 @@ import com.societe.project.services.ArticleService;
 import com.societe.project.services.ProfilService;
 import com.societe.project.services.RecuperationInfoLogin;
 
+import freemarker.template.Configuration;
+import freemarker.template.TemplateModelException;
+
 @Controller
 public class HomeController {
     @Autowired
@@ -32,7 +35,7 @@ public class HomeController {
 	RecuperationInfoLogin recuperationInfoLogin;
 	
 	@RequestMapping(value = {"/home"})
-	public String showPage(Model model) {
+	public String showPage(Model model) throws TemplateModelException {
 		//Ici je récupère la liste des roles de l'utilisateur connecté afin de passer dans la vue les différents roles
 //		ArrayList<String> roles = new ArrayList<>();
 //		SecurityContext securityContext = SecurityContextHolder.getContext();
@@ -40,11 +43,14 @@ public class HomeController {
 //		for (GrantedAuthority grantedAuthority : role) {
 //			roles.add(grantedAuthority.getAuthority());
 //		}
-		
+		//Configuration cfg = new Configuration(Configuration.VERSION_2_3_27);
+		//cfg.setSharedVariable("user", recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		ArrayList<String> roles = recuperationInfoLogin.recuperationRole();
 		model.addAttribute("roles", roles);
 	
 		model.addAttribute("lastArticles",articleService.findLatestArticles());
+		  
+		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		return "/home";
 	}
 	
