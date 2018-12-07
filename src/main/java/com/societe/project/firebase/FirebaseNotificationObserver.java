@@ -15,11 +15,11 @@ import com.societe.project.models.Profil;
 public class FirebaseNotificationObserver {
 	//rebaseMessage firebaseMessage;
 	Message message;
-	public static Date parseDate(String date) throws java.text.ParseException, ParseException {
-	     return (Date) new SimpleDateFormat("yyyy-MM-dd").parse(date);
-	  }
+	//public static Date parseDate(String date) throws java.text.ParseException, ParseException {
+	 //    return (Date) new SimpleDateFormat("yyyy-MM-dd").parse(date);
+	//  }
 	
-	private FirebaseNotificationObserver() throws IOException, java.text.ParseException {
+	private FirebaseNotificationObserver() throws IOException {
 	//	Profil myprofil = new Profil("lama","Jabban", "0654441558");
 	//	Date myDate = parseDate("1999-01-01");
 	//	this.message = new Message("",myDate,myprofil);
@@ -30,7 +30,7 @@ public class FirebaseNotificationObserver {
 
 	private static FirebaseNotificationObserver INSTANCE = null;
 
-	public static synchronized FirebaseNotificationObserver getInstance() throws IOException, java.text.ParseException {
+	public static synchronized FirebaseNotificationObserver getInstance() throws IOException {
 		if (INSTANCE == null) {
 			INSTANCE = new FirebaseNotificationObserver( );
 		}

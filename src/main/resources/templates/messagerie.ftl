@@ -32,12 +32,19 @@ if(dd<10) {
 if(mm<10) {
     mm = '0'+mm
 } 
+if(hh<10) {
+    hh = '0'+hh
+} 
+if(m<10) {
+    m = '0'+m
+} 
 today = dd + '/' +mm  + '/' + yyyy + '    ' + hh + ':' + m ;
 
 
 function sayClicked() {
-//alert("date strored"+today)
-var rootRef = firebase.database().ref('conversation/');
+
+var rootRef = firebase.database.ref('/conversations/${trajet}');
+alert(rootRef);
   var newMessageRef = rootRef.push();
       newMessageRef.set({
       content:  '${userEmail}'+":\n" + document.getElementById("t1").value.trim(),
@@ -48,14 +55,13 @@ var rootRef = firebase.database().ref('conversation/');
 
  var updateMessage = function(element, content,date) {
         document.getElementById(element).value += content + '     ';
-       // alert("date recieved"+ date);
+       
         document.getElementById(element).value += date + '\n';
         document.getElementById("t1").value = "";
     };
-    
- var conversationRef = firebase.database().ref('conversation/');
- 
-conversationRef.once('value', function(snapshot) {
+
+ var rootRef = firebase.database.ref('/conversations/${trajet}');
+ rootRef.once('value', function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
 	    var childKey = childSnapshot.key;
 	    var childDataContent = childSnapshot.val().content;
@@ -66,6 +72,7 @@ conversationRef.once('value', function(snapshot) {
     
 conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
   updateMessage("t2", snapshot.val().content,snapshot.val().date);
+  
 });
 
 
@@ -79,7 +86,7 @@ conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) 
 	<h1>Messagerie</h1>
 </header>	
 	
-	
+	 <label></label>
 	 <div>derniers messages<div>
 	 <textarea id="t2" readonly rows = "5" cols = "60"  name="content" value=""></textarea>
    
