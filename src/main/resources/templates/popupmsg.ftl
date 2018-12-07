@@ -84,21 +84,21 @@ conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) 
   </form>
 </div>
 
- 	    <script>
-var textarea = document.getElementById("t2");
+<script>
+	var textarea = document.getElementById("t2");
 	setInterval(function(){
-	    textarea.scrollTop = textarea.scrollHeight;
-	}, 1000);
+    	textarea.scrollTop = textarea.scrollHeight;
+		}, 1000);
 </script>
 <script>
-     textArea = document.getElementById("t1");
-     formulaire = document.getElementById('MyForm');
-         textArea.onkeypress = traiteEntree;
-         function traiteEntree(e) {         
-         	if(e.keyCode == 13){
-            	sayClicked();
+	textArea = document.getElementById("t1");
+    formulaire = document.getElementById('MyForm');
+		textArea.onkeypress = traiteEntree;
+        	function traiteEntree(e) {         
+            	if(e.keyCode == 13){
+                	sayClicked();
+                }
             }
-         }
 </script>
         
       <input type="hidden"
