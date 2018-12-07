@@ -50,6 +50,10 @@
  
 	</#if>		
 
+<<<<<<< HEAD
 <#include "popupmsg.ftl">	
 
+=======
+<#include "popupmsg.ftl">
+>>>>>>> bc00da69bc1fa5f8f8cf97b3e6c79964d32438ac
 <#include "blocsCommuns/footer.ftl"/>
