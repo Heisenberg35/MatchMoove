@@ -17,6 +17,7 @@ import com.societe.project.services.CarService;
 import com.societe.project.services.CompteService;
 import com.societe.project.services.ProfilService;
 import com.societe.project.services.RecuperationInfoLogin;
+import com.societe.project.services.TrajetService;
 import com.societe.project.validators.CompteValidatorForGestionUser;
 
 @Controller
@@ -31,6 +32,9 @@ public class UserController {
 	private static final String URL_TRAJET_USER  = "/user/researchtrajet";
 	private static final String VUE_MATCH_TRAJET_COMPTE   = "/trajets/matchTrajet";
 	
+	private static final String URL_PROPOSER_TRAJET  = "/user/proposertrajet";
+	private static final String VUE_PROPOSER_TRAJET  = "/trajets/proposertrajet";
+	
 	@Autowired
 	CompteService compteService;
 	@Autowired
@@ -40,6 +44,8 @@ public class UserController {
 	@Autowired
 	CarService carService;
 	@Autowired
+	TrajetService trajetService;
+	@Autowired
 	CompteValidatorForGestionUser compteValidatorForGestionUser;
 	@Autowired
 	RecuperationInfoLogin recuperationInfoLogin;
@@ -48,7 +54,6 @@ public class UserController {
 	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.GET)
 	public String gestionCompte(Model model) {
 		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
-
 		model.addAttribute("compte", compte);
 //		model.addAttribute("errors", bindingResult);
 		
@@ -83,7 +88,25 @@ public class UserController {
 	
 		return "redirect:/home";
 	}
-
+	
+	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.GET)
+	public String proposerTrajet(Model model) {
+		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
+		model.addAttribute("compte", compte);
+		return VUE_PROPOSER_TRAJET;
+	}
+	
+	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.POST)
+	public String proposerTrajetSave(@ModelAttribute Compte compte) {
+		
+		
+		
+		
+		return VUE_PROPOSER_TRAJET;
+	}
+	
+	
+	
 	
 	
 	
