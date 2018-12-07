@@ -25,10 +25,10 @@
 		<input type="number" placeholder="Nombre de place" name="nbrePlace"></p>
 		
 		<label><b>Choisir le trajet</b></label>
-		<select name="isDirection">
-			<option valeur=""></option>
-			<option valeur="1">Domicile vers Travail</option>
-			<option valeur="0">Travail vers Domicile</option>
+		<select name="isDirection" required>
+			<option value=""></option>
+			<option value="1">Domicile vers Travail</option>
+			<option value="0">Travail vers Domicile</option>
 		</select>	
 			
 <!--	

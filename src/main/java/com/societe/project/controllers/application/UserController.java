@@ -107,29 +107,11 @@ public class UserController {
 	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.POST)
 	public String proposerTrajetSave(@ModelAttribute Compte compte, @ModelAttribute Trajet trajet, @ModelAttribute PT pt) {
 		
-
-//		System.out.println(trajet.getNom());
-//		System.out.println(trajet.getPerimetre());
-//		System.out.println(trajet.getDateDepart());
-//		System.out.println(trajet.getHeureDepart());
-//		System.out.println(trajet.getMinuteDepart());
-		System.out.println(pt);
-		
-		
 		trajetService.save(trajet);
 
 		pt.setprofil(compte.getProfil());
 		pt.setTrajet(trajet);
 		pTService.save(pt);
-		
-		
-//		List<PT> pts = compte.getProfil().getPT();
-		
-//		for (PT pt : pts) {
-//			pt.getprofil(compte.getProfil());
-//		}
-//		
-//		trajetService.save(trajet);
 		
 		return "redirect:/home";
 	}
