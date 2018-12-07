@@ -20,6 +20,9 @@
   firebase.initializeApp(config);
   
 var today = new Date();
+var ss = today.getSeconds();
+var m = today.getMinutes();
+var hh = today.getHours();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
 var yyyy = today.getFullYear();
@@ -29,11 +32,11 @@ if(dd<10) {
 if(mm<10) {
     mm = '0'+mm
 } 
-today = dd + '/' +mm  + '/' + yyyy;
+today = dd + '/' +mm  + '/' + yyyy + '    ' + hh + ':' + m ;
 
 
 function sayClicked() {
-
+//alert("date strored"+today)
 var rootRef = firebase.database().ref('conversation/');
   var newMessageRef = rootRef.push();
       newMessageRef.set({
@@ -43,8 +46,10 @@ var rootRef = firebase.database().ref('conversation/');
 
 }
 
- var updateMessage = function(element, value) {
-        document.getElementById(element).value += value + '\n';
+ var updateMessage = function(element, content,date) {
+        document.getElementById(element).value += content + '     ';
+       // alert("date recieved"+ date);
+        document.getElementById(element).value += date + '\n';
         document.getElementById("t1").value = "";
     };
     
@@ -53,13 +58,14 @@ var rootRef = firebase.database().ref('conversation/');
 conversationRef.once('value', function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
 	    var childKey = childSnapshot.key;
-	    var childData = childSnapshot.val().content;
-	    updateMessage("t2", childData);
+	    var childDataContent = childSnapshot.val().content;
+	     var childDataDate = childSnapshot.val().date;
+	    updateMessage("t2", childDataContent,childDataDate);
 	});
 });
     
 conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
-  updateMessage("t2", snapshot.val().content);
+  updateMessage("t2", snapshot.val().content,snapshot.val().date);
 });
 
 
