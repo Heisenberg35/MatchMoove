@@ -1,5 +1,4 @@
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/header.css'/>"/>
-<#include "../popupmsg.ftl"/>
 
 <header id="headerAdmin">
 				<a href="/home"><div id="logo"><img src="/images/matchmooveBLANCS.png"></div></a>
@@ -28,7 +27,7 @@
 
                         <li><a href="/admin/createcompte">Create compte</a></li>
                      	<li><a href="/admin/listuser">Gestion Compte</a></li>
-						<li><a href="/articles">Articles</a></li>
+						<li><a href="/articles">BLOG</a></li>
 						<li><a href="/messages">Messages</a></li>						
 						<a href="/logout"><img src="/images/logout.png"></a>
                     </ul>

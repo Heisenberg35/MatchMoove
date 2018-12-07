@@ -46,7 +46,6 @@ public class UserController {
 
 	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.GET)
 	public String gestionCompte(Model model) {
-		
 		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
 
 		model.addAttribute("compte", compte);
@@ -60,7 +59,7 @@ public class UserController {
 		compteValidatorForGestionUser.validate(compte, bindingResult);
 		
 		if (bindingResult.hasErrors()) {
-			System.out.println(bindingResult);
+			model.addAttribute("errors", bindingResult);
 			return "redirect:" + URL_GESTION_COMPTE;
         }
 		
