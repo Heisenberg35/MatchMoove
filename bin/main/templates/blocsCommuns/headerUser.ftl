@@ -13,7 +13,7 @@
             		</#if>
         			</#list>
    				</#if>             
-                <li><a href="#">Proposer</a></li>
+                <li><a href="/user/proposertrajet">Proposer</a></li>
               	<li><a href="/user/researchtrajet">Rechercher</a></li>              
                 <li><a href="/articles">BLOG</a></li>
                 <li><a href="/messagerie">Messagerie</a></li>
