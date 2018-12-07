@@ -17,7 +17,7 @@
               	<li><a href="/user/researchtrajet">Rechercher</a></li>              
                 <li><a href="/articles">BLOG</a></li>
                 <li><a href="/messagerie">Messagerie</a></li>
-			    <li><a href="/logout"><img src="images/logout.png"></a></li>
+			    <li><a href="/logout"><img src="/images/logout.png"></a></li>
              </ul>
 		</nav>
 		

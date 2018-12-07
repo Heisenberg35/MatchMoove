@@ -23,7 +23,7 @@
 		     </p>    
 		      
 	        <div id="btn">
-	            <a href="${detailPath}/edit/${i.getId()}" title="btnArticle">Show</a>
-	            <a href="${detailPath}/delete/${i.getId()}" title="btnArticle">Delete</a>
+	            <a href="displayArticle/${i.getId()}" title="btnArticle">Lire l'article</a>
+	            <a href="${detailPath}/delete/${i.getId()}" title="btnArticle">Supprimer l'article</a>
 	        </div>
 	</div>

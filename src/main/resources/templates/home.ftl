@@ -42,7 +42,7 @@
     	<div class="actubloc">
 			<h3><a style="color: black; text-align:center" href="displayArticle/${i.getId()}"><#if i.getTitle()??> ${i.getTitle()} </#if> </a></h3>
 			<p><#if i.getDescription()??> ${i.getDescription()} </#if></p>
-       		<a href="/articles" title="blog">Lire l'article</a>
+       		<a href="displayArticle/${i.getId()}" title="blog">Lire l'article</a>
        	</div>
         
     </#list>
@@ -57,3 +57,4 @@
 <#include "popupmsg.ftl">
 >>>>>>> bc00da69bc1fa5f8f8cf97b3e6c79964d32438ac
 <#include "blocsCommuns/footer.ftl"/>
+<#include "/popupmsg.ftl"/>	
