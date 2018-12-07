@@ -49,6 +49,7 @@ public class HomeController {
 		model.addAttribute("roles", roles);
 	
 		model.addAttribute("lastArticles",articleService.findLatestArticles());
+		  
 		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		return "/home";
 	}

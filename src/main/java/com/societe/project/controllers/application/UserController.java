@@ -43,6 +43,7 @@ public class UserController {
 	CompteValidatorForGestionUser compteValidatorForGestionUser;
 	@Autowired
 	RecuperationInfoLogin recuperationInfoLogin;
+	
 
 	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.GET)
 	public String gestionCompte(Model model) {
@@ -50,6 +51,8 @@ public class UserController {
 
 		model.addAttribute("compte", compte);
 //		model.addAttribute("errors", bindingResult);
+		
+		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		return VUE_GESTION_COMPTE;
 	}
 	
