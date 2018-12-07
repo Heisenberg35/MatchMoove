@@ -42,8 +42,9 @@ public class FirstService {
 	
 	public void initElementTable(String Role,String nom, String prenom, String phoneNumber, String mail,String pass) {
 
-        Profil profil = new Profil(nom,prenom, pass);
-        Role role = new Role(Role);
+        Profil profil = new Profil(nom,prenom,pass);
+        profil.setPhoneNumber("02 97 01 95 22");
+        Role role = new Role(Role);	
 
         profilService.save(profil);
         role.setProfil(profil);

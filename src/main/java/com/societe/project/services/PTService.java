@@ -47,15 +47,12 @@ public class PTService extends BaseService<PT> {
 		return result;
 	}
 	
-	
-	
-	
 	public void insertTrajetDur() {
 		
 		//recuperation compte
 		Compte  user = compteService.finByEmailCompte("user@gmail.com");
 		
-		Adresse domicile = new Adresse(3,"key",56000,"vannes",true,user.getProfil());
+		Adresse domicile = new Adresse(0,"Avenue de la Marne",56000,"vannes",true,user.getProfil());
 		Adresse work = new Adresse(1,"Pierre de Maupertuis",35170,"rennes",false,user.getProfil());
 		
 		//save

@@ -13,7 +13,7 @@ import com.societe.project.models.Adresse;
 import com.societe.project.models.Car;
 import com.societe.project.models.Compte;
 import com.societe.project.models.PT;
-import com.societe.project.models.Trajet;
+
 import com.societe.project.services.AdresseService;
 import com.societe.project.services.CarService;
 import com.societe.project.services.CompteService;
@@ -105,7 +105,7 @@ public class UserController {
 	public String matchTrajet(Model model) {
 		System.out.println("matchTrajet");
 		
-		
+		model.addAttribute("detailPath", "/user");
 		
 		List <PT> listPt = (List<PT>) ptService.findAll();
 		//model.addAttribute()
