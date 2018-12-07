@@ -48,4 +48,5 @@
 	</section>
  
 	</#if>		
+<#include "popupmsg.ftl">	
 <#include "blocsCommuns/footer.ftl"/>
