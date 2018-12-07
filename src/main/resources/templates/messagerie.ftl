@@ -37,7 +37,7 @@ function sayClicked() {
 var rootRef = firebase.database().ref('conversation/');
   var newMessageRef = rootRef.push();
       newMessageRef.set({
-      content:  '${user}'+":\n" + document.getElementById("t1").value.trim(),
+      content:  '${userEmail}'+":\n" + document.getElementById("t1").value.trim(),
       date: today
 });
 

@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
 <title>Home</title>
 
+<#global user = userEmail>
 <h2>Decouvrez les derniers trajets</h2>
 
 	<section id="Trajets"> 
