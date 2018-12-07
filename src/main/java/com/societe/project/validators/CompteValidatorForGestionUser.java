@@ -38,7 +38,7 @@ public class CompteValidatorForGestionUser implements Validator {
             }
 		}
         
-        if (cars.get(0).getMarque() != null) {
+        if (cars.get(0).getMarque() != null && cars.get(0).getModele() != null && cars.get(0).getNombreDePlace() != null && cars.get(0).getImmatriculation() != null) {
 	        for (Car car : cars) {
 	        	if (car.getMarque().length() < 2 || car.getMarque().length() > 38)  {
 	                errors.rejectValue("profil.cars[0].marque", "La marque de la voiture ne doit pas être inférieur à 2 lettres et/ou ne doit pas être supérieur à 38 lettres");
