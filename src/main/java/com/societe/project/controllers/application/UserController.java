@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.societe.project.models.Adresse;
 import com.societe.project.models.Car;
 import com.societe.project.models.Compte;
+import com.societe.project.models.PT;
+import com.societe.project.models.Trajet;
 import com.societe.project.services.AdresseService;
 import com.societe.project.services.CarService;
 import com.societe.project.services.CompteService;
+import com.societe.project.services.PTService;
 import com.societe.project.services.ProfilService;
 import com.societe.project.services.RecuperationInfoLogin;
 import com.societe.project.services.TrajetService;
@@ -46,6 +49,8 @@ public class UserController {
 	@Autowired
 	TrajetService trajetService;
 	@Autowired
+	PTService pTService;
+	@Autowired
 	CompteValidatorForGestionUser compteValidatorForGestionUser;
 	@Autowired
 	RecuperationInfoLogin recuperationInfoLogin;
@@ -56,8 +61,7 @@ public class UserController {
 		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
 		model.addAttribute("compte", compte);
 //		model.addAttribute("errors", bindingResult);
-		
-		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
+
 		return VUE_GESTION_COMPTE;
 	}
 	
@@ -92,17 +96,24 @@ public class UserController {
 	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.GET)
 	public String proposerTrajet(Model model) {
 		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
+		Trajet trajet = null;
+		PT pt = null;
 		model.addAttribute("compte", compte);
+		model.addAttribute("trajet", trajet);
+		model.addAttribute("pt", pt);
 		return VUE_PROPOSER_TRAJET;
 	}
 	
 	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.POST)
-	public String proposerTrajetSave(@ModelAttribute Compte compte) {
+	public String proposerTrajetSave(@ModelAttribute Compte compte, @ModelAttribute Trajet trajet, @ModelAttribute PT pt) {
 		
+		trajetService.save(trajet);
+
+		pt.setprofil(compte.getProfil());
+		pt.setTrajet(trajet);
+		pTService.save(pt);
 		
-		
-		
-		return VUE_PROPOSER_TRAJET;
+		return "redirect:/home";
 	}
 	
 	

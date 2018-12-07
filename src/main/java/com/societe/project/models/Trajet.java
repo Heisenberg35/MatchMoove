@@ -40,7 +40,8 @@ public class Trajet extends DBItem {
 	@Column(name="minuteDepart")
 	private Integer minuteDepart;
 	
-	
+	@Column(name="direction")
+	private Boolean isDirection;
 
 	@OneToMany(targetEntity=Point.class,mappedBy="trajet")
 	private List<Point> points;
@@ -88,8 +89,15 @@ public class Trajet extends DBItem {
     public void setBagage(List<Bagage> bagages) {
         this.bagages = bagages;
     }
-    
-    
+
+	public Boolean getIsDirection() {
+		return isDirection;
+	}
+
+	public void setIsDirection(Boolean isDirection) {
+		this.isDirection = isDirection;
+	}
+
 	public Date getDateDepart() {
 	//	DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
 		return dateDepart;
