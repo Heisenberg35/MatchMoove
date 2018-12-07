@@ -32,22 +32,21 @@ public class UserController {
 	private static final String VUE_GESTION_COMPTE  = VUES + "/gestioncompte";
 	
 	
-	private static final String URL_TRAJET_USER  = "/user/researchtrajet";
+	private static final String URL_TRAJET_USER           = "/user/researchtrajet";
 	private static final String VUE_MATCH_TRAJET_COMPTE   = "/trajets/matchTrajet";
 	
 	@Autowired
-	CompteService compteService;
+	CompteService  compteService;
 	@Autowired
-	ProfilService profilService;
+	ProfilService  profilService;
 	@Autowired
 	AdresseService adresseService;
 	@Autowired
-	CarService carService;
-	
+	CarService     carService;	
 	@Autowired
-	TrajetService trajetService;
+	TrajetService  trajetService;
 	@Autowired
-	PTService  ptService;
+	PTService      ptService;
 	
 	
 	@Autowired
@@ -113,6 +112,10 @@ public class UserController {
 		for (PT pt : listPt) {
 			pt.affPT();
 		}
+		
+		model.addAttribute("listPt", listPt);
+		
+		
 		
 		return VUE_MATCH_TRAJET_COMPTE ;
 	}

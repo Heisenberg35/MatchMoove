@@ -49,11 +49,11 @@ private Double volumeMax;
 	public void setTrajet(Trajet trajet) {
 	    this.trajet = trajet;
 	}
-	public Profil getprofil() {
+	public Profil getProfil() {
 	    return profil;
 	}
 	
-	public void setprofil(Profil profil) {
+	public void setProfil(Profil profil) {
 	    this.profil = profil;
 	}
 

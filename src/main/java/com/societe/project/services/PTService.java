@@ -1,9 +1,12 @@
 package com.societe.project.services;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.societe.project.database.PTRepository;
 import com.societe.project.database.base.BaseCRUDRepository;
@@ -29,7 +32,6 @@ public class PTService extends BaseService<PT> {
 	TrajetService trajetService;
 	@Autowired
 	PTService  ptService;
-	
 	
 	@Override
 	protected BaseCRUDRepository<PT> getCRUDRepository() {
@@ -71,16 +73,28 @@ public class PTService extends BaseService<PT> {
 		pointArrive.setLongitude(-2.770696);
 		
 		
+		
 		Trajet userTrajet = new Trajet();
 		userTrajet.setNom("TrajetUser");
 		userTrajet.setPerimetre(50.2);
+		
+		userTrajet.setHeureDepart(2);
+		userTrajet.setMinuteDepart(24);
+		
+		Date aujourdhui = new Date();
+		SimpleDateFormat formater = null;
+		
+	    formater = new SimpleDateFormat("dd-MM-yy");
+	    //System.out.println(formater.format(aujourdhui));
+	    userTrajet.setDateDepart((java.sql.Date) aujourdhui);
+		
 		
 		trajetService.save(userTrajet);
 		
 		PT pt = new PT();
 		pt.setNbrePlace(3);
 		pt.setTrajet(userTrajet);
-		pt.setprofil(user.getProfil());
+		pt.setProfil(user.getProfil());
 		
 		ptService.save(pt);
 	}
