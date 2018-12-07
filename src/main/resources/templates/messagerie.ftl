@@ -7,6 +7,7 @@
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-functions.js"></script>
 
+
 <script>
   // Initialize Firebase
   var config = {
@@ -32,16 +33,16 @@ if(mm<10) {
 today = dd + '/' +mm  + '/' + yyyy;
 
 
-function sayClicked() {
 
-var rootRef = firebase.database().ref('conversation/');
-  var newMessageRef = rootRef.push();
-      newMessageRef.set({
-      content:  '${userEmail}'+":\n" + document.getElementById("t1").value.trim(),
-      date: today
-});
-
-}
+  function sayClicked() {
+		
+		var rootRef = firebase.database().ref('conversation/');
+		  var newMessageRef = rootRef.push();
+		      newMessageRef.set({
+		      content:  '${userEmail}'+":\n" + document.getElementById("t1").value.trim(),
+		      date: today
+			  });
+	}
 
  var updateMessage = function(element, value) {
         document.getElementById(element).value += value + '\n';
@@ -72,8 +73,7 @@ conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) 
 	<a href="/home"><div id="logo"><img src="../../images/matchmooveBLANCS.png"></div></a>
 	<h1>Messagerie</h1>
 </header>	
-	
-	
+	<div id="myForm">
 	 <div>derniers messages<div>
 	 <textarea id="t2" readonly rows = "5" cols = "60"  name="content" value=""></textarea>
    
@@ -82,12 +82,36 @@ conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) 
     
      <div><button onclick="sayClicked()" >envoie</button>
      
-     
       <input type="hidden"
             name="${_csrf.parameterName}"
             value="${_csrf.token}"/>
-   
+      </div> 
+      
     
+      
+      
+ 	    <script>
+var textarea = document.getElementById("t2");
+setInterval(function(){
+    textarea.scrollTop = textarea.scrollHeight;
+}, 1000);
+        </script>
+  	    <script>
+            textArea = document.getElementById("t1");
+            formulaire = document.getElementById('MyForm');
+ 
+            textArea.onkeypress = traiteEntree;
+            function traiteEntree(e) {         
+                    if(e.keyCode == 13){
+                        sayClicked();
+                }
+            }
+        </script>
+        
+
+		
+
+
 <br>
 <br>
 <br>

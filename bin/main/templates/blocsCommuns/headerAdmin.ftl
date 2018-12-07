@@ -27,11 +27,7 @@
 
                         <li><a href="/admin/createcompte">Create compte</a></li>
                      	<li><a href="/admin/listuser">Gestion Compte</a></li>
-<<<<<<< HEAD
-						<li><a href="/articles">Articles</a></li>
-=======
 						<li><a href="/articles">BLOG</a></li>
->>>>>>> 7d8ea421571d05ead61d3b72f378566592f7b16a
 						<li><a href="/messages">Messages</a></li>						
 						<a href="/logout"><img src="/images/logout.png"></a>
                     </ul>

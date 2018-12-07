@@ -49,9 +49,7 @@
 	</section>
  
 	</#if>		
-<<<<<<< HEAD
+
 <#include "popupmsg.ftl">	
-=======
-<#include "popupmsg.ftl"/>
->>>>>>> lama
+
 <#include "blocsCommuns/footer.ftl"/>
