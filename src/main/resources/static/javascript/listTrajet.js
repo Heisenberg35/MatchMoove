@@ -5,7 +5,7 @@
 		Constantes
 \**********************************************/
 
-	const  resizeHeight = 200;
+	const  resizeHeight = 260;
 	const path ='${detailPath}';
 
 /**********************************************\
@@ -15,10 +15,17 @@
 	var li = document.querySelectorAll('.list-content');
 	var btn_detail = document.querySelectorAll('.file-detail');
 	var listuser = document.querySelector('.listuser');
+	var containerMap = document.querySelector('.container-map');
+	
+	
+	
 	var offsetHeight = listuser.offsetHeight;
+	var offsetHeightContainerMap = containerMap.offsetHeight;
 
 	var bntTrajet = document.querySelector('.trajet-match');
 	var claque = document.querySelector('.claque');
+	
+
 
 
 /**********************************************\
@@ -31,10 +38,20 @@
 
 		if(resultContain){
 			offsetHeight = offsetHeight + resizeHeight;
+			offsetHeightContainerMap = offsetHeightContainerMap + 170;
+			
 			listuser.style.height = offsetHeight+'px' ;
+			containerMap.style.height = offsetHeightContainerMap+'px' ;
+			
+			
 		}else{
 			offsetHeight = offsetHeight - resizeHeight;
+			offsetHeightContainerMap = offsetHeightContainerMap - 170;
+			
 			listuser.style.height = offsetHeight+'px' ;
+			containerMap.style.height = offsetHeightContainerMap+'px' ;
+			
+			
 		}
 	}
 
@@ -45,7 +62,7 @@
 	function calcNbli(){
 		console.log('calcNbli');
 		if(li.length>1){
-			offsetHeight = li.length*120;
+			offsetHeight = li.length*150;
 			listuser.style.height = offsetHeight+'px' ;
 		}	
 	}	

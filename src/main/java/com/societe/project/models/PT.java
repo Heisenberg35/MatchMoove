@@ -83,6 +83,7 @@ private Double volumeMax;
 		
 		for (Adresse adr : profil.getAdresses()) {
 			System.out.println(adr.getStringAdr());
+			System.out.println("isdomicile "+adr.getDomicile());
 		}
 	}
 }

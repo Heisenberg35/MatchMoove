@@ -20,5 +20,5 @@
    <!--             Script api                             -->
    <!--////////////////////////////////////////////////////-->  
    
-   <#include "../javascript/jsapigoogle.ftl"/>
+   <#include "/trajets/jsapigoogle.ftl"/>
    

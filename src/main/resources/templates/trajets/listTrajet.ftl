@@ -17,84 +17,95 @@
     <!--////////////////////////////////////////////////////-->
     <!--             liste des trajet user                  -->
     <!--////////////////////////////////////////////////////-->
-    
-     <#if listPt?has_content>
-        <#list listPt as pt>
-			<p>${pt.getProfil().getFirstname()}</p>
-			<p>${pt.getProfil().getLasttname()}</p>
-			<p>${pt.getProfil().getPhoneNumber()}</p>
-		</#list>
-   </#if>
-        <div class="listuser">
+<div class="listuser">
             <div class="listuser-title">
-                <h1>Listes des trajets</h1>    
+                <span>Listes des trajets</span>    
             </div>
 
              <div class="trajet-list">
                      <ul class="ul-list">
                        
                        
-                    
-                        <li class="list-content">
+                  <#if listPt?has_content>
+              <#list listPt as pt> 
+                <li class="list-content">
+                         <input type="hidden" name="id" value="${pt.getId()}">
                             <div class="content-cube">
-                             <div class="cube"></div>
+                              <div class="cube"></div>
                             </div>
                             <div class="trajet-description">
-                               <div id="id" class="user user-trajet">TRAJET</div>
-
+                               <div id="id" class="user user-trajet">
+                                  <p>Trajet</p>
+                                  <div>${pt.getTrajet().getNom()}</div>
+                               </div>
                                <div id="firstName" class="user user-mail">       
                                     <p>Nom</p>
-                                    <div>jdkjd</div>
+                                    <div>${pt.getProfil().getFirstname()}</div>
                                 </div>
-                               <div id="lastName" class="user user-nom">           
-                                        <p>telephone</p>
-                                        <div></div>
-                               </div>
-                               <div id="phoneNumber" class="user user-nom">  
+                               <div id="phoneNumber" class="user user-nom">           
                                     <p>telephone</p>
-                                    <div>22 33 55 6 5 4 </div>
+                                    <div>${pt.getProfil().getPhoneNumber()}</div>
                                </div>
-					
-                            
-                                <div class="user user-prenom">
-                                        <p>depart</p>
-                                        <div class="adr">
-                                            2 rue Saint jean vannes
-                                        </div>
-                                </div>
-                                <div class="user user-prenom">
-                                       <p>arrivée</p>
-                                        <div class="adr">2 rue Saint jean vannes</div> 
-                                </div>
+
+                         <#assign id= 0>
+                   <#list pt.getProfil().getAdresses() as adr>
+                   
+                        <#assign depart = adr.getStringAdr()>
+                        <#assign arrive = adr.getStringAdr()>
+                        
+                        <#if id == 0>
+                          <div class="user user-prenom">
+                            <p> adresse de depart </p>
+                              <div class="adr">
+                                ${adr.getDomicile()? then(depart,arrive)}       
+                              </div>
+                          </div> 
+                        <#else>
+                          <div class="user user-prenom">
+                            <p> adresse de arrivee </p>
+                              <div class="adr">
+                                ${adr.getDomicile()? then(depart,arrive)}       
+                              </div>
+                          </div> 
+                        </#if>
+                        <#assign id++>
+                   </#list>
+                   
                                 <div class="user duree">
-                                    <p>duree<p>
-                                    <div>2 heures</div>
+                                    <p>heure depart<p>
+                                    <div>${pt.getTrajet().getHeureDepart()}h ${pt.getTrajet().getMinuteDepart()}</div>
+                                </div>                                                                                            
+                                <div class="user user-phone"> 
+                                    <p>date de depart : </p>
+                                    <div>${pt.getTrajet().getDateDepart()}</div>
                                 </div>
-                               <div class="user user-phone"> 
-                                        <p>date de depart : </p>
-                                        <div>12/12/2018</div>
+                               <div class="user user-adress"> 
+                                    <p>nombre de places : </p>
+                                    <div>${pt.getNbrePlace()}</div>
                                 </div>
                                <div class="user user-adress "> 
-                                        <p>nom de place  :</p> 
-                                        <div>2</div> 
-                                </div>
-                             <div class="user user-adress "> 
-                                    <p>perimetre :</p> 
-                                    <div>${pt.getTrajet().getPerimetre()} km</div>
-                            </div>
-                         
-                           <div class="trajet-match">
-                                <a class="button btn-trajet href="user/valideMatch/">Voir trajet</a>
-                            </div> 
-                            <div class="trajet-match match">
-                                <a class="button btn-match" href="user/valideMatch/">Matcher !!</a>
-                            </div> 
+                                    <p>perimetre  :</p> 
+                                    <div>${pt.getTrajet().getPerimetre()}</div> 
+                               </div>
+                               <div class="user user-adress "> 
+                                    <p>Duree  :</p> 
+                                    <div>${pt.getTrajet().getPerimetre()}</div> 
+                               </div>
+                               
+                               
+                              <div class="trajet-match">
+                                  <a class="button btn-trajet" href="#">Voir trajet</a>
+                              </div> 
+                              <div class="trajet-match match">
+                                  <a class="button btn-match" href="user/valideMatch/">Matcher !!</a>
+                              </div> 
 
                              <div class="file-detail"><span class="btn-detail"></span></div>
-                            <div class="br"></div>
+                             <div class="br"></div>
                         </li>
-                        
-                     </ul>
+                      </#list>
+                </#if>
+               </ul>
              </div>
              <div class="user-foot">
                   <div class="maxsize-user">
@@ -107,5 +118,7 @@
                     </div>   
              </div>
         </div>
-
   </div>
+  
+  
+ 

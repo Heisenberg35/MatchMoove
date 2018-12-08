@@ -1,7 +1,8 @@
 package com.societe.project.services;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,10 +50,10 @@ public class PTService extends BaseService<PT> {
 		return result;
 	}
 	
-	public void insertTrajetDur() {
+	public void insertTrajetDur(String mail) {
 		
 		//recuperation compte
-		Compte  user = compteService.finByEmailCompte("user@gmail.com");
+		Compte  user = compteService.finByEmailCompte(mail);
 		
 		Adresse domicile = new Adresse(0,"Avenue de la Marne",56000,"vannes",true,user.getProfil());
 		Adresse work = new Adresse(1,"Pierre de Maupertuis",35170,"rennes",false,user.getProfil());
@@ -81,12 +82,12 @@ public class PTService extends BaseService<PT> {
 		userTrajet.setHeureDepart(2);
 		userTrajet.setMinuteDepart(24);
 		
-		Date aujourdhui = new Date();
-		SimpleDateFormat formater = null;
+		Date aujourdhui = new Date(12,12,2018);
+		//SimpleDateFormat formater = null;
 		
-	    formater = new SimpleDateFormat("dd-MM-yy");
+	    //formater = new SimpleDateFormat("dd-MM-yy");
 	    //System.out.println(formater.format(aujourdhui));
-	    userTrajet.setDateDepart((java.sql.Date) aujourdhui);
+	    userTrajet.setDateDepart(aujourdhui);
 		
 		
 		trajetService.save(userTrajet);

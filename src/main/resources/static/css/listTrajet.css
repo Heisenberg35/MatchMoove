@@ -17,7 +17,7 @@
     transition: 2s height;
     box-shadow: 8px 8px 10px #999;
     border-left: 15px #dadada solid;
-    transform: translateX(50px) translateY(-275px) scale(0.8);
+    transform: translateX(50px) translateY(-440px) scale(0.8);
 }
 
 .listuser-title{
@@ -26,16 +26,14 @@
 
 	/*background-color: #575757;*/
 }
-.h1-trajet{
-	float: left;
+.listuser-title span{
 	font-size: 18px;
-
 	margin-left: 2%;
 	margin-top: 5px;
 	color:#606066;
 	margin-top: -210px;
 }
-.h1-trajet::after{
+.listuser-title span::after{
 	display: block;
 	content: '';
 
@@ -103,6 +101,7 @@
     padding: 10px;
     font-size: 14px;
     color: #666666;
+    margin-bottom: 10px;
 }
 
 .user p {
@@ -163,12 +162,16 @@ display: flex;
     margin: auto;	
     color: white;
 }
+
+.button a{
+	text-decoration:none;
+}
 .trajet-match:hover{
 	background-color: #3980a58c;
 }
 
 .match{
-     transform: translateX(244px) translateY(7px);
+     transform: translateX(244px) translateY(-3px);
 }
 
 /**********************************************\
@@ -213,7 +216,7 @@ display: flex;
     width: 30px;
 
     height: 30px;
-    margin: -236px 30px 0 0;
+    margin: -270px 30px 0 0;
     border-radius: 50%;
 
     border: 2px solid white;
@@ -265,7 +268,7 @@ display: flex;
 
 .hidden-detail{
 	/*overflow: hidden;*/
-	height: 303px;
+	height: 338px;
 	/*transition: 2s height;*/
 }
 /**********************************************\
