@@ -85,6 +85,10 @@ private Double volumeMax;
 			System.out.println(adr.getStringAdr());
 			System.out.println("isdomicile "+adr.getDomicile());
 		}
+		
+		for(Point p : trajet.getPoint()){
+			p.affPoint();
+		}
 	}
 }
 

@@ -50,8 +50,6 @@
 			
 			listuser.style.height = offsetHeight+'px' ;
 			containerMap.style.height = offsetHeightContainerMap+'px' ;
-			
-			
 		}
 	}
 
