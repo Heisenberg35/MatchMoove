@@ -107,6 +107,7 @@ public class UserController {
 	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.POST)
 	public String proposerTrajetSave(@ModelAttribute Compte compte, @ModelAttribute Trajet trajet, @ModelAttribute PT pt) {
 		
+		profilService.save(compte.getProfil());
 		trajetService.save(trajet);
 
 		pt.setprofil(compte.getProfil());
@@ -115,12 +116,7 @@ public class UserController {
 		
 		return "redirect:/home";
 	}
-	
-	
-	
-	
-	
-	
+
 	@RequestMapping(value= {UserController.URL_TRAJET_USER},method=RequestMethod.GET)
 	public String matchTrajet() {
 		System.out.println("matchTrajet");
