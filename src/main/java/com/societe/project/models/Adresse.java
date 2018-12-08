@@ -57,7 +57,7 @@ public class Adresse extends DBItem {
 	}
 
 	public String getVille() {
-		return ville;
+		return ville.toUpperCase();
 	}
 
 	public void setVille(String ville) {
