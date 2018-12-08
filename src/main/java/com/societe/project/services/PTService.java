@@ -50,13 +50,30 @@ public class PTService extends BaseService<PT> {
 		return result;
 	}
 	
-	public void insertTrajetDur(String mail) {
+	public void insertTrajetDur(String mail,int choix) {
 		
 		//recuperation compte
 		Compte  user = compteService.finByEmailCompte(mail);
+		Adresse domicile = null;
+		Adresse work = null;
 		
-		Adresse domicile = new Adresse(0,"Avenue de la Marne",56000,"vannes",true,user.getProfil());
-		Adresse work = new Adresse(1,"Pierre de Maupertuis",35170,"rennes",false,user.getProfil());
+		switch (choix) {
+		case 0:
+			domicile = new Adresse(0,"Avenue de la Marne",56000,"vannes",true,user.getProfil());
+			 work = new Adresse(1,"Pierre de Maupertuis",35170,"rennes",false,user.getProfil());
+			break;
+		case 1:
+			 domicile = new Adresse(0,"plescop",56800,"vannes",true,user.getProfil());
+			 work = new Adresse(0,"Boulevard Salvador Allende",44800,"nantes",false,user.getProfil());
+			break;
+		case 2:
+			 domicile = new Adresse(0,"lorient",56010,"lorient",true,user.getProfil());
+			 work = new Adresse(5,"rue A. Duquesne Za de Kerbois",56400,"auray",false,user.getProfil());
+			break;
+
+		default:
+			break;
+		}
 		
 		//save
 		adresseService.save(domicile);

@@ -33,13 +33,13 @@ public class FirstService {
 	public void createFirstAdminAndFirstUser(String initRole) {
         if(!isExistAdminOrUser("admin@gmail.com")) {
             initElementTable(initRole,"admin","admin","0122334455","admin@gmail.com","admin");
-            ptService.insertTrajetDur("admin@gmail.com");
+            ptService.insertTrajetDur("admin@gmail.com",0);
         }else if(!isExistAdminOrUser("user@gmail.com")) {
                 initElementTable(initRole,"user","user","0122334455","user@gmail.com","user");
-                ptService.insertTrajetDur("user@gmail.com");
+                ptService.insertTrajetDur("user@gmail.com",1);
         }else if(!isExistAdminOrUser("jerem@gmail.com")) {
             initElementTable(initRole,"jerem","frc","0122334455","jerem@gmail.com","user");
-            ptService.insertTrajetDur("jerem@gmail.com");
+            ptService.insertTrajetDur("jerem@gmail.com",2);
         }
         
         
