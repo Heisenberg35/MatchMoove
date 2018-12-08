@@ -38,7 +38,7 @@
 
 		if(resultContain){
 			offsetHeight = offsetHeight + resizeHeight;
-			offsetHeightContainerMap = offsetHeightContainerMap + 170;
+			offsetHeightContainerMap = offsetHeightContainerMap + 90;
 			
 			listuser.style.height = offsetHeight+'px' ;
 			containerMap.style.height = offsetHeightContainerMap+'px' ;
@@ -46,7 +46,7 @@
 			
 		}else{
 			offsetHeight = offsetHeight - resizeHeight;
-			offsetHeightContainerMap = offsetHeightContainerMap - 170;
+			offsetHeightContainerMap = offsetHeightContainerMap - 90;
 			
 			listuser.style.height = offsetHeight+'px' ;
 			containerMap.style.height = offsetHeightContainerMap+'px' ;

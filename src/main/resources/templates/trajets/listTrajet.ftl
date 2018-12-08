@@ -47,9 +47,9 @@
                                     <div>${pt.getProfil().getPhoneNumber()}</div>
                                </div>
 
-                         <#assign id= 0>
+                     <#assign id= 0>    
                    <#list pt.getProfil().getAdresses() as adr>
-                   
+                     
                         <#assign depart = adr.getStringAdr()>
                         <#assign arrive = adr.getStringAdr()>
                         

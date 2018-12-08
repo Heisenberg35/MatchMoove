@@ -34,11 +34,15 @@ public class FirstService {
         if(!isExistAdminOrUser("admin@gmail.com")) {
             initElementTable(initRole,"admin","admin","0122334455","admin@gmail.com","admin");
             ptService.insertTrajetDur("admin@gmail.com");
-            
         }else if(!isExistAdminOrUser("user@gmail.com")) {
                 initElementTable(initRole,"user","user","0122334455","user@gmail.com","user");
                 ptService.insertTrajetDur("user@gmail.com");
+        }else if(!isExistAdminOrUser("jerem@gmail.com")) {
+            initElementTable(initRole,"jerem","frc","0122334455","jerem@gmail.com","user");
+            ptService.insertTrajetDur("jerem@gmail.com");
         }
+        
+        
       //recuperation de la list des trajets		
 	}
 	
