@@ -1,5 +1,5 @@
 (function($){
-	console.log('test');
+	
 
 /**********************************************\
 		Constantes
@@ -16,6 +16,7 @@
 	var btn_detail = document.querySelectorAll('.file-detail');
 	var listuser = document.querySelector('.listuser');
 	var containerMap = document.querySelector('.container-map');
+	var sendMess = document.querySelectorAll('#seenTrajet');
 	
 	
 	
@@ -25,8 +26,6 @@
 	var bntTrajet = document.querySelector('.trajet-match');
 	var claque = document.querySelector('.claque');
 	
-
-
 
 /**********************************************\
 		method resize
@@ -42,7 +41,6 @@
 			
 			listuser.style.height = offsetHeight+'px' ;
 			containerMap.style.height = offsetHeightContainerMap+'px' ;
-			
 			
 		}else{
 			offsetHeight = offsetHeight - resizeHeight;
@@ -109,26 +107,40 @@
 		getInfosProfil(this);	
 	})
 
-function changeActionForm(){
-		
-		console.log("read new action form");
-		
-		//var clientAction = document.querySelector('#f-client');	
-		var recup_path = $('#f-client').attr('action');
-
-		recup_path.replace('edit','${detailPath}');
-		console.log("recup_path0"+recup_path);
-		
-		console.log(recup_path);
-
-		$('#f-client').attr('action',recup_path);
-		console.log($('#f-client').attr('action'));
-	}
+/**********************************************\
+		Event Click sendMess
+\**********************************************/
+	var swap_id_message = 0;
 	
-	changeActionForm();
-
-
-
+	$('#sendMess').click(function(e){
+		e.stopPropagation();
+		console.log(this);
+	})
+		$('.seenTrajet').click(function(e){
+			e.stopPropagation();
+			console.log('sendTrajet pour sendMess');
+			console.log(this);
+			
+			var id = this.parentNode.parentNode.parentNode.querySelector('input').value;
+			console.log(this.parentNode.parentNode.parentNode.querySelector('input'));
+			$('#sendMess').attr('href','user/sendMessTrajet/'+id);
+			document.querySelector('#mess-trajet').innerText.innerText = "Message pour le trajet courant "+id;
+			swap_id_message = id;
+		})
+	document.querySelector('#mess-trajet').addEventListener('click',function(e){
+		console.log('enter textarea');
+		console.log(this.parentNode);
+		 
+		for(var i=0 ;i<li.length;i++){
+			if(li.querySelector('input').value != swap_id_message){
+				console.log(li.querySelector('input').value);
+					if(li.classList.contains('hidden-detail')){
+						li.classList.remove('hidden-detail');
+					}
+			}
+		} 
+	})
+	
 /**********************************************\
 		Event Click close
 \**********************************************/

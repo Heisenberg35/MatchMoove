@@ -51,15 +51,13 @@
               
               console.log(depart.innerText);
               console.log(arrivied.innerText);
-              
-              
-              
+   
               console.log('------------------------------------------------------------');
             calculateAndDisplayRoute2(directionsService, directionsDisplay,depart.innerText,arrivied.innerText);
           };
           
          for(var i = 0 ;i<btnTrajet.length;i++){
-        	btnTrajet[i].addEventListener('click',onChangeHandler2(e));
+        	btnTrajet[i].addEventListener('click',onChangeHandler2);
          } 
 }
 

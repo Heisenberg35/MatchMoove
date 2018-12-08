@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.societe.project.models.Adresse;
@@ -33,6 +34,8 @@ public class UserController {
 	
 	
 	private static final String URL_TRAJET_USER           = "/user/researchtrajet";
+	private static final String URL_TRAJET_VALIDATE       = "/user/validTrajet";
+	private static final String URL_TRAJET_MESS           = "/user/sendMessTrajet";
 	private static final String VUE_MATCH_TRAJET_COMPTE   = "/trajets/matchTrajet";
 	
 	@Autowired
@@ -111,20 +114,39 @@ public class UserController {
 		
 		for (PT pt : listPt) {
 			pt.affPT();
-		}
-		
-		model.addAttribute("listPt", listPt);
-		
-		
+		}	
+		model.addAttribute("listPt", listPt);	
+		return VUE_MATCH_TRAJET_COMPTE ;
+	}
+	
+	/**
+	 * *********************************************************
+	 * 		save trajet Id
+	 * ***********************************************************
+	 */
+	
+	
+	@RequestMapping(value= {UserController.URL_TRAJET_VALIDATE+"/{id}"},method=RequestMethod.POST)
+	public String matchTrajetSave(@PathVariable int id) {
+		System.out.println("Save trajet id "+id);
 		
 		return VUE_MATCH_TRAJET_COMPTE ;
 	}
-	@RequestMapping(value= {UserController.URL_TRAJET_USER},method=RequestMethod.POST)
-	public String matchTrajetSave() {
-		System.out.println("POST save matchTrajet");
+	
+	/**
+	 * *********************************************************
+	 * 		save message sur trajet id
+	 * ***********************************************************
+	 */
+	
+	@RequestMapping(value= {UserController.URL_TRAJET_MESS+"/{id}"},method=RequestMethod.GET)
+	public String validateTrajet(@PathVariable int id) {
+		System.out.println("message sur trajet "+id);
 		
 		return VUE_MATCH_TRAJET_COMPTE ;
 	}
+	
+	
 	
 	
 	
