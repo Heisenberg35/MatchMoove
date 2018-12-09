@@ -164,7 +164,7 @@
 			formdat.append('_csrf',sec);
 			xhr.setRequestHeader("_csrf", secu);
 			formdat.append('messages',textarea.innerHTML);
-		    //formdat.append('form',mtrajet);
+		   
 			console.log(formdat);
 			
 			readKeyValueFormData(formdat);
@@ -175,10 +175,10 @@
 	3.2.function XrhSendFormPOST()
 \**************************************/
 	var XrhSendForm = function(formdat){
-				//xhr.setRequestHeader("X-CSRF-TOKEN", csrftoken); 
+				
 				xhr.send(formdat);		
 	}
-	/**************************************\
+/**************************************\
 	4..event readystatechange on xhr
 \**************************************/
 	xhr.addEventListener('readystatechange',function(e){
@@ -204,9 +204,6 @@
 			}
 		}
 	});	
-	
-	
-
 /**********************************************\
 	Event Click sendMess
 \**********************************************/

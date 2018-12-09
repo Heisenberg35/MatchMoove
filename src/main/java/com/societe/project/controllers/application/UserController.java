@@ -134,11 +134,11 @@ public class UserController {
 	 */
 	
 	
-	@RequestMapping(value= {UserController.URL_TRAJET_VALIDATE+"/{id}"},method=RequestMethod.POST)
+	@RequestMapping(value= {UserController.URL_TRAJET_VALIDATE+"/{id}"},method=RequestMethod.GET)
 	public String matchTrajetSave(@PathVariable int id) {
 		System.out.println("Save trajet id "+id);
 		
-		return VUE_MATCH_TRAJET_COMPTE ;
+		return "redirect:"+URL_TRAJET_USER;
 	}
 	
 	/**

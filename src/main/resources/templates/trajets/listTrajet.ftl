@@ -94,7 +94,7 @@
                                   <a class="button btn-trajet seenTrajet" href="#">Voir trajet</a>
                               </div> 
                               <div class="trajet-match match">
-                                  <a class="button btn-match" href="user/validTrajet/${pt.getId()}">Matcher !!</a>
+                                  <a class="button btn-match" href="/user/validTrajet/${pt.getId()}">Matcher !!</a>
                               </div> 
 
                              <div class="file-detail"><span class="btn-detail"></span></div>
