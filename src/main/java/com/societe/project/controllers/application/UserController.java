@@ -71,8 +71,10 @@ public class UserController {
 		compteValidatorForGestionUser.validate(compte, bindingResult);
 		
 		if (bindingResult.hasErrors()) {
+			System.out.println(bindingResult.getErrorCount());
+			System.out.println(bindingResult.getAllErrors().get(0).getCode());
 			model.addAttribute("errors", bindingResult);
-			return "redirect:" + URL_GESTION_COMPTE;
+			return URL_GESTION_COMPTE;
         }
 		
 		profilService.save(compte.getProfil());

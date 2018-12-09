@@ -25,16 +25,16 @@ public class CompteValidatorForGestionUser implements Validator {
         
         for (Adresse adresse : adresses) {
         	if (adresse.getNumero() == null) {
-                errors.rejectValue("profil.adresses[0].numero", "Le numéro de l'adresse ne doit pas être null");
+                errors.rejectValue("profil.adresses[0].numero", "Le numéro de l'adresse est obligatoire");
             }
         	if (adresse.getRue() == null || adresse.getRue().length() > 38) {
-        		errors.rejectValue("profil.adresses[0].rue", "La rue de l'adresse ne doit pas être null et/ou ne doit pas dépasser 38 caractères");
+        		errors.rejectValue("profil.adresses[0].rue", "La rue de l'adresse est obligatoire et/ou ne doit pas dépasser 38 caractères");
         	}
         	if (adresse.getCp() == null || adresse.getCp().toString().length() != 5 ) {
-        		errors.rejectValue("profil.adresses[0].cp", "Le code postal de l'adresse ne doit pas être null et/ou ne doit pas avoir moins de 5 chiffres et/ou ne doit pas avoir plus de 5 chiffres");
+        		errors.rejectValue("profil.adresses[0].cp", "Le code postal est obligatoire et/ou doit comporté 5 chiffres");
 			}
-        	if (adresse.getVille() == null || adresse.getVille().length() < 2 || adresse.getVille().length() > 38 ) {
-                errors.rejectValue("profil.adresses[0].ville", "La ville de l'adresse ne doit pas être null et/ou ne doit pas être inférieur à 2 lettres et/ou ne doit pas être supérieur à 38 lettres");
+        	if (adresse.getVille() == null || adresse.getVille().length() > 38 ) {
+                errors.rejectValue("profil.adresses[0].ville", "La ville est obligatoire et/ou ne doit pas dépasser 38 caractères");
             }
 		}
         
