@@ -17,6 +17,7 @@
         
         <div id="message" class="trajet-match match ">
             <a id="sendMess" class="button btn-match" href="#">validez message</a>
+             <input type="hidden" name="id" value="">
         </div> 
         
     </div>

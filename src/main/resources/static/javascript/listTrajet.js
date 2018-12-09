@@ -11,15 +11,15 @@
 /**********************************************\
 		variables
 \**********************************************/
+	var containerMap = document.querySelector('.container-map');
 	var listuser = document.querySelector('.listuser');
-	var li = document.querySelectorAll('.list-content');
 	
+	var li = document.querySelectorAll('.list-content');
 	var btn_detail = document.querySelectorAll('.file-detail');
 	
-	var containerMap = document.querySelector('.container-map');
 	
-	var sendMess = document.querySelectorAll('#seenTrajet');
 	
+	//var sendMess = document.querySelectorAll('#mess-trajet');
 	
 	
 	var offsetHeight = listuser.offsetHeight;
@@ -28,8 +28,11 @@
 	var bntTrajet = document.querySelector('.trajet-match');
 	var claque = document.querySelector('.claque');
 	
+/**********************************************\
+	Request
+\**********************************************/	
 	
-	
+	var xhr = new XMLHttpRequest();
 	
 
 /**********************************************\
@@ -93,7 +96,94 @@
 			}
 		});
 	}
+	
+/**************************************\
+	0..event listener btn-request
+\**************************************/	
+	
+	sendMess.addEventListener('click',function(e){
+		e.preventDefault();
+		
+		console.log('btn send message');
 
+		console.log('event btn send mess request');
+		initXhrPost('POST','/user/sendMessTrajet',true);
+		insertFormdataAppend();
+		
+		
+	});	
+	/*****************************************\
+	0.0.2.3 function readKeyValueFormData
+\*****************************************/
+	var readKeyValueFormData = function(formdat){
+
+		console.log('readKeyValueFormData');
+
+		//var existance value
+
+		var exist = false;
+
+
+		//parcour des keys and values
+
+		for(var pairs of formdat.entries()){
+			console.log(pairs);
+			console.log('key '+pairs[0]);
+			console.log('value '+pairs[1]); //entries read match pair array
+			exist = true;
+		}
+
+		if(exist){console.log('exist');}else{console.log('not exist')}
+	}
+/**************************************\
+	2..function initXhrPost()
+\**************************************/
+	var initXhrPost = function(method,action,type){
+		/*******************lié xhr à url httrequest*/
+		xhr.open(method,action,type);
+	}
+/*****************************************\
+	0.0.1 function insertFormdataAppend
+\*****************************************/
+	var insertFormdataAppend = function(){
+		
+		var formdat = new FormData();
+
+		var textarea = document.querySelector('#mess-trajet');
+		var id = document.querySelector('#message input').value;
+		
+		console.log(textarea.innerHTML);
+		
+	
+			//insert in formdata with method append()
+			formdat.append('id',id);
+			formdat.append('messages',textarea.innerHTML);
+			console.log(formdat);
+			
+			readKeyValueFormData(formdat);
+			
+			//XrhSendFormPOST(formdat);	
+		}	
+/**************************************\
+	3.2.function XrhSendFormPOST()
+\**************************************/
+	var XrhSendFormPOST = function(formdat){
+				xhr.send(formdat);		
+	}
+
+/**********************************************\
+	Event Click sendMess
+\**********************************************/
+var swap_id_message = 0;
+
+$('#sendMess').click(function(e){
+	e.stopPropagation();
+	console.log('validate send message');
+	
+	console.log(this);
+})	
+	
+	
 /**********************************************\
 		Event Click modified
 \**********************************************/
@@ -110,17 +200,12 @@
 			$('#claque').addClass('fadein');
 		}
 		getInfosProfil(this);	
-	})
-
+	})	
 /**********************************************\
-		Event Click sendMess
-\**********************************************/
-	var swap_id_message = 0;
+		Event Click seenTrajet
+\**********************************************/	
 	
-	$('#sendMess').click(function(e){
-		e.stopPropagation();
-		console.log(this);
-	})
+	
 		$('.seenTrajet').click(function(e){
 			e.stopPropagation();
 			console.log('sendTrajet pour sendMess');
@@ -130,7 +215,7 @@
 			
 			console.log(this.parentNode.parentNode.parentNode.querySelector('input'));
 			
-			$('#sendMess').attr('href','user/sendMessTrajet/'+id);
+			document.querySelector('#message input').value = id;
 			document.querySelector('#mess-trajet').innerText = "Message pour le trajet courant "+id;
 			swap_id_message = id;
 		})
@@ -144,16 +229,16 @@
 			
 			if(li[i].querySelector('input').value != swap_id_message){
 				console.log(li[i].querySelector('input').value);
-					if(li[i].classList.contains('hidden-detail')){
-						li[i].classList.remove('hidden-detail');
+					
+				if(li[i].classList.contains('hidden-detail')){
 						
+						li[i].classList.remove('hidden-detail');
 						resizeListUser(listuser,false);
 					
 					}
 			}
 		} 
 	})
-	
 /**********************************************\
 		Event Click close
 \**********************************************/

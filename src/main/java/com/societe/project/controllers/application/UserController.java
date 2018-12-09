@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.societe.project.models.Adresse;
 import com.societe.project.models.Car;
 import com.societe.project.models.Compte;
@@ -139,11 +141,14 @@ public class UserController {
 	 * ***********************************************************
 	 */
 	
-	@RequestMapping(value= {UserController.URL_TRAJET_MESS+"/{id}"},method=RequestMethod.GET)
-	public String validateTrajet(@PathVariable int id) {
+	@RequestMapping(value= {UserController.URL_TRAJET_MESS},method=RequestMethod.POST)
+	public String validateTrajet(@RequestParam String id,@RequestParam String messages) {
 		System.out.println("message sur trajet "+id);
 		
-		return VUE_MATCH_TRAJET_COMPTE ;
+		
+		System.out.println(id);
+		System.out.println(messages);
+		return URL_TRAJET_USER  ;
 	}
 	
 	
