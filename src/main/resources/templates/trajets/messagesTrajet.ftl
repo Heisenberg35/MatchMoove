@@ -6,7 +6,8 @@
         <div class="content-mess">
             <span>INSCRIVEZ VOS MESSAGES : </span>
         </div>
-        <textarea id="mess-trajet" rows="4" cols="40">
+  	
+        <textarea id="mess-trajet" name="message" rows="4" cols="40">
         
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
             In voluptates sint eligendi tempora deserunt error nemo accusamus, 
@@ -17,8 +18,11 @@
         
         <div id="message" class="trajet-match match ">
             <a id="sendMess" class="button btn-match" href="#">validez message</a>
-             <input type="hidden" name="id" value="">
+             <input id="id" type="hidden" name="id" value="">
+             <input id="secu" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+     
+             
         </div> 
-        
+   
     </div>
 

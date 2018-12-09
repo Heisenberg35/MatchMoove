@@ -17,6 +17,8 @@
 	var li = document.querySelectorAll('.list-content');
 	var btn_detail = document.querySelectorAll('.file-detail');
 	
+	var mtrajet = document.querySelector('#formmess');
+	
 	
 	
 	//var sendMess = document.querySelectorAll('#mess-trajet');
@@ -142,6 +144,7 @@
 		/*******************lié xhr à url httrequest*/
 		xhr.open(method,action,type);
 	}
+	
 /*****************************************\
 	0.0.1 function insertFormdataAppend
 \*****************************************/
@@ -150,26 +153,59 @@
 		var formdat = new FormData();
 
 		var textarea = document.querySelector('#mess-trajet');
-		var id = document.querySelector('#message input').value;
+		var id = document.querySelector('#message #id').value;
+		var sec = document.querySelector('#message #secu').value;
 		
 		console.log(textarea.innerHTML);
 		
 	
 			//insert in formdata with method append()
 			formdat.append('id',id);
+			formdat.append('_csrf',sec);
+			xhr.setRequestHeader("_csrf", secu);
 			formdat.append('messages',textarea.innerHTML);
+		    //formdat.append('form',mtrajet);
 			console.log(formdat);
 			
 			readKeyValueFormData(formdat);
 			
-			//XrhSendFormPOST(formdat);	
+			XrhSendForm(formdat);	
 		}	
 /**************************************\
 	3.2.function XrhSendFormPOST()
 \**************************************/
-	var XrhSendFormPOST = function(formdat){
+	var XrhSendForm = function(formdat){
+				//xhr.setRequestHeader("X-CSRF-TOKEN", csrftoken); 
 				xhr.send(formdat);		
 	}
+	/**************************************\
+	4..event readystatechange on xhr
+\**************************************/
+	xhr.addEventListener('readystatechange',function(e){
+
+		console.log('event readystatechange');
+		//debugger;
+
+		console.log('status : '+this.status);
+		console.log('readyState : '+this.readyState);
+		
+		//verication requete reussi
+		if(this.status === 200 ){
+			console.log('requete validate');
+
+			if(this.readyState === 4){
+				console.log('full data recept');
+				console.log(this.readyState);
+				
+				//insert dans le dom si message envoyer
+				
+				alert('message a bien été recu');
+
+			}
+		}
+	});	
+	
+	
 
 /**********************************************\
 	Event Click sendMess

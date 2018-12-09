@@ -1,16 +1,22 @@
 package com.societe.project.controllers.application;
 
+import java.io.IOException;
+
 import java.util.List;
+
+import javax.servlet.ServletException;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import com.societe.project.models.Adresse;
 import com.societe.project.models.Car;
@@ -138,17 +144,24 @@ public class UserController {
 	/**
 	 * *********************************************************
 	 * 		save message sur trajet id
-	 * ***********************************************************
+	 * *
+	 * @throws ServletException 
+	 * @throws IOException **********************************************************
 	 */
 	
 	@RequestMapping(value= {UserController.URL_TRAJET_MESS},method=RequestMethod.POST)
-	public String validateTrajet(@RequestParam String id,@RequestParam String messages) {
-		System.out.println("message sur trajet "+id);
+	public String validateTrajet(@ModelAttribute("id") Integer id,@ModelAttribute("messages") String messages) {
+		System.out.println("message sur trajet ");
+		//Collection <Part> collectionPart = request.getParts();
 		
+		//String id = request.getParameter("id");
 		
 		System.out.println(id);
 		System.out.println(messages);
-		return URL_TRAJET_USER  ;
+		
+		//save messagee fonction id trajet
+		
+		return "/trajets/ok" ;
 	}
 	
 	
