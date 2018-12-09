@@ -138,6 +138,12 @@ public class UserController {
 	public String matchTrajetSave(@PathVariable int id) {
 		System.out.println("Save trajet id "+id);
 		
+		//ici recupere le user qui accepte le trajet 
+		//user secrity context et save dans le trajet
+		//verified nombre de place d'abbord
+		//soustraire la nombre de place
+		
+		
 		return "redirect:"+URL_TRAJET_USER;
 	}
 	
@@ -158,7 +164,7 @@ public class UserController {
 		
 		System.out.println(id);
 		System.out.println(messages);
-		
+		//recupe le propfil associe au compte 
 		//save messagee fonction id trajet
 		
 		return "/trajets/ok" ;
