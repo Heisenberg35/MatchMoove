@@ -14,10 +14,10 @@
 }
 
 .box{
-  width: 520px;
-  height: 322px;
-  box-shadow: 11px 8px 10px #999;
-   transform: translateX(10px);
+	width: 630px;
+    height: 420px;
+    box-shadow: -15px -7px 10px #999;
+    transform: translateX(40px);
 }
 
 .box h1{
@@ -25,8 +25,8 @@
 }
 
 #map {
-  width: 500px;
-  height: 300px;
+    width: 625px;
+    height: 410px;
   /* transform: translateX(10px) translateY(+280px); */
        
 }
@@ -36,20 +36,14 @@
           Message
 -------------------------------------------------*/
 
-.messages{
-  width: 400px;
-  height: 150px;
-  margin-left: 10px;
-  margin-bottom: 60px;
-  background-color: blue;
-}
+
 
 .messages-trajet{
   width: 400px;
   height: 350px;
 
 
-  margin-left: 30px;
+  margin-left: 130px;
   margin-bottom: 60px;
 
   background-color: #e5e5e5;

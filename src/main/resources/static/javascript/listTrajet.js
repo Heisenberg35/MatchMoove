@@ -11,11 +11,13 @@
 /**********************************************\
 		variables
 \**********************************************/
-
-	var li = document.querySelectorAll('.list-content');
-	var btn_detail = document.querySelectorAll('.file-detail');
 	var listuser = document.querySelector('.listuser');
+	var li = document.querySelectorAll('.list-content');
+	
+	var btn_detail = document.querySelectorAll('.file-detail');
+	
 	var containerMap = document.querySelector('.container-map');
+	
 	var sendMess = document.querySelectorAll('#seenTrajet');
 	
 	
@@ -25,6 +27,9 @@
 
 	var bntTrajet = document.querySelector('.trajet-match');
 	var claque = document.querySelector('.claque');
+	
+	
+	
 	
 
 /**********************************************\
@@ -50,7 +55,7 @@
 			containerMap.style.height = offsetHeightContainerMap+'px' ;
 		}
 	}
-
+	
 /**********************************************\
 		method calcNbli
 \**********************************************/
@@ -122,20 +127,28 @@
 			console.log(this);
 			
 			var id = this.parentNode.parentNode.parentNode.querySelector('input').value;
+			
 			console.log(this.parentNode.parentNode.parentNode.querySelector('input'));
+			
 			$('#sendMess').attr('href','user/sendMessTrajet/'+id);
-			document.querySelector('#mess-trajet').innerText.innerText = "Message pour le trajet courant "+id;
+			document.querySelector('#mess-trajet').innerText = "Message pour le trajet courant "+id;
 			swap_id_message = id;
 		})
+		
 	document.querySelector('#mess-trajet').addEventListener('click',function(e){
+		
 		console.log('enter textarea');
 		console.log(this.parentNode);
 		 
 		for(var i=0 ;i<li.length;i++){
-			if(li.querySelector('input').value != swap_id_message){
-				console.log(li.querySelector('input').value);
-					if(li.classList.contains('hidden-detail')){
-						li.classList.remove('hidden-detail');
+			
+			if(li[i].querySelector('input').value != swap_id_message){
+				console.log(li[i].querySelector('input').value);
+					if(li[i].classList.contains('hidden-detail')){
+						li[i].classList.remove('hidden-detail');
+						
+						resizeListUser(listuser,false);
+					
 					}
 			}
 		} 

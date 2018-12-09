@@ -1,8 +1,7 @@
 <#import "/spring.ftl" as spring/>
+   
+   
    <div class="container-map">
-
-    
-    
 
    <!--////////////////////////////////////////////////////-->
    <!--             MAP                                    -->
@@ -116,7 +115,7 @@
                     </div>   
              </div>
         </div>
-  </div>
+
   
   
  

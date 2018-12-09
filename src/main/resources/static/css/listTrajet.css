@@ -17,7 +17,7 @@
     transition: 2s height;
     box-shadow: 8px 8px 10px #999;
     border-left: 15px #dadada solid;
-    transform: translateX(50px) translateY(-440px) scale(0.8);
+    transform: translateX(0px) translateY(-440px) scale(0.8);
 }
 
 .listuser-title{
