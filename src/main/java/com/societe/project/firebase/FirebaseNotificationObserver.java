@@ -6,31 +6,26 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.protobuf.TextFormat.ParseException;
-import com.societe.project.firebase.models.FirebaseMessage;
+import com.societe.project.firebase.models.MessageNotification;
 import com.societe.project.models.Message;
 import com.societe.project.models.Profil;
 
 public class FirebaseNotificationObserver {
-	//rebaseMessage firebaseMessage;
-	Message message;
-	public static Date parseDate(String date) throws java.text.ParseException, ParseException {
-	     return (Date) new SimpleDateFormat("yyyy-MM-dd").parse(date);
-	  }
+
+	MessageNotification messageNotification;
 	
-	private FirebaseNotificationObserver() throws IOException, java.text.ParseException {
-	//	Profil myprofil = new Profil("lama","Jabban", "0654441558");
-	//	Date myDate = parseDate("1999-01-01");
-	//	this.message = new Message("",myDate,myprofil);
-	//	ArrayList<Message>  conversatoin = new ArrayList<>();
-	//	conversatoin.add(this.message);
-	//	firebaseNotificationsObserver(conversatoin);
+	
+	private FirebaseNotificationObserver() throws IOException {
+		firebaseNotificationsObserver(this.messageNotification);
 	}
 
 	private static FirebaseNotificationObserver INSTANCE = null;
 
-	public static synchronized FirebaseNotificationObserver getInstance() throws IOException, java.text.ParseException {
+	public static synchronized FirebaseNotificationObserver getInstance() throws IOException {
 		if (INSTANCE == null) {
 			INSTANCE = new FirebaseNotificationObserver( );
 		}
@@ -38,17 +33,54 @@ public class FirebaseNotificationObserver {
 	}
 	
 	
-private void firebaseNotificationsObserver(Message message) throws IOException {
+private void firebaseNotificationsObserver(MessageNotification messageNotification) throws IOException {
 
-   
 		FirebaseOpenHelper.getInstance()
 		                  .getDatabase()
-		                  .getReference("/message")
-		                  .setValueAsync(message);
+		                  .getReference("/conversations/1")
+		                  .addChildEventListener(new ChildEventListener() {
+							
+							@Override
+							public void onChildRemoved(DataSnapshot snapshot) {
+								System.out.println("removed "+snapshot.getKey());
+								
+							}
+							
+							@Override
+							public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
+								System.out.println("moved "+snapshot.getKey());
+								
+							}
+							
+							@Override
+							public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
+								System.out.println("changed "+snapshot.getKey());
+								
+								
+							}
+							
+							@Override
+							public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
+								System.out.println("Added "+snapshot.getKey());
+								if (snapshot.getValue().equals("content")) {
+									FirebaseNotificationObserver.this.messageNotification.setContent(snapshot.getValue().toString());
+								}
+								if (snapshot.getValue().equals("date")) {
+									FirebaseNotificationObserver.this.messageNotification.setDate(snapshot.getValue().toString());
+								}	
+							}
+							
+							@Override
+							public void onCancelled(DatabaseError error) {
+								System.out.println("Error");
+								
+							}
+						} );
 }
 	
 
-	public Message getNotification() {
-		return this.message;
+	public MessageNotification getNotification() {
+	    System.out.println(messageNotification.getContent());
+		return this.messageNotification;
 	}
 }
