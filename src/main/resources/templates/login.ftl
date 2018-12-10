@@ -1,5 +1,5 @@
 <#import "/spring.ftl" as spring/>
-*<#include "../blocsCommuns/head.ftl"/>	
+<#include "../blocsCommuns/head.ftl"/>	
 <title>Login</title>
 <link rel="stylesheet" type="text/css" href="<@spring.url '/css/login.css'/>"/>
 		<a href=""><img src="images/Matchmoovecouleurs.png" alt="logo matchmoove" class="logo"></a>

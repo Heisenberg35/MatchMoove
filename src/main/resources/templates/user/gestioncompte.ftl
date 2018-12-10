@@ -8,6 +8,15 @@
 <title>User Gestion Compte</title>
 	<h2>Bonjour ${compte.getProfil().getFirstname()} ${compte.getProfil().getLastname()}</h2>
 
+<#if errors ?has_content>
+	<div class="error">
+		<#list errors.getAllErrors()as error>
+		<p>Afin de valider votre formulaire, veuillez corriger le ou les erreurs suivantes :</p>
+		<p>${error.getCode()}</p>
+		</#list>
+	</div>
+</#if>
+
 <section id="infosUser">
 	<form action="/user/gestioncompte" method="POST">
 		<div class="blocInfo">
@@ -57,8 +66,9 @@
 				<#else>
 					<input type="hidden" name="profil.adresses[${index}].domicile" value="false">
 				</#if>
-				
-				<input type="hidden" name="profil.adresses[${index}].id" value="${adresse.getId()}">
+				<#if adresse.getId()?has_content >
+					<input type="hidden" name="profil.adresses[${index}].id" value="${adresse.getId()}">
+				</#if>
 	  			<input type="hidden" name="profil.adresses[${index}].profil.id" value="${compte.getProfil().getId()}">
 				<#assign index++>
     		</#list>
@@ -113,7 +123,9 @@
 				
 				<p><label><b>Plaque d'immatriculation</b></label>
 				<input type="text" placeholder="plaque d'immmatriculation" id="immatriculation" name="profil.cars[${index}].immatriculation" value="<#if voiture.getImmatriculation()??>${voiture.getImmatriculation()}</#if>" disabled required></p>
-        		<input type="hidden" name="profil.cars[${index}].id" value="${voiture.getId()}">
+        		<#if voiture.getId() ?has_content >
+        			<input type="hidden" name="profil.cars[${index}].id" value="${voiture.getId()}">
+        		</#if>
   				<input type="hidden" name="profil.cars[${index}].profil.id" value="${compte.getProfil().getId()}">
   			<#assign index++>
 			</#list>

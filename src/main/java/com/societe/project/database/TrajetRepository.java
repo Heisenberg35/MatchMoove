@@ -14,6 +14,7 @@ public interface TrajetRepository extends BaseCRUDRepository<Trajet> {
 	List<Trajet> findByDateDepart(Date date);
 
 	List<Trajet> findByHeureDepartAndMinuteDepart(Integer heure,Integer minute);
+
 	
 	
 	//List<Trajet> findByPerimetreAndDateDepart(Double perimetre, Date dateDepart);
