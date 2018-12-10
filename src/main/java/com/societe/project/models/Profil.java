@@ -37,10 +37,10 @@ public class Profil extends DBItem {
 	@OneToMany(mappedBy="profil")
 	private List<Car> cars;
 
-    @OneToMany(targetEntity=PT.class,mappedBy="profil" ,cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(targetEntity=PT.class,mappedBy="profil")
     private List<PT> pts;
     
-    @OneToMany(targetEntity=Bagage.class,mappedBy="profil" ,cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(targetEntity=Bagage.class,mappedBy="profil")
     private List<Bagage> bagages;
     
 	/***********************************************
