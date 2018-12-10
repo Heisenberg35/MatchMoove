@@ -67,8 +67,6 @@ public class UserController {
 	PTService      ptService;
 	
 	@Autowired
-	PTService pTService;
-	@Autowired
 	CompteValidatorForGestionUser compteValidatorForGestionUser;
 	@Autowired
 	RecuperationInfoLogin recuperationInfoLogin;
@@ -140,7 +138,7 @@ public class UserController {
 
 		pt.setProfil(compte.getProfil());
 		pt.setTrajet(trajet);
-		pTService.save(pt);
+		ptService.save(pt);
 		
 		return "redirect:/home";
 	}
