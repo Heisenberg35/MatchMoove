@@ -16,7 +16,7 @@
     <input type="radio" id="actived" name="active" value=1 checked/>
   	<label for="active">Activation</label>
   	<input type="radio" id="travail" name="active" value=0/>
-  	<label for="active">Desactivation</label>
+  	<label for="active">Désactivation</label>
     
     <div>Associer un profil</div>
     <#if profils??>

@@ -25,13 +25,12 @@
 	
 }
 
-
 /* Actu */
 #Actu
 {
 	display: flex;
-	justify-content: space-between;
-	margin: 80px;
+	justify-content: space-around;
+
 }
 
 #Actu a
@@ -42,14 +41,11 @@
 
 .actubloc
 {
-    flex-direction: column;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+	background-image: url(../images/leaves.png);
     width: 250px;
-    height: 300;
     border: 0.1px solid #e3e3e3;
     margin: 5px;
+    padding: 15px;
 }
 .actubloc img
 {

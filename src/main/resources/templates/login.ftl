@@ -14,7 +14,7 @@
                 <label><b>Mot de passe</b></label>
                 <input type="password" placeholder="Mot de passe" name="password" required>
 
-                <input type="submit" id='submit' value='LOGIN' >
+                <input type="submit" id='submit' value='CONNEXION' >
                 
             </form>
         </div>

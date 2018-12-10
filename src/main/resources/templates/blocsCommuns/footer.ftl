@@ -4,7 +4,7 @@
 		<ul>
 			<li>Nous contacter</li>
 			<li>Nous rejoindre</li>
-			<li><a href="/cgu/cgu">Informations Legales</a></li>
+			<li><a href="/cgu/cgu">Informations Légales</a></li>
 		</ul>
 		<ul>
 			<a href="/home"><img src="/images/matchmooveBLANCS.png" id="logof"></a>

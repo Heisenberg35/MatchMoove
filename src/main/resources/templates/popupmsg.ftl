@@ -75,7 +75,7 @@ conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) 
     
     <textarea id="t2" readonly rows = "5" cols = "60"  name="content" value=""> </textarea>
     
-     <textarea id="t1" rows = "5" cols = "60"  name="content" placeholder="Taper votre message.." name="msg"> </textarea>
+     <textarea id="t1" rows = "5" cols = "60"  name="content" placeholder="Tapez votre message.." name="msg"> </textarea>
 
     <img onclick="sayClicked()" src="/images/send.png" class="popup">
     

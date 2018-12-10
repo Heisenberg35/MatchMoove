@@ -2,10 +2,11 @@
 <#include "../blocsCommuns/head.ftl"/>	
 <#include "../blocsCommuns/headerUser.ftl"/>	
 
+<link rel="stylesheet" type="text/css" href="<@spring.url '../css/default.css'/>"/>
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/bootstrap.min.css'/>"/>			
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/formCreateUser.css'/>"/>	
 <title>Proposer un trajet</title>
-<h2>Bonjour ${compte.getProfil().getFirstname()} ${compte.getProfil().getLastname()}</h2>
+<h3>Bonjour ${compte.getProfil().getFirstname()} ${compte.getProfil().getLastname()}</h3>
 
 
 <#if compte.getProfil().getCars()?has_content >
@@ -40,15 +41,15 @@
 								</select>
                         </div>
 						<div class="form-group">
-							<label class="label label-nom" for="perimetre">Périmètre (en kms) :</label>
+							<label class="label label-nom" for="perimetre">Pï¿½rimï¿½tre (en kms) :</label>
 							<div class="input-group">
 								<input class="form-control" type="number" min=0 name="perimetre" required>
 							</div>
                         </div>
 						<div class="form-group">
-							<label class="label label-nom" for="dateDepart">Date de départ :</label>
+							<label class="label label-nom" for="dateDepart">Date de dï¿½part :</label>
 							<div class="input-group">
-								<input class="form-control" type="date" placeholder="date départ trajet" name="dateDepart" required>
+								<input class="form-control" type="date" placeholder="date dï¿½part trajet" name="dateDepart" required>
 							</div>
                         </div>
 						<div class="form-group">
@@ -82,7 +83,7 @@
 		</div>
 	</div>
 <#else>
-<h2>Afin de pouvoir proposer un trajet, il faut d'abord dans la gestion du compte avoir ajouter un véhicule <a href="/user/gestioncompte">cliquez ici</a></h2>
+<p>Afin de pouvoir proposer un trajet, il faut d'abord dans la gestion du compte avoir ajoutÃ© un vÃ©hicule <a href="/user/gestioncompte">cliquez ici</a></p>
 </#if>
 	
 	
