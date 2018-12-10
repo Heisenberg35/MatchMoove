@@ -56,14 +56,14 @@
                           <div class="user user-prenom">
                             <p> adresse de depart </p>
                               <div id="depart" class="adr">
-                                ${adr.getDomicile()? then(depart,arrive)}       
+                                ${pt.getTrajet().getIsDirection()? then(depart,arrive)}       
                               </div>
                           </div> 
                         <#else>
                           <div class="user user-prenom">
                             <p> adresse de arrivee </p>
                               <div id="arrivied" class="adr">
-                                ${adr.getDomicile()? then(depart,arrive)}       
+                                ${pt.getTrajet().getIsDirection()? then(depart,arrive)}       
                               </div>
                           </div> 
                         </#if>
