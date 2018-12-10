@@ -169,6 +169,10 @@ public class Trajet extends DBItem {
 	this.messages = new ArrayList<Message>();
 	
 	}
+	
+	public Trajet() {
+		
+	}
 	/***********************************************
 	 * method
 	 ***********************************************/
