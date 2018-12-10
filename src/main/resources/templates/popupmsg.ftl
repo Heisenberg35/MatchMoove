@@ -62,11 +62,11 @@ conversationRef.once('value', function(snapshot) {
 conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
   updateMessage("t2", snapshot.val().content);
 });
+
 </script>
 
-
 	
-	<button class="open-button" onclick="openForm()"><img src="/images/message.png" class="popup"> 0 a lire</button>
+<button class="open-button" onclick="openForm()"><img src="/images/message.png" class="popup"> 0 a lire</button>
 <div class="chat-popup" id="myForm">
   <form action="" class="form-container">
     <h2>Retrouvez vos messages</h2>

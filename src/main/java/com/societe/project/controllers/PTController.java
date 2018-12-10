@@ -55,7 +55,7 @@ public class PTController extends BaseController<PT> {
 	@Override
 	protected void setupOtherFields(PT item) {
 		item.setTrajet(trajetService.find(item.getTrajet().getId()).get());
-		item.setprofil(profilService.find(item.getprofil().getId()).get());
+		item.setProfil(profilService.find(item.getProfil().getId()).get());
 	}
 
 

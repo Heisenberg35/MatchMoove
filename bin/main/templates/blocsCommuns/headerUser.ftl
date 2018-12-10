@@ -1,3 +1,5 @@
+<#import "/spring.ftl" as spring/>     
+
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/header.css'/>"/>
 
 <header>

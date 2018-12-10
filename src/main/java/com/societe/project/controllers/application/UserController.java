@@ -1,19 +1,30 @@
 package com.societe.project.controllers.application;
 
+import java.io.IOException;
+
 import java.util.List;
+
+import javax.servlet.ServletException;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+
 import com.societe.project.models.Adresse;
 import com.societe.project.models.Car;
 import com.societe.project.models.Compte;
 import com.societe.project.models.PT;
+
 import com.societe.project.models.Trajet;
+
 import com.societe.project.services.AdresseService;
 import com.societe.project.services.CarService;
 import com.societe.project.services.CompteService;
@@ -32,22 +43,29 @@ public class UserController {
 	private static final String VUE_GESTION_COMPTE  = VUES + "/gestioncompte";
 	
 	
-	private static final String URL_TRAJET_USER  = "/user/researchtrajet";
+	private static final String URL_TRAJET_USER           = "/user/researchtrajet";
+	private static final String URL_TRAJET_VALIDATE       = "/user/validTrajet";
+	private static final String URL_TRAJET_MESS           = "/user/sendMessTrajet";
+	private static final String URL_DELETE_MESS_TRAJET    = "/user/sendMessTrajet";
+	
 	private static final String VUE_MATCH_TRAJET_COMPTE   = "/trajets/matchTrajet";
 	
 	private static final String URL_PROPOSER_TRAJET  = "/user/proposertrajet";
 	private static final String VUE_PROPOSER_TRAJET  = "/trajets/proposertrajet";
 	
 	@Autowired
-	CompteService compteService;
+	CompteService  compteService;
 	@Autowired
-	ProfilService profilService;
+	ProfilService  profilService;
 	@Autowired
 	AdresseService adresseService;
 	@Autowired
-	CarService carService;
+	CarService     carService;	
 	@Autowired
-	TrajetService trajetService;
+	TrajetService  trajetService;
+	@Autowired
+	PTService      ptService;
+	
 	@Autowired
 	PTService pTService;
 	@Autowired
@@ -94,6 +112,14 @@ public class UserController {
 	
 		return "redirect:/home";
 	}
+
+	
+	/**
+	 * *********************************************************
+	 * 		reseach trajet
+	 * ***********************************************************
+	 */
+
 	
 	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.GET)
 	public String proposerTrajet(Model model) {
@@ -112,7 +138,7 @@ public class UserController {
 		profilService.save(compte.getProfil());
 		trajetService.save(trajet);
 
-		pt.setprofil(compte.getProfil());
+		pt.setProfil(compte.getProfil());
 		pt.setTrajet(trajet);
 		pTService.save(pt);
 		
@@ -120,18 +146,67 @@ public class UserController {
 	}
 
 	@RequestMapping(value= {UserController.URL_TRAJET_USER},method=RequestMethod.GET)
-	public String matchTrajet() {
+	public String matchTrajet(Model model) {
 		System.out.println("matchTrajet");
 		
-		//recuperation de la list des trajets
+		model.addAttribute("detailPath", "/user");
 		
+		List <PT> listPt = (List<PT>) ptService.findAll();
+		//model.addAttribute()
+		
+		for (PT pt : listPt) {
+			pt.affPT();
+		}	
+		model.addAttribute("listPt", listPt);	
 		return VUE_MATCH_TRAJET_COMPTE ;
 	}
-	@RequestMapping(value= {UserController.URL_TRAJET_USER},method=RequestMethod.POST)
-	public String matchTrajetSave() {
-		System.out.println("POST save matchTrajet");
+	
+	/**
+	 * *********************************************************
+	 * 		save trajet Id
+	 * ***********************************************************
+	 */
+	
+	
+	@RequestMapping(value= {UserController.URL_TRAJET_VALIDATE+"/{id}"},method=RequestMethod.GET)
+	public String matchTrajetSave(@PathVariable int id) {
+		System.out.println("Save trajet id "+id);
 		
-		return VUE_MATCH_TRAJET_COMPTE ;
+		//ici recupere le user qui accepte le trajet 
+		//user secrity context et save dans le trajet
+		//verified nombre de place d'abbord
+		//soustraire la nombre de place
+		
+		
+		return "redirect:"+URL_TRAJET_USER;
 	}
+	
+	/**
+	 * *********************************************************
+	 * 		save message sur trajet id
+	 *  **********************************************************
+	 */
+	
+	@RequestMapping(value= {UserController.URL_TRAJET_MESS},method=RequestMethod.POST)
+	public String validateTrajet(@ModelAttribute("id") Integer id,@ModelAttribute("messages") String messages) {
+		System.out.println("message sur trajet ");
+		
+		System.out.println(id);
+		System.out.println(messages);
+		//recupe le propfil associe au compte 
+		//save messagee fonction id trajet
+		
+		return "/trajets/ok" ;
+	}
+	
+	
+	/**
+	 * *********************************************************
+	 * 		DELETE MESS 
+	 *  **********************************************************
+	 */
+	
+	
+	
 	
 }
