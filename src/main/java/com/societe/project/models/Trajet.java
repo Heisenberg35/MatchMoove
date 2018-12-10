@@ -159,11 +159,15 @@ public class Trajet extends DBItem {
 	 * CONSTRUCTEURS
 	 ***********************************************/
 	
-
-	public Trajet(Integer id, String nom) {
+    public Trajet(Integer id, String nom) {
+    	super();
+    	this.id = id;
+    	this.nom = nom;
+    }
+ 
+	public Trajet() {
 	super();
-	this.id = id;
-	this.nom = nom;
+	
 	this.bagages = new ArrayList<Bagage>();
 	this.pts = new ArrayList<PT>();
 	this.messages = new ArrayList<Message>();

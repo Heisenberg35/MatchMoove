@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.societe.project.models.Compte;
 
 @Service
-public class RecuperationInfoLogin {
+public class RecuperationInfoLoginService {
 	
 	@Autowired
 	CompteService compteService;
@@ -30,7 +30,7 @@ public class RecuperationInfoLogin {
 		return roles;
 	}
 	
-	public Compte recuperationCompteForUserLogge() {
+	public Compte recuperationCompteForUserLogged() {
 		
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		String email = securityContext.getAuthentication().getName();

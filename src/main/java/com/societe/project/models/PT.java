@@ -1,5 +1,7 @@
 package com.societe.project.models;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -25,6 +27,10 @@ private Integer nbrePlace;
 
 @Column
 private Double volumeMax;
+
+
+
+
 
 /***********************************************
  * GETTEUR ET SETTEUR

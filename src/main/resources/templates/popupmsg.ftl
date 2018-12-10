@@ -8,6 +8,7 @@
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-functions.js"></script>
 
+
 <script>
   // Initialize Firebase
   var config = {
@@ -21,6 +22,9 @@
   firebase.initializeApp(config);
   
 var today = new Date();
+var ss = today.getSeconds();
+var m = today.getMinutes();
+var hh = today.getHours();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
 var yyyy = today.getFullYear();
@@ -30,12 +34,20 @@ if(dd<10) {
 if(mm<10) {
     mm = '0'+mm
 } 
-today = dd + '/' +mm  + '/' + yyyy;
+if(hh<10) {
+    hh = '0'+hh
+} 
+if(m<10) {
+    m = '0'+m
+} 
+today = dd + '/' +mm  + '/' + yyyy + '    ' + hh + ':' + m ;
 
 
+var rootRef = firebase.database().ref('/conversations/${trajetId}')
 function sayClicked() {
 
-var rootRef = firebase.database().ref('conversation/');
+
+alert(rootRef);
   var newMessageRef = rootRef.push();
       newMessageRef.set({
       content:  '${userEmail}'+":\n" + document.getElementById("t1").value.trim(),
@@ -43,27 +55,35 @@ var rootRef = firebase.database().ref('conversation/');
 });
 
 }
-
- var updateMessage = function(element, value) {
-        document.getElementById(element).value += value + '\n';
+ var updateMessage = function(element, content,date) {
+        document.getElementById(element).value += content + '     ';
+       
+        document.getElementById(element).value += date + '\n';
         document.getElementById("t1").value = "";
     };
-    
- var conversationRef = firebase.database().ref('conversation/');
- 
-conversationRef.once('value', function(snapshot) {
+
+
+ rootRef.once('value', function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
 	    var childKey = childSnapshot.key;
-	    var childData = childSnapshot.val().content;
-	    updateMessage("t2", childData);
+	    var childDataContent = childSnapshot.val().content;
+	     var childDataDate = childSnapshot.val().date;
+	    updateMessage("t2", childDataContent,childDataDate);
 	});
 });
     
-conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
-  updateMessage("t2", snapshot.val().content);
+rootRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
+  updateMessage("t2", snapshot.val().content,snapshot.val().date);
+   //document.getElementById('label').innerHTML  = notification +1;
+ 
+  
 });
 
+
+
+
 </script>
+
 
 	
 <button class="open-button" onclick="openForm()"><img src="/images/message.png" class="popup"> 0 a lire</button>

@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+import com.google.firebase.database.DatabaseReference;
+import com.societe.project.firebase.FirebaseOpenHelper;
+import com.societe.project.firebase.FirebaseService;
 import com.societe.project.models.Adresse;
 import com.societe.project.models.Car;
 import com.societe.project.models.Compte;
@@ -30,7 +32,7 @@ import com.societe.project.services.CarService;
 import com.societe.project.services.CompteService;
 import com.societe.project.services.PTService;
 import com.societe.project.services.ProfilService;
-import com.societe.project.services.RecuperationInfoLogin;
+import com.societe.project.services.RecuperationInfoLoginService;
 import com.societe.project.services.TrajetService;
 import com.societe.project.validators.CompteValidatorForGestionUser;
 
@@ -54,6 +56,8 @@ public class UserController {
 	private static final String VUE_PROPOSER_TRAJET  = "/trajets/proposertrajet";
 	
 	@Autowired
+	FirebaseService firebaseService;
+	@Autowired
 	CompteService  compteService;
 	@Autowired
 	ProfilService  profilService;
@@ -69,12 +73,12 @@ public class UserController {
 	@Autowired
 	CompteValidatorForGestionUser compteValidatorForGestionUser;
 	@Autowired
-	RecuperationInfoLogin recuperationInfoLogin;
+	RecuperationInfoLoginService recuperationInfoLogin;
 	
 
 	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.GET)
 	public String gestionCompte(Model model) {
-		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
+		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogged();
 		model.addAttribute("compte", compte);
 //		model.addAttribute("errors", bindingResult);
 
@@ -121,7 +125,7 @@ public class UserController {
 	
 	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.GET)
 	public String proposerTrajet(Model model) {
-		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
+		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogged();
 		Trajet trajet = null;
 		PT pt = null;
 		model.addAttribute("compte", compte);
@@ -131,7 +135,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.POST)
-	public String proposerTrajetSave(@ModelAttribute Compte compte, @ModelAttribute Trajet trajet, @ModelAttribute PT pt) {
+	public String proposerTrajetSave(@ModelAttribute Compte compte, @ModelAttribute Trajet trajet, @ModelAttribute PT pt) throws IOException {
 		
 		profilService.save(compte.getProfil());
 		trajetService.save(trajet);
@@ -139,6 +143,9 @@ public class UserController {
 		pt.setProfil(compte.getProfil());
 		pt.setTrajet(trajet);
 		ptService.save(pt);
+		
+		// ici  creer conversation pour ce trajet
+		firebaseService.createFirebaseTrajet(trajet.getId());  
 		
 		return "redirect:/home";
 	}
@@ -162,18 +169,20 @@ public class UserController {
 	/**
 	 * *********************************************************
 	 * 		save trajet Id
-	 * ***********************************************************
+	 * *
+	 * @throws IOException **********************************************************
 	 */
 	
 	
 	@RequestMapping(value= {UserController.URL_TRAJET_VALIDATE+"/{id}"},method=RequestMethod.GET)
-	public String matchTrajetSave(@PathVariable int id) {
+	public String matchTrajetSave(@PathVariable int id) throws IOException {
 		System.out.println("Save trajet id "+id);
 		
 		//ici recupere le user qui accepte le trajet 
-		//user secrity context et save dans le trajet
+		//user security context et save dans le trajet
 		//verified nombre de place d'abbord
 		//soustraire la nombre de place
+		 
 		
 		
 		return "redirect:"+URL_TRAJET_USER;

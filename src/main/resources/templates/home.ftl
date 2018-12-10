@@ -49,6 +49,9 @@
 	</section>
  
 	</#if>		
+<#if trajets??>
+<#list trajets as trajetId> <#include "popupmsg.ftl"> </#list>
+</#if>
 
-<#include "popupmsg.ftl">
+
 <#include "blocsCommuns/footer.ftl"/>
