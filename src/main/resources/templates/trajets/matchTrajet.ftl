@@ -32,7 +32,7 @@
             			</#if>
             			<li><a href="/user/gestioncompte"><img src="/images/profil.png"</a></li>
             			
-                            <li><a href="#">Proposer un trajet</a></li>
+                            <li><a href="/user/proposertrajet">Proposer un trajet</a></li>
 			              	<li><a href="/user/researchtrajet">Rechercher un trajet</a></li>
 			                
 			                <li><a href="/articles">BLOG</a></li>
