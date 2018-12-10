@@ -147,8 +147,9 @@ public class Trajet extends DBItem {
 		this.messages = messages;
 	}
 
-	public Trajet(String nom) {
+	public Trajet(Integer id, String nom) {
 	super();
+	this.id = id;
 	this.nom = nom;
 	this.bagages = new ArrayList<Bagage>();
 	this.pts = new ArrayList<PT>();

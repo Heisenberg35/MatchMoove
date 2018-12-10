@@ -11,7 +11,7 @@ public abstract class DBItem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	protected Integer id;
 
 	public Integer getId() {
 		return id;

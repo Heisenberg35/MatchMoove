@@ -40,10 +40,10 @@ if(m<10) {
 } 
 today = dd + '/' +mm  + '/' + yyyy + '    ' + hh + ':' + m ;
 
-
+var rootRef = firebase.database().ref('/conversations/${trajetId}')
 function sayClicked() {
 
-var rootRef = firebase.database.ref('/conversations/${trajet}');
+
 alert(rootRef);
   var newMessageRef = rootRef.push();
       newMessageRef.set({
@@ -60,7 +60,7 @@ alert(rootRef);
         document.getElementById("t1").value = "";
     };
 
- var rootRef = firebase.database.ref('/conversations/${trajet}');
+
  rootRef.once('value', function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
 	    var childKey = childSnapshot.key;
@@ -70,7 +70,7 @@ alert(rootRef);
 	});
 });
     
-conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
+rootRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
   updateMessage("t2", snapshot.val().content,snapshot.val().date);
   
 });
@@ -86,7 +86,7 @@ conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) 
 	<h1>Messagerie</h1>
 </header>	
 	
-	 <label></label>
+	 <label><#if notification??>${notification.getContent()}</#if></label>
 	 <div>derniers messages<div>
 	 <textarea id="t2" readonly rows = "5" cols = "60"  name="content" value=""></textarea>
    

@@ -32,7 +32,7 @@ public class MessagerieController {
 	
 	@RequestMapping(value= {"","/"})
 	public String Index(Model model) throws IOException {
-        Trajet trajet = new Trajet("saintmalo");
+        Trajet trajet = new Trajet(1,"saintmalo");
 	/*	try {
 			FirebaseOpenHelper
 			                .getInstance()
@@ -44,20 +44,27 @@ public class MessagerieController {
 		}*/
         // model.addAttribute("notification",FirebaseNotificationObserver.getInstance().getNotification());
 		DatabaseReference Ref = FirebaseOpenHelper.getInstance().getDatabase().getReference("conversations/");
-		DatabaseReference trajetRef = Ref.push();
-		trajetRef.setValueAsync(trajet.getNom());
+		
+		/*DatabaseReference trajetRef = Ref.push();
+		trajetRef.setValueAsync(trajet.getId());
 		String trajetToken = trajetRef.getKey();
-		System.out.println(Ref);
+		System.out.println(trajetRef); 
+		model.addAttribute("trajet", trajetToken);
+		*/
 		
 	  
 		//Map<String, Object> trajets = new HashMap<>();;
 		//Object childRef = trajets.put("trajet", trajet);
 		//Ref.updateChildrenAsync(trajets);
-      
-		
-		//System.out.println(childRef);
-		model.addAttribute("trajet", trajetToken);
+		DatabaseReference trajetRef = Ref.child(trajet.getId().toString());
+		model.addAttribute("trajetId", trajet.getId());
+	
+		//Map<String, Trajet> trajets = new HashMap<>();
+    //	trajets.put(trajet.getId().toString(), trajet);
+		//System.out.println(childRf);
+
 		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
+		model.addAttribute("notification",FirebaseNotificationObserver.getInstance().getNotification());
 		return "/messagerie";
 	}
 	
