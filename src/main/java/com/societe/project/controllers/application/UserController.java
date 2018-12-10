@@ -44,6 +44,8 @@ public class UserController {
 	private static final String URL_TRAJET_USER           = "/user/researchtrajet";
 	private static final String URL_TRAJET_VALIDATE       = "/user/validTrajet";
 	private static final String URL_TRAJET_MESS           = "/user/sendMessTrajet";
+	private static final String URL_DELETE_MESS_TRAJET    = "/user/sendMessTrajet";
+	
 	private static final String VUE_MATCH_TRAJET_COMPTE   = "/trajets/matchTrajet";
 	
 	@Autowired
@@ -150,17 +152,12 @@ public class UserController {
 	/**
 	 * *********************************************************
 	 * 		save message sur trajet id
-	 * *
-	 * @throws ServletException 
-	 * @throws IOException **********************************************************
+	 *  **********************************************************
 	 */
 	
 	@RequestMapping(value= {UserController.URL_TRAJET_MESS},method=RequestMethod.POST)
 	public String validateTrajet(@ModelAttribute("id") Integer id,@ModelAttribute("messages") String messages) {
 		System.out.println("message sur trajet ");
-		//Collection <Part> collectionPart = request.getParts();
-		
-		//String id = request.getParameter("id");
 		
 		System.out.println(id);
 		System.out.println(messages);
@@ -170,6 +167,12 @@ public class UserController {
 		return "/trajets/ok" ;
 	}
 	
+	
+	/**
+	 * *********************************************************
+	 * 		DELETE MESS 
+	 *  **********************************************************
+	 */
 	
 	
 	
