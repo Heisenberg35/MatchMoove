@@ -40,12 +40,16 @@ h3
 	font-size: 23px;
 }
 
-h3:hover
+h5
 {
-	color: #bddd1d;
+	font-size: 23px;
+	padding-bottom: 10px;
 }
 
-
+#displayArticle
+{
+	margin: 50px;
+}
 
 #flex
 {

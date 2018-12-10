@@ -7,7 +7,7 @@
 <title>Home</title>
 
 
-<h2>Decouvrez les derniers trajets</h2>
+<h2>D√©couvrez les derniers trajets !</h2>
 
 	<section id="Trajets"> 
  		<div class="trajetbloc">
@@ -15,32 +15,32 @@
 			<p>IMIE RENNES</p>
             <img src="images/PORTRAIT1.jpg" id="portait" class="img-circle">
 			<p>Lucile</p>
-			<p>Prix 8,50Ä</p>
+			<p>Prix 8,50‚Ç¨</p>
         </div>
 		<div class="trajetbloc">
 			<p>Bain de B</p>
 			<p>IMIE RENNES</p>
             <img src="images/PORTRAIT1.jpg" id="portait" class="img-circle">
 			<p>Lucile</p>
-			<p>Prix 8,50Ä</p>
+			<p>Prix 8,50‚Ç¨</p>
         </div>
 		<div class="trajetbloc">
 			<p>Bain de B</p>
 			<p>IMIE RENNES</p>
             <img src="images/PORTRAIT1.jpg" id="portait" class="img-circle">
 			<p>Lucile</p>
-			<p>Prix 8,50Ä</p>
+			<p>Prix 8,50‚Ç¨</p>
         </div>
 	</section>
 	
 	
 <#if lastArticles??>
-<h2>Nos actualites</h2>
+<h2>Nos actualit√©s</h2>
 
 	<section id="Actu"> 
 	<#list lastArticles as i>	
     	<div class="actubloc">
-			<h3><a style="color: black; text-align:center" href="displayArticle/${i.getId()}"><#if i.getTitle()??> ${i.getTitle()} </#if> </a></h3>
+			<h5><a style="color: black; text-align:center" href="displayArticle/${i.getId()}"><#if i.getTitle()??> ${i.getTitle()} </#if> </a></h5>
 			<p><#if i.getDescription()??> ${i.getDescription()} </#if></p>
        		<a href="/articles" title="blog">Lire l'article</a>
        	</div>

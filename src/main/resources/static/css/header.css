@@ -76,3 +76,12 @@ nav img
 	color: 1e9b8d;
 	text-align: right;
 }
+
+h1
+{
+	color: white;
+	font-size: 70px;
+	text-shadow:0 0 10px black;
+	text-align: center;
+	padding-top: 210px;
+}

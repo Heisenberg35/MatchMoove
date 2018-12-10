@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 
@@ -33,6 +34,7 @@ public class PTService extends BaseService<PT> {
 	TrajetService trajetService;
 	@Autowired
 	PTService  ptService;
+	
 	
 	@Override
 	protected BaseCRUDRepository<PT> getCRUDRepository() {
@@ -115,5 +117,9 @@ public class PTService extends BaseService<PT> {
 		pt.setProfil(user.getProfil());
 		
 		ptService.save(pt);
+	}
+	
+	public void insertPt(Integer nbre_place, Double volume_max, Integer profil_id, Integer trajet_id) {
+		ptRepository.insertPt(nbre_place, volume_max, profil_id, trajet_id);
 	}
 }

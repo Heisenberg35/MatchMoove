@@ -24,11 +24,11 @@
 			<label><b>Nom</b></label>
 			<input type="text" placeholder="Nom" name="profil.lastname" value="<#if compte?? && compte.getProfil().getLastname()??>${compte.getProfil().getLastname()}</#if>" required>
 			
-			<label><b>Prenom</b></label>
-			<input type="text" placeholder="Pr�nom" name="profil.firstname" value="<#if compte?? && compte.getProfil().getFirstname()??>${compte.getProfil().getFirstname()}</#if>" required>
+			<label><b>Prénom</b></label>
+			<input type="text" placeholder="Pr�nom" name="profil.firstname" value="<#if compte?? && compte.getProfil().getFirstname()??>${compte.getProfil().getFirstname()}</#if>" required>
 				
-				<p><label><b>Telephone</b></label>
-				<input type="text" placeholder="Num�ro de t�l�phone" name="profil.phoneNumber" value="<#if compte?? && compte.getProfil().getPhoneNumber()??>${compte.getProfil().getPhoneNumber()}</#if>" required> </p>
+				<p><label><b>Téléphone</b></label>
+				<input type="text" placeholder="Numéro de téléphone" name="profil.phoneNumber" value="<#if compte?? && compte.getProfil().getPhoneNumber()??>${compte.getProfil().getPhoneNumber()}</#if>" required> </p>
 
    				<input type="hidden" name="profil.id" value="${compte.getProfil().getId()}">
    				 
@@ -48,7 +48,7 @@
     			<h2>Adresse Travail</h2>
     			</#if>
     			
-				<p><label><b>Numero</b></label>
+				<p><label><b>Numéro</b></label>
 				<input type="text" placeholder="numero" name="profil.adresses[${index}].numero" value="<#if adresse.getNumero()??>${adresse.getNumero()}</#if>" required></p>
 
     			
@@ -74,7 +74,7 @@
     		</#list>
     		<#else>
     			<h2>Adresse Domicile</h2>
-    			<label><b>Numero</b></label>
+    			<label><b>Numéro</b></label>
     			<input type="text" placeholder="numero" name="profil.adresses[0].numero" required>
 				<label><b>Rue</b></label>
 				<input type="text" placeholder="rue" name="profil.adresses[0].rue" required>
@@ -86,7 +86,7 @@
   				<input type="hidden" name="profil.adresses[0].profil.id" value="${compte.getProfil().getId()}">
   				
   				<h2>Adresse Travail</h2>
-  				<label><b>Numero</b></label>
+  				<label><b>Numéro</b></label>
     			<input type="text" placeholder="numero" name="profil.adresses[1].numero" required>
 				<label><b>Rue</b></label>
 				<input type="text" placeholder="rue" name="profil.adresses[1].rue" required>
@@ -105,7 +105,7 @@
 				<div class="form-group-voiture">
 	        	<input class="form-check-input" type="checkbox" value="" id="ignorePass">
 				<label class="label label-nom" for="ignoreepass">
-					Cocher pour acc�der aux informations du v�hicule
+					Cocher cette case pour accéder aux informations de votre véhicule
 				</label>
 			</div>
 			<#if compte.getProfil().getCars()?has_content >
@@ -115,7 +115,7 @@
 				<p><label><b>Marque</b></label>
 				<input type="text" placeholder="marque" id="marque" name="profil.cars[${index}].marque" value="<#if voiture.getMarque()??>${voiture.getMarque()}</#if>" disabled required></p>
 				
-				<p><label><b>Modele</b></label>
+				<p><label><b>Modèle</b></label>
 				<input type="text" placeholder="modele" id="modele" name="profil.cars[${index}].modele" value="<#if voiture.getModele()??>${voiture.getModele()}</#if>" disabled required></p>
 				
 				<p><label><b>Nombre de places</b></label>
@@ -132,7 +132,7 @@
 		    <#else>
 		    	<label><b>Marque</b></label>
 				<input type="text" placeholder="marque" id="marque" name="profil.cars[0].marque" disabled required />
-				<label><b>Modele</b></label>
+				<label><b>Modèle</b></label>
 				<input type="text" placeholder="modele" id="modele" name="profil.cars[0].modele" disabled required/>
 				<label><b>Nombre de places</b></label>
 				<input type="number" placeholder="nombre de place" id="nbrePlace" name="profil.cars[0].nombreDePlace" disabled required/>

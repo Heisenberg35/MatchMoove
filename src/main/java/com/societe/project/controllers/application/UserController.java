@@ -1,23 +1,14 @@
 package com.societe.project.controllers.application;
 
-import java.io.IOException;
-
 import java.util.List;
-
-import javax.servlet.ServletException;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-
 import com.societe.project.models.Adresse;
 import com.societe.project.models.Car;
 import com.societe.project.models.Compte;
@@ -122,8 +113,8 @@ public class UserController {
 	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.GET)
 	public String proposerTrajet(Model model) {
 		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
-		Trajet trajet = null;
-		PT pt = null;
+		Trajet trajet = new Trajet();
+		PT pt = new PT();
 		model.addAttribute("compte", compte);
 		model.addAttribute("trajet", trajet);
 		model.addAttribute("pt", pt);
@@ -133,13 +124,14 @@ public class UserController {
 	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.POST)
 	public String proposerTrajetSave(@ModelAttribute Compte compte, @ModelAttribute Trajet trajet, @ModelAttribute PT pt) {
 		
-		profilService.save(compte.getProfil());
 		trajetService.save(trajet);
 
 		pt.setProfil(compte.getProfil());
 		pt.setTrajet(trajet);
-		ptService.save(pt);
 		
+//		ptService.insertPt(pt1.getNbrePlace(), pt1.getVolumeMax(), pt1.getProfil().getId(), pt1.getTrajet().getId());
+		ptService.save(pt);
+
 		return "redirect:/home";
 	}
 
