@@ -190,7 +190,7 @@ public class Trajet extends DBItem {
 	 * method
 	 ***********************************************/
 	
-	void affTrajet () {
+	public void affTrajet () {
 		System.out.println(nom);
 		System.out.println(perimetre);
 	}

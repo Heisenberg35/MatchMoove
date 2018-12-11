@@ -2,7 +2,7 @@ package com.societe.project.controllers.application;
 
 
 import java.io.IOException;
-
+import java.util.ArrayList;
 import java.util.Date;
 
 import java.util.List;
@@ -54,15 +54,15 @@ public class UserController {
 	private static final String URL_VOS_TRAJET            = "/user/vostrajet";
 	
 	private static final String URL_DELETE_MESS_TRAJET    = "/user/delmessage";
-	
-	
+	private static final String URL_PROPOSER_TRAJET       = "/user/proposertrajet";
+	private static final String URL_VOS_MESSAGE           = "/user/trajets/vosmessage";
 	
 	private static final String VUE_MATCH_TRAJET_COMPTE   = "/trajets/matchTrajet";
-	private static final String URL_PROPOSER_TRAJET  = "/user/proposertrajet";
-	private static final String VUE_PROPOSER_TRAJET  = "/trajets/proposertrajet";
+	private static final String VUE_PROPOSER_TRAJET       = "/trajets/proposertrajet";
+	private static final String VUE_VOS_TRAJET            = "/trajets/vostrajet";
 	
-	private static final String VUE_VOS_TRAJET    = "/trajets/vostrajet";
-	private static final String URL_VOS_MESSAGE   = "/trajets/vosmessage";
+	
+	
 	
 	@Autowired
 	FirebaseService firebaseService;
@@ -271,23 +271,39 @@ public class UserController {
 	 */
 	
 	@RequestMapping(value= {UserController.URL_VOS_TRAJET },method=RequestMethod.GET)
-	public String vosTrajet() {
+	public String vosTrajet(Model model) {
 		System.out.println("vos trajets ");
 		
 		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
 		
 		compte.afficheCompte();  //ok
 		compte.getProfil().afficheProfil(); //ok
+		System.out.println("id"+compte.getProfil().getId()); //ok
+	
 		
 		//recupere le profil 
-		List <Message> listMess = (List<Message>) messageService.findAll();
+//		List <Message> listMess = (List<Message>) messageService.findAll();
+//		
+//		for (Message message : listMess) {
+//			message.messAffi();
+//		}
 		
-		for (Message message : listMess) {
+		List <Message> messageUser = messageService.findByProfilMessage(compte.getProfil()); //ok
+		
+		for (Message message : messageUser) {
+			message.messAffi(); 
 			
 		}
 		
-		//recuperation des trajet fonction du profil
-		//recupere les messages fonction des trajet
+		List <PT> pts =  ptService.findByProfilVosTrajet(compte.getProfil());
+		List <Trajet> listTrajet = new ArrayList<Trajet>();
+		for (PT pt : pts) {
+			pt.getTrajet().affTrajet();
+			listTrajet.add(pt.getTrajet());
+		}
+		
+		model.addAttribute("messages", messageUser);
+		model.addAttribute("pts",pts);
 		
 		return VUE_VOS_TRAJET ;
 	}
@@ -301,7 +317,7 @@ public class UserController {
 	
 	@RequestMapping(value= {UserController.URL_VOS_MESSAGE },method=RequestMethod.GET)
 	public String vosMessagreTrajet() {
-		System.out.println("vos trajets ");
+		System.out.println("vos message du trajet ");
 		
 		//requete de recuperation des message  function id trajet
 		//insert dans model 
@@ -315,9 +331,13 @@ public class UserController {
 	 *  **********************************************************
 	 */
 	@RequestMapping(value= {UserController.URL_DELETE_MESS_TRAJET },method=RequestMethod.GET)
-	public String deleteMessTrajet() {
+	public String deleteMessTrajet(Model model) {
 		System.out.println("delete Message trajet ");
 		
+		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
+		List <Message> messageUser = messageService.findByProfilMessage(compte.getProfil()); //ok
+		
+		//model.addAttribute("messages", messageUser);
 		//recuperation id message a delete
 		//return sur la vue 
 		

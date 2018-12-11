@@ -29,8 +29,8 @@
 
 		console.log(' 1 event btn voir mess request');
 			//initXhrPost('GET','/user/deleteMessTrajet/'+idmess,true);
-			//initXhr('GET','/user/delmessage',true);
-			//insertFormdataAppend();
+			initXhr('GET','/user/trajets/vosmessage',true);
+			insertFormdataAppend();
 				//xhr.send();	
 			
 	})
@@ -117,7 +117,7 @@ $('.deleteTrajet').click(function(e){
 			formdat.append('id',id);
 			formdat.append('_csrf',sec);
 			xhr.setRequestHeader("_csrf", secu);
-			formdat.append('messages',textarea.innerHTML);
+			formdat.append('messages',textarea.value);
 		   
 			console.log(formdat);
 			

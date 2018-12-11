@@ -5,19 +5,23 @@
                     <h2>messages trajets</h2>
                     <div class="messages-content">
                         <ul>
+                     <#if messages?has_content>
+                     	<#list messages as message> 
                             <li class="contents"> 
-                                <input id="id-mess" type="hidden" name="id" value="">
+                                <input id="id-mess" type="hidden" name="id" value="${message.getId()}">
                                     <div class="ct sender-user">
-                                        <div class="sender">nom sender</div>
+                                        <div class="sender">${message.getProfil().getFirstname()}</div>
                                     </div>
-                                    <div class="ct title">trajet num</div>
+                                    <div class="ct title">${message.getTrajet().getNom()}</div>
                                     <div class="ct content-descriptions">
-                                       <p>Lorem ipsum dolor sit amet, consectetur!</p>
+                                       <p>${message.getContent()}</p>
                                     </div>
                                      <div class="btn btn-seen-delete deleteMess">
-                                        <a  id="delMessage" href="#">DELETE</a>
+                                        <a  id="delMessage" href="/user/delmessage/${message.getId()}">DELETE</a>
                                     </div>
-                            </li>
+                            	</li>
+                           </#list> 
+                         </#if>  	
                         </ul>
                     </div>
    </div>

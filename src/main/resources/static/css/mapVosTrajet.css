@@ -5,12 +5,13 @@
 -------------------------------------------------*/
 
 .container-map{
-    display: flex;
-    justify-content: flex-end;
+    /*display: flex;*/
+    /*justify-content: flex-end;*/
     width: 600px;
     height: 600px;
     /* background-color: red; */
     margin-inline-start: auto;
+    transform: translateY(-600px);
 }
 
 .box{
