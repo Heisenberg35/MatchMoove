@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.Date;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
-import com.google.firebase.database.DatabaseReference;
-import com.societe.project.firebase.FirebaseOpenHelper;
+
 import com.societe.project.firebase.FirebaseService;
 
 import com.societe.project.models.Adresse;
@@ -213,7 +211,6 @@ public class UserController {
 	/**
 	 * *********************************************************
 	 * 		save trajet Id
-	 * 
 	 * *********************************************************
 	 */
 	
@@ -283,6 +280,10 @@ public class UserController {
 		compte.getProfil().afficheProfil(); //ok
 		
 		//recupere le profil 
+		List <Message> listMess = (List<Message>) messageService.findAll();
+		
+		
+		
 		//recuperation des trajet fonction du profil
 		//recupere les messages fonction des trajet
 		
