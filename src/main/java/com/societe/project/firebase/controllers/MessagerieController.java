@@ -56,6 +56,7 @@ public class MessagerieController {
 		model.addAttribute("trajetId", trajetId);*/
 		
 	//	model.addAttribute("trajetId",firebaseService.getTrajetId("13"));
+		model.addAttribute("trajetId", firebaseService.getUserTrajet());
 		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogged().getEmail());
 		return "/messagerie";
 	}

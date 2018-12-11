@@ -52,11 +52,17 @@ public class HomeController {
 		//cfg.setSharedVariable("user", recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		ArrayList<String> roles = recuperationInfoLogin.recuperationRole();
 		model.addAttribute("roles", roles);
-	
-		model.addAttribute("lastArticles",articleService.findLatestArticles());
-		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogged().getEmail());
-		//model.addAttribute("trajetId",firebaseService.getTrajetId());
-		model.addAttribute("trajets", firebaseService.getUserTrajets());
+		/// 
+		///firebase messagerie
+		///
+		Integer userTragetId = firebaseService.getUserTrajet();
+		if(!userTragetId.equals(-1))
+		{model.addAttribute("trajetId",userTragetId);}
+		 model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogged().getEmail());
+		
+		 
+		 
+		 model.addAttribute("lastArticles",articleService.findLatestArticles());
 		
 		
 		return "/home";

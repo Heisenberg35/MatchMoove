@@ -48,10 +48,8 @@
     </#list>
 	</section>
  
-	</#if>		
-<#if trajets??>
-<#list trajets as trajetId> <#include "popupmsg.ftl"> </#list>
+</#if>	
+<#if trajetId?? && userEmail??>
+ <#include "popupmsg.ftl">
 </#if>
-
-
 <#include "blocsCommuns/footer.ftl"/>

@@ -3,7 +3,9 @@
         
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/header.css'/>"/>
 
-<#include "../popupmsg.ftl"/>
+<#if trajetId?? && userEmail??>
+ <#include "popupmsg.ftl">
+</#if>
 
 
 <header id="headerAdmin">

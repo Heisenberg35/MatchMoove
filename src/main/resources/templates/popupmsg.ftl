@@ -42,7 +42,7 @@ if(m<10) {
 } 
 today = dd + '/' +mm  + '/' + yyyy + '    ' + hh + ':' + m ;
 
-
+ var notification = 0;
 var rootRef = firebase.database().ref('/conversations/${trajetId}')
 function sayClicked() {
 
@@ -60,6 +60,7 @@ alert(rootRef);
        
         document.getElementById(element).value += date + '\n';
         document.getElementById("t1").value = "";
+      
     };
 
 
@@ -71,13 +72,12 @@ alert(rootRef);
 	    updateMessage("t2", childDataContent,childDataDate);
 	});
 });
-    
+   
+
 rootRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
-  updateMessage("t2", snapshot.val().content,snapshot.val().date);
-   //document.getElementById('label').innerHTML  = notification +1;
- 
-  
-});
+    updateMessage("t2", snapshot.val().content,snapshot.val().date);
+    notification();
+   });
 
 
 
@@ -85,8 +85,9 @@ rootRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
 </script>
 
 
+
 	
-<button class="open-button" onclick="openForm()"><img src="/images/message.png" class="popup"> 0 a lire</button>
+<button id="alire"  class="open-button" onclick="openForm()"><img src="/images/message.png" class="popup"> 0 a lire</button>
 <div class="chat-popup" id="myForm">
   <form action="" class="form-container">
     <h2>Retrouvez vos messages</h2>
@@ -109,6 +110,9 @@ rootRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
 	setInterval(function(){
     	textarea.scrollTop = textarea.scrollHeight;
 		}, 1000);
+		
+		
+		  
 </script>
 <script>
 	textArea = document.getElementById("t1");
@@ -119,6 +123,9 @@ rootRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
                 	sayClicked();
                 }
             }
+            
+            
+ 
 </script>
         
       <input type="hidden"
@@ -129,7 +136,16 @@ rootRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
     	document.getElementById("myForm").style.display = "block";
 	}
 
-	function closeForm() {
+	function  closeForm() {
     	document.getElementById("myForm").style.display = "none";
+    	
+	}
+	
+	function notification(){
+	  
+		if (document.getElementById("myForm").style.display === "none")
+		{ alert(document.getElementById("alire").textContent);
+		  document.getElementById("alire").textContent = "1";
+		}
 	}
 </script>

@@ -135,7 +135,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.POST)
-	public String proposerTrajetSave(@ModelAttribute Compte compte, @ModelAttribute Trajet trajet, @ModelAttribute PT pt) throws IOException {
+	public String proposerTrajetSave(@ModelAttribute Compte compte, @ModelAttribute Trajet trajet, @ModelAttribute PT pt,Model model) throws IOException {
 		
 		profilService.save(compte.getProfil());
 		trajetService.save(trajet);
@@ -146,7 +146,10 @@ public class UserController {
 		
 		// ici  creer conversation pour ce trajet
 		firebaseService.createFirebaseTrajet(trajet.getId());  
-		
+		Integer userTragetId = firebaseService.getUserTrajet();
+		if(!userTragetId.equals(-1))
+		{model.addAttribute("trajetId",userTragetId);}
+	
 		return "redirect:/home";
 	}
 
