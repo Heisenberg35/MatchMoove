@@ -1,30 +1,28 @@
 package com.societe.project.controllers.application;
 
 import java.io.IOException;
-
 import java.util.List;
-
-import javax.servlet.ServletException;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 import com.google.firebase.database.DatabaseReference;
 import com.societe.project.firebase.FirebaseOpenHelper;
 import com.societe.project.firebase.FirebaseService;
+
 import com.societe.project.models.Adresse;
 import com.societe.project.models.Car;
 import com.societe.project.models.Compte;
 import com.societe.project.models.PT;
-
+import com.societe.project.models.Profil;
 import com.societe.project.models.Trajet;
 
 import com.societe.project.services.AdresseService;
@@ -35,6 +33,7 @@ import com.societe.project.services.ProfilService;
 import com.societe.project.services.RecuperationInfoLoginService;
 import com.societe.project.services.TrajetService;
 import com.societe.project.validators.CompteValidatorForGestionUser;
+import com.societe.project.validators.TrajetValidator;
 
 @Controller
 public class UserController {
@@ -69,16 +68,19 @@ public class UserController {
 	TrajetService  trajetService;
 	@Autowired
 	PTService      ptService;
-	
 	@Autowired
 	CompteValidatorForGestionUser compteValidatorForGestionUser;
 	@Autowired
+
 	RecuperationInfoLoginService recuperationInfoLogin;
+
+	TrajetValidator trajetValidator;
+
 	
 
 	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.GET)
 	public String gestionCompte(Model model) {
-		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogged();
+		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
 		model.addAttribute("compte", compte);
 //		model.addAttribute("errors", bindingResult);
 
@@ -125,19 +127,31 @@ public class UserController {
 	
 	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.GET)
 	public String proposerTrajet(Model model) {
-		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogged();
-		Trajet trajet = null;
-		PT pt = null;
+		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
+		Trajet trajet = new Trajet();
+		PT pt = new PT();
 		model.addAttribute("compte", compte);
 		model.addAttribute("trajet", trajet);
 		model.addAttribute("pt", pt);
+		
+		Trajet userTraget = firebaseService.getUserTrajet();
+		if(!userTraget.getId().equals(-1))
+		{model.addAttribute("trajetMessage",userTraget);}
+		
 		return VUE_PROPOSER_TRAJET;
 	}
 	
 	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.POST)
-	public String proposerTrajetSave(@ModelAttribute Compte compte, @ModelAttribute Trajet trajet, @ModelAttribute PT pt,Model model) throws IOException {
+	public String proposerTrajetSave(@ModelAttribute Compte compte, @ModelAttribute PT pt, @ModelAttribute Trajet trajet, Model model) {
 		
-		profilService.save(compte.getProfil());
+//		trajetValidator.validate(trajet, bindingResult);
+//		if (bindingResult.hasErrors()) {
+//			System.out.println(bindingResult.getErrorCount());
+//			System.out.println(bindingResult.getAllErrors().get(0).getCode());
+//			model.addAttribute("errors", bindingResult);
+//			return URL_PROPOSER_TRAJET;
+//        }
+		
 		trajetService.save(trajet);
 
 		pt.setProfil(compte.getProfil());
@@ -145,11 +159,18 @@ public class UserController {
 		ptService.save(pt);
 		
 		// ici  creer conversation pour ce trajet
-		firebaseService.createFirebaseTrajet(trajet.getId());  
-		Integer userTragetId = firebaseService.getUserTrajet();
-		if(!userTragetId.equals(-1))
-		{model.addAttribute("trajetId",userTragetId);}
+		try {
+			firebaseService.createFirebaseTrajet(trajet.getId());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+		Trajet userTraget = firebaseService.getUserTrajet();
+		if(!userTraget.getId().equals(-1))
+		{model.addAttribute("trajetMessage",userTraget);}
 	
+		
+
 		return "redirect:/home";
 	}
 
@@ -166,6 +187,11 @@ public class UserController {
 			pt.affPT();
 		}	
 		model.addAttribute("listPt", listPt);	
+		
+		Trajet userTraget = firebaseService.getUserTrajet();
+		if(!userTraget.getId().equals(-1))
+		{model.addAttribute("trajetMessage",userTraget);}
+		
 		return VUE_MATCH_TRAJET_COMPTE ;
 	}
 	
@@ -178,17 +204,25 @@ public class UserController {
 	
 	
 	@RequestMapping(value= {UserController.URL_TRAJET_VALIDATE+"/{id}"},method=RequestMethod.GET)
-	public String matchTrajetSave(@PathVariable int id) throws IOException {
-		System.out.println("Save trajet id "+id);
-		
-		//ici recupere le user qui accepte le trajet 
-		//user security context et save dans le trajet
-		//verified nombre de place d'abbord
-		//soustraire la nombre de place
-		 
-		
-		
-		return "redirect:"+URL_TRAJET_USER;
+
+	public String matchTrajetSave(@PathVariable int id, Model model) {
+
+		Boolean response = true;
+		int idUser = recuperationInfoLogin.recuperationCompteForUserLogge().getProfil().getId();
+		Profil profil = profilService.find(idUser).get();
+		PT pt = ptService.find(id).get();
+		int idTrajet = pt.getTrajet().getId();
+		Trajet trajet = trajetService.find(idTrajet).get();
+		if (pt.getNbrePlace() > 0) {
+			pt.setNbrePlace(pt.getNbrePlace()-1);
+			PT newPT = new PT(pt.getNbrePlace(), pt.getVolumeMax(), profil, trajet);
+			ptService.save(newPT);
+		}else {
+			model.addAttribute("error", "Le trajet est complet");
+			response = false;
+		}
+		return "redirect:"+ URL_TRAJET_USER;	
+
 	}
 	
 	/**

@@ -25,7 +25,7 @@ public class AdminController {
 	@RequestMapping(value = {"/admin"})
 	public String showPage(Model model) throws IOException {
 		//model.addAttribute("trajetId",firebaseService.getTrajetId());
-		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogged().getEmail());
+		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		return "/admin";
 	}
 }

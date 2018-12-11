@@ -2,11 +2,19 @@
 <#include "../blocsCommuns/head.ftl"/>	
 <#include "../blocsCommuns/headerUser.ftl"/>	
 
+<link rel="stylesheet" type="text/css" href="<@spring.url '../css/default.css'/>"/>
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/bootstrap.min.css'/>"/>			
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/formCreateUser.css'/>"/>	
 <title>Proposer un trajet</title>
 <h2>Bonjour ${compte.getProfil().getFirstname()} ${compte.getProfil().getLastname()}</h2>
-
+<#if errors ?has_content>
+	<div class="error">
+		<#list errors.getAllErrors()as error>
+		<p>Afin de valider votre formulaire, veuillez corriger le ou les erreurs suivantes :</p>
+		<p>${error.getCode()}</p>
+		</#list>
+	</div>
+</#if>
 
 <#if compte.getProfil().getCars()?has_content >
 	<div class="l-container l-client">
@@ -40,15 +48,15 @@
 								</select>
                         </div>
 						<div class="form-group">
-							<label class="label label-nom" for="perimetre">Périmètre (en kms) :</label>
+							<label class="label label-nom" for="perimetre">Pï¿½rimï¿½tre (en kms) :</label>
 							<div class="input-group">
 								<input class="form-control" type="number" min=0 name="perimetre" required>
 							</div>
                         </div>
 						<div class="form-group">
-							<label class="label label-nom" for="dateDepart">Date de départ :</label>
+							<label class="label label-nom" for="dateDepart">Date de dï¿½part :</label>
 							<div class="input-group">
-								<input class="form-control" type="date" placeholder="date départ trajet" name="dateDepart" required>
+								<input class="form-control" type="date" placeholder="date dï¿½part trajet" name="dateDepart" required>
 							</div>
                         </div>
 						<div class="form-group">
@@ -68,6 +76,7 @@
 							</select>
                         </div>
 						<div class="form-group form-btn">
+							<input type="hidden" name="archive" value="false"/>
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <button id="valider" class="btn btn-success" name="valider" value="Save" type="submit">Valider 
                                 <span class="glyphicon glyphicon-send"></span>
@@ -82,8 +91,10 @@
 		</div>
 	</div>
 <#else>
-<h2>Afin de pouvoir proposer un trajet, il faut d'abord dans la gestion du compte avoir ajouter un véhicule <a href="/user/gestioncompte">cliquez ici</a></h2>
+<p>Afin de pouvoir proposer un trajet, il faut d'abord dans la gestion du compte avoir ajoutÃ© un vÃ©hicule <a href="/user/gestioncompte">cliquez ici</a></p>
 </#if>
 	
-	
+<#if trajetMessage?? && userEmail??>
+ <#include "popupmsg.ftl">
+</#if>	
 <#include "../blocsCommuns/footer.ftl"/>

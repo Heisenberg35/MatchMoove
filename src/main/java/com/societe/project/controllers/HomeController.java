@@ -21,6 +21,7 @@ import com.societe.project.firebase.FirebaseNotificationObserver;
 import com.societe.project.firebase.FirebaseOpenHelper;
 import com.societe.project.firebase.FirebaseService;
 import com.societe.project.models.PT;
+import com.societe.project.models.Trajet;
 import com.societe.project.services.ArticleService;
 import com.societe.project.services.ProfilService;
 import com.societe.project.services.RecuperationInfoLoginService;
@@ -55,10 +56,10 @@ public class HomeController {
 		/// 
 		///firebase messagerie
 		///
-		Integer userTragetId = firebaseService.getUserTrajet();
-		if(!userTragetId.equals(-1))
-		{model.addAttribute("trajetId",userTragetId);}
-		 model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogged().getEmail());
+		Trajet userTraget = firebaseService.getUserTrajet();
+		if(!userTraget.getId().equals(-1))
+		{model.addAttribute("trajetMessage",userTraget);}
+		 model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		
 		 
 		 

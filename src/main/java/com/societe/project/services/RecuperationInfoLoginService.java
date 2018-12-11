@@ -30,7 +30,7 @@ public class RecuperationInfoLoginService {
 		return roles;
 	}
 	
-	public Compte recuperationCompteForUserLogged() {
+	public Compte recuperationCompteForUserLogge() {
 		
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		String email = securityContext.getAuthentication().getName();

@@ -42,25 +42,30 @@ if(m<10) {
 } 
 today = dd + '/' +mm  + '/' + yyyy + '    ' + hh + ':' + m ;
 
- var notification = 0;
-var rootRef = firebase.database().ref('/conversations/${trajetId}')
+
+var rootRef = firebase.database().ref('/conversations/${trajetMessage.getId()}')
+
 function sayClicked() {
 
+  var con = document.getElementById("t1").value;
+  var trimmed = con.trim();
 
-alert(rootRef);
   var newMessageRef = rootRef.push();
+  if (typeof trimmed !== "undefined" && trimmed != '') 
+      
+    {
       newMessageRef.set({
-      content:  '${userEmail}'+":\n" + document.getElementById("t1").value.trim(),
-      date: today
-});
-
+                      content:  '${userEmail}'+":\n" + trimmed,
+                      date: today
+   
+    });
+  }
 }
  var updateMessage = function(element, content,date) {
-        document.getElementById(element).value += content + '     ';
-       
-        document.getElementById(element).value += date + '\n';
+        document.getElementById(element).value += content + '\n';
+        document.getElementById(element).value += date + "\n\n";
         document.getElementById("t1").value = "";
-      
+     
     };
 
 
@@ -70,33 +75,32 @@ alert(rootRef);
 	    var childDataContent = childSnapshot.val().content;
 	     var childDataDate = childSnapshot.val().date;
 	    updateMessage("t2", childDataContent,childDataDate);
+	    
 	});
-});
-   
-
-rootRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
+	rootRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
     updateMessage("t2", snapshot.val().content,snapshot.val().date);
+    
     notification();
    });
+});
 
-
-
+ //rootRef.orderByKey().limitToLast(1).off('child_added', listener);
 
 </script>
 
 
 
 	
-<button id="alire"  class="open-button" onclick="openForm()"><img src="/images/message.png" class="popup"> 0 a lire</button>
-<div class="chat-popup" id="myForm">
+<button id="alire"  class="open-button" onclick="openForm()"><img src="/images/message.png" class="popup"> <div id="nbNotification">-1</div> a lire</button>
+<div class="chat-popup" id="myForm"  style="display: none;">
   <form action="" class="form-container">
     <h2>Retrouvez vos messages</h2>
-
-    <label for="msg"><b>Messages</b></label>
+    <br>
+    <label for="msg"><b> trajet : ${trajetMessage.getNom()} </b></label>
     
     <textarea id="t2" readonly rows = "5" cols = "60"  name="content" value=""> </textarea>
     
-     <textarea id="t1" rows = "5" cols = "60"  name="content" placeholder="Taper votre message.." name="msg"> </textarea>
+     <textarea id="t1" rows = "5" cols = "60"  name="content" placeholder="Tapez votre message.." name="msg"> </textarea>
 
     <img onclick="sayClicked()" src="/images/send.png" class="popup">
     
@@ -134,6 +138,7 @@ rootRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
 <script>
 	function openForm() {
     	document.getElementById("myForm").style.display = "block";
+    	document.getElementById("nbNotification").textContent = "0"
 	}
 
 	function  closeForm() {
@@ -142,10 +147,13 @@ rootRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
 	}
 	
 	function notification(){
-	  
-		if (document.getElementById("myForm").style.display === "none")
-		{ alert(document.getElementById("alire").textContent);
-		  document.getElementById("alire").textContent = "1";
+	  var el = document.getElementById("myForm");
+	  var isHidden = el.style.display === "none"; 
+	  //alert(isHidden);
+		if (isHidden)
+		{
+		  var currentNb = Number(document.getElementById("nbNotification").textContent);
+		  document.getElementById("nbNotification").textContent = currentNb + 1;
 		}
 	}
 </script>

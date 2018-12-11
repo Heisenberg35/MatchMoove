@@ -39,7 +39,7 @@ public abstract class BaseController<T extends DBItem> {
 		model.addAttribute("pageName",this.getBasePageName()+" index");
 		model.addAttribute("detailPath",this.getBaseURL());
 		//model.addAttribute("trajetId",firebaseService.getTrajetId());
-		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogged().getEmail());
+		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		return this.getBaseURL()+"/index";
 		
 	}

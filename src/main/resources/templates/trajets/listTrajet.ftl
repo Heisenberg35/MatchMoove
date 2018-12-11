@@ -1,5 +1,8 @@
 <#import "/spring.ftl" as spring/>
    
+   <#if error?has_content>
+   		<div>${error}</div>
+   </#if>
    
    <div class="container-map">
 
@@ -43,7 +46,7 @@
                                 </div>
                                <div id="phoneNumber" class="user user-nom">           
                                     <p>telephone</p>
-                                    <div>${pt.getProfil().getPhoneNumber()}</div>
+                                    <div><#if pt.getProfil().getPhoneNumber()?has_content>${pt.getProfil().getPhoneNumber()}</#if></div>
                                </div>
 
                      <#assign id= 0>    

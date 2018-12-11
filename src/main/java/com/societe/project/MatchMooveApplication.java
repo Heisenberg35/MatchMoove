@@ -31,7 +31,6 @@ public class MatchMooveApplication {
 			public void run(String... args) throws Exception {
 				service.createFirstAdminAndFirstUser("ROLE_ADMIN");
 				service.createFirstAdminAndFirstUser("ROLE_USER");
-				service.createFirstAdminAndFirstUser("ROLE_USER");
 			}
 		};
 	}

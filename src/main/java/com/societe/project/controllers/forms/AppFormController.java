@@ -79,7 +79,7 @@ public class AppFormController {
 		model.addAttribute("detailPath",URL_CREATE_COMPTE);
 		model.addAttribute("roles", roleService.findAll());
 		//model.addAttribute("trajetId",firebaseService.getTrajetId());
-		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogged().getEmail());
+		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		System.out.println("get de create user");
 		
 		return VUE_CREATE_COMPTE;

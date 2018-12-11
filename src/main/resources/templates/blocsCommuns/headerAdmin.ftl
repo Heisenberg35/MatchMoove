@@ -3,9 +3,11 @@
         
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/header.css'/>"/>
 
-<#if trajetId?? && userEmail??>
+
+<#if trajetMessage?? && userEmail??>
  <#include "popupmsg.ftl">
 </#if>
+
 
 
 <header id="headerAdmin">
@@ -33,8 +35,8 @@
             					</#if>	
             			</#if>
 
-                        <li><a href="/admin/createcompte">Create compte</a></li>
-                     	<li><a href="/admin/listuser">Gestion Compte</a></li>
+                        <li><a href="/admin/createcompte">Créer un compte</a></li>
+                     	<li><a href="/admin/listuser">Gestion des comptes</a></li>
 						<li><a href="/articles">BLOG</a></li>
 						<li><a href="/messages">Messages</a></li>						
 						<a href="/logout"><img src="/images/logout.png"></a>
