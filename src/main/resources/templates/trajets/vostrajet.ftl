@@ -35,6 +35,7 @@
                             <li><a href="/user/proposertrajet">Proposer un trajet</a></li>
 			              	<li><a href="/user/researchtrajet">Rechercher un trajet</a></li>
 			              	<li><a href="/user/vostrajet">vos trajet</a></li>
+			              	
 			                
 			                <li><a href="/articles">BLOG</a></li>
 			                <li><a href="/messagerie">Messagerie</a></li>
@@ -49,6 +50,11 @@
 </header>
 	
 <div class="br">
-<#include "/trajets/editMatchTrajet.ftl"/> 
-<#include "../blocsCommuns/footer.ftl"/>	
-	
+
+
+    <!--////////////////////////////////////////////////////-->
+    <!--             liste des trajet user                  -->
+    <!--////////////////////////////////////////////////////-->
+
+
+<#include "../blocsCommuns/footer.ftl"/>	>
