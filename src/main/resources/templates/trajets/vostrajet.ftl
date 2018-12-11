@@ -2,6 +2,8 @@
 
 <#include "../blocsCommuns/head.ftl"/>	
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/header.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '../css/listeMessTrajectUser.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '../css/mapVosTrajet.css'/>"/>
 <header>
 	<a href="/home"><div id="logo"><img src="../images/matchmooveBLANCS.png"></div></a>
 		 <!--////////////////////////////////////////////////////-->
@@ -53,8 +55,17 @@
 
 
     <!--////////////////////////////////////////////////////-->
-    <!--             liste des trajet user                  -->
+    <!--             liste de vos trajets                -->
     <!--////////////////////////////////////////////////////-->
+    
+    
+    <#include "/trajets/vosListTrajet.ftl"/>
+    
+    <!--////////////////////////////////////////////////////-->
+    <!--             footer  				                -->
+    <!--////////////////////////////////////////////////////-->
+    
+    
 
 
-<#include "../blocsCommuns/footer.ftl"/>	>
+<#include "../blocsCommuns/footer.ftl"/>	

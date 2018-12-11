@@ -205,6 +205,16 @@ public class UserController {
 	@RequestMapping(value= {UserController.URL_VOS_TRAJET },method=RequestMethod.GET)
 	public String vosTrajet() {
 		System.out.println("vos trajets ");
+		
+		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
+		
+		compte.afficheCompte();  //ok
+		compte.getProfil().afficheProfil(); //ok
+		
+		//recupere le profil 
+		//recuperation des trajet fonction du profil
+		//recupere les messages fonction des trajet
+		
 		return VUE_VOS_TRAJET ;
 	}
 	
