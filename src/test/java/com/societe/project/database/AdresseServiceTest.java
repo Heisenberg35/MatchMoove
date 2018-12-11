@@ -30,12 +30,19 @@ public class AdresseServiceTest {
 	private ProfilRepository profilRepository;
 	@Autowired
 	private AdresseRepository adresseRepository;
-	
-	private Profil profil = new Profil("toto", "TOTO", "0102030405");
-	private Adresse adresse = new Adresse(1, "rue de rennes", 35000, "Rennes", true, profil);
-	
+
 	@Test
     public void createAndFind() {
+		
+		Profil profil = new Profil("toto", "TOTO", "0102030405");
+		Adresse adresse = new Adresse(1, "rue de rennes", 35000, "Rennes", true, profil);
+		adresse.setNumero(1);
+		adresse.setRue("rue de rennes");
+		adresse.setCp(35000);
+		adresse.setVille("Rennes");
+		adresse.setDomicile(true);
+		adresse.setProfil(profil);
+		
 		profilRepository.save(profil);
 		adresseRepository.save(adresse);
 		
@@ -72,6 +79,5 @@ public class AdresseServiceTest {
 			profilRepository.delete(profil);
 		}
 		assertThat(profils.isEmpty());
-		
 	}
 }
