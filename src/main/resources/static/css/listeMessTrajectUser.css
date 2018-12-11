@@ -55,6 +55,7 @@
 }
 .contents{
   margin-left: 20px;
+  border-bottom: 4px solid white;
 }
 .contents .ct{
   padding: 5px;

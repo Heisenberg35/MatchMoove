@@ -161,6 +161,54 @@ $('.deleteTrajet').click(function(e){
 			}
 		}
 	});	
+	
+	var reader = new FileReader();
+
+  /**************************************\
+		event Listener reader : load
+	/*************************************/
+
+ 		reader.addEventListener('load',function(e){
+ 			console.log('fileReader');
+ 			//alert('Contenu du fichier "' + this_f.name + '" :\n\n' + reader.result);
+ 			
+ 			 if(reader.readyState === reader.DONE){
+ 				console.log(reader.readyState);
+
+ 				//variables
+ 				//var loader = document.querySelector('.preview .loader');
+ 				//loader.style.display = 'none';
+
+ 				//console.log('fin chargement..');
+ 			}
+
+ 			//insertDom(reader.result);
+ 		});
+
+
+
+	/**************************************\
+		declaration insertDom
+	/**************************************/
+		var insertImagDom = function(result){
+
+			
+
+	            //xx.src = result;
+	           
+		}
+
+		/**************************************\
+			declaration readAsText
+		/**************************************/
+			var readAsText = function(){
+			}
+		/**************************************\
+			declaration readAsDataURL
+		/**************************************/
+			var readAsDataURL = function(){
+			}
+
 
 
 
