@@ -1,6 +1,8 @@
 package com.societe.project.controllers.application;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +15,7 @@ import com.societe.project.models.Adresse;
 import com.societe.project.models.Car;
 import com.societe.project.models.Compte;
 import com.societe.project.models.PT;
-
+import com.societe.project.models.Profil;
 import com.societe.project.models.Trajet;
 
 import com.societe.project.services.AdresseService;
@@ -168,18 +170,23 @@ public class UserController {
 	
 	
 	@RequestMapping(value= {UserController.URL_TRAJET_VALIDATE+"/{id}"},method=RequestMethod.GET)
-	public String matchTrajetSave(@PathVariable int id) {
-		System.out.println("Save trajet id "+id);
-		
-		//ici recupere le user qui accepte le trajet 
-		//user secrity context et save dans le trajet
-		//verified nombre de place d'abbord
-		//soustraire la nombre de place
-		
-		
-		
-		
-		return "redirect:"+URL_TRAJET_USER;
+	public String matchTrajetSave(@PathVariable int id, Model model) {
+
+		Boolean response = true;
+		int idUser = recuperationInfoLogin.recuperationCompteForUserLogge().getProfil().getId();
+		Profil profil = profilService.find(idUser).get();
+		PT pt = ptService.find(id).get();
+		int idTrajet = pt.getTrajet().getId();
+		Trajet trajet = trajetService.find(idTrajet).get();
+		if (pt.getNbrePlace() > 0) {
+			pt.setNbrePlace(pt.getNbrePlace()-1);
+			PT newPT = new PT(pt.getNbrePlace(), pt.getVolumeMax(), profil, trajet);
+			ptService.save(newPT);
+		}else {
+			model.addAttribute("error", "Le trajet est complet");
+			response = false;
+		}
+		return "redirect:"+ URL_TRAJET_USER;	
 	}
 	
 	/**
