@@ -18,6 +18,9 @@
 	var btn_detail = document.querySelectorAll('.file-detail');
 	
 	var mtrajet = document.querySelector('#formmess');
+	var place = document.querySelector('#place');
+	
+	
 	
 	
 	

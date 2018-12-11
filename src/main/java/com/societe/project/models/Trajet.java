@@ -42,6 +42,9 @@ public class Trajet extends DBItem {
 	
 	@Column(name="direction")
 	private Boolean isDirection;
+	
+	@Column(name="archive")
+	private Boolean archive;
 
 	@OneToMany(targetEntity=Point.class,mappedBy="trajet")
 	private List<Point> points;
@@ -96,6 +99,14 @@ public class Trajet extends DBItem {
 
 	public void setIsDirection(Boolean isDirection) {
 		this.isDirection = isDirection;
+	}
+
+	public Boolean getArchive() {
+		return archive;
+	}
+
+	public void setArchive(Boolean archive) {
+		this.archive = archive;
 	}
 
 	public Date getDateDepart() {
@@ -159,20 +170,22 @@ public class Trajet extends DBItem {
 	 * CONSTRUCTEURS
 	 ***********************************************/
 	
-
-	public Trajet(Integer id, String nom) {
+    public Trajet(Integer id, String nom) {
+    	super();
+    	this.id = id;
+    	this.nom = nom;
+    }
+ 
+	public Trajet() {
 	super();
-	this.id = id;
-	this.nom = nom;
+	
 	this.bagages = new ArrayList<Bagage>();
 	this.pts = new ArrayList<PT>();
 	this.messages = new ArrayList<Message>();
 	
 	}
 	
-	public Trajet() {
-		
-	}
+	
 	/***********************************************
 	 * method
 	 ***********************************************/

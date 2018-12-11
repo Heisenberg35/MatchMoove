@@ -26,6 +26,10 @@ public class TrajetValidator implements Validator {
 		
 		Trajet trajet = (Trajet) o;
 		
+		if (trajet.getNom() == null || trajet.getNom().length() < 4 ||trajet.getNom().length() > 38) {
+			errors.rejectValue("nom", "Le nom du trajet est obligatoire et/ou doit être supérieur à 4 caractères et/ou ne doit pas dépasser 38 caractères");
+		}
+		
 		
 	}
 

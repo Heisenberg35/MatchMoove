@@ -119,7 +119,16 @@ public class PTService extends BaseService<PT> {
 		ptService.save(pt);
 	}
 	
-	public void insertPt(Integer nbre_place, Double volume_max, Integer profil_id, Integer trajet_id) {
-		ptRepository.insertPt(nbre_place, volume_max, profil_id, trajet_id);
+//	public void insertPt(Integer nbre_place, Double volume_max, Integer profil_id, Integer trajet_id) {
+//		ptRepository.insertPt(nbre_place, volume_max, profil_id, trajet_id);
+//	}
+	
+	public PT findByTrajet(Integer id) {
+		return ptRepository.findByTrajet(id);
+	}
+	
+	public List<PT> findAllPts() {
+		return ptRepository.findAllPts();
+		
 	}
 }

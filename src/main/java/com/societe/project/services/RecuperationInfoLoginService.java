@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.societe.project.models.Compte;
 
 @Service
-public class RecuperationInfoLogin {
+public class RecuperationInfoLoginService {
 	
 	@Autowired
 	CompteService compteService;

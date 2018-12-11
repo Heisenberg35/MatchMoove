@@ -1,5 +1,7 @@
 package com.societe.project.controllers.forms;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.societe.project.controllers.application.AdminController;
+import com.societe.project.firebase.FirebaseService;
 import com.societe.project.models.Adresse;
 import com.societe.project.models.Compte;
 import com.societe.project.models.Profil;
 import com.societe.project.services.CompteService;
 import com.societe.project.services.ProfilService;
-import com.societe.project.services.RecuperationInfoLogin;
+import com.societe.project.services.RecuperationInfoLoginService;
 import com.societe.project.services.RoleService;
 import com.societe.project.validators.CompteValidator;
 import com.societe.project.validators.Profvalidator;
@@ -48,7 +51,9 @@ public class AppFormController {
 	*************************************************
 	*/
 	@Autowired
-	RecuperationInfoLogin recuperationInfoLogin;
+	RecuperationInfoLoginService recuperationInfoLogin;
+	@Autowired
+	FirebaseService firebaseService;
 	@Autowired
 	private RoleService roleService;
 	@Autowired
@@ -69,11 +74,11 @@ public class AppFormController {
 	*/	
 	
 	@RequestMapping(value= {AppFormController.URL_CREATE_COMPTE}, method=RequestMethod.GET)
-	public String createCompteM(Model model) {
+	public String createCompteM(Model model) throws IOException {
 		
 		model.addAttribute("detailPath",URL_CREATE_COMPTE);
 		model.addAttribute("roles", roleService.findAll());
-		
+		//model.addAttribute("trajetId",firebaseService.getTrajetId());
 		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		System.out.println("get de create user");
 		

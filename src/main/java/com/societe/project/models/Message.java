@@ -33,6 +33,9 @@ public class Message extends DBItem {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
 	
+	@Column(name="archive")
+	private Boolean archive;
+	
 	@OneToMany(targetEntity=Message.class)
 	private List<Message> messages;
 	
@@ -57,7 +60,17 @@ public class Message extends DBItem {
 		this.trajet = trajet;
 		this.profil = profil;
 		this.messages = messages;
-				}
+	}
+	
+	public Message(String content, Date date, Trajet trajet, Profil profil) {
+		super();
+		this.content = content;
+		this.date = date;
+		this.trajet = trajet;
+		this.profil = profil;
+	}
+
+
 	public Message(String content,Date date,Profil profil)
 	{
 		
@@ -119,5 +132,12 @@ public class Message extends DBItem {
 	public void setProfil(Profil profil) {
 		this.profil = profil;
 	}
+	public Boolean getArchive() {
+		return archive;
+	}
+	public void setArchive(Boolean archive) {
+		this.archive = archive;
+	}
+	
 	
 }

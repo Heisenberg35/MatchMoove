@@ -13,7 +13,6 @@ import com.societe.project.services.ProfilService;
 import com.societe.project.services.TrajetService;
 import com.societe.project.services.base.BaseService;
 
-
 @Controller
 @RequestMapping(PTController.BASE_URL)
 public class PTController extends BaseController<PT> {

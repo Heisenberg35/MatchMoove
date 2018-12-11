@@ -48,6 +48,11 @@
 </header>
 	
 <div class="br">
+
 <#include "/trajets/editMatchTrajet.ftl"/> 
+	
+<#if trajetMessage?? && userEmail??>
+ <#include "popupmsg.ftl">
+</#if>
 <#include "../blocsCommuns/footer.ftl"/>	
 	

@@ -34,17 +34,29 @@ public class CarServiceTest {
 	@Autowired
 	private CarRepository carRepository;
 	
-	private Profil profil = new Profil("toto", "TOTO", "0102030405");
-	private Car car = new Car("Citroen", "C3", 5, "AA-000-AA", profil);
+
 	
 	@Test
 	public void createAndFind() {
+		Profil profil = new Profil("titi", "TITI", "0102030405");
+		Car car = new Car("Citroen", "C3", 5, "AA-000-AA", profil);
+		
 		profilRepository.save(profil);
 		carRepository.save(car);
 		
-		List<Car> cars = carRepository.findByMarque("Citroen");
+		List<Car> cars = carRepository.findByMarque(car.getMarque());
 		for (Car elt : cars) {
 			assertThat(elt.getMarque()).isEqualTo(car.getMarque());
+		}
+		
+		cars = carRepository.findByModele(car.getModele());
+		for (Car elt : cars) {
+			assertThat(elt.getModele()).isEqualTo(car.getModele());
+		}
+		
+		cars = carRepository.findByImmatriculation(car.getImmatriculation());
+		for (Car elt : cars) {
+			assertThat(elt.getImmatriculation()).isEqualTo(car.getImmatriculation());
 		}
 	}
 	
@@ -55,6 +67,13 @@ public class CarServiceTest {
 			assertThat(car.getMarque().equals("Citroen"));
 		}
 		cars = carRepository.findByModele("C3");
+		for (Car car : cars) {
+			assertThat(car.getModele().equals("C3"));
+		}
+		cars = carRepository.findByImmatriculation("AA-000-AA");
+		for (Car car : cars) {
+			assertThat(car.getModele().equals("AA-000-AA"));
+		}
 		
 	}
 }
