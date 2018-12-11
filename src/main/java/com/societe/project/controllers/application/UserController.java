@@ -1,5 +1,6 @@
 package com.societe.project.controllers.application;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.societe.project.models.Adresse;
 import com.societe.project.models.Car;
 import com.societe.project.models.Compte;
+import com.societe.project.models.Message;
 import com.societe.project.models.PT;
 import com.societe.project.models.Profil;
 import com.societe.project.models.Trajet;
@@ -21,6 +23,7 @@ import com.societe.project.models.Trajet;
 import com.societe.project.services.AdresseService;
 import com.societe.project.services.CarService;
 import com.societe.project.services.CompteService;
+import com.societe.project.services.MessageService;
 import com.societe.project.services.PTService;
 import com.societe.project.services.ProfilService;
 import com.societe.project.services.RecuperationInfoLogin;
@@ -59,6 +62,8 @@ public class UserController {
 	TrajetService  trajetService;
 	@Autowired
 	PTService      ptService;
+	@Autowired
+	MessageService messageService;
 	@Autowired
 	CompteValidatorForGestionUser compteValidatorForGestionUser;
 	@Autowired
@@ -204,6 +209,14 @@ public class UserController {
 		System.out.println(messages);
 		//recupe le propfil associe au compte 
 		//save messagee fonction id trajet
+		//l'id recu c'est l'id du pt 
+		
+		PT pt = ptService.find(id).get();
+		Profil profil = pt.getProfil();
+		Trajet trajet = pt.getTrajet();
+		Date date = new Date();
+		Message message = new Message(messages, date, trajet, profil);
+		messageService.save(message);
 		
 		return "/trajets/ok" ;
 	}

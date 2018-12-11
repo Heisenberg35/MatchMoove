@@ -22,6 +22,7 @@ public interface PTRepository extends BaseCRUDRepository<PT>{
 //	@Query(value = "insert into pt (nbre_place, volume_max, profil_id, trajet_id) VALUES (?1, ?2, ?3, ?4)", nativeQuery = true)
 //	void insertPt(Integer nbre_place, Double volume_max, Integer profil_id, Integer trajet_id);
 	
+	//Normalement il faudrait faire une requete HQL
 	@Query (value = "SELECT DISTINCT trajet_id, id, nbre_place,volume_max,profil_id FROM pt GROUP BY trajet_id", nativeQuery = true)
 	List<PT> findAllPts();
 	
