@@ -83,7 +83,7 @@
                                 </div>
                                <div class="user user-adress"> 
                                     <p>nombre de places : </p>
-                                    <div>${pt.getNbrePlace()}</div>
+                                    <div id="place">${pt.getNbrePlace()}</div>
                                 </div>
                                <div class="user user-adress "> 
                                     <p>perimetre  :</p> 

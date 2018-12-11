@@ -60,7 +60,17 @@ public class Message extends DBItem {
 		this.trajet = trajet;
 		this.profil = profil;
 		this.messages = messages;
-				}
+	}
+	
+	public Message(String content, Date date, Trajet trajet, Profil profil) {
+		super();
+		this.content = content;
+		this.date = date;
+		this.trajet = trajet;
+		this.profil = profil;
+	}
+
+
 	public Message(String content,Date date,Profil profil)
 	{
 		
