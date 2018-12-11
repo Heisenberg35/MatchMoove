@@ -2,6 +2,8 @@
 
 <#include "../blocsCommuns/head.ftl"/>	
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/header.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '../css/listeMessTrajectUser.css'/>"/>
+<link rel="stylesheet" type="text/css" href="<@spring.url '../css/mapVosTrajet.css'/>"/>
 <header>
 	<a href="/home"><div id="logo"><img src="../images/matchmooveBLANCS.png"></div></a>
 		 <!--////////////////////////////////////////////////////-->
@@ -35,6 +37,7 @@
                             <li><a href="/user/proposertrajet">Proposer un trajet</a></li>
 			              	<li><a href="/user/researchtrajet">Rechercher un trajet</a></li>
 			              	<li><a href="/user/vostrajet">vos trajet</a></li>
+			              	
 			                
 			                <li><a href="/articles">BLOG</a></li>
 			                <li><a href="/messagerie">Messagerie</a></li>
@@ -50,10 +53,19 @@
 	
 <div class="br">
 
-<#include "/trajets/editMatchTrajet.ftl"/> 
-	
-<#if trajetMessage?? && userEmail??>
- <#include "popupmsg.ftl">
-</#if>
+
+    <!--////////////////////////////////////////////////////-->
+    <!--             liste de vos trajets                -->
+    <!--////////////////////////////////////////////////////-->
+    
+    
+    <#include "/trajets/vosListTrajet.ftl"/>
+    
+    <!--////////////////////////////////////////////////////-->
+    <!--             footer  				                -->
+    <!--////////////////////////////////////////////////////-->
+    
+    
+
+
 <#include "../blocsCommuns/footer.ftl"/>	
-	

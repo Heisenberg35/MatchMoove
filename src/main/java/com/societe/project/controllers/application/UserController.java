@@ -53,12 +53,18 @@ public class UserController {
 	private static final String URL_TRAJET_USER           = "/user/researchtrajet";
 	private static final String URL_TRAJET_VALIDATE       = "/user/validTrajet";
 	private static final String URL_TRAJET_MESS           = "/user/sendMessTrajet";
-	private static final String URL_DELETE_MESS_TRAJET    = "/user/sendMessTrajet";
+	private static final String URL_VOS_TRAJET            = "/user/vostrajet";
+	
+	private static final String URL_DELETE_MESS_TRAJET    = "/user/delmessage";
+	
+	
 	
 	private static final String VUE_MATCH_TRAJET_COMPTE   = "/trajets/matchTrajet";
-	
 	private static final String URL_PROPOSER_TRAJET  = "/user/proposertrajet";
 	private static final String VUE_PROPOSER_TRAJET  = "/trajets/proposertrajet";
+	
+	private static final String VUE_VOS_TRAJET    = "/trajets/vostrajet";
+	private static final String URL_VOS_MESSAGE   = "/trajets/vosmessage";
 	
 	@Autowired
 	FirebaseService firebaseService;
@@ -90,7 +96,7 @@ public class UserController {
 	public String gestionCompte(Model model) {
 		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
 		model.addAttribute("compte", compte);
-//		model.addAttribute("errors", bindingResult);
+		//model.addAttribute("errors", bindingResult);
 
 		return VUE_GESTION_COMPTE;
 	}
@@ -207,8 +213,8 @@ public class UserController {
 	/**
 	 * *********************************************************
 	 * 		save trajet Id
-	 * *
-	 * @throws IOException **********************************************************
+	 * 
+	 * *********************************************************
 	 */
 	
 	
@@ -263,11 +269,61 @@ public class UserController {
 	
 	/**
 	 * *********************************************************
-	 * 		DELETE MESS 
+	 * 		URL_VOS_TRAJET 
 	 *  **********************************************************
 	 */
 	
+	@RequestMapping(value= {UserController.URL_VOS_TRAJET },method=RequestMethod.GET)
+	public String vosTrajet() {
+		System.out.println("vos trajets ");
+		
+		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
+		
+		compte.afficheCompte();  //ok
+		compte.getProfil().afficheProfil(); //ok
+		
+		//recupere le profil 
+		//recuperation des trajet fonction du profil
+		//recupere les messages fonction des trajet
+		
+		return VUE_VOS_TRAJET ;
+	}
 	
+	
+	/**
+	 * *********************************************************
+	 * 		Vos message des trajet creer
+	 *  **********************************************************
+	 */
+	
+	@RequestMapping(value= {UserController.URL_VOS_MESSAGE },method=RequestMethod.GET)
+	public String vosMessagreTrajet() {
+		System.out.println("vos trajets ");
+		
+		//requete de recuperation des message  function id trajet
+		//insert dans model 
+		
+		return VUE_VOS_TRAJET;
+	}
+	
+	/**
+	 * *********************************************************
+	 * 		DELETE MESS  URL_DELETE_MESS_TRAJET 
+	 *  **********************************************************
+	 */
+	@RequestMapping(value= {UserController.URL_DELETE_MESS_TRAJET },method=RequestMethod.GET)
+	public String deleteMessTrajet() {
+		System.out.println("delete Message trajet ");
+		
+		//recuperation id message a delete
+		//return sur la vue 
+		
+		//model avc new vue de message de list 
+		//xhr
+		
+		
+		return VUE_VOS_TRAJET ;
+	}
 	
 	
 }
