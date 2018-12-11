@@ -39,7 +39,7 @@ public class UserController {
 	private static final String URL_TRAJET_MESS           = "/user/sendMessTrajet";
 	private static final String URL_VOS_TRAJET            = "/user/vostrajet";
 	
-	private static final String URL_DELETE_MESS_TRAJET    = "/user/sendMessTrajet";
+	private static final String URL_DELETE_MESS_TRAJET    = "/user/delmessage";
 	
 	
 	
@@ -221,7 +221,6 @@ public class UserController {
 		
 		//requete de recuperation des message  function id trajet
 		//insert dans model 
-		
 		
 		return VUE_VOS_TRAJET;
 	}
