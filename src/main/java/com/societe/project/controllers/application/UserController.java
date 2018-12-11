@@ -24,6 +24,7 @@ import com.societe.project.services.ProfilService;
 import com.societe.project.services.RecuperationInfoLogin;
 import com.societe.project.services.TrajetService;
 import com.societe.project.validators.CompteValidatorForGestionUser;
+import com.societe.project.validators.TrajetValidator;
 
 @Controller
 public class UserController {
@@ -56,9 +57,10 @@ public class UserController {
 	TrajetService  trajetService;
 	@Autowired
 	PTService      ptService;
-	
 	@Autowired
 	CompteValidatorForGestionUser compteValidatorForGestionUser;
+	@Autowired
+	TrajetValidator trajetValidator;
 	@Autowired
 	RecuperationInfoLogin recuperationInfoLogin;
 	
@@ -122,14 +124,21 @@ public class UserController {
 	}
 	
 	@RequestMapping(value={UserController.URL_PROPOSER_TRAJET}, method=RequestMethod.POST)
-	public String proposerTrajetSave(@ModelAttribute Compte compte, @ModelAttribute Trajet trajet, @ModelAttribute PT pt) {
+	public String proposerTrajetSave(@ModelAttribute Compte compte, @ModelAttribute PT pt, @ModelAttribute Trajet trajet, Model model) {
+		
+//		trajetValidator.validate(trajet, bindingResult);
+//		if (bindingResult.hasErrors()) {
+//			System.out.println(bindingResult.getErrorCount());
+//			System.out.println(bindingResult.getAllErrors().get(0).getCode());
+//			model.addAttribute("errors", bindingResult);
+//			return URL_PROPOSER_TRAJET;
+//        }
 		
 		trajetService.save(trajet);
 
 		pt.setProfil(compte.getProfil());
 		pt.setTrajet(trajet);
 		
-//		ptService.insertPt(pt1.getNbrePlace(), pt1.getVolumeMax(), pt1.getProfil().getId(), pt1.getTrajet().getId());
 		ptService.save(pt);
 
 		return "redirect:/home";
@@ -166,6 +175,8 @@ public class UserController {
 		//user secrity context et save dans le trajet
 		//verified nombre de place d'abbord
 		//soustraire la nombre de place
+		
+		
 		
 		
 		return "redirect:"+URL_TRAJET_USER;

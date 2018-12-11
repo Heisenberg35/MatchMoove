@@ -4,9 +4,7 @@
 package com.societe.project.database;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
