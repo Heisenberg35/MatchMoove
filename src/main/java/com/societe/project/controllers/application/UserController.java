@@ -152,7 +152,8 @@ public class UserController {
 		
 		model.addAttribute("detailPath", "/user");
 		
-		List <PT> listPt = (List<PT>) ptService.findAll();
+//		List <PT> listPt = (List<PT>) ptService.findAll();
+		List <PT> listPt = (List<PT>) ptService.findAllPts();
 		//model.addAttribute()
 		
 		for (PT pt : listPt) {

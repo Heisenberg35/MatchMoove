@@ -124,7 +124,11 @@ public class PTService extends BaseService<PT> {
 //	}
 	
 	public PT findByTrajet(Integer id) {
-		
 		return ptRepository.findByTrajet(id);
+	}
+	
+	public List<PT> findAllPts() {
+		return ptRepository.findAllPts();
+		
 	}
 }
