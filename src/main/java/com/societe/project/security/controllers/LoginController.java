@@ -6,12 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.societe.project.services.RecuperationInfoLogin;
+import com.societe.project.services.RecuperationInfoLoginService;
 
 @Controller
 public class LoginController {
 	@Autowired
-	RecuperationInfoLogin recuperationInfoLogin;
+	RecuperationInfoLoginService recuperationInfoLogin;
 	public static final String FORM_PASSWORD = "password";
 	public static final String FORM_USERNAME = "username";
 	private static final String SECURITY_LOGIN = "/security/login";

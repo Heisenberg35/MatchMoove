@@ -1,5 +1,6 @@
 package com.societe.project.controllers.base;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.societe.project.database.DBItem;
 import com.societe.project.dtos.base.BaseDeleteCriteriaDTO;
-import com.societe.project.services.RecuperationInfoLogin;
+import com.societe.project.firebase.FirebaseService;
+import com.societe.project.services.RecuperationInfoLoginService;
 import com.societe.project.services.base.BaseService;
 
 
@@ -27,13 +29,16 @@ public abstract class BaseController<T extends DBItem> {
 	protected abstract void setOtherAttributes(Model model);
 	protected abstract void setupOtherFields(T item);
 	@Autowired
-	RecuperationInfoLogin recuperationInfoLogin;
+	RecuperationInfoLoginService recuperationInfoLogin;
+	@Autowired
+	FirebaseService firebaseService;
 	
 	@RequestMapping(value= {"","/","/index"}, method=RequestMethod.GET)
-	public String index(Model model) {
+	public String index(Model model) throws IOException {
 		model.addAttribute(BASE_ATTRIBUT_LIST,this.getBaseService().findAll());
 		model.addAttribute("pageName",this.getBasePageName()+" index");
 		model.addAttribute("detailPath",this.getBaseURL());
+		//model.addAttribute("trajetId",firebaseService.getTrajetId());
 		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		return this.getBaseURL()+"/index";
 		

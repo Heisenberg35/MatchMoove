@@ -8,6 +8,7 @@
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-functions.js"></script>
 
+
 <script>
   // Initialize Firebase
   var config = {
@@ -21,6 +22,9 @@
   firebase.initializeApp(config);
   
 var today = new Date();
+var ss = today.getSeconds();
+var m = today.getMinutes();
+var hh = today.getHours();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
 var yyyy = today.getFullYear();
@@ -30,48 +34,69 @@ if(dd<10) {
 if(mm<10) {
     mm = '0'+mm
 } 
-today = dd + '/' +mm  + '/' + yyyy;
+if(hh<10) {
+    hh = '0'+hh
+} 
+if(m<10) {
+    m = '0'+m
+} 
+today = dd + '/' +mm  + '/' + yyyy + '    ' + hh + ':' + m ;
 
+
+var rootRef = firebase.database().ref('/conversations/${trajetMessage.getId()}')
 
 function sayClicked() {
 
-var rootRef = firebase.database().ref('conversation/');
+  var con = document.getElementById("t1").value;
+  var trimmed = con.trim();
+
   var newMessageRef = rootRef.push();
+  if (typeof trimmed !== "undefined" && trimmed != '') 
+      
+    {
       newMessageRef.set({
-      content:  '${userEmail}'+":\n" + document.getElementById("t1").value.trim(),
-      date: today
-});
-
+                      content:  '${userEmail}'+":\n" + trimmed,
+                      date: today
+   
+    });
+  }
 }
-
- var updateMessage = function(element, value) {
-        document.getElementById(element).value += value + '\n';
+ var updateMessage = function(element, content,date) {
+        document.getElementById(element).value += content + '\n';
+        document.getElementById(element).value += date + "\n\n";
         document.getElementById("t1").value = "";
+     
     };
-    
- var conversationRef = firebase.database().ref('conversation/');
- 
-conversationRef.once('value', function(snapshot) {
+
+
+ rootRef.once('value', function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
 	    var childKey = childSnapshot.key;
-	    var childData = childSnapshot.val().content;
-	    updateMessage("t2", childData);
+	    var childDataContent = childSnapshot.val().content;
+	     var childDataDate = childSnapshot.val().date;
+	    updateMessage("t2", childDataContent,childDataDate);
+	    
 	});
-});
+	rootRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
+    updateMessage("t2", snapshot.val().content,snapshot.val().date);
     
-conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
-  updateMessage("t2", snapshot.val().content);
+    notification();
+   });
 });
+
+ //rootRef.orderByKey().limitToLast(1).off('child_added', listener);
 
 </script>
 
+
+
 	
-<button class="open-button" onclick="openForm()"><img src="/images/message.png" class="popup"> 0 a lire</button>
-<div class="chat-popup" id="myForm">
+<button id="alire"  class="open-button" onclick="openForm()"><img src="/images/message.png" class="popup"> <div id="nbNotification">-1</div> a lire</button>
+<div class="chat-popup" id="myForm"  style="display: none;">
   <form action="" class="form-container">
     <h2>Retrouvez vos messages</h2>
-
-    <label for="msg"><b>Messages</b></label>
+    <br>
+    <label for="msg"><b> trajet : ${trajetMessage.getNom()} </b></label>
     
     <textarea id="t2" readonly rows = "5" cols = "60"  name="content" value=""> </textarea>
     
@@ -89,6 +114,9 @@ conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) 
 	setInterval(function(){
     	textarea.scrollTop = textarea.scrollHeight;
 		}, 1000);
+		
+		
+		  
 </script>
 <script>
 	textArea = document.getElementById("t1");
@@ -99,6 +127,9 @@ conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) 
                 	sayClicked();
                 }
             }
+            
+            
+ 
 </script>
         
       <input type="hidden"
@@ -107,9 +138,22 @@ conversationRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) 
 <script>
 	function openForm() {
     	document.getElementById("myForm").style.display = "block";
+    	document.getElementById("nbNotification").textContent = "0"
 	}
 
-	function closeForm() {
+	function  closeForm() {
     	document.getElementById("myForm").style.display = "none";
+    	
+	}
+	
+	function notification(){
+	  var el = document.getElementById("myForm");
+	  var isHidden = el.style.display === "none"; 
+	  //alert(isHidden);
+		if (isHidden)
+		{
+		  var currentNb = Number(document.getElementById("nbNotification").textContent);
+		  document.getElementById("nbNotification").textContent = currentNb + 1;
+		}
 	}
 </script>

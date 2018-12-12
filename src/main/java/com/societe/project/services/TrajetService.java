@@ -41,6 +41,11 @@ public class TrajetService extends BaseService<Trajet> {
 
 		return result;
 	}
+
+	public List<Trajet> getTrajetByCompteEmail(String email) {
+		//return trajetRepository.getTrajetByCompteEmail(email);
+		return null;
+	}
 	
 	
 	

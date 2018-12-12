@@ -7,7 +7,15 @@
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/formCreateUser.css'/>"/>	
 
 <title>Proposer un trajet</title>
+
 <h3 style="text-align: center">Bonjour ${compte.getProfil().getFirstname()} 🙂 </h3>
+	<div class="error">
+		<#list errors.getAllErrors()as error>
+		<p>Afin de valider votre formulaire, veuillez corriger le ou les erreurs suivantes :</p>
+		<p>${error.getCode()}</p>
+		</#list>
+	</div>
+</#if>
 
 
 <#if compte.getProfil().getCars()?has_content >
@@ -70,6 +78,7 @@
 							</select>
                         </div>
 						<div class="form-group form-btn">
+							<input type="hidden" name="archive" value="false"/>
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             
                             <div><input type="submit" name="valider" value=" Valider "></div>
@@ -86,5 +95,7 @@
 <p style="text-align: center">Si vous souhaitez ajouter un trajet, il faut d'abord <a href="/user/gestioncompte">ajouter un véhicule à votre profil !</a></p>
 </#if>
 	
-	
+<#if trajetMessage?? && userEmail??>
+ <#include "popupmsg.ftl">
+</#if>	
 <#include "../blocsCommuns/footer.ftl"/>

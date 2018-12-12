@@ -6,13 +6,19 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.protobuf.TextFormat.ParseException;
 import com.societe.project.firebase.models.MessageNotification;
 import com.societe.project.models.Message;
+import com.societe.project.models.PT;
 import com.societe.project.models.Profil;
+import com.societe.project.services.RecuperationInfoLoginService;
 
 public class FirebaseNotificationObserver {
 
@@ -79,8 +85,13 @@ private void firebaseNotificationsObserver(MessageNotification messageNotificati
 }
 	
 
+   
+
 	public MessageNotification getNotification() {
-	    System.out.println(messageNotification.getContent());
+	    //System.out.println(messageNotification.getContent());
 		return this.messageNotification;
 	}
+
+
+	
 }

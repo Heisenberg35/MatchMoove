@@ -2,6 +2,7 @@ package com.societe.project.firebase.controllers;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +14,18 @@ import com.google.api.core.ApiFuture;
 import com.google.firebase.database.DatabaseReference;
 import com.societe.project.firebase.FirebaseNotificationObserver;
 import com.societe.project.firebase.FirebaseOpenHelper;
+import com.societe.project.firebase.FirebaseService;
+import com.societe.project.models.PT;
 import com.societe.project.models.Trajet;
-import com.societe.project.services.RecuperationInfoLogin;
+import com.societe.project.services.RecuperationInfoLoginService;
 
 @Controller
 @RequestMapping("/messagerie")
 public class MessagerieController {
 	@Autowired
-	RecuperationInfoLogin recuperationInfoLogin;
+	RecuperationInfoLoginService recuperationInfoLogin;
+	@Autowired 
+	FirebaseService firebaseService;
 	
 	/*@RequestMapping(value = {"","/"},method=RequestMethod.GET)
 	public String messagerie(Model model) throws IOException, ParseException  {
@@ -32,39 +37,27 @@ public class MessagerieController {
 	
 	@RequestMapping(value= {"","/"})
 	public String Index(Model model) throws IOException {
-        Trajet trajet = new Trajet(1,"saintmalo");
-	/*	try {
-			FirebaseOpenHelper
-			                .getInstance()
-			                .getDatabase()
-			                .getReference("conversations/"+trajet.getNom());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-        // model.addAttribute("notification",FirebaseNotificationObserver.getInstance().getNotification());
+     /*   Trajet trajet = new Trajet(1,"saintmalo");
 		DatabaseReference Ref = FirebaseOpenHelper.getInstance().getDatabase().getReference("conversations/");
-		
-		/*DatabaseReference trajetRef = Ref.push();
-		trajetRef.setValueAsync(trajet.getId());
-		String trajetToken = trajetRef.getKey();
-		System.out.println(trajetRef); 
-		model.addAttribute("trajet", trajetToken);
-		*/
-		
-	  
-		//Map<String, Object> trajets = new HashMap<>();;
-		//Object childRef = trajets.put("trajet", trajet);
-		//Ref.updateChildrenAsync(trajets);
-		DatabaseReference trajetRef = Ref.child(trajet.getId().toString());
+	    DatabaseReference trajetRef = Ref.child(trajet.getId().toString());
 		model.addAttribute("trajetId", trajet.getId());
-	
-		//Map<String, Trajet> trajets = new HashMap<>();
-    //	trajets.put(trajet.getId().toString(), trajet);
-		//System.out.println(childRf);
-
 		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
-		model.addAttribute("notification",FirebaseNotificationObserver.getInstance().getNotification());
+		model.addAttribute("notification",FirebaseNotificationObserver.getInstance().getNotification());*/
+		
+		/*int Id = 0; 
+		DatabaseReference Ref = FirebaseOpenHelper.getInstance().getDatabase().getReference("conversations/");
+		List<PT> pts = recuperationInfoLogin.recuperationCompteForUserLogge().getProfil().getPT();
+		for (PT pt : pts) {
+			if( pt.getTrajet().getId() > Id)
+			{Id = pt.getTrajet().getId();}
+		}
+		String trajetId = String.valueOf(Id);
+	    DatabaseReference trajetRef = Ref.child(trajetId);
+		model.addAttribute("trajetId", trajetId);*/
+		
+	//	model.addAttribute("trajetId",firebaseService.getTrajetId("13"));
+		model.addAttribute("trajetId", firebaseService.getUserTrajet());
+		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		return "/messagerie";
 	}
 	

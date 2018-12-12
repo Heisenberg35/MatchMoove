@@ -3,7 +3,6 @@ package com.societe.project.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -37,10 +36,10 @@ public class Profil extends DBItem {
 	@OneToMany(mappedBy="profil")
 	private List<Car> cars;
 
-    @OneToMany(targetEntity=PT.class,mappedBy="profil" ,cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(targetEntity=PT.class,mappedBy="profil")
     private List<PT> pts;
     
-    @OneToMany(targetEntity=Bagage.class,mappedBy="profil" ,cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(targetEntity=Bagage.class,mappedBy="profil")
     private List<Bagage> bagages;
     
 	/***********************************************
