@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/default.css'/>"/>
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/bootstrap.min.css'/>"/>			
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/formCreateUser.css'/>"/>	
+
 <title>Proposer un trajet</title>
 <h2>Bonjour ${compte.getProfil().getFirstname()} ${compte.getProfil().getLastname()}</h2>
 <#if errors ?has_content>
@@ -48,15 +49,15 @@
 								</select>
                         </div>
 						<div class="form-group">
-							<label class="label label-nom" for="perimetre">P�rim�tre (en kms) :</label>
+							<label class="label label-nom" for="perimetre">Périmètre (en kms) :</label>
 							<div class="input-group">
 								<input class="form-control" type="number" min=0 name="perimetre" required>
 							</div>
                         </div>
 						<div class="form-group">
-							<label class="label label-nom" for="dateDepart">Date de d�part :</label>
+							<label class="label label-nom" for="dateDepart">Date de départ:</label>
 							<div class="input-group">
-								<input class="form-control" type="date" placeholder="date d�part trajet" name="dateDepart" required>
+								<input class="form-control" type="date" placeholder="date départ trajet" name="dateDepart" required>
 							</div>
                         </div>
 						<div class="form-group">
@@ -78,12 +79,11 @@
 						<div class="form-group form-btn">
 							<input type="hidden" name="archive" value="false"/>
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                            <button id="valider" class="btn btn-success" name="valider" value="Save" type="submit">Valider 
-                                <span class="glyphicon glyphicon-send"></span>
-                            </button>
-                            <button class="btn btn-danger" name="reset" type="reset">Reset
-                                    <span class="glyphicon glyphicon-trash"></span>
-                            </button>
+                            
+                            <div><input type="submit" name="valider" value=" Valider "></div>
+                            <div><input type="submit" name="reset" value=" Mettre à zéro "></div>
+                            
+                           
                         </div>			
 					</form>
 				</div>
@@ -91,7 +91,7 @@
 		</div>
 	</div>
 <#else>
-<p>Afin de pouvoir proposer un trajet, il faut d'abord dans la gestion du compte avoir ajouté un véhicule <a href="/user/gestioncompte">cliquez ici</a></p>
+<p style="text-align: center">Si vous souhaitez ajouter un trajet, il faut d'abord <a href="/user/gestioncompte">ajouter un véhicule à votre profil !</a></p>
 </#if>
 	
 <#if trajetMessage?? && userEmail??>

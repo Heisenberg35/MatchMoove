@@ -9,7 +9,6 @@
 </#if>
 
 
-
 <header id="headerAdmin">
 				<a href="/home"><div id="logo"><img src="/images/matchmooveBLANCS.png"></div></a>
 	
