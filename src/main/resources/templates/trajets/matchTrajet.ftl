@@ -52,7 +52,7 @@
 <#include "/trajets/editMatchTrajet.ftl"/> 
 	
 <#if trajetMessage?? && userEmail??>
- <#include "popupmsg.ftl">
+ <#include "../popupmsg.ftl">
 </#if>
 <#include "../blocsCommuns/footer.ftl"/>	
 	

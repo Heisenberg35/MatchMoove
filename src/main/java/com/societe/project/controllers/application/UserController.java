@@ -91,7 +91,13 @@ public class UserController {
 		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
 		model.addAttribute("compte", compte);
 //		model.addAttribute("errors", bindingResult);
-
+		
+		//ici recuperer user dernier trajet et son email
+		Trajet userTraget = firebaseService.getUserTrajet();
+		if(!userTraget.getId().equals(-1))
+		{model.addAttribute("trajetMessage",userTraget);}
+		 model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
+		
 		return VUE_GESTION_COMPTE;
 	}
 	
@@ -142,9 +148,11 @@ public class UserController {
 		model.addAttribute("trajet", trajet);
 		model.addAttribute("pt", pt);
 		
+		//ici recuperer user dernier trajet et son email
 		Trajet userTraget = firebaseService.getUserTrajet();
 		if(!userTraget.getId().equals(-1))
 		{model.addAttribute("trajetMessage",userTraget);}
+		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		
 		return VUE_PROPOSER_TRAJET;
 	}
@@ -173,10 +181,13 @@ public class UserController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  
+		
+		//ici recuperer user dernier trajet et son email
 		Trajet userTraget = firebaseService.getUserTrajet();
 		if(!userTraget.getId().equals(-1))
 		{model.addAttribute("trajetMessage",userTraget);}
-	
+		
+		 model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		
 
 		return "redirect:/home";
@@ -200,7 +211,8 @@ public class UserController {
 		Trajet userTraget = firebaseService.getUserTrajet();
 		if(!userTraget.getId().equals(-1))
 		{model.addAttribute("trajetMessage",userTraget);}
-		
+		 model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail()); 
+		 
 		return VUE_MATCH_TRAJET_COMPTE ;
 	}
 	
