@@ -24,7 +24,7 @@
                 <input type="password" placeholder="Mot de passe" name='${form_password}' value=''>
 
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <input type="submit" id='submit' value='LOGIN' >
+                <input type="submit" id='submit' value='CONNEXION' >
                 
             </form>
         </div>
