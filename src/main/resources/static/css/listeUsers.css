@@ -139,9 +139,9 @@
     margin: 20px;
     margin-left: 66px;
 }
-.user-delete{background-color: #ad3c3c;}
+.user-delete{background-color: #143045;}
 
-.user-modified{background-color: #1d526e8c}
+.user-modified{background-color: #143045}
 
 .user-delete a,.user-modified a{
 	color:white;
@@ -153,7 +153,7 @@
     margin: auto;	
 }
 .user-delete:hover{
-	background-color: #eb6464;
+	background-color: #3980a58c;
 
 }
 

@@ -90,12 +90,14 @@
                                     <p>Duree  :</p> 
                                     <div>${pt.getTrajet().getPerimetre()}</div> 
                                </div>
-                              <div class="trajet-match">
-                                  <a class="button btn-trajet seenTrajet" href="#">Voir trajet</a>
-                              </div> 
-                              <div class="trajet-match match">
-                                  <a class="button btn-match" href="/user/validTrajet/${pt.getId()}">Matcher !!</a>
-                              </div> 
+                        
+                                  <a title="voir" href="#">Voir le trajet</a>
+                            
+                              
+                              
+                              
+                                  <a title="match" href="/user/validTrajet/${pt.getId()}">Je match !</a>
+                           
 
                              <div class="file-detail"><span class="btn-detail"></span></div>
                              <div class="br"></div>
