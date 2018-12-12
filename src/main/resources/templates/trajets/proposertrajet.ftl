@@ -9,13 +9,15 @@
 <title>Proposer un trajet</title>
 
 <h3 style="text-align: center">Bonjour ${compte.getProfil().getFirstname()} 🙂 </h3>
-	<div class="error">
-		<#list errors.getAllErrors()as error>
-		<p>Afin de valider votre formulaire, veuillez corriger le ou les erreurs suivantes :</p>
-		<p>${error.getCode()}</p>
-		</#list>
-	</div>
-</#if>
+	<#if errors ?has_content>
+	    <div class="error">
+	        <#list errors.getAllErrors()as error>
+	        <p>Afin de valider votre formulaire, veuillez corriger le ou les erreurs suivantes :</p>
+	        <p>${error.getCode()}</p>
+	        </#list>
+	    </div>
+	</#if>
+
 
 
 <#if compte.getProfil().getCars()?has_content >

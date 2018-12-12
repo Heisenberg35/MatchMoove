@@ -127,18 +127,16 @@
 	<br>
 	<h3>ARTICLE 11 : Droit applicable et juridiction compétente</h3>
 	
-	La législation franéaise s'applique au présent contrat. En cas d'absence de résolution amiable d'un litige né entre les parties, seuls les tribunaux [du ressort de la Cour d'appel de / de la ville de] [Ville] sont compétents.
-	
-	éventuellement
+	La législation française s'applique au présent contrat. En cas d'absence de résolution amiable d'un litige né entre les parties, seuls les tribunaux de Rennes sont compétents.
 	<br>
 	<br>
 	<h3>ARTICLE 12 : Publication par l'Utilisateur</h3>
 	
-	Le site permet aux membres de publier [des commentaires / des éuvres personnelles].
+	Le site permet aux membres de publier des commentaires.
 	
 	Dans ses publications, le membre s'engage é respecter les régles de la Netiquette et les régles de droit en vigueur.
 	
-	Le site exerce une modération [a priori / a posteriori] sur les publications et se réserve le droit de refuser leur mise en ligne, sans avoir é s'en justifier auprés du membre.
+	Le site exerce une modération a priori sur les publications et se réserve le droit de refuser leur mise en ligne, sans avoir é s'en justifier auprés du membre.
 	
 	Le membre reste titulaire de l'intégralité de ses droits de propriété intellectuelle. Mais en publiant une publication sur le site, il céde é la société éditrice le droit non exclusif et gratuit de représenter, reproduire, adapter, modifier, diffuser et distribuer sa publication, directement ou par un tiers autorisé, dans le monde entier, sur tout support (numérique ou physique), pour la durée de la propriété intellectuelle. Le Membre céde notamment le droit d'utiliser sa publication sur internet et sur les réseaux de téléphonie mobile.
 	
