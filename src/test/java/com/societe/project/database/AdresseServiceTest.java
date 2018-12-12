@@ -80,4 +80,5 @@ public class AdresseServiceTest {
 		}
 		assertThat(profils.isEmpty());
 	}
+
 }

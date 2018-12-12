@@ -43,7 +43,15 @@ dependencies {
 	
 	//api google
 	compile group: 'com.google.api-client', name: 'google-api-client', version: '1.25.0'
+	
+	//Test Unitaire
+	testCompile group: 'junit', name: 'junit', version: '4.+'
 
+}
+
+test {
+    systemProperties 'property': 'value'
+    ignoreFailures = true
 }
 
 def classesJava = "${project.buildDir}/classes/java/main/"

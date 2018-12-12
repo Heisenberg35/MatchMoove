@@ -54,6 +54,8 @@ public class BagageServiceTest {
 		for (Bagage elt : bagages) {
 			assertThat(elt.getVolume()).isEqualTo(bagage.getVolume());
 		}
+		System.out.println(bagage.getTrajet().getNom());
+		System.out.println(bagage.getProfil().getFirstname());
 	}
 	
 	@Test
