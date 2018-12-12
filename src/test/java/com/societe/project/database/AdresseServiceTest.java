@@ -79,6 +79,9 @@ public class AdresseServiceTest {
 			profilRepository.delete(profil);
 		}
 		assertThat(profils.isEmpty());
+		
+		profilRepository.deleteAll();
+		adresseRepository.deleteAll();
 	}
 
 }
