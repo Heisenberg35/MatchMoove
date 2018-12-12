@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import com.societe.project.models.Profil;
 import com.societe.project.models.Role;
 
@@ -69,7 +68,6 @@ public class ProfilServiceTest {
 		
 		finded = profilRepository.findByLastname("TOTO").get(0);
 		assertThat(finded.getLastname().equals("TOTO"));
-		
 		
 		profilRepository.delete(finded);
 		List<Profil> deleted = profilRepository.findByFirstname("TOTO");

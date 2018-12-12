@@ -55,6 +55,8 @@ public class ArticleServiceTest {
 		for (Article elt : articles) {
 			assertThat(elt.getDescription()).isEqualTo(article.getDescription());
 		}
+		System.out.println(article.getCompte().getEmail());
+		System.out.println(article.getDate());
 	}
 	
 	@Test
