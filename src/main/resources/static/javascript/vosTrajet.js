@@ -6,14 +6,37 @@
 	variables
 \**********************************************/	
 
-	var voirMessage = document.querySelector('.btn-seen-delete');
+	var voirMessage = document.querySelectorAll('.voirMess');
 	var delMess = document.querySelector('.deleteMessage')
 
 /**********************************************\
 		Event Click "voir mess"    ok  xhr
 \**********************************************/
 	
-	$('.btn-seen-mess').click(function(e){
+	for(var i = 0 ; i< voirMessage.length;i++ ){
+		
+		voirMessage[i].addEventListener('click',function(e){
+			e.preventDefault();
+			e.stopPropagation();
+			console.log(this);
+				
+			if($('#claque').hasClass('fadein')){
+				setTimeout(function(){
+						$('#claque').removeClass('fadein');		 
+				},1000);
+			}else{
+				$('#claque').addClass('fadein');
+			}
+			console.log(' 1 event btn voir mess request');
+			var id_trajet = this.parentNode.querySelector('input').value;
+			var secu = this.parentNode.querySelector('#secu').value;
+				initXhrPost('POST','/user/trajets/vosmessage',true);
+				insertFormdataAppend(id_trajet,secu);
+				
+		});	
+	}
+	
+	/*$('.btn-seen-mess').click(function(e){
 		e.preventDefault();
 		e.stopPropagation();
 	
@@ -29,11 +52,11 @@
 
 		console.log(' 1 event btn voir mess request');
 			//initXhrPost('GET','/user/deleteMessTrajet/'+idmess,true);
-			//initXhr('GET','/user/delmessage',true);
-			//insertFormdataAppend();
-				//xhr.send();	
+			initXhrPost('GET','/user/trajets/vosmessage',true);
+			insertFormdataAppend(this);
+					
 			
-	})
+	})*/
 /**********************************************\
 		Event Click message delete id  xhr
 \**********************************************/
@@ -53,25 +76,11 @@ $('.deleteMess').click(function(e){
 				//xhr.send();		
 	})
 
-
-
 /**********************************************\
-	Event Click  delete votre trajet id  xhr
-\**********************************************/
-
-
-
-$('.deleteTrajet').click(function(e){
-		e.preventDefault();
-		e.stopPropagation();
-
-		console.log(' 2 clicker delete votre trajet request');
-		
-			//initXhrPost('GET','/user/deleteMessTrajet/'+idmess,true);
-			//initXhr('GET','/user/delmessage',true);
-			//insertFormdataAppend();
-				//xhr.send();		
-	})
+	Request
+\**********************************************/	
+	
+	var xhr = new XMLHttpRequest();
 
 
 /**********************************************\
@@ -83,18 +92,12 @@ $('.deleteTrajet').click(function(e){
 		console.log('clicker claque');
 			
 		if($('#claque').hasClass('fadein')){
-					$('#claque').removeClass('fadein');		 
+					$('#claque').removeClass('fadein');	
+					var contenu = document.querySelector('#claque #contenu').innerHTML = "";
 		}else{
 			$('#claque').addClass('fadein');
 		}	
 	})
-
-/**********************************************\
-	Request
-\**********************************************/	
-	
-	var xhr = new XMLHttpRequest();
-
 /**************************************\
 	2..function initXhrPost()
 \**************************************/
@@ -107,22 +110,23 @@ $('.deleteTrajet').click(function(e){
 /*****************************************\
 	0.0.1 function insertFormdataAppend
 \*****************************************/
-	var insertFormdataAppend = function(){
+	var insertFormdataAppend = function(id_trajet,secu){
 		
+		console.log('insert form data');
+	
 		var formdat = new FormData();
+		
 
 		//ici je  recupere id message 
 		//and recupere  id trajet
 
-			formdat.append('id',id);
-			formdat.append('_csrf',sec);
+			formdat.append('id',id_trajet);
+			formdat.append('_csrf',secu);
 			xhr.setRequestHeader("_csrf", secu);
-			formdat.append('messages',textarea.innerHTML);
-		   
+		
 			console.log(formdat);
 			
-			readKeyValueFormData(formdat);
-			
+			//readKeyValueFormData(formdat);
 			XrhSendForm(formdat);	
 		}	
 /**************************************\
@@ -132,9 +136,6 @@ $('.deleteTrajet').click(function(e){
 				
 				xhr.send(formdat);		
 	}
-
-
-
 /**************************************\
 	4..event readystatechange on xhr
 \**************************************/
@@ -157,11 +158,30 @@ $('.deleteTrajet').click(function(e){
 				//insert dans le dom si message envoyer
 				
 				alert('message a bien été recu');
+				insertDomHTML(this);
 
 			}
 		}
 	});	
+	
+/**************************************\
+	5.1..insertDomHTML html message
+\**************************************/
+	var insertDomHTML = function (this_xhr){
+		
+		console.log("insert dom manuel");
+		var contenu = document.querySelector('#claque #contenu');
+		
+		var url = this_xhr.responseURL;	
+		console.log(url);
 
+		//recupation file + son contenu possedant parameter nom
+		//insert dans le dom
 
+		//deleteNoeud();
+		contenu.innerHTML = url + this_xhr.responseText; //serveur renvoie page php
+		//contenu.appendChild(url + this_xhr.responseText);
+		
+	}
 
 })(jQuery)

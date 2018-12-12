@@ -11,14 +11,18 @@
                 <div id="btn-close" class="btn-close">
                     <span></span>
                  </div>
-    			<#include "/trajets/vosMessTrajet.ftl"/>
+                 <div id="contenu" >
+                 		
+                 </div>
+    			
    			</div>
 
    <!--////////////////////////////////////////////////////-->
    <!--             list de vos trajet                     -->
    <!--////////////////////////////////////////////////////-->
    
-   
+   <#if pts?has_content>
+   	<#list pts as pt> 
      <div class="list-trajet-user">
                 <div class="list-trajet">
                     <h2>trajet user</h2>
@@ -26,13 +30,27 @@
                 <div class="trajet-content">
                     <ul>
                         <li class="content">
-                            <div class="title">trajet num</div>
+                         <input type="hidden" name="id" value="${pt.getTrajet().getId()}">
+                            <div class="title">${pt.getTrajet().getNom()}</div>
                             <div class="content-description">
-                                <div id="date" class="date">date : 12/12/12</div>
-                                <div id="depart" class="depart">vannes</div>
-                                <div>a </div>
-                                <div id="arrivied" class="arrivied">rennes</div>
+                                <div id="date" class="date">${pt.getTrajet().getDateDepart()}</div>
+                                
+                          <#assign id= 0>    
+                   		  <#list pt.getProfil().getAdresses() as adr> 
+                   		  
+                   		         <#assign depart = adr.getStringAdr()>
+                        		<#assign arrive = adr.getStringAdr()>      
+                              <#if id == 0>  
+                                <div id="depart" class="depart"> ${pt.getTrajet().getIsDirection()? then(depart,arrive)}</div>
+                                 <div>a </div>
+                               <#else>
+                                <div id="arrivied" class="arrivied"> ${pt.getTrajet().getIsDirection()? then(depart,arrive)} </div>
                             </div>
+                           </#if>
+                        <#assign id++>
+                     </#list> 
+                     
+                     
                             <div class="listUser">
                                 <h3>users du trajet</h3>
                                 <ul>
@@ -43,8 +61,8 @@
 
 
                             <div class="btn btn-delete deleteTrajet">
-                                <a href="">delete</a></div>
-                            <div id="deleteMessage" class="btn btn-seen-mess">
+                                <a href="/user/deleteTrajet/${pt.getTrajet().getId()}">delete</a></div>
+                            <div id="deleteMessage" class="btn btn-seen-mess voirMess">
                                 <a href="">messages</a>
                             </div>
 
@@ -54,17 +72,13 @@
                                   <span></span>
                               </div>
                             </div>
+                            <input id="secu" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         </li>
                     </ul>
                 </div>
-            </div>
-    </div>
-   
-   
-
-
-</div>
-  
+			</div>
+ 		</#list> 
+    </#if>  
    <!--////////////////////////////////////////////////////-->
    <!--             votre map de trajet                    -->
    <!--////////////////////////////////////////////////////-->
@@ -85,3 +99,6 @@
     <script type="text/javascript" src="<@spring.url 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDixKXD0laxdblzB7LZpzGk5U-AhQEH4SY&libraries=places&callback=initMap'/>"></script>
 	<script type="text/javascript" src="<@spring.url '/javascript/jquery-3.2.1.min.js'/>"></script>
 	 <script type="text/javascript" src="<@spring.url '/javascript/vosTrajet.js'/>"></script>
+	 
+	 
+	 

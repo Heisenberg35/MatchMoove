@@ -20,7 +20,7 @@
 
   position: relative;
 	width: 524px;
-	height: 220px;
+	/*height: 220px;*/
 	background-color: #d4cece;
   border-radius: 12px;
   margin : auto;
@@ -55,6 +55,7 @@
 }
 .contents{
   margin-left: 20px;
+  border-bottom: 4px solid white;
 }
 .contents .ct{
   padding: 5px;
@@ -64,7 +65,9 @@
 .send-user .sender{}
 .content .title{}
 
-
+.content{
+      border-bottom: 10px solid white;
+}
 
 .content-descriptions{
   width: 350px;
@@ -78,13 +81,12 @@
 .content-description p{}
 
 .list-message .btn-seen-delete{
-  position: absolute;
-
-  bottom: 0;
-  right: 0;
-
-  margin-right: 7px;
-  margin-bottom: 20px;
+      /* position: absolute; */
+    /* bottom: 0; */
+    /* right: 0; */
+    /* margin-right: 20px; */
+    /* margin-bottom: 20px; */
+    margin-left: 372px;
 }
 .list-message .btn-seen-delete {
 
@@ -100,12 +102,12 @@
 .list-trajet-user{
   position: relative;
   border-radius: 12px;
-	width: 524px;
+	width: 470px;
 	height: 100%;
 	background-color: #d4cece;
-  margin-top : 20px;
-  margin-bottom: 20px;  
-  margin-left: 40px;
+ /* margin-top : 20px;*/
+ /*  margin-bottom: 20px; */ 
+  /*margin-left: 40px;*/
   transform: scale(0.8);
 }
 
@@ -135,6 +137,7 @@
 }
 .listUser{
   margin-left: 10px;
+  margin-top:20px;
   width: 150px;
   margin-bottom: 10px;
  border-left: 10px solid #2196f3;
@@ -256,6 +259,7 @@
     margin-left: 78%;
     background-color: #148277;
     transform: translateY(300px);
+    z-index: 10;
 }
 
 .claque .btn-close span {

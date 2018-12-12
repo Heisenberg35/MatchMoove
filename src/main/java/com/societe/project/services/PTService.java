@@ -6,7 +6,6 @@ import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 
@@ -16,6 +15,7 @@ import com.societe.project.models.Adresse;
 import com.societe.project.models.Compte;
 import com.societe.project.models.PT;
 import com.societe.project.models.Point;
+import com.societe.project.models.Profil;
 import com.societe.project.models.Trajet;
 import com.societe.project.services.base.BaseService;
 @Service
@@ -131,4 +131,9 @@ public class PTService extends BaseService<PT> {
 		return ptRepository.findAllPts();
 		
 	}
+	
+	public List<PT> findByProfilVosTrajet(Profil profil){
+		return ptRepository.findByProfil(profil);
+	}
+	
 }
