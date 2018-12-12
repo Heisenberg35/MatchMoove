@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import com.societe.project.database.base.BaseCRUDRepository;
 import com.societe.project.models.PT;
+import com.societe.project.models.Profil;
 import com.societe.project.models.Trajet;
+
 @Repository
 public interface PTRepository extends BaseCRUDRepository<PT>{
 
@@ -17,6 +19,7 @@ public interface PTRepository extends BaseCRUDRepository<PT>{
 	List<PT> findByNbrePlace(Integer nbrePlace);
 	List<PT> findByVolumeMax(Double volumeMax);
 	PT findByTrajet(Integer id);
+	List <PT> findByProfil(Profil profil);
 	
 //	@Modifying
 //	@Query(value = "insert into pt (nbre_place, volume_max, profil_id, trajet_id) VALUES (?1, ?2, ?3, ?4)", nativeQuery = true)

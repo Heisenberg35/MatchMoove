@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.societe.project.database.TrajetRepository;
 import com.societe.project.database.base.BaseCRUDRepository;
+import com.societe.project.models.Profil;
 import com.societe.project.models.Trajet;
 import com.societe.project.services.base.BaseService;
 
@@ -47,8 +48,5 @@ public class TrajetService extends BaseService<Trajet> {
 		return null;
 	}
 	
-	
-	
-
 	
 }

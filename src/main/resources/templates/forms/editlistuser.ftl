@@ -13,7 +13,7 @@
 	
 	<div class="listuser">
         <div class="listuser-title">
-            <h1>Listes des utilisateur</h1>
+            <h1>Listes des utilisateurs</h1>
         </div>
 
          <div class="user-list">
@@ -31,7 +31,7 @@
                            <div id="email" class="user user-mail">${item.getEmail()}</div>
                            <div id="nom" class="user user-nom">${item.getProfil().getFirstname()}</div>
                            <div id="prenom" class="user user-prenom">${item.getProfil().getLastname()}</div>
-                           <div class="user user-phone"> Telephone : 
+                           <div class="user user-phone"> Téléphone : 
                            			<#if item.getProfil().getPhoneNumber()?has_content>
                            				${item.getProfil().getPhoneNumber()}
                            			</#if>
@@ -43,21 +43,21 @@
 	                           		<div class="user user-adress "> Adresse : ${adress.getVille()}</div>
 	                           		<div class="user user-adress "> Postal :  ${adress.getCp()} </div>
 	                           		<#else>
-	                           			<div class="user user-adress "> Adresse : non renseigner </div>
-	                           			<div class="user user-adress "> Postal :  non renseigner </div>	
+	                           			<div class="user user-adress "> Adresse : non renseigné </div>
+	                           			<div class="user user-adress "> Postal :  non renseigné </div>	
 	                           		</#if>
 	                           </#list>	
 	                          <#else>
-	                           			<div class="user user-adress "> Adresse : non renseigner </div>
-	                           			<div class="user user-adress "> Postal :  non renseigner </div>	 	 
+	                           			<div class="user user-adress "> Adresse : non renseigné </div>
+	                           			<div class="user user-adress "> Postal :  non renseigné </div>	 	 
                    			</#if>    		
                         </div>
                         
                         <div class="user-delete">
-                            <a class="button btn-delete" href="${detailPath}/delete/${item.getId()}">delete</a>
+                            <a class="button btn-delete" href="${detailPath}/delete/${item.getId()}">supprimer</a>
                         </div>
                         <div class="user-modified">
-                            <a class="button btn-modified" href="#">modified</a>
+                            <a class="button btn-modified" href="#">modifier</a>
                         </div>
                         <div class="file-detail"><span class="btn-detail"></span></div>
                         <div class="br"></div>

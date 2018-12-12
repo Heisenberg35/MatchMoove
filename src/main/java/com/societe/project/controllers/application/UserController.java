@@ -2,11 +2,10 @@ package com.societe.project.controllers.application;
 
 
 import java.io.IOException;
-
+import java.util.ArrayList;
 import java.util.Date;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
-import com.google.firebase.database.DatabaseReference;
-import com.societe.project.firebase.FirebaseOpenHelper;
+
 import com.societe.project.firebase.FirebaseService;
 
 import com.societe.project.models.Adresse;
@@ -44,21 +42,31 @@ import com.societe.project.validators.TrajetValidator;
 @Controller
 public class UserController {
 
-	private static final String URL_GESTION_COMPTE  = "/user/gestioncompte";
+	private static final String URL_GESTION_COMPTE        = "/user/gestioncompte";
 	
-	private static final String VUES 	            = "user";
-	private static final String VUE_GESTION_COMPTE  = VUES + "/gestioncompte";
+	private static final String VUES 	                  = "user";
+	private static final String VUE_GESTION_COMPTE        = VUES + "/gestioncompte";
 	
 	
 	private static final String URL_TRAJET_USER           = "/user/researchtrajet";
 	private static final String URL_TRAJET_VALIDATE       = "/user/validTrajet";
 	private static final String URL_TRAJET_MESS           = "/user/sendMessTrajet";
-	private static final String URL_DELETE_MESS_TRAJET    = "/user/sendMessTrajet";
+	private static final String URL_VOS_TRAJET            = "/user/vostrajet";
+	
+	private static final String URL_DELETE_MESS_TRAJET    = "/user/delmessage";
+	private static final String URL_DELETE_TRAJET         = "/user/deleteTrajet";
+	
+	private static final String URL_PROPOSER_TRAJET       = "/user/proposertrajet";
+	private static final String URL_VOS_MESSAGE           = "/user/trajets/vosmessage";
+	
 	
 	private static final String VUE_MATCH_TRAJET_COMPTE   = "/trajets/matchTrajet";
+	private static final String VUE_PROPOSER_TRAJET       = "/trajets/proposertrajet";
+	private static final String VUE_VOS_TRAJET            = "/trajets/vostrajet";
+	private static final String VUE_VOS_MESSAGE           = "/trajets/vosMessTrajet";
 	
-	private static final String URL_PROPOSER_TRAJET  = "/user/proposertrajet";
-	private static final String VUE_PROPOSER_TRAJET  = "/trajets/proposertrajet";
+	
+	
 	
 	@Autowired
 	FirebaseService firebaseService;
@@ -90,6 +98,7 @@ public class UserController {
 	public String gestionCompte(Model model) {
 		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
 		model.addAttribute("compte", compte);
+
 //		model.addAttribute("errors", bindingResult);
 		
 		//ici recuperer user dernier trajet et son email
@@ -98,6 +107,7 @@ public class UserController {
 		{model.addAttribute("trajetMessage",userTraget);}
 		 model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		
+
 		return VUE_GESTION_COMPTE;
 	}
 	
@@ -219,8 +229,7 @@ public class UserController {
 	/**
 	 * *********************************************************
 	 * 		save trajet Id
-	 * *
-	 * @throws IOException **********************************************************
+	 * *********************************************************
 	 */
 	
 	
@@ -275,11 +284,105 @@ public class UserController {
 	
 	/**
 	 * *********************************************************
-	 * 		DELETE MESS 
+	 * 		URL_VOS_TRAJET 
 	 *  **********************************************************
 	 */
 	
+	@RequestMapping(value= {UserController.URL_VOS_TRAJET },method=RequestMethod.GET)
+	public String vosTrajet(Model model) {
+		System.out.println("vos trajets ");
+		
+		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
+		
+		compte.afficheCompte();  //ok
+		compte.getProfil().afficheProfil(); //ok
+		System.out.println("id"+compte.getProfil().getId()); //ok
 	
+		
+		List <Message> messageUser = messageService.findByProfilMessage(compte.getProfil()); //ok
+		
+
+		//recupere le profil 
+		List <Message> listMess = (List<Message>) messageService.findAll();
+		
+		
+		
+		//recuperation des trajet fonction du profil
+		//recupere les messages fonction des trajet
+
+		for (Message message : messageUser) {
+			message.messAffi(); 			
+		}
+		
+		List <PT> pts =  ptService.findByProfilVosTrajet(compte.getProfil());
+		List <Trajet> listTrajet = new ArrayList<Trajet>();
+		for (PT pt : pts) {
+			pt.getTrajet().affTrajet();
+			listTrajet.add(pt.getTrajet());
+		}
+		
+		model.addAttribute("messages", messageUser);
+		model.addAttribute("pts",pts);
+
+		
+		return VUE_VOS_TRAJET ;
+	}
+	
+	
+	/**
+	 * *********************************************************
+	 * 		delete vos trajet 
+	 *  **********************************************************
+	 */
+	@RequestMapping(value= {UserController.URL_DELETE_TRAJET +"/{id}" },method=RequestMethod.GET)
+	public String delVosTrajet(@PathVariable int id) {
+		
+		System.out.println("------------ delete  votre trajet "+id);
+		
+		//ici fonction id inactiver le trajet
+		
+		return "redirect:"+UserController.URL_VOS_TRAJET ;
+	}
+	
+	
+	/**
+	 * *********************************************************
+	 * 		Vos message des trajet creer
+	 *  **********************************************************
+	 */
+	
+	@RequestMapping(value= {UserController.URL_VOS_MESSAGE },method=RequestMethod.POST)
+	public String vosMessagreTrajet(Model model,@ModelAttribute("id") Integer id) {
+		System.out.println("------------vos message du trajet ");
+		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
+		System.out.println("id trajet"+id);
+		
+		Trajet trajet = trajetService.find(id).get();
+		
+		List <Message> messageUser = messageService.findByTravel(trajet); //ok
+		
+		//requete de recuperation des message  function id trajet
+		//insert dans model 
+		model.addAttribute("messages", messageUser);
+		return VUE_VOS_MESSAGE  ;
+	}
+	
+	/**
+	 * *********************************************************
+	 * 		DELETE MESS  URL_DELETE_MESS_TRAJET 
+	 *  **********************************************************
+	 */
+	@RequestMapping(value= {UserController.URL_DELETE_MESS_TRAJET+"/{id}" },method=RequestMethod.GET)
+	public String deleteMessTrajet(@PathVariable int id) {
+		System.out.println("delete Message trajet ");
+		
+		System.out.println("delete id"+id);
+		//recuperation id message a delete
+		//set inatig mess
+
+		
+		return "redirect:"+UserController.URL_VOS_TRAJET ;
+	}
 	
 	
 }

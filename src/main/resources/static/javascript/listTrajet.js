@@ -102,6 +102,8 @@
 		});
 	}
 	
+	
+	//@Query(value = "insert into pt t (t.nbre_place, t.volume_max) VALUES (:insertLink,?#{principal.id})", nativeQuery = true)
 /**************************************\
 	0..event listener btn-request
 \**************************************/	
@@ -159,14 +161,14 @@
 		var id = document.querySelector('#message #id').value;
 		var sec = document.querySelector('#message #secu').value;
 		
-		console.log(textarea.innerHTML);
+		console.log(textarea.value);
 		
 	
 			//insert in formdata with method append()
 			formdat.append('id',id);
 			formdat.append('_csrf',sec);
 			xhr.setRequestHeader("_csrf", secu);
-			formdat.append('messages',textarea.innerHTML);
+			formdat.append('messages',textarea.value);
 		   
 			console.log(formdat);
 			

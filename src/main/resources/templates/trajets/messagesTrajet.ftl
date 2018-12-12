@@ -9,15 +9,12 @@
   	
         <textarea id="mess-trajet" name="message" rows="4" cols="40">
         
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-            In voluptates sint eligendi tempora deserunt error nemo accusamus, 
-            impedit numquam, illo exercitationem officiis natus placeat tempore 
-            voluptatum rerum nihil non maxime.
+           Vous pouvez écrire vos messages dans cette case. 
             
         </textarea>
         
-        <div id="message" class="trajet-match match ">
-            <a id="sendMess" class="button btn-match" href="#">validez message</a>
+        <div style="right: 40px">
+        	<div><input type="submit" name="valider" value=" Valider "></div>
              <input id="id" type="hidden" name="id" value="">
              <input id="secu" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
      

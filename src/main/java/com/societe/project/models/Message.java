@@ -138,6 +138,24 @@ public class Message extends DBItem {
 	public void setArchive(Boolean archive) {
 		this.archive = archive;
 	}
+	/*
+	*************************************************
+	*    @Method
+	*************************************************
+	 */
+	
+	public void messAffi() {
+		System.out.println(content);
+		profil.afficheProfil();
+		trajet.affTrajet();
+	}
+
+	
+	/*
+	*************************************************
+	*    @Method
+	*************************************************
+	 */
 	
 	
 }
