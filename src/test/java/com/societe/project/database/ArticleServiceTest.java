@@ -72,5 +72,6 @@ public class ArticleServiceTest {
 		}
 		Compte compte = compteRepository.findByEmail("test@test.com");
 		compteRepository.delete(compte);
+		
 	}
 }
