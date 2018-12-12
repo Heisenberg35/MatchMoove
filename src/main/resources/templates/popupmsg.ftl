@@ -100,9 +100,7 @@ var child_added_first = true;
       }
      child_added_first = false;
     
-      if(window_loaded){
-       notification();
-     }
+      
    
    });
   
@@ -117,6 +115,8 @@ var child_added_first = true;
 	
 <button id="alire"  class="open-button" onclick="openForm()" ><img src="/images/message.png" class="popup">
  <div id="nbNotification">0</div> a lire</button>
+
+
 <div class="chat-popup" id="myForm"  style="display: none;">
   <form action="" class="form-container">
     <h2>Retrouvez vos messages</h2>
@@ -137,6 +137,7 @@ var child_added_first = true;
 <script>
 	var textarea = document.getElementById("t2");
 	setInterval(function(){
+	 
     	textarea.scrollTop = textarea.scrollHeight;
 		}, 1000);
 		
