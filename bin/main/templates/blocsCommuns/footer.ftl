@@ -2,7 +2,7 @@
 <div id="footer">
 <img src="/images/voiture.png" id="car">	
 		<ul>
-			<li>Nous contacter</li>
+			<li><a href="mailto:matchmoove@contact.com">Nous contacter</a></li>
 			<li>Nous rejoindre</li>
 			<li><a href="/cgu/cgu">Informations Légales</a></li>
 		</ul>
@@ -13,8 +13,8 @@
 			<li>35170 BRUZ</li>
 		</ul>
 		<ul>
-			<li>Suivez-nous !</li>
+			<li><a href="https://www.facebook.com/">Suivez-nous !</a></li>
 			<li><a href="/articles/index">Nos actu</li>
-			<li>A propos</li>
+			<li><a href="#">A propos</a></li>
 		</ul>
 </div>

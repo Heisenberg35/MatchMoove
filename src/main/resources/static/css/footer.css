@@ -46,9 +46,15 @@
     color: white;
 }
 
+#footer a:hover
+{
+	text-decoration: none;
+    color: #929199;
+    cursor: pointer;
+}
+
 #footer li:hover
 {
-	transform:scale(1.1,1.1);
-    cursor: pointer;
-	font-weight: 700;	
+	color: #929199;	
+	cursor: pointer;
 }

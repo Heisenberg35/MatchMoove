@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/formCreateUser.css'/>"/>	
 
 <title>Proposer un trajet</title>
-<h3>Bonjour ${compte.getProfil().getFirstname()} ${compte.getProfil().getLastname()}</h3>
+<h3 style="text-align: center">Bonjour ${compte.getProfil().getFirstname()} 🙂 </h3>
 
 
 <#if compte.getProfil().getCars()?has_content >
