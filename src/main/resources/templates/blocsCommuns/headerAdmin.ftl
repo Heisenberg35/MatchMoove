@@ -4,9 +4,7 @@
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/header.css'/>"/>
 
 
-<#if trajetMessage?? && userEmail??>
- <#include "popupmsg.ftl">
-</#if>
+
 
 
 
