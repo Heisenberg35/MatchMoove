@@ -7,6 +7,7 @@ import com.societe.project.database.MessageRepository;
 import com.societe.project.database.base.BaseCRUDRepository;
 import com.societe.project.models.Message;
 import com.societe.project.models.Profil;
+import com.societe.project.models.Trajet;
 import com.societe.project.services.base.BaseService;
 
 @Service
@@ -37,6 +38,9 @@ public class MessageService extends BaseService<Message>{
 		return messageRepository.findByProfil(profil);
 	}
 	
+	public List<Message> findByTravel(Trajet trajet){
+		return messageRepository.findByTrajet(trajet);
+	}
 	
 	
 

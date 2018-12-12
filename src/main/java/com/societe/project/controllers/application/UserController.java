@@ -54,12 +54,16 @@ public class UserController {
 	private static final String URL_VOS_TRAJET            = "/user/vostrajet";
 	
 	private static final String URL_DELETE_MESS_TRAJET    = "/user/delmessage";
+	private static final String URL_DELETE_TRAJET         = "/user/deleteTrajet";
+	
 	private static final String URL_PROPOSER_TRAJET       = "/user/proposertrajet";
 	private static final String URL_VOS_MESSAGE           = "/user/trajets/vosmessage";
+	
 	
 	private static final String VUE_MATCH_TRAJET_COMPTE   = "/trajets/matchTrajet";
 	private static final String VUE_PROPOSER_TRAJET       = "/trajets/proposertrajet";
 	private static final String VUE_VOS_TRAJET            = "/trajets/vostrajet";
+	private static final String VUE_VOS_MESSAGE           = "/trajets/vosMessTrajet";
 	
 	
 	
@@ -281,18 +285,10 @@ public class UserController {
 		System.out.println("id"+compte.getProfil().getId()); //ok
 	
 		
-		//recupere le profil 
-//		List <Message> listMess = (List<Message>) messageService.findAll();
-//		
-//		for (Message message : listMess) {
-//			message.messAffi();
-//		}
-		
 		List <Message> messageUser = messageService.findByProfilMessage(compte.getProfil()); //ok
 		
 		for (Message message : messageUser) {
-			message.messAffi(); 
-			
+			message.messAffi(); 			
 		}
 		
 		List <PT> pts =  ptService.findByProfilVosTrajet(compte.getProfil());
@@ -311,18 +307,40 @@ public class UserController {
 	
 	/**
 	 * *********************************************************
+	 * 		delete vos trajet 
+	 *  **********************************************************
+	 */
+	@RequestMapping(value= {UserController.URL_DELETE_TRAJET +"/{id}" },method=RequestMethod.GET)
+	public String delVosTrajet(@PathVariable int id) {
+		
+		System.out.println("------------ delete  votre trajet "+id);
+		
+		//ici fonction id inactiver le trajet
+		
+		return "redirect:"+UserController.URL_VOS_TRAJET ;
+	}
+	
+	
+	/**
+	 * *********************************************************
 	 * 		Vos message des trajet creer
 	 *  **********************************************************
 	 */
 	
-	@RequestMapping(value= {UserController.URL_VOS_MESSAGE },method=RequestMethod.GET)
-	public String vosMessagreTrajet() {
-		System.out.println("vos message du trajet ");
+	@RequestMapping(value= {UserController.URL_VOS_MESSAGE },method=RequestMethod.POST)
+	public String vosMessagreTrajet(Model model,@ModelAttribute("id") Integer id) {
+		System.out.println("------------vos message du trajet ");
+		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
+		System.out.println("id trajet"+id);
+		
+		Trajet trajet = trajetService.find(id).get();
+		
+		List <Message> messageUser = messageService.findByTravel(trajet); //ok
 		
 		//requete de recuperation des message  function id trajet
 		//insert dans model 
-		
-		return VUE_VOS_TRAJET;
+		model.addAttribute("messages", messageUser);
+		return VUE_VOS_MESSAGE  ;
 	}
 	
 	/**
@@ -330,22 +348,16 @@ public class UserController {
 	 * 		DELETE MESS  URL_DELETE_MESS_TRAJET 
 	 *  **********************************************************
 	 */
-	@RequestMapping(value= {UserController.URL_DELETE_MESS_TRAJET },method=RequestMethod.GET)
-	public String deleteMessTrajet(Model model) {
+	@RequestMapping(value= {UserController.URL_DELETE_MESS_TRAJET+"/{id}" },method=RequestMethod.GET)
+	public String deleteMessTrajet(@PathVariable int id) {
 		System.out.println("delete Message trajet ");
 		
-		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
-		List <Message> messageUser = messageService.findByProfilMessage(compte.getProfil()); //ok
-		
-		//model.addAttribute("messages", messageUser);
+		System.out.println("delete id"+id);
 		//recuperation id message a delete
-		//return sur la vue 
+		//set inatig mess
+
 		
-		//model avc new vue de message de list 
-		//xhr
-		
-		
-		return VUE_VOS_TRAJET ;
+		return "redirect:"+UserController.URL_VOS_TRAJET ;
 	}
 	
 	

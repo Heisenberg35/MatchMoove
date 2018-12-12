@@ -1,6 +1,4 @@
 <#import "/spring.ftl" as spring/>
-
-
   <div class="list-message">
                     <h2>messages trajets</h2>
                     <div class="messages-content">
@@ -25,3 +23,5 @@
                         </ul>
                     </div>
    </div>
+ 
+  

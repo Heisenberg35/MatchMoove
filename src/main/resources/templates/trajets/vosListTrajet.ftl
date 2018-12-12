@@ -11,7 +11,10 @@
                 <div id="btn-close" class="btn-close">
                     <span></span>
                  </div>
-    			<#include "/trajets/vosMessTrajet.ftl"/>
+                 <div id="contenu" >
+                 		
+                 </div>
+    			
    			</div>
 
    <!--////////////////////////////////////////////////////-->
@@ -58,8 +61,8 @@
 
 
                             <div class="btn btn-delete deleteTrajet">
-                                <a href="">delete</a></div>
-                            <div id="deleteMessage" class="btn btn-seen-mess">
+                                <a href="/user/deleteTrajet/${pt.getTrajet().getId()}">delete</a></div>
+                            <div id="deleteMessage" class="btn btn-seen-mess voirMess">
                                 <a href="">messages</a>
                             </div>
 
@@ -69,6 +72,7 @@
                                   <span></span>
                               </div>
                             </div>
+                            <input id="secu" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         </li>
                     </ul>
                 </div>
@@ -95,3 +99,6 @@
     <script type="text/javascript" src="<@spring.url 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDixKXD0laxdblzB7LZpzGk5U-AhQEH4SY&libraries=places&callback=initMap'/>"></script>
 	<script type="text/javascript" src="<@spring.url '/javascript/jquery-3.2.1.min.js'/>"></script>
 	 <script type="text/javascript" src="<@spring.url '/javascript/vosTrajet.js'/>"></script>
+	 
+	 
+	 
