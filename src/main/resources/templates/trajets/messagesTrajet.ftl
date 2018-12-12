@@ -9,10 +9,7 @@
   	
         <textarea id="mess-trajet" name="message" rows="4" cols="40">
         
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-            In voluptates sint eligendi tempora deserunt error nemo accusamus, 
-            impedit numquam, illo exercitationem officiis natus placeat tempore 
-            voluptatum rerum nihil non maxime.
+           Vous pouvez écrire vos messages dans cette case. 
             
         </textarea>
         

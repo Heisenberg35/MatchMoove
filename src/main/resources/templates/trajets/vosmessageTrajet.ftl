@@ -1,4 +1,4 @@
 <#import "/spring.ftl" as spring/>
 
 
-<h1> ici vos message </h1>
+<h1>Ecrivez ici vos messages !</h1>

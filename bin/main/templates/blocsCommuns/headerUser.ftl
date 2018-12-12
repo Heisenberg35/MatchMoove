@@ -17,7 +17,7 @@
    				</#if>             
                 <li><a href="/user/proposertrajet">Proposer</a></li>
               	<li><a href="/user/researchtrajet">Rechercher</a></li>   
-              	<li><a href="/user/vostrajet">vos trajet</a></li>     
+              	<li><a href="/user/vostrajet">Vos trajets</a></li>     
               	      
                 <li><a href="/articles">BLOG</a></li>
                 <li><a href="/messagerie">Messagerie</a></li>

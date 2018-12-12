@@ -3,14 +3,10 @@
         
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/header.css'/>"/>
 
-<<<<<<< HEAD
 
 <#if trajetMessage?? && userEmail??>
  <#include "popupmsg.ftl">
 </#if>
-
-=======
->>>>>>> Pauline
 
 
 <header id="headerAdmin">
