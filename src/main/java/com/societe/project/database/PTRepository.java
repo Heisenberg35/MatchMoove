@@ -26,7 +26,11 @@ public interface PTRepository extends BaseCRUDRepository<PT> {
 //Normalement il faudrait faire une requete HQL
 	@Query (value = "SELECT DISTINCT trajet_id, id, nbre_place,volume_max,profil_id FROM pt GROUP BY trajet_id", nativeQuery = true)
 	List<PT> findAllPts();
-}
+
+	}
+
+
+
 
 
 
