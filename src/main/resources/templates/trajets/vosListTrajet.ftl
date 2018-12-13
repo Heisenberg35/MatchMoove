@@ -22,7 +22,8 @@
    <!--////////////////////////////////////////////////////-->
    
    <#if pts?has_content>
-   	<#list pts as pt> 
+   	<#list pts as pt>
+   		<#if pt.getTrajet().getArchive() != true> 
      <div class="list-trajet-user">
                 <div class="list-trajet">
                     <h2>trajet user</h2>
@@ -42,7 +43,7 @@
                         		<#assign arrive = adr.getStringAdr()>      
                               <#if id == 0>  
                                 <div id="depart" class="depart"> ${pt.getTrajet().getIsDirection()? then(depart,arrive)}</div>
-                                 <div>a </div>
+                                 <div>vers</div>
                                <#else>
                                 <div id="arrivied" class="arrivied"> ${pt.getTrajet().getIsDirection()? then(depart,arrive)} </div>
                             </div>
@@ -50,18 +51,18 @@
                         <#assign id++>
                      </#list> 
                      
-                     
+                     		
                             <div class="listUser">
-                                <h3>users du trajet</h3>
+                                <h3>Passagers : </h3>
                                 <ul>
                                     <li> federic larcher</li>
                                     <li> julien larcher</li>
                                 </ul>
                             </div>
 
-
+							
                             <div class="btn btn-delete deleteTrajet">
-                                <a href="/user/deleteTrajet/${pt.getTrajet().getId()}">delete</a></div>
+                                <a href="/user/deleteTrajet/${pt.getTrajet().getId()}">Supprimer</a></div>
                             <div id="deleteMessage" class="btn btn-seen-mess voirMess">
                                 <a href="">messages</a>
                             </div>
@@ -77,6 +78,7 @@
                     </ul>
                 </div>
 			</div>
+			</#if>
  		</#list> 
     </#if>  
    <!--////////////////////////////////////////////////////-->

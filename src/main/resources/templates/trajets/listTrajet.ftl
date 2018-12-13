@@ -29,7 +29,8 @@
                        
                        
                   <#if listPt?has_content>
-              <#list listPt as pt> 
+              <#list listPt as pt>
+              <#if pt.getTrajet().getArchive()!=true> 
                 <li class="list-content">
                          <input type="hidden" name="id" value="${pt.getId()}">
                             <div class="content-cube">
@@ -94,17 +95,19 @@
                                     <div>${pt.getTrajet().getPerimetre()}</div> 
                                </div>
                         
-                                  <a title="voir" href="#">Voir le trajet</a>
-                            
-                              
-                              
-                              
-                                  <a title="match" href="/user/validTrajet/${pt.getId()}">Je match !</a>
+                               <div class="trajet-match">
+									<a class="button btn-trajet seenTrajet" href="#">Voir trajet</a>
+                              	</div> 
+                              	
+                              <div class="trajet-match match">
+                                  <a class="button btn-match" href="/user/validTrajet/${pt.getId()}">Matcher !!</a>
+                              </div> 
                            
 
                              <div class="file-detail"><span class="btn-detail"></span></div>
                              <div class="br"></div>
                         </li>
+                        </#if>
                       </#list>
                 </#if>
                </ul>

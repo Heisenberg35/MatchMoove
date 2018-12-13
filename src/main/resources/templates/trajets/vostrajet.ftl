@@ -1,6 +1,6 @@
 <#import "/spring.ftl" as spring/>
 
-<#include "../blocsCommuns/head.ftl"/>	
+<#include "../blocsCommuns/head.ftl"/>
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/header.css'/>"/>
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/listeMessTrajectUser.css'/>"/>
 <link rel="stylesheet" type="text/css" href="<@spring.url '../css/mapVosTrajet.css'/>"/>
