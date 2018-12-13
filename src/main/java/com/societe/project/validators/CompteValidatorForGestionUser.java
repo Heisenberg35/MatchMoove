@@ -27,8 +27,8 @@ public class CompteValidatorForGestionUser implements Validator {
         	if (adresse.getNumero() == null) {
                 errors.rejectValue("profil.adresses[0].numero", "Le numéro de l'adresse est obligatoire");
             }
-        	if (adresse.getRue() == null || adresse.getRue().length() > 38) {
-        		errors.rejectValue("profil.adresses[0].rue", "La rue de l'adresse est obligatoire et/ou ne doit pas dépasser 38 caractères");
+        	if (adresse.getRue() == null || adresse.getRue().length() > 64) {
+        		errors.rejectValue("profil.adresses[0].rue", "La rue de l'adresse est obligatoire et/ou ne doit pas dépasser 64 caractères");
         	}
         	if (adresse.getCp() == null || adresse.getCp().toString().length() != 5 ) {
         		errors.rejectValue("profil.adresses[0].cp", "Le code postal est obligatoire et/ou doit comporté 5 chiffres");
