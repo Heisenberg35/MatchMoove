@@ -213,6 +213,7 @@ public class UserController {
 		}	
 		model.addAttribute("listPt", listPt);	
 		
+		//ici recuperer user dernier trajet et son email
 		Trajet userTraget = firebaseService.getUserTrajet();
 		if(!userTraget.getId().equals(-1))
 		{model.addAttribute("trajetMessage",userTraget);}
@@ -232,6 +233,12 @@ public class UserController {
 
 	public String matchTrajetSave(@PathVariable int id, Model model) {
 
+		//ici recuperer user dernier trajet et son email
+		Trajet userTraget = firebaseService.getUserTrajet();
+		if(!userTraget.getId().equals(-1))
+		{model.addAttribute("trajetMessage",userTraget);}
+		 model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail()); 
+		 
 		Boolean response = true;
 		int idUser = recuperationInfoLogin.recuperationCompteForUserLogge().getProfil().getId();
 		Profil profil = profilService.find(idUser).get();
@@ -287,6 +294,12 @@ public class UserController {
 	public String vosTrajet(Model model) {
 		System.out.println("vos trajets ");
 		
+		//ici recuperer user dernier trajet et son email
+		Trajet userTraget = firebaseService.getUserTrajet();
+		if(!userTraget.getId().equals(-1))
+		{model.addAttribute("trajetMessage",userTraget);}
+		 model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail()); 
+		 
 		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
 		
 		compte.afficheCompte();  //ok
