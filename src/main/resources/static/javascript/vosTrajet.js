@@ -98,6 +98,23 @@ $('.deleteMess').click(function(e){
 			$('#claque').addClass('fadein');
 		}	
 	})
+	
+	
+	
+	/**\
+    method if exist trajet
+	 **/
+
+    var isExistTrajet = function(){
+        if(!document.querySelector('.list-trajet-user')){
+            var container_map = document.querySelector('.container-map');
+            container_map.style.transform = container_map.style.transform  = "translateY(-150px)";
+        }
+    }
+
+
+    isExistTrajet();
+    
 /**************************************\
 	2..function initXhrPost()
 \**************************************/
