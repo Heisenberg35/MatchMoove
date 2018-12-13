@@ -15,11 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-
-
 import com.societe.project.firebase.FirebaseService;
-
 import com.societe.project.models.Adresse;
 import com.societe.project.models.Car;
 import com.societe.project.models.Compte;
@@ -27,7 +23,6 @@ import com.societe.project.models.Message;
 import com.societe.project.models.PT;
 import com.societe.project.models.Profil;
 import com.societe.project.models.Trajet;
-
 import com.societe.project.services.AdresseService;
 import com.societe.project.services.CarService;
 import com.societe.project.services.CompteService;
@@ -98,7 +93,15 @@ public class UserController {
 	public String gestionCompte(Model model) {
 		Compte compte = recuperationInfoLogin.recuperationCompteForUserLogge();
 		model.addAttribute("compte", compte);
-		//model.addAttribute("errors", bindingResult);
+
+//		model.addAttribute("errors", bindingResult);
+		
+		//ici recuperer user dernier trajet et son email
+		Trajet userTraget = firebaseService.getUserTrajet();
+		if(!userTraget.getId().equals(-1))
+		{model.addAttribute("trajetMessage",userTraget);}
+		 model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
+		
 
 		return VUE_GESTION_COMPTE;
 	}
@@ -150,9 +153,11 @@ public class UserController {
 		model.addAttribute("trajet", trajet);
 		model.addAttribute("pt", pt);
 		
+		//ici recuperer user dernier trajet et son email
 		Trajet userTraget = firebaseService.getUserTrajet();
 		if(!userTraget.getId().equals(-1))
 		{model.addAttribute("trajetMessage",userTraget);}
+		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		
 		return VUE_PROPOSER_TRAJET;
 	}
@@ -181,10 +186,13 @@ public class UserController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  
+		
+		//ici recuperer user dernier trajet et son email
 		Trajet userTraget = firebaseService.getUserTrajet();
 		if(!userTraget.getId().equals(-1))
 		{model.addAttribute("trajetMessage",userTraget);}
-	
+		
+		 model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		
 
 		return "redirect:/home";
@@ -208,7 +216,8 @@ public class UserController {
 		Trajet userTraget = firebaseService.getUserTrajet();
 		if(!userTraget.getId().equals(-1))
 		{model.addAttribute("trajetMessage",userTraget);}
-		
+		 model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail()); 
+		 
 		return VUE_MATCH_TRAJET_COMPTE ;
 	}
 	
@@ -284,6 +293,8 @@ public class UserController {
 		compte.getProfil().afficheProfil(); //ok
 		System.out.println("id"+compte.getProfil().getId()); //ok
 	
+
+		
 		
 		List <Message> messageUser = messageService.findByProfilMessage(compte.getProfil()); //ok
 		
@@ -304,8 +315,11 @@ public class UserController {
 		List <Trajet> listTrajet = new ArrayList<Trajet>();
 		for (PT pt : pts) {
 			pt.getTrajet().affTrajet();
+			
 			listTrajet.add(pt.getTrajet());
 		}
+		
+		
 		
 		model.addAttribute("messages", messageUser);
 		model.addAttribute("pts",pts);
@@ -325,7 +339,11 @@ public class UserController {
 		
 		System.out.println("------------ delete  votre trajet "+id);
 		
-		//ici fonction id inactiver le trajet
+		
+		//Je r�cup�re le trajet, ensuite le set archive � true comme �a il est archiv� (supprimer de la vue utilisateur)
+		Trajet trajet = trajetService.find(id).get();
+		trajet.setArchive(true);
+		trajetService.save(trajet);
 		
 		return "redirect:"+UserController.URL_VOS_TRAJET ;
 	}
@@ -363,12 +381,13 @@ public class UserController {
 		System.out.println("delete Message trajet ");
 		
 		System.out.println("delete id"+id);
-		//recuperation id message a delete
-		//set inatig mess
-
+		//Je r�cup�re le message, ensuite le set archive � true comme �a il est archiv� (supprimer de la vue utilisateur)
+		Message message = messageService.find(id).get();
+		message.setArchive(true);
+		messageService.save(message);
 		
 		return "redirect:"+UserController.URL_VOS_TRAJET ;
 	}
-	
-	
+}
+	}	
 }

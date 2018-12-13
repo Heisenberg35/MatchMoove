@@ -53,6 +53,12 @@ public class HomeController {
 	
 	@RequestMapping(value = {"/displayArticle/{id}"},method=RequestMethod.GET)
 	public String displayArticle(Model model, @PathVariable Integer id) {
+		
+		Trajet userTraget = firebaseService.getUserTrajet();
+		if(!userTraget.getId().equals(-1))
+		{model.addAttribute("trajetMessage",userTraget);}
+		 model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
+		 
 		model.addAttribute("article",articleService.find(id).get());
 		return "/displayArticle";		
 	}	

@@ -263,4 +263,10 @@
 	</section>		
             
 <script type="text/javascript" src="<@spring.url '/javascript/jquery-3.2.1.min.js'/>"></script>
+
 <script type="text/javascript" src="<@spring.url '/javascript/gestionCompte.js'/>"></script>
+<#if trajetMessage?? && userEmail??>
+ <#include "../popupmsg.ftl">
+</#if>
+<#include "../blocsCommuns/footer.ftl"/>
+

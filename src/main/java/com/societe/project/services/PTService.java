@@ -136,4 +136,8 @@ public class PTService extends BaseService<PT> {
 		return ptRepository.findByProfil(profil);
 	}
 	
+	public List<PT> findByTrajet(Trajet trajet) {
+		return ptRepository.findByTrajet(trajet);
+	}
+	
 }

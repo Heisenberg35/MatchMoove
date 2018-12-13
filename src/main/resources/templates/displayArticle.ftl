@@ -13,4 +13,10 @@
 	<h4><label><#if article?? && article.getDate()?? > ${article.getDate()?string["yyyy-MM-dd"]}<#else>null</#if> </label></h4>
 </div>
 
+
 <#include "blocsCommuns/footer.ftl"/>
+
+<#if trajetMessage?? && userEmail??>
+ <#include "popupmsg.ftl">
+</#if>
+

@@ -15,7 +15,8 @@ public interface PTRepository extends BaseCRUDRepository<PT> {
 	List<PT> findByNbrePlace(Integer nbrePlace);
 	List<PT> findByVolumeMax(Double volumeMax);
 	PT findByTrajet(Integer id);
-	List <PT> findByProfil(Profil profil);
+	List<PT> findByProfil(Profil profil);
+	List<PT> findByTrajet(Trajet trajet);
 	
 //	@Modifying
 //	@Query(value = "insert into pt (nbre_place, volume_max, profil_id, trajet_id) VALUES (?1, ?2, ?3, ?4)", nativeQuery = true)
@@ -24,4 +25,8 @@ public interface PTRepository extends BaseCRUDRepository<PT> {
 //Normalement il faudrait faire une requete HQL
 	@Query (value = "SELECT DISTINCT trajet_id, id, nbre_place,volume_max,profil_id FROM pt GROUP BY trajet_id", nativeQuery = true)
 	List<PT> findAllPts();
+<<<<<<< HEAD
 }
+
+}
+

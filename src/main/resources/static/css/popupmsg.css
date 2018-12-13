@@ -10,6 +10,7 @@
   bottom: 0px;
   right: 0px;
   width: 280px;
+
 }
 
 /* The popup chat - hidden by default */
@@ -19,7 +20,7 @@
   bottom: 0;
   right: 15px;
   border: 3px solid #f1f1f1;
-  z-index: 9;
+  z-index: 3000;
 }
 
 /* Add styles to the form container */
@@ -38,12 +39,16 @@
   background: #f1f1f1;
   resize: none;
   min-height: 200px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 /* When the textarea gets focus, do something */
 .form-container textarea:focus {
   background-color: #ddd;
   outline: none;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 /* Set a style for the submit/send button */

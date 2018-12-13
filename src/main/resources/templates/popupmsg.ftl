@@ -10,6 +10,7 @@
 
 
 <script>
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCRr8ZfguNkfDotA-ykiEmrAGepSYFNuDo",
@@ -43,7 +44,8 @@ if(m<10) {
 today = dd + '/' +mm  + '/' + yyyy + '    ' + hh + ':' + m ;
 
 
-var rootRef = firebase.database().ref('/conversations/${trajetMessage.getId()}')
+var rootRef = firebase.database().ref('/conversations/${trajetMessage.getId()}');
+var userRef = firebase.database().ref('/users/'+'${userEmail}'.replace(".", ""));
 
 function sayClicked() {
 
@@ -70,28 +72,51 @@ function sayClicked() {
 
 
  rootRef.once('value', function(snapshot) {
+ 
     snapshot.forEach(function(childSnapshot) {
 	    var childKey = childSnapshot.key;
 	    var childDataContent = childSnapshot.val().content;
 	     var childDataDate = childSnapshot.val().date;
+	     
 	    updateMessage("t2", childDataContent,childDataDate);
 	    
 	});
-	rootRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
-    updateMessage("t2", snapshot.val().content,snapshot.val().date);
+	
+userRef.once('value', function(snapshot){
+	if (snapshot != null && typeof snapshot.val().notifications !== 'undefined'){
+		document.getElementById("nbNotification").textContent = snapshot.val().notifications;
+	}else{
+		userRef.update({'notifications': '0'});
+		document.getElementById("nbNotification").textContent = 0;
+	}
+});
+	
+var child_added_first = true;	
+ 	rootRef.orderByKey().limitToLast(1).on('child_added',function(snapshot) {
+  
+      if (!child_added_first){
+         updateMessage("t2", snapshot.val().content,snapshot.val().date);
+          notification();
+      }
+     child_added_first = false;
     
-    notification();
+      
+   
    });
+  
 });
 
- //rootRef.orderByKey().limitToLast(1).off('child_added', listener);
+;
 
 </script>
 
 
 
 	
-<button id="alire"  class="open-button" onclick="openForm()"><img src="/images/message.png" class="popup"> <div id="nbNotification">-1</div> a lire</button>
+<button id="alire"  class="open-button" onclick="openForm()" ><img src="/images/message.png" class="popup">
+ <div id="nbNotification">0</div> a lire</button>
+
+
 <div class="chat-popup" id="myForm"  style="display: none;">
   <form action="" class="form-container">
     <h2>Retrouvez vos messages</h2>
@@ -112,6 +137,7 @@ function sayClicked() {
 <script>
 	var textarea = document.getElementById("t2");
 	setInterval(function(){
+	 
     	textarea.scrollTop = textarea.scrollHeight;
 		}, 1000);
 		
@@ -132,13 +158,16 @@ function sayClicked() {
  
 </script>
         
-      <input type="hidden"
+      <insput type="hidden"
             name="${_csrf.parameterName}"
             value="${_csrf.token}"/>
 <script>
+
 	function openForm() {
+    	document.getElementById("nbNotification").textContent = "0";
+    	userRef.update({'notifications': 0});
     	document.getElementById("myForm").style.display = "block";
-    	document.getElementById("nbNotification").textContent = "0"
+    	 
 	}
 
 	function  closeForm() {
@@ -146,14 +175,20 @@ function sayClicked() {
     	
 	}
 	
+
 	function notification(){
 	  var el = document.getElementById("myForm");
 	  var isHidden = el.style.display === "none"; 
-	  //alert(isHidden);
-		if (isHidden)
+		if (isHidden )
 		{
 		  var currentNb = Number(document.getElementById("nbNotification").textContent);
-		  document.getElementById("nbNotification").textContent = currentNb + 1;
+		  var notifications = currentNb + 1;
+		  document.getElementById("nbNotification").textContent = notifications;
+		  userRef.update({'notifications': notifications});
 		}
+		return notifications;
 	}
+
+	
+	
 </script>

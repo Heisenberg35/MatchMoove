@@ -13,12 +13,10 @@
             
         </textarea>
         
-        <div style="right: 40px">
-        	<div><input type="submit" name="valider" value=" Valider "></div>
-             <input id="id" type="hidden" name="id" value="">
-             <input id="secu" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-     
-             
+        <div id="message" class="trajet-match match ">
+			<a id="sendMess" class="button btn-match" href="#">Valider</a>
+			<input id="id" type="hidden" name="id" value="">
+			<input id="secu" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </div> 
    
     </div>

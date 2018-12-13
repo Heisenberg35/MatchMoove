@@ -95,6 +95,11 @@
 </#if>
 	
 <#if trajetMessage?? && userEmail??>
- <#include "popupmsg.ftl">
-</#if>	
+ <#include "../popupmsg.ftl">
+</#if>
+<br>
+<br>
+<br>
+
+
 <#include "../blocsCommuns/footer.ftl"/>
