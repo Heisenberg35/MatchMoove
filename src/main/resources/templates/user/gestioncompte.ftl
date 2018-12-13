@@ -177,10 +177,11 @@
     		</#if> 
     		
     			<h2>Voiture</h2>
-			<div style="position: absolute; left: 300; bottom: -320">
+			<div style="position: absolute;
+    left: 190px">
 	        	<input class="form-check-input" type="checkbox" value="" id="ignorePass">
 				<label class="label label-nom" for="ignoreepass">
-					Modifier votre véhicule
+					Modifier
 				</label>
 			</div>
 			
@@ -266,7 +267,5 @@
 
 <script type="text/javascript" src="<@spring.url '/javascript/gestionCompte.js'/>"></script>
 <#if trajetMessage?? && userEmail??>
- <#include "../popupmsg.ftl">
 </#if>
-<#include "../blocsCommuns/footer.ftl"/>
 

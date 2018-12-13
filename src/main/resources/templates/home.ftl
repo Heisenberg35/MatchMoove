@@ -4,6 +4,7 @@
 <#include "blocsCommuns/headerUser.ftl"/>	
 <link rel="stylesheet" type="text/css" href="<@spring.url '/css/trajetsActu.css'/>"/>
 <link rel="stylesheet" type="text/css" href="<@spring.url '/css/default.css'/>"/>
+<#include "blocsCommuns/footer.ftl"/>
 <title>Home</title>
 
 
@@ -48,9 +49,12 @@
         
     </#list>
 	</section>
+
+
  
 </#if>	
 <#if trajetMessage?? && userEmail??>
- <#include "popupmsg.ftl">
+<#include "popupmsg.ftl"/>
 </#if>
-<#include "blocsCommuns/footer.ftl"/>
+
+
