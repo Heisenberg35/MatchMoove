@@ -389,5 +389,3 @@ public class UserController {
 		return "redirect:"+UserController.URL_VOS_TRAJET ;
 	}
 }
-	}	
-}

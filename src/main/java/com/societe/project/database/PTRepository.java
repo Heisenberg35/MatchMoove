@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.societe.project.database.base.BaseCRUDRepository;
 import com.societe.project.models.PT;
 import com.societe.project.models.Profil;
+import com.societe.project.models.Trajet;
 
 @Repository
 public interface PTRepository extends BaseCRUDRepository<PT> {
@@ -25,8 +26,4 @@ public interface PTRepository extends BaseCRUDRepository<PT> {
 //Normalement il faudrait faire une requete HQL
 	@Query (value = "SELECT DISTINCT trajet_id, id, nbre_place,volume_max,profil_id FROM pt GROUP BY trajet_id", nativeQuery = true)
 	List<PT> findAllPts();
-<<<<<<< HEAD
-}
-
-}
-
+	}
