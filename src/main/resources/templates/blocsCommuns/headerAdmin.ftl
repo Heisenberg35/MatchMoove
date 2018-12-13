@@ -15,7 +15,7 @@
                     <#if roles?has_content>
     						<#list roles as r>
             					<#if r=="ROLE_ADMIN">
-            						<li><a href="/admin/">Administrateur</a></li>
+            						<li><a href="/admin/">Gestion Administration</a></li>
             					</#if>
         					</#list>
    						</#if>
@@ -33,9 +33,7 @@
             			</#if>
 
                         <li><a href="/admin/createcompte">Créer un compte</a></li>
-                     	<li><a href="/admin/listuser">Gestion des comptes</a></li>
-						<li><a href="/articles">BLOG</a></li>
-						<li><a href="/messages">Messages</a></li>						
+                     	<li><a href="/admin/listuser">Gestion des comptes</a></li>					
 						<a href="/logout"><img src="/images/logout.png"></a>
                     </ul>
 				</nav>	

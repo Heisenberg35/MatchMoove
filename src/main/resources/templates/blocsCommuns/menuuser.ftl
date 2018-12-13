@@ -11,7 +11,7 @@
    						<#if roles??>
     						<#list roles as r>
             					<#if r=="ROLE_ADMIN">
-            						<li><a href="#">Administrateur</a></li>
+            						<li><a href="#">Gestion Administration</a></li>
             					</#if>
         					</#list>
    						</#if>
@@ -31,9 +31,6 @@
             			
                             <li><a href="/user/researchtrajet">Proposer</a></li>
 			              	<li><a href="/user/proposertrajet">Rechercher</a></li>
-			                
-			                <li><a href="/articles">BLOG</a></li>
-			                <li><a href="/messagerie">Messagerie</a></li>
 			                
 			
 						    <li><a href="/logout"><img src="images/logout.png"></a></li>
