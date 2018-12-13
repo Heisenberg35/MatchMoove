@@ -47,8 +47,7 @@
 .form-container textarea:focus {
   background-color: #ddd;
   outline: none;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
+  
 }
 
 /* Set a style for the submit/send button */

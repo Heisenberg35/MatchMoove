@@ -53,7 +53,7 @@ public class FirebaseService {
         	Date temp = recuperationInfoLogin.recuperationCompteForUserLogge().getProfil().getPT().get(0).getTrajet().getDateDepart();
         	result =    recuperationInfoLogin.recuperationCompteForUserLogge().getProfil().getPT().get(0).getTrajet();
 			for(PT pt : recuperationInfoLogin.recuperationCompteForUserLogge().getProfil().getPT()) {
-				if(temp.after(pt.getTrajet().getDateDepart()))
+				if(temp.before(pt.getTrajet().getDateDepart()))
 				{
 					if( currentDate.compareTo(pt.getTrajet().getDateDepart()) < 0) 
 					{

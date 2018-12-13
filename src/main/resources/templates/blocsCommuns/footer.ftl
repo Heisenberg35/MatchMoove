@@ -1,3 +1,6 @@
+
+
+
 <link rel="stylesheet" type="text/css" href="<@spring.url '/../css/footer.css'/>"/>
 <div id="footer">
 <img src="/images/voiture.png" id="car">	

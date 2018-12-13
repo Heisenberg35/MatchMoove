@@ -64,7 +64,11 @@
 							<label class="label label-nom" for="heureDepart">Heure :</label>
 							<select name="heureDepart">
 								<#list 0..23 as i>
+								 <#if i < 10 >
+   	                               <option value="0${i}">0${i}</option>
+   	                               <#else>
 									<option value="${i}">${i}</option>
+							     </#if>
 				 				</#list>      
 							</select>
                         </div>
@@ -72,7 +76,12 @@
 							<label class="label label-nom" for="minuteDepart">Minute :</label>
 							<select name="minuteDepart">
 								<#list 0..11 as i>
-									<option value="${i*5}">${i*5}</option>
+									<#assign c = i*5>
+   	                                 <#if c < 10 >
+   	                                 <option value="0${c}">0${c}</option>
+   	                                 <#else>
+   	                                 <option value="${c}">${c}</option>
+                                	 </#if>
 				 				</#list>     
 							</select>
                         </div>
@@ -94,12 +103,7 @@
 <p style="text-align: center">Si vous souhaitez ajouter un trajet, il faut d'abord <a href="/user/gestioncompte">ajouter un véhicule à votre profil !</a></p>
 </#if>
 	
-<#if trajetMessage?? && userEmail??>
- <#include "../popupmsg.ftl">
-</#if>
-<br>
-<br>
-<br>
+
 
 
 <#include "../blocsCommuns/footer.ftl"/>
