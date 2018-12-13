@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.societe.project.controllers.base.BaseController;
 import com.societe.project.models.Message;
 import com.societe.project.services.MessageService;
@@ -41,23 +40,15 @@ public class MessageController extends BaseController<Message> {
 		return BASE_PAGE_NAME;
 	}
  
-
 	@Override
 	protected void setOtherAttributes(Model model) {
 		//model.addAttribute("trajets",trajetService.findAll());
-	    //	model.addAttribute("profils",profilService.findAll());
-		
+	    //	model.addAttribute("profils",profilService.findAll());	
 	}
-	
     
 	@Override
 	protected void setupOtherFields(Message item) {
 		item.setTrajet(trajetService.find(item.getTrajet().getId()).get());
-		item.setProfil(profilService.find(item.getProfil().getId()).get());
-		
-		
+		item.setProfil(profilService.find(item.getProfil().getId()).get());	
 	}
-
-
 }
-

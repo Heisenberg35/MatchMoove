@@ -1,7 +1,6 @@
 package com.societe.project.dto;
 
 import org.springframework.stereotype.Service;
-
 import com.societe.project.models.Compte;
 import com.societe.project.models.Profil;
 
@@ -10,7 +9,6 @@ public class CompteProfilDto {
 
     private Compte compte;
     private Profil profil;
-    
     public CompteProfilDto() {
     	super();
     	compte = new Compte();
@@ -36,4 +34,3 @@ public class CompteProfilDto {
     	return profil;
     }
 }
-

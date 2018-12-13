@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.societe.project.controllers.base.BaseController;
 import com.societe.project.models.Profil;
-import com.societe.project.services.CompteService;
 import com.societe.project.services.ProfilService;
 import com.societe.project.services.base.BaseService;
 
@@ -47,7 +45,5 @@ public class ProfilController extends BaseController<Profil> {
 	@Override
 	protected void setupOtherFields(Profil item) {
 //		item.setCompte(compteService.find(item.getCompte().getId()).get());
-	}
-	
-	
+	}	
 }

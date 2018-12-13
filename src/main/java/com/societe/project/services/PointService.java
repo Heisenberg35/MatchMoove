@@ -1,11 +1,8 @@
 package com.societe.project.services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.societe.project.database.BagageRepository;
 import com.societe.project.database.PointRepository;
 import com.societe.project.database.base.BaseCRUDRepository;
 import com.societe.project.models.Point;
@@ -29,5 +26,4 @@ public class PointService extends BaseService<Point> {
 	}
 	return result;
 	}
-
 }

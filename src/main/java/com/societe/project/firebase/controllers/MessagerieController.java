@@ -1,22 +1,11 @@
 package com.societe.project.firebase.controllers;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.google.api.core.ApiFuture;
-import com.google.firebase.database.DatabaseReference;
-import com.societe.project.firebase.FirebaseNotificationObserver;
-import com.societe.project.firebase.FirebaseOpenHelper;
 import com.societe.project.firebase.FirebaseService;
-import com.societe.project.models.PT;
-import com.societe.project.models.Trajet;
 import com.societe.project.services.RecuperationInfoLoginService;
 
 @Controller
@@ -60,5 +49,4 @@ public class MessagerieController {
 		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		return "/messagerie";
 	}
-	
 }

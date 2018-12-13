@@ -1,13 +1,10 @@
 package com.societe.project.services.base;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import com.societe.project.database.DBItem;
 import com.societe.project.database.base.BaseCRUDRepository;
-
 
 public abstract class BaseService<T extends DBItem> {
 
@@ -43,5 +40,4 @@ public abstract class BaseService<T extends DBItem> {
 	public void delete(List<T> items) {
 		this.getCRUDRepository().deleteAll(items);
 	}
-	
 }

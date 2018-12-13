@@ -1,23 +1,12 @@
 package com.societe.project.models;
 
-
-
-
 import java.sql.Date;
-
 import java.util.ArrayList;
-
 import java.util.List;
-
 import javax.persistence.Column;
-
 import javax.persistence.Entity;
-
 import javax.persistence.OneToMany;
-
 import javax.persistence.Table;
-
-
 import com.societe.project.database.DBItem;
 
 @Entity
@@ -58,8 +47,6 @@ public class Trajet extends DBItem {
     @OneToMany(targetEntity=Message.class,mappedBy="trajet")
 	private List<Message> messages;
     
-    
-
 	/***********************************************
 	 * GETTEUR ET SETTEUR
 	 ***********************************************/
@@ -151,7 +138,6 @@ public class Trajet extends DBItem {
 	/***********************************************
 	 * CONSTRUCTEURS
 	 ***********************************************/
-	
 
 	public Trajet(String nom,Double perimetre, Date dateDepart,Integer heureDepart,Integer minuteDepart,List<PT>pts,List<Bagage>bagages,List<Message>messages) {
 
@@ -184,7 +170,6 @@ public class Trajet extends DBItem {
 	this.messages = new ArrayList<Message>();
 	
 	}
-	
 	
 	/***********************************************
 	 * method

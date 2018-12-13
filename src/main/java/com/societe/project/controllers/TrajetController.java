@@ -1,11 +1,9 @@
 package com.societe.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.societe.project.controllers.base.BaseController;
 import com.societe.project.models.Trajet;
 import com.societe.project.services.TrajetService;
@@ -36,12 +34,9 @@ public class TrajetController extends BaseController<Trajet> {
 		return BASE_PAGE_NAME;
 	}
  
-	
-	
 	@Override
 	protected void setupOtherFields(Trajet item) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
@@ -49,9 +44,4 @@ public class TrajetController extends BaseController<Trajet> {
 		// TODO Auto-generated method stub
 		
 	}
-
-	
-	
-	
-
 }

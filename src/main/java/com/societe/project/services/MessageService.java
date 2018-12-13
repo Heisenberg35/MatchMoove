@@ -41,7 +41,4 @@ public class MessageService extends BaseService<Message>{
 	public List<Message> findByTravel(Trajet trajet){
 		return messageRepository.findByTrajet(trajet);
 	}
-	
-	
-
 }

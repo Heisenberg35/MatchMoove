@@ -12,3 +12,5 @@
 	<p><label><#if article?? && article.getDescription()?? > ${article.getDescription()}<#else>null</#if> </label></p>
 	<h4><label><#if article?? && article.getDate()?? > ${article.getDate()?string["yyyy-MM-dd"]}<#else>null</#if> </label></h4>
 </div>
+
+<#include "blocsCommuns/footer.ftl"/>

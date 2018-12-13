@@ -1,10 +1,7 @@
 package com.societe.project.models;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -27,10 +24,6 @@ private Integer nbrePlace;
 
 @Column
 private Double volumeMax;
-
-
-
-
 
 /***********************************************
  * GETTEUR ET SETTEUR
@@ -97,4 +90,3 @@ private Double volumeMax;
 		}
 	}
 }
-

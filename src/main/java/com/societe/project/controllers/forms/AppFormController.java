@@ -23,7 +23,6 @@ import com.societe.project.services.RoleService;
 import com.societe.project.validators.CompteValidator;
 import com.societe.project.validators.Profvalidator;
 
-
 @Controller
 public class AppFormController {
 	
@@ -57,13 +56,11 @@ public class AppFormController {
 	@Autowired
 	private RoleService roleService;
 	@Autowired
-	private CompteService compteService;
-	
+	private CompteService compteService;	
 	@Autowired
 	private ProfilService profilService;
 	@Autowired
 	private CompteValidator compteValidator;
-	
 	@Autowired
 	private Profvalidator profilValidator;
 	
@@ -73,20 +70,20 @@ public class AppFormController {
 	*************************************************
 	*/	
 	
-	@RequestMapping(value= {AppFormController.URL_CREATE_COMPTE}, method=RequestMethod.GET)
+	@RequestMapping(value = {AppFormController.URL_CREATE_COMPTE} , method = RequestMethod.GET)
 	public String createCompteM(Model model) throws IOException {
 		
-		model.addAttribute("detailPath",URL_CREATE_COMPTE);
-		model.addAttribute("roles", roleService.findAll());
+		model.addAttribute("detailPath" , URL_CREATE_COMPTE);
+		model.addAttribute("roles" , roleService.findAll());
 		//model.addAttribute("trajetId",firebaseService.getTrajetId());
-		model.addAttribute("userEmail",recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
+		model.addAttribute("userEmail" , recuperationInfoLogin.recuperationCompteForUserLogge().getEmail());
 		System.out.println("get de create user");
 		
 		return VUE_CREATE_COMPTE;
 	}
 	
-	@RequestMapping(value= {AppFormController.URL_CREATE_COMPTE}, method=RequestMethod.POST)
-	public String createCompteValidateM(@ModelAttribute Compte compte,@ModelAttribute Profil profil,@RequestParam String confirm, Model model) {
+	@RequestMapping(value = {AppFormController.URL_CREATE_COMPTE}, method = RequestMethod.POST)
+	public String createCompteValidateM(@ModelAttribute Compte compte , @ModelAttribute Profil profil,@RequestParam String confirm, Model model) {
 		
 		System.out.println("Post de create user");
 		System.out.println(confirm);
@@ -95,13 +92,13 @@ public class AppFormController {
 		compte.afficheCompte();
 		profil.afficheProfil();
 
-		boolean isvalid =false;
+		boolean isvalid = false;
 		
 		if(!compteValidator.validateCompteAndPassWord(compte) && !profilValidator.validateProfil(profil) && compteValidator.isComparePass(compte.getPassword(),confirm)) {
 			
 			System.out.println("compte not exist");
 			
-			isvalid =true;
+			isvalid = true;
 			
 			compteService.getDto().createCompte(compte);
 			compteService.getDto().createProfit(profil);
@@ -112,14 +109,13 @@ public class AppFormController {
 		}else {
 			System.out.println("error compte");
 			System.out.println(compteValidator.getErrors().get("password"));
-			model.addAttribute("detailPath",VUE_CREATE_COMPTE );
-			model.addAttribute("roles", roleService.findAll());
-			model.addAttribute("isExistMail",true);
-			model.addAttribute("form",compteValidator.getErrors());
+			model.addAttribute("detailPath" , VUE_CREATE_COMPTE );
+			model.addAttribute("roles" , roleService.findAll());
+			model.addAttribute("isExistMail" , true);
+			model.addAttribute("form" , compteValidator.getErrors());
 		}
 		return (isvalid)? "redirect:"+AdminController.BASE_URL: VUE_CREATE_COMPTE;
 	}
-	
 	
 	/*
 	*************************************************
@@ -127,13 +123,13 @@ public class AppFormController {
 	*************************************************
 	*/	
 	
-	@RequestMapping(value= {AppFormController.URL_LISTUSER_COMPTE}, method=RequestMethod.GET)
+	@RequestMapping(value = {AppFormController.URL_LISTUSER_COMPTE} , method = RequestMethod.GET)
 	public String listUser(Model model) {
 		
 		System.out.println("Liste user");
 		
-		model.addAttribute("detailPath","/admin");
-		model.addAttribute("roles", roleService.findAll());
+		model.addAttribute("detailPath" , "/admin");
+		model.addAttribute("roles" , roleService.findAll());
 		
 		for (Profil p : profilService.findAll()) {
 			p.afficheProfil();
@@ -150,15 +146,15 @@ public class AppFormController {
 					adr.affAdress();
 				}
 		}
-		model.addAttribute("items",compteService.findAll());
-		model.addAttribute("update", true);
+		model.addAttribute("items" , compteService.findAll());
+		model.addAttribute("update" , true);
 		
 		System.out.println("get list user");
 		
 		return VUE_LISTUSER_COMPTE;
 	}
 	
-	@RequestMapping(value= {AppFormController.URL_UPDATE_COMPTE }, method=RequestMethod.POST)
+	@RequestMapping(value = {AppFormController.URL_UPDATE_COMPTE }, method = RequestMethod.POST)
 	public String updateCopteUser(@ModelAttribute Compte compte,@ModelAttribute Profil profil) {
 	
 		System.out.println("update user");
@@ -168,10 +164,10 @@ public class AppFormController {
 	    compte.getRole().getName();
 	    System.out.println(compte.getRole().getName());
 	  compteService.uptdateCompte(compte,profil);
-		return "redirect:"+AdminController.BASE_URL;
+		return "redirect:" + AdminController.BASE_URL;
 	}
 	
-	@RequestMapping(value= {AppFormController.URL_DELETE_COMPTE }, method=RequestMethod.GET)
+	@RequestMapping(value = {AppFormController.URL_DELETE_COMPTE } , method = RequestMethod.GET)
 	public String delete(@ModelAttribute Compte compte,@PathVariable int id) {
 	
 		System.out.println("delete user");
@@ -179,6 +175,6 @@ public class AppFormController {
 		
 		compteService.disableCompte(compte,id);
 		
-		return "redirect:"+AdminController.BASE_URL;
+		return "redirect:" + AdminController.BASE_URL;
 	}
 }

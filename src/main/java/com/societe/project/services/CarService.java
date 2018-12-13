@@ -1,10 +1,8 @@
 package com.societe.project.services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.societe.project.database.CarRepository;
 import com.societe.project.database.base.BaseCRUDRepository;
 import com.societe.project.models.Car;
@@ -32,5 +30,4 @@ public class CarService extends BaseService<Car> {
 		}
 		return result;
 	}
-
 }

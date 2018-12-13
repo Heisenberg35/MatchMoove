@@ -2,15 +2,12 @@ package com.societe.project.models;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import com.societe.project.database.DBItem;
-
 
 @Entity
 @Table(name="role")
@@ -71,5 +68,4 @@ public class Role extends DBItem {
 		this.comptes = comptes;
 		this.profils.add(profil) ;
 	}
-
 }

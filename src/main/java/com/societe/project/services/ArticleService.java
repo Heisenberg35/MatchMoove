@@ -1,10 +1,8 @@
 package com.societe.project.services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.societe.project.database.ArticleRepository;
 import com.societe.project.database.base.BaseCRUDRepository;
 import com.societe.project.models.Article;
@@ -35,7 +33,6 @@ public class ArticleService extends BaseService<Article> {
   
 	public List<Article>findLatestArticles()
 	{
-		return this.articleRepository.findTop3ByOrderByDateDesc();
-		
+		return this.articleRepository.findTop3ByOrderByDateDesc();	
 	}
 }
