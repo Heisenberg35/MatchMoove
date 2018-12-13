@@ -8,7 +8,7 @@
            				<#if roles??>
     						<#list roles as r>
             					<#if r=="ROLE_ADMIN">
-            						<li><a href="/admin/">Administrateur</a></li>
+            						<li><a href="/admin/">Gestion Administration</a></li>
             					</#if>
         					</#list>
    						</#if>
@@ -31,7 +31,6 @@
                         <li><a href="#">Ajout Article    </a></li>
                         <li><a href="#">Modifier Article </a></li>
                         
-                        <li><a href="#">BLOG</a></li>
 			     		<li>
 			     			<a href="/logout"><img src="../img/logout.png"></a>
 			     		</li>
