@@ -15,11 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-
-
 import com.societe.project.firebase.FirebaseService;
-
 import com.societe.project.models.Adresse;
 import com.societe.project.models.Car;
 import com.societe.project.models.Compte;
@@ -27,7 +23,6 @@ import com.societe.project.models.Message;
 import com.societe.project.models.PT;
 import com.societe.project.models.Profil;
 import com.societe.project.models.Trajet;
-
 import com.societe.project.services.AdresseService;
 import com.societe.project.services.CarService;
 import com.societe.project.services.CompteService;
@@ -284,6 +279,8 @@ public class UserController {
 		compte.getProfil().afficheProfil(); //ok
 		System.out.println("id"+compte.getProfil().getId()); //ok
 	
+
+		
 		
 		List <Message> messageUser = messageService.findByProfilMessage(compte.getProfil()); //ok
 		
@@ -304,8 +301,11 @@ public class UserController {
 		List <Trajet> listTrajet = new ArrayList<Trajet>();
 		for (PT pt : pts) {
 			pt.getTrajet().affTrajet();
+			
 			listTrajet.add(pt.getTrajet());
 		}
+		
+		
 		
 		model.addAttribute("messages", messageUser);
 		model.addAttribute("pts",pts);
@@ -325,7 +325,11 @@ public class UserController {
 		
 		System.out.println("------------ delete  votre trajet "+id);
 		
-		//ici fonction id inactiver le trajet
+		
+		//Je récupère le trajet, ensuite le set archive à true comme ça il est archivé (supprimer de la vue utilisateur)
+		Trajet trajet = trajetService.find(id).get();
+		trajet.setArchive(true);
+		trajetService.save(trajet);
 		
 		return "redirect:"+UserController.URL_VOS_TRAJET ;
 	}
@@ -363,12 +367,11 @@ public class UserController {
 		System.out.println("delete Message trajet ");
 		
 		System.out.println("delete id"+id);
-		//recuperation id message a delete
-		//set inatig mess
-
+		//Je récupère le message, ensuite le set archive à true comme ça il est archivé (supprimer de la vue utilisateur)
+		Message message = messageService.find(id).get();
+		message.setArchive(true);
+		messageService.save(message);
 		
 		return "redirect:"+UserController.URL_VOS_TRAJET ;
-	}
-	
-	
+	}	
 }
