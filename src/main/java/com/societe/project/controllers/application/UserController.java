@@ -340,7 +340,7 @@ public class UserController {
 		System.out.println("------------ delete  votre trajet "+id);
 		
 		
-		//Je récupère le trajet, ensuite le set archive à true comme ça il est archivé (supprimer de la vue utilisateur)
+		//Je rï¿½cupï¿½re le trajet, ensuite le set archive ï¿½ true comme ï¿½a il est archivï¿½ (supprimer de la vue utilisateur)
 		Trajet trajet = trajetService.find(id).get();
 		trajet.setArchive(true);
 		trajetService.save(trajet);
@@ -381,11 +381,14 @@ public class UserController {
 		System.out.println("delete Message trajet ");
 		
 		System.out.println("delete id"+id);
-		//Je récupère le message, ensuite le set archive à true comme ça il est archivé (supprimer de la vue utilisateur)
+		//Je rï¿½cupï¿½re le message, ensuite le set archive ï¿½ true comme ï¿½a il est archivï¿½ (supprimer de la vue utilisateur)
 		Message message = messageService.find(id).get();
 		message.setArchive(true);
 		messageService.save(message);
 		
 		return "redirect:"+UserController.URL_VOS_TRAJET ;
-	}	
+	}
+
 }
+
+

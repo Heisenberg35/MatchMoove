@@ -48,7 +48,12 @@ h5
 
 #displayArticle
 {
-	margin: 50px;
+	Background-image: url(../images/leaves.png);
+    width: 800px;
+    border: 0.1px solid #e3e3e3;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #flex
@@ -80,8 +85,8 @@ h5
     display: flex;
     flex-wrap: wrap;
     height: 300px;
-    border: 1px solid black;
     justify-content: space-around;
+    
 }
 
 

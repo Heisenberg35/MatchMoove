@@ -2,16 +2,13 @@ package com.societe.project.models;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import org.springframework.format.annotation.DateTimeFormat;
-
 import com.societe.project.database.DBItem;
 
 @Entity
@@ -22,12 +19,9 @@ public class Message extends DBItem {
 	*************************************************
 	*    @Private
 	*************************************************
-	 */
-	
-	
+	 */	
 	@Column(name="content")
 	private String content;
-	
 	
 	@Column(name="date")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -69,11 +63,9 @@ public class Message extends DBItem {
 		this.trajet = trajet;
 		this.profil = profil;
 	}
-
-
+	
 	public Message(String content,Date date,Profil profil)
-	{
-		
+	{	
 		this.content = content;
 	    this.date = date;
 	    this.profil = profil;
@@ -88,14 +80,12 @@ public class Message extends DBItem {
 	public Message() {
 		super();
 	}
-	
-	
+		
 	/*
 	*************************************************
 	*    @Getter setter
 	*************************************************
 	 */
-
 
 	public String getContent() {
 		return content;
@@ -149,13 +139,10 @@ public class Message extends DBItem {
 		profil.afficheProfil();
 		trajet.affTrajet();
 	}
-
 	
 	/*
 	*************************************************
 	*    @Method
 	*************************************************
 	 */
-	
-	
 }

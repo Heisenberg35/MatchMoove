@@ -1,25 +1,14 @@
 package com.societe.project.firebase;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Date;
-import java.time.LocalDate;
-
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.societe.project.models.Message;
 
 public class FirebaseOpenHelper {
 	
-
 	private FirebaseDatabase defaultDatabase;
 	
 	private FirebaseOpenHelper() throws IOException {
@@ -46,9 +35,4 @@ public class FirebaseOpenHelper {
 	public FirebaseDatabase getDatabase() {
 		return defaultDatabase;
 	}
-	
-
-   
-        		
-  
 }

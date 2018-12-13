@@ -2,7 +2,6 @@ package com.societe.project.models;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -116,7 +115,6 @@ public class Profil extends DBItem {
         return bagages;
     }
 
-    
 	/***********************************************
 	 * CONSTRUCTEURS
 	 ***********************************************/
@@ -126,8 +124,7 @@ public class Profil extends DBItem {
 		this.roles = new ArrayList<Role>();
 		this.cars = new ArrayList<Car>();
 		this.pts = new ArrayList<PT>();
-		this.bagages = new ArrayList<Bagage>();
-		
+		this.bagages = new ArrayList<Bagage>();	
 	}
 	
 	public Profil(String firstname, String lastname, String phoneNumber) {
@@ -157,12 +154,9 @@ public class Profil extends DBItem {
 				+ pts + ", bagages=" + bagages + "]";
 	}
 	
-	
-	
 	public void afficheProfil() {
 		System.out.println("Profil : ");
 		System.out.println("name :  "+firstname);
 		System.out.println("prenom :  "+lastname);	
-	}
-	
+	}	
 }

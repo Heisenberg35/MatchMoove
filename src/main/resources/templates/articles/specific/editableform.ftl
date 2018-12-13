@@ -1,6 +1,10 @@
-<form class="text-center border border-light" action="${detailPath}/edit" method="POST">
-<#if item??>
-    
+<h2>Création d'un nouvel article</h2>
+<form style="border: 0.1px solid #e3e3e3; 
+			 margin-left: auto;
+    		 margin-right: auto;
+    		 width: 500px;" 
+    action="${detailPath}/edit" method="POST">
+<#if item??>  
     <#if item.getId()??>
     <input type="hidden" name="id" value="${item.getId()}">
     </#if>
@@ -22,5 +26,5 @@
 
     
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <div><input type="submit" value="Save"></div>
+    <div><input type="submit" value="Enregistrer"></div>
 </form> 

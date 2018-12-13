@@ -5,8 +5,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-
 import com.societe.project.controllers.base.BaseController;
 import com.societe.project.models.Role;
 import com.societe.project.services.ProfilService;
@@ -52,5 +50,4 @@ public class RoleController extends BaseController<Role> {
 	protected void setupOtherFields(Role item) {
 		//item.setProfil(profilService.find(item.getProfil().getId()).get());
 	}
-
 }

@@ -2,7 +2,6 @@ package com.societe.project.dtos.base;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.societe.project.database.DBItem;
 
 public abstract class BaseDeleteCriteriaDTO <T extends DBItem> {

@@ -2,20 +2,11 @@ package com.societe.project.firebase;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-
-import org.json.JSONObject;
-import org.json.JSONStringer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-
 import com.google.firebase.database.DatabaseReference;
-import com.google.gson.JsonObject;
 import com.societe.project.firebase.models.FirstMessage;
-import com.societe.project.models.Message;
 import com.societe.project.models.PT;
 import com.societe.project.models.Trajet;
 import com.societe.project.services.RecuperationInfoLoginService;
@@ -33,18 +24,17 @@ public class FirebaseService {
 			 Date currentDate = new Date(Calendar.getInstance().getTime().getTime());
 			 
 			 FirstMessage firstMessage = new FirstMessage();
-		    firstMessage.setContent("Conversation  pour trajet "+ trajetService.find(id).get().getNom() );
+		    firstMessage.setContent("Conversation  pour trajet " + trajetService.find(id).get().getNom() );
 		    firstMessage.setDate( currentDate.toString());
 		   
             System.out.println(firstMessage);
 			String trajetId = String.valueOf(id);
 			
-		    Ref.child(trajetId).push().setValueAsync(firstMessage);
-		  
+		    Ref.child(trajetId).push().setValueAsync(firstMessage);		  
 	   }
 	
 	public Trajet getUserTrajet(){
-		Trajet result =new Trajet(-1,"lolo");
+		Trajet result = new Trajet(-1,"lolo");
 	    Date currentDate = new Date(Calendar.getInstance().getTime().getTime());
 		System.out.println(currentDate);
 		 
@@ -60,12 +50,9 @@ public class FirebaseService {
 						temp = pt.getTrajet().getDateDepart();
 						result = pt.getTrajet();
 					}
-				}
-			
+				}			
 			}
 		}
 		return result;
 	}
-	
-
 }

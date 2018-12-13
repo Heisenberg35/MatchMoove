@@ -205,7 +205,7 @@
 				 <div class="form-group">
 							<label class="label label-nom">Nombre de place :</label>
 							<div class="input-group">
-								<input type="number" placeholder="nombre de place" id="nbrePlace" name="profil.cars[${index}].nombreDePlace" value="<#if voiture.getNombreDePlace()??>${voiture.getNombreDePlace()}</#if>" disabled required></p>
+								<input type="number" min=1 placeholder="nombre de place" id="nbrePlace" name="profil.cars[${index}].nombreDePlace" value="<#if voiture.getNombreDePlace()??>${voiture.getNombreDePlace()}</#if>" disabled required></p>
 							</div>
                  </div>				
 
@@ -242,7 +242,7 @@
 				 <div class="form-group">
 							<label class="label label-nom">Nombre de place :</label>
 							<div class="input-group">
-								<input type="number" placeholder="nombre de place" id="nbrePlace" name="profil.cars[0].nombreDePlace" disabled required/>
+								<input type="number" min=1 placeholder="nombre de place" id="nbrePlace" name="profil.cars[0].nombreDePlace" disabled required/>
 							</div>
                  </div>	
 				

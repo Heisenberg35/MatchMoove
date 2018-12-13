@@ -1,18 +1,14 @@
 package com.societe.project.services;
 
 import java.util.List;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.societe.project.database.CompteRepository;
 import com.societe.project.database.base.BaseCRUDRepository;
 import com.societe.project.dto.CompteProfilDto;
 import com.societe.project.models.Compte;
 import com.societe.project.models.Profil;
-
 import com.societe.project.services.base.BaseService;
 
 @Service
@@ -30,8 +26,6 @@ public class CompteService extends BaseService<Compte> {
 	@Autowired
 	private ProfilService profilService;
 	
-
-	
 	@Override
 	protected BaseCRUDRepository<Compte> getCRUDRepository() {
 		return compteRepository;
@@ -45,7 +39,6 @@ public class CompteService extends BaseService<Compte> {
 		this.dto = dto;
 	}
 	
-
 //	@Override
 //	protected List<Compte> setItemsByCriterias(Compte item, List<Compte> result) {
 //		if (!item.getEmail().equals("")) {
@@ -60,7 +53,6 @@ public class CompteService extends BaseService<Compte> {
 		super.save(item);
 	}
 
-	
 	@Override
 	protected List<Compte> setItemsByCriterias(Compte item, List<Compte> result) {
 		// TODO Auto-generated method stub
@@ -93,8 +85,7 @@ public class CompteService extends BaseService<Compte> {
 		
 		compte.afficheCompte();
 		profil.afficheProfil();
-		
-		
+			
 		//update element
 		//lie ensemble 
 		Compte c = compteRepository.findById(compte.getId()).get();
@@ -129,10 +120,4 @@ public class CompteService extends BaseService<Compte> {
 		c.setActive(0);
 		compteRepository.save(c);
 	}
-	
-	
-	
-	
-
-
 }

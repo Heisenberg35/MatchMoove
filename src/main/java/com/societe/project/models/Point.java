@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import com.societe.project.database.DBItem;
 @Entity
 @Table(name="Point")
@@ -61,9 +60,6 @@ public class Point extends DBItem {
 	
 	public void affPoint() {
 		System.out.println(longitude);
-		System.out.println(altitude);
-		
+		System.out.println(altitude);		
 	}
-	
-	
 }

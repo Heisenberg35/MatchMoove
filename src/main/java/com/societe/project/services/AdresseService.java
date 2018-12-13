@@ -1,10 +1,8 @@
 package com.societe.project.services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.societe.project.database.AdresseRepository;
 import com.societe.project.database.base.BaseCRUDRepository;
 import com.societe.project.models.Adresse;
@@ -29,7 +27,5 @@ public class AdresseService extends BaseService<Adresse> {
 			result = this.adresseRepository.findByRue(item.getRue());
 		}
 		return result;
-	}
-	
-	
+	}	
 }
