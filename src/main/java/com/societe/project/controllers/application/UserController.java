@@ -82,12 +82,7 @@ public class UserController {
 	@Autowired
 	CompteValidatorForGestionUser compteValidatorForGestionUser;
 	@Autowired
-
 	RecuperationInfoLoginService recuperationInfoLogin;
-
-	TrajetValidator trajetValidator;
-
-	
 
 	@RequestMapping(value={UserController.URL_GESTION_COMPTE}, method=RequestMethod.GET)
 	public String gestionCompte(Model model) {
